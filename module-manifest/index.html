@@ -1490,7 +1490,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 275834c42, updated Wed Jun 11 14:18:15 2025 -0700" name="generator">
   <link href="https://asimov-specs.github.io/module-manifest/" rel="canonical">
-  <meta content="8e8ac06830705b998d8d7ec158985e79a501d79e" name="revision">
+  <meta content="5fecee104ae9d331528e36026d1f1d8ef3b47a09" name="revision">
   <meta content="dark light" name="color-scheme">
 <style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
@@ -1812,6 +1812,130 @@ figcaption:not(.no-marker)::before {
     content: "Figure " counter(figure) " ";
 }
 </style>
+<style>/* Boilerplate: style-dfn-panel */
+:root {
+    --dfnpanel-bg: #ddd;
+    --dfnpanel-text: var(--text);
+    --dfnpanel-target-bg: #ffc;
+    --dfnpanel-target-outline: orange;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --dfnpanel-bg: #222;
+        --dfnpanel-text: var(--text);
+        --dfnpanel-target-bg: #333;
+        --dfnpanel-target-outline: silver;
+    }
+}
+.dfn-panel {
+    position: absolute;
+    z-index: 35;
+    width: 20em;
+    width: 300px;
+    height: auto;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.75em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: var(--dfnpanel-bg);
+    color: var(--dfnpanel-text);
+    border: outset 0.2em;
+    white-space: normal; /* in case it's moved into a pre */
+}
+.dfn-panel:not(.on) { display: none; }
+.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
+.dfn-panel > b { display: block; }
+.dfn-panel a { color: var(--dfnpanel-text); }
+.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
+.dfn-panel a:focus {
+    outline: 5px auto Highlight;
+    outline: 5px auto -webkit-focus-ring-color;
+}
+.dfn-panel > b + b { margin-top: 0.25em; }
+.dfn-panel ul { padding: 0 0 0 1em; list-style: none; }
+.dfn-panel li a {
+    max-width: calc(300px - 1.5em - 1em);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dfn-panel.activated {
+    display: inline-block;
+    position: fixed;
+    left: 8px;
+    bottom: 2em;
+    margin: 0 auto;
+    max-width: calc(100vw - 1.5em - .4em - .5em);
+    max-height: 30vh;
+    transition: left 1s ease-out, bottom 1s ease-out;
+}
+
+.dfn-panel .link-item:hover {
+    text-decoration: underline;
+}
+.dfn-panel .link-item .copy-icon {
+    opacity: 0;
+}
+.dfn-panel .link-item:hover .copy-icon,
+.dfn-panel .link-item .copy-icon:focus {
+    opacity: 1;
+}
+
+.dfn-panel .copy-icon {
+    display: inline-block;
+    margin-right: 0.5em;
+    width: 0.85em;
+    height: 1em;
+    border-radius: 3px;
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+.dfn-panel .copy-icon .icon {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.dfn-panel .copy-icon .icon::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    background-color: #ccc;
+    opacity: 0.25;
+    transform: translate(3px, -3px);
+}
+
+.dfn-panel .copy-icon:active .icon::before {
+    opacity: 1;
+}
+
+.dfn-paneled[role="button"] { cursor: help; }
+
+.highlighted {
+    animation: target-fade 3s;
+}
+
+@keyframes target-fade {
+    from {
+        background-color: var(--dfnpanel-target-bg);
+        outline: 5px solid var(--dfnpanel-target-outline);
+    }
+    to {
+        color: var(--a-normal-text);
+        background-color: transparent;
+        outline: transparent;
+    }
+}
+</style>
 <style>/* Boilerplate: style-issues */
 a[href].issue-return {
     float: right;
@@ -1830,6 +1954,39 @@ a[href].issue-return {
 [data-md] > :last-child {
     margin-bottom: 0;
 }
+</style>
+<style>/* Boilerplate: style-ref-hints */
+:root {
+    --ref-hint-bg: #ddd;
+    --ref-hint-text: var(--text);
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ref-hint-bg: #222;
+        --ref-hint-text: var(--text);
+    }
+}
+
+.ref-hint {
+    display: inline-block;
+    position: absolute;
+    z-index: 35;
+    width: 20em;
+    width: 300px;
+    height: auto;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.5em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: var(--ref-hint-bg);
+    color: var(--ref-hint-text);
+    border: outset 0.2em;
+    white-space: normal; /* in case it's moved into a pre */
+}
+
+.ref-hint * { margin: 0; padding: 0; text-indent: 0; }
+
+.ref-hint ul { padding: 0 0 0 1em; list-style: none; }
 </style>
 <style>/* Boilerplate: style-selflinks */
 :root {
@@ -1890,6 +2047,127 @@ a.self-link::before            { content: "¶"; }
 .heading > a.self-link::before { content: "§"; }
 dfn > a.self-link::before      { content: "#"; }
 </style>
+<style>/* Boilerplate: style-syntax-highlighting */
+code.highlight { padding: .1em; border-radius: .3em; }
+pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em 0; overflow: auto; border-radius: 0; }
+
+.highlight:not(.idl) { background: rgba(0, 0, 0, .03); }
+c-[a] { color: #990055 } /* Keyword.Declaration */
+c-[b] { color: #990055 } /* Keyword.Type */
+c-[c] { color: #708090 } /* Comment */
+c-[d] { color: #708090 } /* Comment.Multiline */
+c-[e] { color: #0077aa } /* Name.Attribute */
+c-[f] { color: #669900 } /* Name.Tag */
+c-[g] { color: #222222 } /* Name.Variable */
+c-[k] { color: #990055 } /* Keyword */
+c-[l] { color: #000000 } /* Literal */
+c-[m] { color: #000000 } /* Literal.Number */
+c-[n] { color: #0077aa } /* Name */
+c-[o] { color: #999999 } /* Operator */
+c-[p] { color: #999999 } /* Punctuation */
+c-[s] { color: #a67f59 } /* Literal.String */
+c-[t] { color: #a67f59 } /* Literal.String.Single */
+c-[u] { color: #a67f59 } /* Literal.String.Double */
+c-[cp] { color: #708090 } /* Comment.Preproc */
+c-[c1] { color: #708090 } /* Comment.Single */
+c-[cs] { color: #708090 } /* Comment.Special */
+c-[kc] { color: #990055 } /* Keyword.Constant */
+c-[kn] { color: #990055 } /* Keyword.Namespace */
+c-[kp] { color: #990055 } /* Keyword.Pseudo */
+c-[kr] { color: #990055 } /* Keyword.Reserved */
+c-[ld] { color: #000000 } /* Literal.Date */
+c-[nc] { color: #0077aa } /* Name.Class */
+c-[no] { color: #0077aa } /* Name.Constant */
+c-[nd] { color: #0077aa } /* Name.Decorator */
+c-[ni] { color: #0077aa } /* Name.Entity */
+c-[ne] { color: #0077aa } /* Name.Exception */
+c-[nf] { color: #0077aa } /* Name.Function */
+c-[nl] { color: #0077aa } /* Name.Label */
+c-[nn] { color: #0077aa } /* Name.Namespace */
+c-[py] { color: #0077aa } /* Name.Property */
+c-[ow] { color: #999999 } /* Operator.Word */
+c-[mb] { color: #000000 } /* Literal.Number.Bin */
+c-[mf] { color: #000000 } /* Literal.Number.Float */
+c-[mh] { color: #000000 } /* Literal.Number.Hex */
+c-[mi] { color: #000000 } /* Literal.Number.Integer */
+c-[mo] { color: #000000 } /* Literal.Number.Oct */
+c-[sb] { color: #a67f59 } /* Literal.String.Backtick */
+c-[sc] { color: #a67f59 } /* Literal.String.Char */
+c-[sd] { color: #a67f59 } /* Literal.String.Doc */
+c-[se] { color: #a67f59 } /* Literal.String.Escape */
+c-[sh] { color: #a67f59 } /* Literal.String.Heredoc */
+c-[si] { color: #a67f59 } /* Literal.String.Interpol */
+c-[sx] { color: #a67f59 } /* Literal.String.Other */
+c-[sr] { color: #a67f59 } /* Literal.String.Regex */
+c-[ss] { color: #a67f59 } /* Literal.String.Symbol */
+c-[vc] { color: #0077aa } /* Name.Variable.Class */
+c-[vg] { color: #0077aa } /* Name.Variable.Global */
+c-[vi] { color: #0077aa } /* Name.Variable.Instance */
+c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
+
+@media (prefers-color-scheme: dark) {
+    .highlight:not(.idl) { background: rgba(255, 255, 255, .05); }
+
+    c-[a] { color: #d33682 } /* Keyword.Declaration */
+    c-[b] { color: #d33682 } /* Keyword.Type */
+    c-[c] { color: #2aa198 } /* Comment */
+    c-[d] { color: #2aa198 } /* Comment.Multiline */
+    c-[e] { color: #268bd2 } /* Name.Attribute */
+    c-[f] { color: #b58900 } /* Name.Tag */
+    c-[g] { color: #cb4b16 } /* Name.Variable */
+    c-[k] { color: #d33682 } /* Keyword */
+    c-[l] { color: #657b83 } /* Literal */
+    c-[m] { color: #657b83 } /* Literal.Number */
+    c-[n] { color: #268bd2 } /* Name */
+    c-[o] { color: #657b83 } /* Operator */
+    c-[p] { color: #657b83 } /* Punctuation */
+    c-[s] { color: #6c71c4 } /* Literal.String */
+    c-[t] { color: #6c71c4 } /* Literal.String.Single */
+    c-[u] { color: #6c71c4 } /* Literal.String.Double */
+    c-[ch] { color: #2aa198 } /* Comment.Hashbang */
+    c-[cp] { color: #2aa198 } /* Comment.Preproc */
+    c-[cpf] { color: #2aa198 } /* Comment.PreprocFile */
+    c-[c1] { color: #2aa198 } /* Comment.Single */
+    c-[cs] { color: #2aa198 } /* Comment.Special */
+    c-[kc] { color: #d33682 } /* Keyword.Constant */
+    c-[kn] { color: #d33682 } /* Keyword.Namespace */
+    c-[kp] { color: #d33682 } /* Keyword.Pseudo */
+    c-[kr] { color: #d33682 } /* Keyword.Reserved */
+    c-[ld] { color: #657b83 } /* Literal.Date */
+    c-[nc] { color: #268bd2 } /* Name.Class */
+    c-[no] { color: #268bd2 } /* Name.Constant */
+    c-[nd] { color: #268bd2 } /* Name.Decorator */
+    c-[ni] { color: #268bd2 } /* Name.Entity */
+    c-[ne] { color: #268bd2 } /* Name.Exception */
+    c-[nf] { color: #268bd2 } /* Name.Function */
+    c-[nl] { color: #268bd2 } /* Name.Label */
+    c-[nn] { color: #268bd2 } /* Name.Namespace */
+    c-[py] { color: #268bd2 } /* Name.Property */
+    c-[ow] { color: #657b83 } /* Operator.Word */
+    c-[mb] { color: #657b83 } /* Literal.Number.Bin */
+    c-[mf] { color: #657b83 } /* Literal.Number.Float */
+    c-[mh] { color: #657b83 } /* Literal.Number.Hex */
+    c-[mi] { color: #657b83 } /* Literal.Number.Integer */
+    c-[mo] { color: #657b83 } /* Literal.Number.Oct */
+    c-[sa] { color: #6c71c4 } /* Literal.String.Affix */
+    c-[sb] { color: #6c71c4 } /* Literal.String.Backtick */
+    c-[sc] { color: #6c71c4 } /* Literal.String.Char */
+    c-[dl] { color: #6c71c4 } /* Literal.String.Delimiter */
+    c-[sd] { color: #6c71c4 } /* Literal.String.Doc */
+    c-[se] { color: #6c71c4 } /* Literal.String.Escape */
+    c-[sh] { color: #6c71c4 } /* Literal.String.Heredoc */
+    c-[si] { color: #6c71c4 } /* Literal.String.Interpol */
+    c-[sx] { color: #6c71c4 } /* Literal.String.Other */
+    c-[sr] { color: #6c71c4 } /* Literal.String.Regex */
+    c-[ss] { color: #6c71c4 } /* Literal.String.Symbol */
+    c-[fm] { color: #268bd2 } /* Name.Function.Magic */
+    c-[vc] { color: #cb4b16 } /* Name.Variable.Class */
+    c-[vg] { color: #cb4b16 } /* Name.Variable.Global */
+    c-[vi] { color: #cb4b16 } /* Name.Variable.Instance */
+    c-[vm] { color: #cb4b16 } /* Name.Variable.Magic */
+    c-[il] { color: #657b83 } /* Literal.Number.Integer.Long */
+}
+</style>
  <body class="h-entry">
   <div class="head">
    <p data-fill-with="logo"></p>
@@ -1901,7 +2179,7 @@ dfn > a.self-link::before      { content: "#"; }
      <dt>This version:
      <dd><a class="u-url" href="https://asimov-specs.github.io/module-manifest/">https://asimov-specs.github.io/module-manifest/</a>
      <dt>Issue Tracking:
-     <dd><a href="https://github.com/asimov-specs/module-manifest/issues/">GitHub</a>
+     <dd><a href="https://github.com/asimov-specs/asimov-specs/issues/">GitHub</a>
      <dt class="editor">Editor:
      <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:arto@asimov.systems">Arto Bendiken</a> (<a class="p-org org" href="https://asimov.systems">ASIMOV Systems</a>)
     </dl>
@@ -1920,24 +2198,640 @@ Parts of this work may be from another specification document.  If so, those par
   </div>
   <div class="p-summary" data-fill-with="abstract">
    <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
-   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porttitor erat lorem. Donec eget suscipit augue, nec ultrices quam. Phasellus rutrum lectus eu augue tempor, quis lacinia arcu sodales. Suspendisse tempor eu felis in venenatis. Sed pellentesque dolor et felis placerat, quis dictum dolor vestibulum.</p>
+   <p>This specification defines the ASIMOV Module Manifest format, a YAML-based declarative format for describing ASIMOV Platform modules. Module manifests provide metadata about modules including their capabilities, dependencies, and the resources they handle. This enables the ASIMOV Platform to automatically discover, configure, and orchestrate modules based on their declared capabilities.</p>
   </div>
   <div data-fill-with="at-risk"></div>
   <nav data-fill-with="table-of-contents" id="toc">
    <h2 class="no-num no-toc no-ref" id="contents">Table of Contents</h2>
    <ol class="toc" role="directory">
-    <li><a href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
+    <li>
+     <a href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
+     <ol class="toc">
+      <li><a href="#overview"><span class="secno">1.1</span> <span class="content">Overview</span></a>
+      <li><a href="#scope"><span class="secno">1.2</span> <span class="content">Scope</span></a>
+      <li><a href="#spec-conformance"><span class="secno">1.3</span> <span class="content">Conformance</span></a>
+     </ol>
+    <li>
+     <a href="#structure"><span class="secno">2</span> <span class="content">Manifest Structure</span></a>
+     <ol class="toc">
+      <li><a href="#file-format"><span class="secno">2.1</span> <span class="content">File Format</span></a>
+      <li><a href="#top-level-fields"><span class="secno">2.2</span> <span class="content">Top-Level Fields</span></a>
+      <li><a href="#name-field"><span class="secno">2.3</span> <span class="content">The name Field</span></a>
+      <li><a href="#label-field"><span class="secno">2.4</span> <span class="content">The label Field</span></a>
+      <li><a href="#summary-field"><span class="secno">2.5</span> <span class="content">The summary Field</span></a>
+      <li><a href="#links-field"><span class="secno">2.6</span> <span class="content">The links Field</span></a>
+      <li>
+       <a href="#provides-section"><span class="secno">2.7</span> <span class="content">The provides Section</span></a>
+       <ol class="toc">
+        <li><a href="#programs"><span class="secno">2.7.1</span> <span class="content">programs</span></a>
+       </ol>
+      <li>
+       <a href="#handles-section"><span class="secno">2.8</span> <span class="content">The handles Section</span></a>
+       <ol class="toc">
+        <li><a href="#url-protocols"><span class="secno">2.8.1</span> <span class="content">url_protocols</span></a>
+        <li><a href="#url-prefixes"><span class="secno">2.8.2</span> <span class="content">url_prefixes</span></a>
+        <li><a href="#url-patterns"><span class="secno">2.8.3</span> <span class="content">url_patterns</span></a>
+        <li><a href="#file-extensions"><span class="secno">2.8.4</span> <span class="content">file_extensions</span></a>
+        <li><a href="#content-types"><span class="secno">2.8.5</span> <span class="content">content_types</span></a>
+       </ol>
+     </ol>
+    <li>
+     <a href="#examples"><span class="secno">3</span> <span class="content">Examples</span></a>
+     <ol class="toc">
+      <li><a href="#basic-example"><span class="secno">3.1</span> <span class="content">Basic Module Manifest</span></a>
+      <li><a href="#search-api-example"><span class="secno">3.2</span> <span class="content">Search API Module</span></a>
+      <li><a href="#social-media-example"><span class="secno">3.3</span> <span class="content">Social Media Scraper Module</span></a>
+      <li><a href="#blockchain-example"><span class="secno">3.4</span> <span class="content">Blockchain Module</span></a>
+     </ol>
+    <li>
+     <a href="#processing"><span class="secno">4</span> <span class="content">Processing Model</span></a>
+     <ol class="toc">
+      <li><a href="#discovery"><span class="secno">4.1</span> <span class="content">Discovery</span></a>
+      <li><a href="#validation"><span class="secno">4.2</span> <span class="content">Validation</span></a>
+      <li><a href="#conflicts"><span class="secno">4.3</span> <span class="content">Conflict Resolution</span></a>
+      <li><a href="#runtime"><span class="secno">4.4</span> <span class="content">Runtime Behavior</span></a>
+     </ol>
+    <li>
+     <a href="#rdf-mapping"><span class="secno">5</span> <span class="content">RDF Mapping</span></a>
+     <ol class="toc">
+      <li><a href="#rdf-vocabulary"><span class="secno">5.1</span> <span class="content">Vocabulary</span></a>
+      <li><a href="#rdf-types"><span class="secno">5.2</span> <span class="content">Type Mappings</span></a>
+      <li><a href="#rdf-properties"><span class="secno">5.3</span> <span class="content">Property Mappings</span></a>
+      <li><a href="#jsonld-context"><span class="secno">5.4</span> <span class="content">JSON-LD Context</span></a>
+      <li><a href="#rdf-example"><span class="secno">5.5</span> <span class="content">Example RDF Mapping</span></a>
+     </ol>
+    <li>
+     <a href="#security"><span class="secno">6</span> <span class="content">Security Considerations</span></a>
+     <ol class="toc">
+      <li><a href="#manifest-validation"><span class="secno">6.1</span> <span class="content">Manifest Validation</span></a>
+      <li><a href="#program-execution"><span class="secno">6.2</span> <span class="content">Program Execution</span></a>
+      <li><a href="#url-pattern-matching"><span class="secno">6.3</span> <span class="content">URL Pattern Matching</span></a>
+     </ol>
+    <li><a href="#iana"><span class="secno">7</span> <span class="content">IANA Considerations</span></a>
+    <li>
+     <a href="#spec-references"><span class="secno">8</span> <span class="content">References</span></a>
+     <ol class="toc">
+      <li><a href="#spec-normative"><span class="secno">8.1</span> <span class="content">Normative References</span></a>
+      <li><a href="#spec-informative"><span class="secno">8.2</span> <span class="content">Informative References</span></a>
+     </ol>
+    <li><a href="#acknowledgments"><span class="secno">9</span> <span class="content">Acknowledgments</span></a>
+    <li>
+     <a href="#changes"><span class="secno">10</span> <span class="content">Changes</span></a>
+     <ol class="toc">
+      <li><a href="#v1"><span class="secno">10.1</span> <span class="content">Version 1.0</span></a>
+     </ol>
     <li><a href="#conformance"><span class="secno"></span> <span class="content">
     Conformance</span></a>
+    <li>
+     <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
+     <ol class="toc">
+      <li><a href="#index-defined-here"><span class="secno"></span> <span class="content">Terms defined by this specification</span></a>
+     </ol>
     <li>
      <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
      <ol class="toc">
       <li><a href="#normative"><span class="secno"></span> <span class="content">Normative References</span></a>
+      <li><a href="#informative"><span class="secno"></span> <span class="content">Informative References</span></a>
      </ol>
    </ol>
   </nav>
   <main>
    <h2 class="heading settled" data-level="1" id="introduction"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#introduction"></a></h2>
+   <h3 class="heading settled" data-level="1.1" id="overview"><span class="secno">1.1. </span><span class="content">Overview</span><a class="self-link" href="#overview"></a></h3>
+   <p>The ASIMOV Module Manifest Specification defines a standardized format for declaring module metadata, capabilities, and requirements within the ASIMOV Platform ecosystem. Module manifests enable:</p>
+   <ul>
+    <li data-md>
+     <p><strong>Automatic Discovery</strong>: Modules can be automatically discovered and registered based on their manifest declarations</p>
+    <li data-md>
+     <p><strong>Capability Advertisement</strong>: Modules declare what programs they provide and what resources they can handle</p>
+    <li data-md>
+     <p><strong>Dependency Resolution</strong>: The platform can resolve module dependencies and ensure required capabilities are available</p>
+    <li data-md>
+     <p><strong>Configuration Management</strong>: Manifests provide a single source of truth for module configuration</p>
+   </ul>
+   <h3 class="heading settled" data-level="1.2" id="scope"><span class="secno">1.2. </span><span class="content">Scope</span><a class="self-link" href="#scope"></a></h3>
+   <p>This specification covers:</p>
+   <ul>
+    <li data-md>
+     <p>The syntax and structure of module manifest files</p>
+    <li data-md>
+     <p>Required and optional manifest fields</p>
+    <li data-md>
+     <p>Validation rules and constraints</p>
+    <li data-md>
+     <p>Processing model for manifest interpretation</p>
+   </ul>
+   <p>This specification does not cover:</p>
+   <ul>
+    <li data-md>
+     <p>The runtime behavior of modules</p>
+    <li data-md>
+     <p>Inter-module communication protocols</p>
+    <li data-md>
+     <p>Platform-specific implementation details</p>
+   </ul>
+   <h3 class="heading settled" data-level="1.3" id="spec-conformance"><span class="secno">1.3. </span><span class="content">Conformance</span><a class="self-link" href="#spec-conformance"></a></h3>
+   <p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a data-link-type="biblio" href="#biblio-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">[RFC2119]</a>.</p>
+   <p>A conforming module manifest is one that satisfies all the requirements defined in this specification.</p>
+   <p>A conforming manifest processor is one that correctly interprets module manifests according to the processing model defined in this specification.</p>
+   <h2 class="heading settled" data-level="2" id="structure"><span class="secno">2. </span><span class="content">Manifest Structure</span><a class="self-link" href="#structure"></a></h2>
+   <h3 class="heading settled" data-level="2.1" id="file-format"><span class="secno">2.1. </span><span class="content">File Format</span><a class="self-link" href="#file-format"></a></h3>
+   <p>Module manifests MUST be written in YAML 1.2 format <a data-link-type="biblio" href="#biblio-yaml" title="YAML Ain’t Markup Language (YAML™) Version 1.2">[YAML]</a>. The manifest file MUST be named <code class="highlight">module.yaml</code> and placed in the <code class="highlight">.asimov</code> directory in the root of the module repository (i.e., <code class="highlight">.asimov/module.yaml</code>).</p>
+   <p>The manifest MUST begin with a YAML document separator (<code class="highlight"><c- nn>---</c-></code>) and MAY include the following comment referencing this specification:</p>
+<pre class="language-yaml highlight"><c- c1># See: https://asimov-specs.github.io/module-manifest/</c->
+<c- nn>---</c->
+</pre>
+   <h3 class="heading settled" data-level="2.2" id="top-level-fields"><span class="secno">2.2. </span><span class="content">Top-Level Fields</span><a class="self-link" href="#top-level-fields"></a></h3>
+   <p>A module manifest consists of the following top-level fields:</p>
+   <table class="data">
+    <thead>
+     <tr>
+      <th>Field
+      <th>Type
+      <th>Required
+      <th>Description
+    <tbody>
+     <tr>
+      <td><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="name">name</dfn>
+      <td>string
+      <td>REQUIRED
+      <td>The unique identifier for the module
+     <tr>
+      <td><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="label">label</dfn>
+      <td>string
+      <td>OPTIONAL
+      <td>A human-readable display name for the module
+     <tr>
+      <td><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="summary">summary</dfn>
+      <td>string
+      <td>OPTIONAL
+      <td>A brief description of the module’s purpose
+     <tr>
+      <td><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="links">links</dfn>
+      <td>array&lt;string>
+      <td>OPTIONAL
+      <td>URLs to related resources (homepage, repository, documentation)
+     <tr>
+      <td><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="provides">provides</dfn>
+      <td>object
+      <td>OPTIONAL
+      <td>Capabilities provided by the module
+     <tr>
+      <td><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="handles">handles</dfn>
+      <td>object
+      <td>OPTIONAL
+      <td>Resource types handled by the module
+   </table>
+   <h3 class="heading settled" data-level="2.3" id="name-field"><span class="secno">2.3. </span><span class="content">The name Field</span><a class="self-link" href="#name-field"></a></h3>
+   <p>The <a data-link-type="dfn" href="#name" id="ref-for-name">name</a> field MUST contain a string that uniquely identifies the module within the ASIMOV Platform. The name:</p>
+   <ul>
+    <li data-md>
+     <p>MUST consist only of lowercase letters, digits, and hyphens</p>
+    <li data-md>
+     <p>MUST start with a letter</p>
+    <li data-md>
+     <p>MUST NOT exceed 64 characters in length</p>
+    <li data-md>
+     <p>SHOULD be descriptive and follow the pattern <code class="highlight">category-provider-type</code> (e.g., <code class="highlight">search-google-fetcher</code>)</p>
+   </ul>
+   <h3 class="heading settled" data-level="2.4" id="label-field"><span class="secno">2.4. </span><span class="content">The label Field</span><a class="self-link" href="#label-field"></a></h3>
+   <p>The <a data-link-type="dfn" href="#label" id="ref-for-label">label</a> field contains an optional human-readable display name for the module. If provided, it SHOULD be concise and suitable for display in user interfaces.</p>
+   <h3 class="heading settled" data-level="2.5" id="summary-field"><span class="secno">2.5. </span><span class="content">The summary Field</span><a class="self-link" href="#summary-field"></a></h3>
+   <p>The <a data-link-type="dfn" href="#summary" id="ref-for-summary">summary</a> field contains an optional brief description of the module’s purpose and functionality. This SHOULD be a single sentence that clearly explains what the module does.</p>
+   <h3 class="heading settled" data-level="2.6" id="links-field"><span class="secno">2.6. </span><span class="content">The links Field</span><a class="self-link" href="#links-field"></a></h3>
+   <p>The <a data-link-type="dfn" href="#links" id="ref-for-links">links</a> field contains an optional array of URLs pointing to resources related to the module, such as:</p>
+   <ul>
+    <li data-md>
+     <p>The module’s homepage</p>
+    <li data-md>
+     <p>Source code repository</p>
+    <li data-md>
+     <p>Documentation</p>
+    <li data-md>
+     <p>Package registry entries</p>
+   </ul>
+   <p>All URLs in this array MUST be well-formed and use HTTPS where applicable.</p>
+   <h3 class="heading settled" data-level="2.7" id="provides-section"><span class="secno">2.7. </span><span class="content">The provides Section</span><a class="self-link" href="#provides-section"></a></h3>
+   <p>The <a data-link-type="dfn" href="#provides" id="ref-for-provides">provides</a> section declares the capabilities that a module makes available to the platform. Currently, the following capability types are defined:</p>
+   <h4 class="heading settled" data-level="2.7.1" id="programs"><span class="secno">2.7.1. </span><span class="content">programs</span><a class="self-link" href="#programs"></a></h4>
+   <p>The <code class="highlight">programs</code> field contains an array of executable program names that the module provides. These programs:</p>
+   <ul>
+    <li data-md>
+     <p>MUST follow the naming convention <code class="highlight">asimov-{module}-{function}</code></p>
+    <li data-md>
+     <p>MUST be executable files or scripts included with the module</p>
+    <li data-md>
+     <p>SHOULD implement well-defined interfaces for their function type as specified in <a data-link-type="biblio" href="#biblio-asimov-pps" title="ASIMOV Program Patterns Specification">[ASIMOV-PPS]</a></p>
+   </ul>
+   <p>The function types (e.g., fetcher, importer, emitter, processor) are defined in the ASIMOV Program Patterns Specification.</p>
+   <p>Example:</p>
+<pre class="language-yaml highlight"><c- f>provides</c-><c- p>:</c->
+  <c- f>programs</c-><c- p>:</c->
+    - asimov-serpapi-fetcher
+    - asimov-serpapi-importer
+</pre>
+   <h3 class="heading settled" data-level="2.8" id="handles-section"><span class="secno">2.8. </span><span class="content">The handles Section</span><a class="self-link" href="#handles-section"></a></h3>
+   <p>The <a data-link-type="dfn" href="#handles" id="ref-for-handles">handles</a> section declares what types of resources or inputs the module can process. Multiple handler types can be specified:</p>
+   <h4 class="heading settled" data-level="2.8.1" id="url-protocols"><span class="secno">2.8.1. </span><span class="content">url_protocols</span><a class="self-link" href="#url-protocols"></a></h4>
+   <p>An array of URL protocol schemes (without the trailing colon) that the module can handle.</p>
+   <p>Example:</p>
+<pre class="language-yaml highlight"><c- f>handles</c-><c- p>:</c->
+  <c- f>url_protocols</c-><c- p>:</c->
+    - near
+    - ipfs
+</pre>
+   <h4 class="heading settled" data-level="2.8.2" id="url-prefixes"><span class="secno">2.8.2. </span><span class="content">url_prefixes</span><a class="self-link" href="#url-prefixes"></a></h4>
+   <p>An array of URL prefixes that the module can handle. These MUST be complete URLs including the protocol scheme.</p>
+   <p>Example:</p>
+<pre class="language-yaml highlight"><c- f>handles</c-><c- p>:</c->
+  <c- f>url_prefixes</c-><c- p>:</c->
+    - https://amazon.com/
+    - https://ebay.com/itm/
+</pre>
+   <h4 class="heading settled" data-level="2.8.3" id="url-patterns"><span class="secno">2.8.3. </span><span class="content">url_patterns</span><a class="self-link" href="#url-patterns"></a></h4>
+   <p>An array of URL patterns with parameter placeholders that the module can handle. Patterns MUST conform to the syntax defined in <a data-link-type="biblio" href="#biblio-urlpattern" title="URL Pattern Standard">[URLPATTERN]</a>.</p>
+   <p>Example:</p>
+<pre class="language-yaml highlight"><c- f>handles</c-><c- p>:</c->
+  <c- f>url_patterns</c-><c- p>:</c->
+    - https://google.com/search?q=:query
+    - https://x.com/:account/followers
+</pre>
+   <h4 class="heading settled" data-level="2.8.4" id="file-extensions"><span class="secno">2.8.4. </span><span class="content">file_extensions</span><a class="self-link" href="#file-extensions"></a></h4>
+   <p>An array of file extensions (including the leading dot) that the module can process. File extensions SHOULD be registered with IANA as specified in <a data-link-type="biblio" href="#biblio-rfc6838" title="Media Type Specifications and Registration Procedures">[RFC6838]</a> or be well-established conventional extensions.</p>
+   <p>Example:</p>
+<pre class="language-yaml highlight"><c- f>handles</c-><c- p>:</c->
+  <c- f>file_extensions</c-><c- p>:</c->
+    - .csv
+    - .xlsx
+</pre>
+   <h4 class="heading settled" data-level="2.8.5" id="content-types"><span class="secno">2.8.5. </span><span class="content">content_types</span><a class="self-link" href="#content-types"></a></h4>
+   <p>An array of MIME content types that the module can process. Content types MUST be formatted according to <a data-link-type="biblio" href="#biblio-rfc2046" title="Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types">[RFC2046]</a> and SHOULD be registered in the IANA Media Types registry <a data-link-type="biblio" href="#biblio-iana-media-types" title="Media Types">[IANA-MEDIA-TYPES]</a>.</p>
+   <p>Example:</p>
+<pre class="language-yaml highlight"><c- f>handles</c-><c- p>:</c->
+  <c- f>content_types</c-><c- p>:</c->
+    - application/json
+    - text/csv
+</pre>
+   <h2 class="heading settled" data-level="3" id="examples"><span class="secno">3. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
+   <h3 class="heading settled" data-level="3.1" id="basic-example"><span class="secno">3.1. </span><span class="content">Basic Module Manifest</span><a class="self-link" href="#basic-example"></a></h3>
+   <p>A minimal module manifest for a template module:</p>
+<pre class="language-yaml highlight"><c- c1># See: https://asimov-specs.github.io/module-manifest/</c->
+<c- nn>---</c->
+<c- f>name</c-><c- p>:</c-> template
+<c- f>label</c-><c- p>:</c-> Template
+<c- f>summary</c-><c- p>:</c-> Fork this to create your own module!
+<c- f>links</c-><c- p>:</c->
+  - https://github.com/asimov-modules/asimov-template-module
+  - https://crates.io/crates/asimov-template-module
+
+<c- f>provides</c-><c- p>:</c->
+  <c- f>programs</c-><c- p>:</c->
+    - asimov-template-emitter
+
+<c- f>handles</c-><c- p>:</c->
+  <c- f>url_protocols</c-><c- p>:</c->
+  <c- f>url_prefixes</c-><c- p>:</c->
+  <c- f>url_patterns</c-><c- p>:</c->
+  <c- f>file_extensions</c-><c- p>:</c->
+  <c- f>content_types</c-><c- p>:</c->
+</pre>
+   <h3 class="heading settled" data-level="3.2" id="search-api-example"><span class="secno">3.2. </span><span class="content">Search API Module</span><a class="self-link" href="#search-api-example"></a></h3>
+   <p>A module that provides search capabilities through multiple search engines:</p>
+<pre class="language-yaml highlight"><c- nn>---</c->
+<c- f>name</c-><c- p>:</c-> serpapi
+<c- f>label</c-><c- p>:</c-> SerpAPI Search
+<c- f>summary</c-><c- p>:</c-> Provides search results from multiple search engines via SerpAPI
+<c- f>links</c-><c- p>:</c->
+  - https://serpapi.com
+  - https://github.com/asimov-modules/asimov-serpapi-module
+
+<c- f>provides</c-><c- p>:</c->
+  <c- f>programs</c-><c- p>:</c->
+    - asimov-serpapi-fetcher
+    - asimov-serpapi-importer
+
+<c- f>handles</c-><c- p>:</c->
+  <c- f>url_patterns</c-><c- p>:</c->
+    - https://bing.com/search?q=:query
+    - https://duckduckgo.com/?q=:query
+    - https://google.com/search?q=:query
+    - https://baidu.com/s?wd=:query
+</pre>
+   <h3 class="heading settled" data-level="3.3" id="social-media-example"><span class="secno">3.3. </span><span class="content">Social Media Scraper Module</span><a class="self-link" href="#social-media-example"></a></h3>
+   <p>A module that handles various social media platforms:</p>
+<pre class="language-yaml highlight"><c- nn>---</c->
+<c- f>name</c-><c- p>:</c-> brightdata
+<c- f>label</c-><c- p>:</c-> Bright Data Scraper
+<c- f>summary</c-><c- p>:</c-> Web scraping for e-commerce and social media platforms
+<c- f>links</c-><c- p>:</c->
+  - https://brightdata.com
+  - https://github.com/asimov-modules/asimov-brightdata-module
+
+<c- f>provides</c-><c- p>:</c->
+  <c- f>programs</c-><c- p>:</c->
+    - asimov-brightdata-fetcher
+    - asimov-brightdata-importer
+    - asimov-brightdata-analyzer
+
+<c- f>handles</c-><c- p>:</c->
+  <c- f>url_prefixes</c-><c- p>:</c->
+    - https://facebook.com/events/
+    - https://facebook.com/groups/
+    - https://facebook.com/marketplace/item/
+    - https://instagram.com/
+    - https://instagram.com/p/
+    - https://instagram.com/reel/
+    - https://linkedin.com/company/
+    - https://linkedin.com/in/
+    - https://x.com/
+    - https://youtube.com/@
+    - https://youtube.com/watch?v=
+</pre>
+   <h3 class="heading settled" data-level="3.4" id="blockchain-example"><span class="secno">3.4. </span><span class="content">Blockchain Module</span><a class="self-link" href="#blockchain-example"></a></h3>
+   <p>A module that handles blockchain protocols:</p>
+<pre class="language-yaml highlight"><c- nn>---</c->
+<c- f>name</c-><c- p>:</c-> near
+<c- f>label</c-><c- p>:</c-> NEAR Protocol
+<c- f>summary</c-><c- p>:</c-> Integration with the NEAR blockchain ecosystem
+<c- f>links</c-><c- p>:</c->
+  - https://near.org
+  - https://github.com/asimov-modules/asimov-near-module
+
+<c- f>provides</c-><c- p>:</c->
+  <c- f>programs</c-><c- p>:</c->
+    - asimov-near-fetcher
+    - asimov-near-validator
+    - asimov-near-signer
+
+<c- f>handles</c-><c- p>:</c->
+  <c- f>url_protocols</c-><c- p>:</c->
+    - near
+  <c- f>url_patterns</c-><c- p>:</c->
+    - https://explorer.near.org/accounts/:account
+    - https://explorer.near.org/transactions/:txhash
+</pre>
+   <h2 class="heading settled" data-level="4" id="processing"><span class="secno">4. </span><span class="content">Processing Model</span><a class="self-link" href="#processing"></a></h2>
+   <h3 class="heading settled" data-level="4.1" id="discovery"><span class="secno">4.1. </span><span class="content">Discovery</span><a class="self-link" href="#discovery"></a></h3>
+   <p>The ASIMOV Platform discovers modules by:</p>
+   <ol>
+    <li data-md>
+     <p>Scanning designated module directories for <code class="highlight">.asimov/module.yaml</code> files</p>
+    <li data-md>
+     <p>Validating each manifest according to this specification</p>
+    <li data-md>
+     <p>Registering valid modules in the platform’s module registry</p>
+   </ol>
+   <h3 class="heading settled" data-level="4.2" id="validation"><span class="secno">4.2. </span><span class="content">Validation</span><a class="self-link" href="#validation"></a></h3>
+   <p>A manifest processor MUST validate that:</p>
+   <ol>
+    <li data-md>
+     <p>The manifest is valid YAML 1.2</p>
+    <li data-md>
+     <p>All required fields are present</p>
+    <li data-md>
+     <p>Field values conform to their specified types</p>
+    <li data-md>
+     <p>The <code class="highlight">name</code> field meets the naming requirements</p>
+    <li data-md>
+     <p>All URLs in the <code class="highlight">links</code> field are well-formed</p>
+    <li data-md>
+     <p>Program names in <code class="highlight">provides.programs</code> follow the naming convention</p>
+    <li data-md>
+     <p>URL prefixes and patterns in the <code class="highlight">handles</code> section are well-formed</p>
+   </ol>
+   <h3 class="heading settled" data-level="4.3" id="conflicts"><span class="secno">4.3. </span><span class="content">Conflict Resolution</span><a class="self-link" href="#conflicts"></a></h3>
+   <p>When multiple modules declare handlers for overlapping resources:</p>
+   <ol>
+    <li data-md>
+     <p>More specific handlers take precedence over less specific ones</p>
+    <li data-md>
+     <p><code class="highlight">url_patterns</code> take precedence over <code class="highlight">url_prefixes</code></p>
+    <li data-md>
+     <p><code class="highlight">url_prefixes</code> take precedence over <code class="highlight">url_protocols</code></p>
+    <li data-md>
+     <p>For equal specificity, the platform MAY use additional criteria (e.g., module priority, user preference)</p>
+   </ol>
+   <h3 class="heading settled" data-level="4.4" id="runtime"><span class="secno">4.4. </span><span class="content">Runtime Behavior</span><a class="self-link" href="#runtime"></a></h3>
+   <p>When the platform needs to handle a resource:</p>
+   <ol>
+    <li data-md>
+     <p>It queries the module registry for modules that handle the resource type</p>
+    <li data-md>
+     <p>It selects the most appropriate module based on the conflict resolution rules</p>
+    <li data-md>
+     <p>It invokes the appropriate program from the module’s <code class="highlight">provides.programs</code> list</p>
+    <li data-md>
+     <p>The program processes the resource and returns results in the expected format</p>
+   </ol>
+   <h2 class="heading settled" data-level="5" id="rdf-mapping"><span class="secno">5. </span><span class="content">RDF Mapping</span><a class="self-link" href="#rdf-mapping"></a></h2>
+   <p>Module manifests can be mapped to RDF using YAML-LD <a data-link-type="biblio" href="#biblio-yaml-ld" title="YAML-LD">[YAML-LD]</a> or JSON-LD <a data-link-type="biblio" href="#biblio-json-ld" title="JSON-LD 1.0">[JSON-LD]</a>. This enables integration with linked data systems and semantic web technologies.</p>
+   <h3 class="heading settled" data-level="5.1" id="rdf-vocabulary"><span class="secno">5.1. </span><span class="content">Vocabulary</span><a class="self-link" href="#rdf-vocabulary"></a></h3>
+   <p>This specification defines the following RDF vocabulary with the base IRI <code class="highlight">https://asimov-specs.github.io/module-manifest/</code>:</p>
+   <p>| Prefix | Namespace IRI |
+|--------|--------------|
+| <code class="highlight"><c- f>mms</c-><c- p>:</c-></code> | <code class="highlight">https://asimov-specs.github.io/module-manifest/</code> |
+| <code class="highlight"><c- f>rdf</c-><c- p>:</c-></code> | <code class="highlight">http://www.w3.org/1999/02/22-rdf-syntax-ns#</code> |
+| <code class="highlight"><c- f>rdfs</c-><c- p>:</c-></code> | <code class="highlight">http://www.w3.org/2000/01/rdf-schema#</code> |
+| <code class="highlight"><c- f>xsd</c-><c- p>:</c-></code> | <code class="highlight">http://www.w3.org/2001/XMLSchema#</code> |</p>
+   <h3 class="heading settled" data-level="5.2" id="rdf-types"><span class="secno">5.2. </span><span class="content">Type Mappings</span><a class="self-link" href="#rdf-types"></a></h3>
+   <p>The following RDF types are defined:</p>
+   <ul>
+    <li data-md>
+     <p><code class="highlight">mms:Module</code> - The class of ASIMOV modules</p>
+    <li data-md>
+     <p><code class="highlight">mms:Program</code> - The class of executable programs</p>
+    <li data-md>
+     <p><code class="highlight">mms:Handler</code> - The class of resource handlers</p>
+   </ul>
+   <h3 class="heading settled" data-level="5.3" id="rdf-properties"><span class="secno">5.3. </span><span class="content">Property Mappings</span><a class="self-link" href="#rdf-properties"></a></h3>
+   <p>Module manifest fields map to RDF properties as follows:</p>
+   <p>| YAML Field | RDF Property | Range |
+|------------|--------------|--------|
+| <code class="highlight">name</code> | <code class="highlight">mms:name</code> | <code class="highlight">xsd:string</code> |
+| <code class="highlight">label</code> | <code class="highlight">rdfs:label</code> | <code class="highlight">xsd:string</code> |
+| <code class="highlight">summary</code> | <code class="highlight">rdfs:comment</code> | <code class="highlight">xsd:string</code> |
+| <code class="highlight">links</code> | <code class="highlight">rdfs:seeAlso</code> | <code class="highlight">xsd:anyURI</code> |
+| <code class="highlight">provides.programs</code> | <code class="highlight">mms:providesProgram</code> | <code class="highlight">mms:Program</code> |
+| <code class="highlight">handles.url_protocols</code> | <code class="highlight">mms:handlesProtocol</code> | <code class="highlight">xsd:string</code> |
+| <code class="highlight">handles.url_prefixes</code> | <code class="highlight">mms:handlesPrefix</code> | <code class="highlight">xsd:anyURI</code> |
+| <code class="highlight">handles.url_patterns</code> | <code class="highlight">mms:handlesPattern</code> | <code class="highlight">xsd:string</code> |
+| <code class="highlight">handles.file_extensions</code> | <code class="highlight">mms:handlesExtension</code> | <code class="highlight">xsd:string</code> |
+| <code class="highlight">handles.content_types</code> | <code class="highlight">mms:handlesContentType</code> | <code class="highlight">xsd:string</code> |</p>
+   <h3 class="heading settled" data-level="5.4" id="jsonld-context"><span class="secno">5.4. </span><span class="content">JSON-LD Context</span><a class="self-link" href="#jsonld-context"></a></h3>
+   <p>The following JSON-LD context SHOULD be used when converting module manifests to JSON-LD:</p>
+<pre class="language-json highlight"><c- p>{</c->
+  <c- f>"@context"</c-><c- p>:</c-> <c- p>{</c->
+    <c- f>"@vocab"</c-><c- p>:</c-> <c- u>"https://asimov-specs.github.io/module-manifest/"</c-><c- p>,</c->
+    <c- f>"mms"</c-><c- p>:</c-> <c- u>"https://asimov-specs.github.io/module-manifest/"</c-><c- p>,</c->
+    <c- f>"rdf"</c-><c- p>:</c-> <c- u>"http://www.w3.org/1999/02/22-rdf-syntax-ns#"</c-><c- p>,</c->
+    <c- f>"rdfs"</c-><c- p>:</c-> <c- u>"http://www.w3.org/2000/01/rdf-schema#"</c-><c- p>,</c->
+    <c- f>"xsd"</c-><c- p>:</c-> <c- u>"http://www.w3.org/2001/XMLSchema#"</c-><c- p>,</c->
+
+    <c- f>"name"</c-><c- p>:</c-> <c- u>"mms:name"</c-><c- p>,</c->
+    <c- f>"label"</c-><c- p>:</c-> <c- u>"rdfs:label"</c-><c- p>,</c->
+    <c- f>"summary"</c-><c- p>:</c-> <c- u>"rdfs:comment"</c-><c- p>,</c->
+    <c- f>"links"</c-><c- p>:</c-> <c- p>{</c->
+      <c- f>"@id"</c-><c- p>:</c-> <c- u>"rdfs:seeAlso"</c-><c- p>,</c->
+      <c- f>"@type"</c-><c- p>:</c-> <c- u>"@id"</c->
+    <c- p>},</c->
+    <c- f>"provides"</c-><c- p>:</c-> <c- u>"mms:provides"</c-><c- p>,</c->
+    <c- f>"programs"</c-><c- p>:</c-> <c- p>{</c->
+      <c- f>"@id"</c-><c- p>:</c-> <c- u>"mms:providesProgram"</c-><c- p>,</c->
+      <c- f>"@container"</c-><c- p>:</c-> <c- u>"@set"</c->
+    <c- p>},</c->
+    <c- f>"handles"</c-><c- p>:</c-> <c- u>"mms:handles"</c-><c- p>,</c->
+    <c- f>"url_protocols"</c-><c- p>:</c-> <c- p>{</c->
+      <c- f>"@id"</c-><c- p>:</c-> <c- u>"mms:handlesProtocol"</c-><c- p>,</c->
+      <c- f>"@container"</c-><c- p>:</c-> <c- u>"@set"</c->
+    <c- p>},</c->
+    <c- f>"url_prefixes"</c-><c- p>:</c-> <c- p>{</c->
+      <c- f>"@id"</c-><c- p>:</c-> <c- u>"mms:handlesPrefix"</c-><c- p>,</c->
+      <c- f>"@type"</c-><c- p>:</c-> <c- u>"@id"</c-><c- p>,</c->
+      <c- f>"@container"</c-><c- p>:</c-> <c- u>"@set"</c->
+    <c- p>},</c->
+    <c- f>"url_patterns"</c-><c- p>:</c-> <c- p>{</c->
+      <c- f>"@id"</c-><c- p>:</c-> <c- u>"mms:handlesPattern"</c-><c- p>,</c->
+      <c- f>"@container"</c-><c- p>:</c-> <c- u>"@set"</c->
+    <c- p>},</c->
+    <c- f>"file_extensions"</c-><c- p>:</c-> <c- p>{</c->
+      <c- f>"@id"</c-><c- p>:</c-> <c- u>"mms:handlesExtension"</c-><c- p>,</c->
+      <c- f>"@container"</c-><c- p>:</c-> <c- u>"@set"</c->
+    <c- p>},</c->
+    <c- f>"content_types"</c-><c- p>:</c-> <c- p>{</c->
+      <c- f>"@id"</c-><c- p>:</c-> <c- u>"mms:handlesContentType"</c-><c- p>,</c->
+      <c- f>"@container"</c-><c- p>:</c-> <c- u>"@set"</c->
+    <c- p>}</c->
+  <c- p>}</c->
+<c- p>}</c->
+</pre>
+   <h3 class="heading settled" data-level="5.5" id="rdf-example"><span class="secno">5.5. </span><span class="content">Example RDF Mapping</span><a class="self-link" href="#rdf-example"></a></h3>
+   <p>Given the following module manifest:</p>
+<pre class="language-yaml highlight"><c- nn>---</c->
+<c- f>name</c-><c- p>:</c-> serpapi
+<c- f>label</c-><c- p>:</c-> SerpAPI Search
+<c- f>summary</c-><c- p>:</c-> Provides search results via SerpAPI
+<c- f>links</c-><c- p>:</c->
+  - https://serpapi.com
+
+<c- f>provides</c-><c- p>:</c->
+  <c- f>programs</c-><c- p>:</c->
+    - asimov-serpapi-fetcher
+
+<c- f>handles</c-><c- p>:</c->
+  <c- f>url_patterns</c-><c- p>:</c->
+    - https://google.com/search?q=:query
+</pre>
+   <p>The equivalent RDF representation in Turtle would be:</p>
+<pre class="language-turtle highlight"><c- k>@prefix</c-> <c- nn>mms:</c-> <c- g>&lt;https://asimov-specs.github.io/module-manifest/></c-> <c- p>.</c->
+<c- k>@prefix</c-> <c- nn>rdfs:</c-> <c- g>&lt;http://www.w3.org/2000/01/rdf-schema#></c-> <c- p>.</c->
+<c- k>@prefix</c-> <c- nn>xsd:</c-> <c- g>&lt;http://www.w3.org/2001/XMLSchema#></c-> <c- p>.</c->
+
+<c- p>[]</c-> <c- b>a</c-> <c- nn>mms</c-><c- p>:</c-><c- f>Module</c-> <c- p>;</c->
+   <c- nn>mms</c-><c- p>:</c-><c- f>name</c-> <c- s>"serpapi"</c-> <c- p>;</c->
+   <c- nn>rdfs</c-><c- p>:</c-><c- f>label</c-> <c- s>"SerpAPI Search"</c-> <c- p>;</c->
+   <c- nn>rdfs</c-><c- p>:</c-><c- f>comment</c-> <c- s>"Provides search results via SerpAPI"</c-> <c- p>;</c->
+   <c- nn>rdfs</c-><c- p>:</c-><c- f>seeAlso</c-> <c- g>&lt;https://serpapi.com></c-> <c- p>;</c->
+   <c- nn>mms</c-><c- p>:</c-><c- f>providesProgram</c-> <c- s>"asimov-serpapi-fetcher"</c-> <c- p>;</c->
+   <c- nn>mms</c-><c- p>:</c-><c- f>handlesPattern</c-> <c- s>"https://google.com/search?q=:query"</c-> <c- p>.</c->
+</pre>
+   <h2 class="heading settled" data-level="6" id="security"><span class="secno">6. </span><span class="content">Security Considerations</span><a class="self-link" href="#security"></a></h2>
+   <h3 class="heading settled" data-level="6.1" id="manifest-validation"><span class="secno">6.1. </span><span class="content">Manifest Validation</span><a class="self-link" href="#manifest-validation"></a></h3>
+   <p>Implementations MUST:</p>
+   <ul>
+    <li data-md>
+     <p>Validate all manifest fields before processing</p>
+    <li data-md>
+     <p>Reject manifests with malformed data</p>
+    <li data-md>
+     <p>Sanitize all string values to prevent injection attacks</p>
+    <li data-md>
+     <p>Verify that declared programs actually exist before registration</p>
+   </ul>
+   <h3 class="heading settled" data-level="6.2" id="program-execution"><span class="secno">6.2. </span><span class="content">Program Execution</span><a class="self-link" href="#program-execution"></a></h3>
+   <p>When executing programs declared in manifests:</p>
+   <ul>
+    <li data-md>
+     <p>Programs SHOULD run with minimal required privileges</p>
+    <li data-md>
+     <p>The platform SHOULD implement sandboxing or containerization</p>
+    <li data-md>
+     <p>Resource limits SHOULD be enforced</p>
+    <li data-md>
+     <p>Network access SHOULD be restricted to declared URL patterns</p>
+   </ul>
+   <h3 class="heading settled" data-level="6.3" id="url-pattern-matching"><span class="secno">6.3. </span><span class="content">URL Pattern Matching</span><a class="self-link" href="#url-pattern-matching"></a></h3>
+   <p>URL pattern matching MUST be implemented carefully to avoid:</p>
+   <ul>
+    <li data-md>
+     <p>Regular expression denial of service (ReDoS) attacks</p>
+    <li data-md>
+     <p>Unbounded memory consumption</p>
+    <li data-md>
+     <p>Pattern injection vulnerabilities</p>
+   </ul>
+   <h2 class="heading settled" data-level="7" id="iana"><span class="secno">7. </span><span class="content">IANA Considerations</span><a class="self-link" href="#iana"></a></h2>
+   <p>This specification does not require any IANA registrations.</p>
+   <h2 class="heading settled" data-level="8" id="spec-references"><span class="secno">8. </span><span class="content">References</span><a class="self-link" href="#spec-references"></a></h2>
+   <h3 class="heading settled" data-level="8.1" id="spec-normative"><span class="secno">8.1. </span><span class="content">Normative References</span><a class="self-link" href="#spec-normative"></a></h3>
+   <dl>
+    <dt id="RFC2119"><a class="self-link" href="#RFC2119"></a><a data-link-type="biblio" href="#biblio-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">[RFC2119]</a>
+  
+    <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
+
+  
+    <dt id="RFC2046"><a class="self-link" href="#RFC2046"></a><a data-link-type="biblio" href="#biblio-rfc2046" title="Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types">[RFC2046]</a>
+  
+    <dd>N. Freed; N. Borenstein. <a href="https://tools.ietf.org/html/rfc2046">Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types</a>. November 1996. Draft Standard. URL: <a href="https://tools.ietf.org/html/rfc2046">https://tools.ietf.org/html/rfc2046</a>
+
+  
+    <dt id="RFC6838"><a class="self-link" href="#RFC6838"></a><a data-link-type="biblio" href="#biblio-rfc6838" title="Media Type Specifications and Registration Procedures">[RFC6838]</a>
+  
+    <dd>N. Freed; J. Klensin; T. Hansen. <a href="https://tools.ietf.org/html/rfc6838">Media Type Specifications and Registration Procedures</a>. January 2013. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc6838">https://tools.ietf.org/html/rfc6838</a>
+
+  
+    <dt id="YAML"><a class="self-link" href="#YAML"></a><a data-link-type="biblio" href="#biblio-yaml" title="YAML Ain’t Markup Language (YAML™) Version 1.2">[YAML]</a>
+  
+    <dd>Oren Ben-Kiki; Clark Evans; Ingy döt Net. <a href="https://yaml.org/spec/1.2/spec.html">YAML Ain’t Markup Language (YAML™) Version 1.2</a>. 1 October 2009. URL: <a href="https://yaml.org/spec/1.2/spec.html">https://yaml.org/spec/1.2/spec.html</a>
+
+  
+    <dt id="URLPATTERN"><a class="self-link" href="#URLPATTERN"></a><a data-link-type="biblio" href="#biblio-urlpattern" title="URL Pattern Standard">[URLPATTERN]</a>
+  
+    <dd>WHATWG. <a href="https://urlpattern.spec.whatwg.org/">URL Pattern Standard</a>. Living Standard. URL: <a href="https://urlpattern.spec.whatwg.org/">https://urlpattern.spec.whatwg.org/</a>
+
+  
+    <dt id="JSON-LD"><a class="self-link" href="#JSON-LD"></a><a data-link-type="biblio" href="#biblio-json-ld" title="JSON-LD 1.0">[JSON-LD]</a>
+  
+    <dd>Gregg Kellogg; Pierre-Antoine Champin; Dave Longley. <a href="https://www.w3.org/TR/json-ld11/">JSON-LD 1.1</a>. 16 July 2020. W3C Recommendation. URL: <a href="https://www.w3.org/TR/json-ld11/">https://www.w3.org/TR/json-ld11/</a>
+
+  
+    <dt id="YAML-LD"><a class="self-link" href="#YAML-LD"></a><a data-link-type="biblio" href="#biblio-yaml-ld" title="YAML-LD">[YAML-LD]</a>
+  
+    <dd>Gregg Kellogg. <a href="https://json-ld.github.io/yaml-ld/spec/">YAML-LD</a>. Draft Community Group Report. URL: <a href="https://json-ld.github.io/yaml-ld/spec/">https://json-ld.github.io/yaml-ld/spec/</a>
+
+  
+    <dt id="IANA-MEDIA-TYPES"><a class="self-link" href="#IANA-MEDIA-TYPES"></a><a data-link-type="biblio" href="#biblio-iana-media-types" title="Media Types">[IANA-MEDIA-TYPES]</a>
+  
+    <dd>IANA. <a href="https://www.iana.org/assignments/media-types/">Media Types</a>. URL: <a href="https://www.iana.org/assignments/media-types/">https://www.iana.org/assignments/media-types/</a>
+
+  
+    <dt id="ASIMOV-PPS"><a class="self-link" href="#ASIMOV-PPS"></a><a data-link-type="biblio" href="#biblio-asimov-pps" title="ASIMOV Program Patterns Specification">[ASIMOV-PPS]</a>
+  
+    <dd>ASIMOV Systems. <a href="https://asimov-specs.github.io/program-patterns/">ASIMOV Program Patterns Specification</a>. URL: <a href="https://asimov-specs.github.io/program-patterns/">https://asimov-specs.github.io/program-patterns/</a>
+
+   </dl>
+   <h3 class="heading settled" data-level="8.2" id="spec-informative"><span class="secno">8.2. </span><span class="content">Informative References</span><a class="self-link" href="#spec-informative"></a></h3>
+   <dl>
+    <dt id="ASIMOV"><a class="self-link" href="#ASIMOV"></a>ASIMOV
+  
+    <dd>ASIMOV Systems. <a href="https://asimov.systems">ASIMOV Platform Documentation</a>. URL: <a href="https://asimov.systems">https://asimov.systems</a>
+
+   </dl>
+   <h2 class="heading settled" data-level="9" id="acknowledgments"><span class="secno">9. </span><span class="content">Acknowledgments</span><a class="self-link" href="#acknowledgments"></a></h2>
+   <p>The editors would like to thank the ASIMOV Platform community for their contributions and feedback during the development of this specification.</p>
+   <h2 class="heading settled" data-level="10" id="changes"><span class="secno">10. </span><span class="content">Changes</span><a class="self-link" href="#changes"></a></h2>
+   <p>This section will document changes between versions of this specification.</p>
+   <h3 class="heading settled" data-level="10.1" id="v1"><span class="secno">10.1. </span><span class="content">Version 1.0</span><a class="self-link" href="#v1"></a></h3>
+   <p>Initial version of the ASIMOV Module Manifest Specification.</p>
   </main>
   <div data-fill-with="conformance">
    <h2 class="no-ref no-num heading settled" id="conformance"><span class="content">
@@ -2101,9 +2995,841 @@ Parts of this work may be from another specification document.  If so, those par
 
 })();
 </script>
+  <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
+  <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
+  <ul class="index">
+   <li><a href="#handles">handles</a><span>, in § 2.2</span>
+   <li><a href="#label">label</a><span>, in § 2.2</span>
+   <li><a href="#links">links</a><span>, in § 2.2</span>
+   <li><a href="#name">name</a><span>, in § 2.2</span>
+   <li><a href="#provides">provides</a><span>, in § 2.2</span>
+   <li><a href="#summary">summary</a><span>, in § 2.2</span>
+  </ul>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
   <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
   <dl>
    <dt id="biblio-rfc2119">[RFC2119]
    <dd>S. Bradner. <a href="https://datatracker.ietf.org/doc/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>
   </dl>
+  <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
+  <dl>
+   <dt id="biblio-asimov-pps">[ASIMOV-PPS]
+   <dd>ASIMOV Systems. <a href="https://asimov-specs.github.io/program-patterns/"><cite>ASIMOV Program Patterns Specification</cite></a>. URL: <a href="https://asimov-specs.github.io/program-patterns/">https://asimov-specs.github.io/program-patterns/</a>
+   <dt id="biblio-iana-media-types">[IANA-MEDIA-TYPES]
+   <dd><a href="https://www.iana.org/assignments/media-types/"><cite>Media Types</cite></a>. URL: <a href="https://www.iana.org/assignments/media-types/">https://www.iana.org/assignments/media-types/</a>
+   <dt id="biblio-json-ld">[JSON-LD]
+   <dd>Manu Sporny; Gregg Kellogg; Markus Lanthaler. <a href="https://www.w3.org/TR/json-ld/"><cite>JSON-LD 1.0</cite></a>. 3 November 2020. REC. URL: <a href="https://www.w3.org/TR/json-ld/">https://www.w3.org/TR/json-ld/</a>
+   <dt id="biblio-rfc2046">[RFC2046]
+   <dd>N. Freed; N. Borenstein. <a href="https://www.rfc-editor.org/rfc/rfc2046"><cite>Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types</cite></a>. November 1996. Draft Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc2046">https://www.rfc-editor.org/rfc/rfc2046</a>
+   <dt id="biblio-rfc6838">[RFC6838]
+   <dd>N. Freed; J. Klensin; T. Hansen. <a href="https://www.rfc-editor.org/rfc/rfc6838"><cite>Media Type Specifications and Registration Procedures</cite></a>. January 2013. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc6838">https://www.rfc-editor.org/rfc/rfc6838</a>
+   <dt id="biblio-urlpattern">[URLPATTERN]
+   <dd>Ben Kelly; Jeremy Roman; 宍戸俊哉 (Shunya Shishido). <a href="https://urlpattern.spec.whatwg.org/"><cite>URL Pattern Standard</cite></a>. Living Standard. URL: <a href="https://urlpattern.spec.whatwg.org/">https://urlpattern.spec.whatwg.org/</a>
+   <dt id="biblio-yaml">[YAML]
+   <dd>Oren Ben-Kiki; Clark Evans; Ingy döt Net. <a href="http://yaml.org/spec/1.2/spec.html"><cite>YAML Ain’t Markup Language (YAML™) Version 1.2</cite></a>. 1 October 2009. URL: <a href="http://yaml.org/spec/1.2/spec.html">http://yaml.org/spec/1.2/spec.html</a>
+   <dt id="biblio-yaml-ld">[YAML-LD]
+   <dd>Gregg Kellogg. <a href="https://json-ld.github.io/yaml-ld/spec/"><cite>YAML-LD</cite></a>. Draft Community Group Report. URL: <a href="https://json-ld.github.io/yaml-ld/spec/">https://json-ld.github.io/yaml-ld/spec/</a>
+  </dl>
+<script>/* Boilerplate: script-dom-helper */
+"use strict";
+function query(sel) { return document.querySelector(sel); }
+
+function queryAll(sel) { return [...document.querySelectorAll(sel)]; }
+
+function iter(obj) {
+	if(!obj) return [];
+	var it = obj[Symbol.iterator];
+	if(it) return it;
+	return Object.entries(obj);
+}
+
+function mk(tagname, attrs, ...children) {
+	const el = document.createElement(tagname);
+	for(const [k,v] of iter(attrs)) {
+		if(k.slice(0,3) == "_on") {
+			const eventName = k.slice(3);
+			el.addEventListener(eventName, v);
+		} else if(k[0] == "_") {
+			// property, not attribute
+			el[k.slice(1)] = v;
+		} else {
+			if(v === false || v == null) {
+        continue;
+      } else if(v === true) {
+        el.setAttribute(k, "");
+        continue;
+      } else {
+  			el.setAttribute(k, v);
+      }
+		}
+	}
+	append(el, children);
+	return el;
+}
+
+/* Create shortcuts for every known HTML element */
+[
+  "a",
+  "abbr",
+  "acronym",
+  "address",
+  "applet",
+  "area",
+  "article",
+  "aside",
+  "audio",
+  "b",
+  "base",
+  "basefont",
+  "bdo",
+  "big",
+  "blockquote",
+  "body",
+  "br",
+  "button",
+  "canvas",
+  "caption",
+  "center",
+  "cite",
+  "code",
+  "col",
+  "colgroup",
+  "datalist",
+  "dd",
+  "del",
+  "details",
+  "dfn",
+  "dialog",
+  "div",
+  "dl",
+  "dt",
+  "em",
+  "embed",
+  "fieldset",
+  "figcaption",
+  "figure",
+  "font",
+  "footer",
+  "form",
+  "frame",
+  "frameset",
+  "head",
+  "header",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "hr",
+  "html",
+  "i",
+  "iframe",
+  "img",
+  "input",
+  "ins",
+  "kbd",
+  "label",
+  "legend",
+  "li",
+  "link",
+  "main",
+  "map",
+  "mark",
+  "meta",
+  "meter",
+  "nav",
+  "nobr",
+  "noscript",
+  "object",
+  "ol",
+  "optgroup",
+  "option",
+  "output",
+  "p",
+  "param",
+  "pre",
+  "progress",
+  "q",
+  "s",
+  "samp",
+  "script",
+  "section",
+  "select",
+  "small",
+  "source",
+  "span",
+  "strike",
+  "strong",
+  "style",
+  "sub",
+  "summary",
+  "sup",
+  "table",
+  "tbody",
+  "td",
+  "template",
+  "textarea",
+  "tfoot",
+  "th",
+  "thead",
+  "time",
+  "title",
+  "tr",
+  "u",
+  "ul",
+  "var",
+  "video",
+  "wbr",
+  "xmp",
+].forEach(tagname=>{
+	mk[tagname] = (...args) => mk(tagname, ...args);
+});
+
+function* nodesFromChildList(children) {
+	for(const child of children.flat(Infinity)) {
+		if(child instanceof Node) {
+			yield child;
+		} else {
+			yield new Text(child);
+		}
+	}
+}
+function append(el, ...children) {
+	for(const child of nodesFromChildList(children)) {
+		if(el instanceof Node) el.appendChild(child);
+		else el.push(child);
+	}
+	return el;
+}
+
+function insertAfter(el, ...children) {
+	for(const child of nodesFromChildList(children)) {
+		el.parentNode.insertBefore(child, el.nextSibling);
+	}
+	return el;
+}
+
+function clearContents(el) {
+	el.innerHTML = "";
+	return el;
+}
+
+function parseHTML(markup) {
+	if(markup.toLowerCase().trim().indexOf('<!doctype') === 0) {
+		const doc = document.implementation.createHTMLDocument("");
+		doc.documentElement.innerHTML = markup;
+		return doc;
+	} else {
+		const el = mk.template({});
+		el.innerHTML = markup;
+		return el.content;
+	}
+}</script>
+<script>/* Boilerplate: script-dfn-panel */
+"use strict";
+{
+let dfnPanelData = {
+"handles": {"dfnID":"handles","dfnText":"handles","external":false,"refSections":[{"refs":[{"id":"ref-for-handles"}],"title":"2.8. The handles Section"}],"url":"#handles"},
+"label": {"dfnID":"label","dfnText":"label","external":false,"refSections":[{"refs":[{"id":"ref-for-label"}],"title":"2.4. The label Field"}],"url":"#label"},
+"links": {"dfnID":"links","dfnText":"links","external":false,"refSections":[{"refs":[{"id":"ref-for-links"}],"title":"2.6. The links Field"}],"url":"#links"},
+"name": {"dfnID":"name","dfnText":"name","external":false,"refSections":[{"refs":[{"id":"ref-for-name"}],"title":"2.3. The name Field"}],"url":"#name"},
+"provides": {"dfnID":"provides","dfnText":"provides","external":false,"refSections":[{"refs":[{"id":"ref-for-provides"}],"title":"2.7. The provides Section"}],"url":"#provides"},
+"summary": {"dfnID":"summary","dfnText":"summary","external":false,"refSections":[{"refs":[{"id":"ref-for-summary"}],"title":"2.5. The summary Field"}],"url":"#summary"},
+};
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    genAllDfnPanels();
+
+    document.body.addEventListener("click", (e) => {
+        // If not handled already, just hide all dfn panels.
+        hideAllDfnPanels();
+    });
+});
+
+window.addEventListener("resize", () => {
+    // Pin any visible dfn panel
+    queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(el=>positionDfnPanel(el));
+});
+
+function genAllDfnPanels() {
+    for(const panelData of Object.values(dfnPanelData)) {
+        const dfnID = panelData.dfnID;
+        const dfn = document.getElementById(dfnID);
+        if(!dfn) {
+            console.log(`Can't find dfn#${dfnID}.`, panelData);
+            continue;
+        }
+        dfn.panelData = panelData;
+        insertDfnPopupAction(dfn);
+    }
+}
+
+function genDfnPanel(dfn, { dfnID, url, dfnText, refSections, external }) {
+    const dfnPanel = mk.aside({
+        class: "dfn-panel on",
+        id: `infopanel-for-${dfnID}`,
+        "data-for": dfnID,
+        "aria-labelled-by":`infopaneltitle-for-${dfnID}`,
+        },
+        mk.span({id:`infopaneltitle-for-${dfnID}`, style:"display:none"},
+            `Info about the '${dfnText}' ${external?"external":""} reference.`),
+        mk.a({href:url, class:"dfn-link"}, url),
+        refSections.length == 0 ? [] :
+            mk.b({}, "Referenced in:"),
+            mk.ul({},
+                ...refSections.map(section=>
+                    mk.li({},
+                        ...section.refs.map((ref, refI)=>
+                            [
+                                mk.a({ href: `#${ref.id}` },
+                                    (refI == 0) ? section.title : `(${refI + 1})`
+                                ),
+                                " ",
+                            ]
+                        ),
+                    ),
+                ),
+            ),
+        genLinkingSyntaxes(dfn),
+    );
+
+    dfnPanel.addEventListener('click', (event) => {
+        if (event.target.nodeName == 'A') {
+            scrollToTargetAndHighlight(event);
+            pinDfnPanel(dfnPanel);
+        }
+        event.stopPropagation();
+        refocusOnTarget(event);
+    });
+    dfnPanel.addEventListener('keydown', (event) => {
+        if(event.keyCode == 27) { // Escape key
+            hideDfnPanel({dfnPanel});
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    });
+
+    dfnPanel.dfn = dfn;
+    dfn.dfnPanel = dfnPanel;
+    return dfnPanel;
+}
+
+
+
+function hideAllDfnPanels() {
+    // Delete the currently-active dfn panel.
+    queryAll(".dfn-panel").forEach(dfnPanel=>hideDfnPanel({dfnPanel}));
+}
+
+function showDfnPanel(dfn) {
+    hideAllDfnPanels(); // Only display one at a time.
+
+    dfn.setAttribute("aria-expanded", "true");
+
+    const dfnPanel = genDfnPanel(dfn, dfn.panelData);
+
+    // Give the dfn a unique tabindex, and then
+    // give all the tabbable panel bits successive indexes.
+    let tabIndex = 100;
+    dfn.tabIndex = tabIndex++;
+    const tabbable = dfnPanel.querySelectorAll(":is(a, button)");
+    for (const el of tabbable) {
+        el.tabIndex = tabIndex++;
+    }
+
+    append(document.body, dfnPanel);
+    positionDfnPanel(dfnPanel);
+}
+
+function positionDfnPanel(dfnPanel) {
+    const dfn = dfnPanel.dfn;
+    const dfnPos = getBounds(dfn);
+    dfnPanel.style.top = dfnPos.bottom + "px";
+    dfnPanel.style.left = dfnPos.left + "px";
+
+    const panelPos = dfnPanel.getBoundingClientRect();
+    const panelMargin = 8;
+    const maxRight = document.body.parentNode.clientWidth - panelMargin;
+    if (panelPos.right > maxRight) {
+        const overflowAmount = panelPos.right - maxRight;
+        const newLeft = Math.max(panelMargin, dfnPos.left - overflowAmount);
+        dfnPanel.style.left = newLeft + "px";
+    }
+}
+
+function pinDfnPanel(dfnPanel) {
+    // Switch it to "activated" state, which pins it.
+    dfnPanel.classList.add("activated");
+    dfnPanel.style.position = "fixed";
+    dfnPanel.style.left = null;
+    dfnPanel.style.top = null;
+}
+
+function hideDfnPanel({dfn, dfnPanel}) {
+    if(!dfnPanel) dfnPanel = dfn.dfnPanel;
+    if(!dfn) dfn = dfnPanel.dfn;
+    dfn.dfnPanel = undefined;
+    dfnPanel.dfn = undefined;
+    dfn.setAttribute("aria-expanded", "false");
+    dfn.tabIndex = undefined;
+    dfnPanel.remove()
+}
+
+function toggleDfnPanel(dfn) {
+    if(dfn.dfnPanel) {
+        hideDfnPanel(dfn);
+    } else {
+        showDfnPanel(dfn);
+    }
+}
+
+function insertDfnPopupAction(dfn) {
+    dfn.setAttribute('role', 'button');
+    dfn.setAttribute('aria-expanded', 'false')
+    dfn.tabIndex = 0;
+    dfn.classList.add('has-dfn-panel');
+    dfn.addEventListener('click', (event) => {
+        toggleDfnPanel(dfn);
+        event.stopPropagation();
+    });
+    dfn.addEventListener('keypress', (event) => {
+        const kc = event.keyCode;
+        // 32->Space, 13->Enter
+        if(kc == 32 || kc == 13) {
+            toggleDfnPanel(dfn);
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    });
+}
+
+function refocusOnTarget(event) {
+    const target = event.target;
+    setTimeout(() => {
+        // Refocus on the event.target element.
+        // This is needed after browser scrolls to the destination.
+        target.focus();
+    });
+}
+
+// TODO: shared util
+// Returns the root-level absolute position {left and top} of element.
+function getBounds(el, relativeTo=document.body) {
+    const relativeRect = relativeTo.getBoundingClientRect();
+    const elRect = el.getBoundingClientRect();
+    const top = elRect.top - relativeRect.top;
+    const left = elRect.left - relativeRect.left;
+    return {
+        top,
+        left,
+        bottom: top + elRect.height,
+        right: left + elRect.width,
+    }
+}
+
+function scrollToTargetAndHighlight(event) {
+    let hash = event.target.hash;
+    if (hash) {
+        hash = decodeURIComponent(hash.substring(1));
+        const dest = document.getElementById(hash);
+        if (dest) {
+            dest.classList.add('highlighted');
+            setTimeout(() => dest.classList.remove('highlighted'), 1000);
+        }
+    }
+}
+
+// Functions, divided by link type, that wrap an autolink's
+// contents with the appropriate outer syntax.
+// Alternately, a string naming another type they format
+// the same as.
+function needsFor(type) {
+    switch(type) {
+        case "descriptor":
+        case "value":
+        case "element-attr":
+        case "attr-value":
+        case "element-state":
+        case "method":
+        case "constructor":
+        case "argument":
+        case "attribute":
+        case "const":
+        case "dict-member":
+        case "event":
+        case "enum-value":
+        case "stringifier":
+        case "serializer":
+        case "iterator":
+        case "maplike":
+        case "setlike":
+        case "state":
+        case "mode":
+        case "context":
+        case "facet": return true;
+
+        default: return false;
+    }
+}
+function refusesFor(type) {
+    switch(type) {
+        case "property":
+        case "element":
+        case "interface":
+        case "namespace":
+        case "callback":
+        case "dictionary":
+        case "enum":
+        case "exception":
+        case "typedef":
+        case "http-header":
+        case "permission": return true;
+
+        default: return false;
+    }
+}
+function linkFormatterFromType(type) {
+    switch(type) {
+        case 'scheme':
+        case 'permission':
+        case 'dfn': return (text) => `[=${text}=]`;
+
+        case 'abstract-op': return (text) => `[\$${text}\$]`;
+
+        case 'function':
+        case 'at-rule':
+        case 'selector':
+        case 'value': return (text) => `''${text}''`;
+
+        case 'http-header': return (text) => `[:${text}:]`;
+
+        case 'interface':
+        case 'constructor':
+        case 'method':
+        case 'argument':
+        case 'attribute':
+        case 'callback':
+        case 'dictionary':
+        case 'dict-member':
+        case 'enum':
+        case 'enum-value':
+        case 'exception':
+        case 'const':
+        case 'typedef':
+        case 'stringifier':
+        case 'serializer':
+        case 'iterator':
+        case 'maplike':
+        case 'setlike':
+        case 'extended-attribute':
+        case 'event':
+        case 'idl': return (text) => `{{${text}}}`;
+
+        case 'element-state':
+        case 'element-attr':
+        case 'attr-value':
+        case 'element': return (element) => `<{${element}}>`;
+
+        case 'grammar': return (text) => `${text} (within a <pre class=prod>)`;
+
+        case 'type': return (text)=> `<<${text}>>`;
+
+        case 'descriptor':
+        case 'property': return (text) => `'${text}'`;
+
+        default: return;
+    };
+};
+
+function genLinkingSyntaxes(dfn) {
+    if(dfn.tagName != "DFN") return;
+
+    const type = dfn.getAttribute('data-dfn-type');
+    if(!type) {
+        console.log(`<dfn> doesn't have a data-dfn-type:`, dfn);
+        return [];
+    }
+
+    // Return a function that wraps link text based on the type
+    const linkFormatter = linkFormatterFromType(type);
+    if(!linkFormatter) {
+        console.log(`<dfn> has an unknown data-dfn-type:`, dfn);
+        return [];
+    }
+
+    let ltAlts;
+    if(dfn.hasAttribute('data-lt')) {
+        ltAlts = dfn.getAttribute('data-lt')
+            .split("|")
+            .map(x=>x.trim());
+    } else {
+        ltAlts = [dfn.textContent.trim()];
+    }
+    if(type == "type") {
+        // lt of "<foo>", but "foo" is the interior;
+        // <<foo/bar>> is how you write it with a for,
+        // not <foo/<bar>> or whatever.
+        for(var i = 0; i < ltAlts.length; i++) {
+            const lt = ltAlts[i];
+            const match = /<(.*)>/.exec(lt);
+            if(match) { ltAlts[i] = match[1]; }
+        }
+    }
+
+    let forAlts;
+    if(dfn.hasAttribute('data-dfn-for')) {
+        forAlts = dfn.getAttribute('data-dfn-for')
+            .split(",")
+            .map(x=>x.trim());
+    } else {
+        forAlts = [''];
+    }
+
+    let linkingSyntaxes = [];
+    if(!needsFor(type)) {
+        for(const lt of ltAlts) {
+            linkingSyntaxes.push(linkFormatter(lt));
+        }
+    }
+    if(!refusesFor(type)) {
+        for(const f of forAlts) {
+            linkingSyntaxes.push(linkFormatter(`${f}/${ltAlts[0]}`))
+        }
+    }
+    return [
+        mk.b({}, 'Possible linking syntaxes:'),
+        mk.ul({},
+            ...linkingSyntaxes.map(link => {
+                const copyLink = async () =>
+                    await navigator.clipboard.writeText(link);
+                return mk.li({},
+                    mk.div({ class: 'link-item' },
+                        mk.button({
+                            class: 'copy-icon', title: 'Copy',
+                            type: 'button',
+                            _onclick: copyLink,
+                            tabindex: 0,
+                        }, mk.span({ class: 'icon' }) ),
+                        mk.span({}, link)
+                    )
+                );
+            })
+        )
+    ];
+}
+}
+</script>
+<script>/* Boilerplate: script-ref-hints */
+"use strict";
+{
+let refsData = {
+"#handles": {"displayText":"handles","export":true,"for_":[],"level":"1","normative":true,"shortname":"module-manifest","spec":"module-manifest-1","status":"local","text":"handles","type":"dfn","url":"#handles"},
+"#label": {"displayText":"label","export":true,"for_":[],"level":"1","normative":true,"shortname":"module-manifest","spec":"module-manifest-1","status":"local","text":"label","type":"dfn","url":"#label"},
+"#links": {"displayText":"links","export":true,"for_":[],"level":"1","normative":true,"shortname":"module-manifest","spec":"module-manifest-1","status":"local","text":"links","type":"dfn","url":"#links"},
+"#name": {"displayText":"name","export":true,"for_":[],"level":"1","normative":true,"shortname":"module-manifest","spec":"module-manifest-1","status":"local","text":"name","type":"dfn","url":"#name"},
+"#provides": {"displayText":"provides","export":true,"for_":[],"level":"1","normative":true,"shortname":"module-manifest","spec":"module-manifest-1","status":"local","text":"provides","type":"dfn","url":"#provides"},
+"#summary": {"displayText":"summary","export":true,"for_":[],"level":"1","normative":true,"shortname":"module-manifest","spec":"module-manifest-1","status":"local","text":"summary","type":"dfn","url":"#summary"},
+};
+
+function mkRefHint(link, ref) {
+    const linkText = link.textContent;
+    let dfnTextElements = '';
+    if (ref.displayText.toLowerCase() != linkText.toLowerCase()) {
+        // Give the original term if it's being displayed in a different way.
+        // But allow casing differences, they're insignificant.
+        dfnTextElements =
+            mk.li({},
+                mk.b({}, "Term: "),
+                mk.span({}, ref.displayText)
+            );
+    }
+    const forList = ref.for_;
+    let forListElements;
+    if(forList.length == 0) {
+        forListElements = [];
+    } else if(forList.length == 1) {
+        forListElements = mk.li({},
+            mk.b({}, "For: "),
+            mk.span({}, forList[0]),
+        );
+    } else {
+        forListElements = mk.li({},
+            mk.b({}, "For: "),
+            mk.ul({},
+                ...forList.map(forItem =>
+                    mk.li({},
+                        mk.span({}, forItem)
+                    ),
+                ),
+            ),
+        );
+    }
+    const url = ref.url;
+    const safeUrl = encodeURIComponent(url);
+    const hintPanel = mk.aside({
+        class: "ref-hint",
+        id: `ref-hint-for-${safeUrl}`,
+        "data-for": url,
+        "aria-labelled-by": `ref-hint-for-${safeUrl}`,
+    },
+        mk.ul({},
+            dfnTextElements,
+            mk.li({},
+                mk.b({}, "URL: "),
+                mk.a({ href: url, class: "ref" }, url),
+            ),
+            mk.li({},
+                mk.b({}, "Type: "),
+                mk.span({}, `${ref.type}`),
+            ),
+            mk.li({},
+                mk.b({}, "Spec: "),
+                mk.span({}, `${ref.spec ? ref.spec : ''}`),
+            ),
+            forListElements
+        ),
+    );
+    hintPanel.forLink = link;
+    setupRefHintEventListeners(link, hintPanel);
+    return hintPanel;
+}
+
+function hideAllRefHints() {
+    queryAll(".ref-hint").forEach(el=>hideRefHint(el));
+}
+
+function hideRefHint(refHint) {
+    const link = refHint.forLink;
+    link.setAttribute("aria-expanded", "false");
+    if(refHint.teardownEventListeners) {
+        refHint.teardownEventListeners();
+    }
+    refHint.remove();
+}
+
+function showRefHint(link) {
+    if(link.classList.contains("dfn-link")) return;
+    const url = link.getAttribute("href");
+    const refHintKey = link.getAttribute("data-refhint-key");
+    let key = url;
+    if(refHintKey) {
+        key = refHintKey + "_" + url;
+    }
+    const ref = refsData[key];
+    if(!ref) return;
+
+    hideAllRefHints(); // Only display one at this time.
+
+    const refHint = mkRefHint(link, ref);
+    append(document.body, refHint);
+    link.setAttribute("aria-expanded", "true");
+    positionRefHint(refHint);
+}
+
+function setupRefHintEventListeners(link, refHint) {
+    if (refHint.teardownEventListeners) return;
+    // Add event handlers to hide the refHint after the user moves away
+    // from both the link and refHint, if not hovering either within one second.
+    let timeout = null;
+    const startHidingRefHint = (event) => {
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+        timeout = setTimeout(() => {
+            hideRefHint(refHint);
+        }, 1000);
+    }
+    const resetHidingRefHint = (event) => {
+        if (timeout) clearTimeout(timeout);
+        timeout = null;
+    };
+    link.addEventListener("mouseleave", startHidingRefHint);
+    link.addEventListener("mouseenter", resetHidingRefHint);
+    link.addEventListener("blur", startHidingRefHint);
+    link.addEventListener("focus", resetHidingRefHint);
+    refHint.addEventListener("mouseleave", startHidingRefHint);
+    refHint.addEventListener("mouseenter", resetHidingRefHint);
+    refHint.addEventListener("blur", startHidingRefHint);
+    refHint.addEventListener("focus", resetHidingRefHint);
+
+    refHint.teardownEventListeners = () => {
+        // remove event listeners
+        resetHidingRefHint();
+        link.removeEventListener("mouseleave", startHidingRefHint);
+        link.removeEventListener("mouseenter", resetHidingRefHint);
+        link.removeEventListener("blur", startHidingRefHint);
+        link.removeEventListener("focus", resetHidingRefHint);
+        refHint.removeEventListener("mouseleave", startHidingRefHint);
+        refHint.removeEventListener("mouseenter", resetHidingRefHint);
+        refHint.removeEventListener("blur", startHidingRefHint);
+        refHint.removeEventListener("focus", resetHidingRefHint);
+    };
+}
+
+function positionRefHint(refHint) {
+    const link = refHint.forLink;
+    const linkPos = getBounds(link);
+    refHint.style.top = linkPos.bottom + "px";
+    refHint.style.left = linkPos.left + "px";
+
+    const panelPos = refHint.getBoundingClientRect();
+    const panelMargin = 8;
+    const maxRight = document.body.parentNode.clientWidth - panelMargin;
+    if (panelPos.right > maxRight) {
+        const overflowAmount = panelPos.right - maxRight;
+        const newLeft = Math.max(panelMargin, linkPos.left - overflowAmount);
+        refHint.style.left = newLeft + "px";
+    }
+}
+
+// TODO: shared util
+// Returns the root-level absolute position {left and top} of element.
+function getBounds(el, relativeTo=document.body) {
+    const relativeRect = relativeTo.getBoundingClientRect();
+    const elRect = el.getBoundingClientRect();
+    const top = elRect.top - relativeRect.top;
+    const left = elRect.left - relativeRect.left;
+    return {
+        top,
+        left,
+        bottom: top + elRect.height,
+        right: left + elRect.width,
+    }
+}
+
+function showRefHintListener(e) {
+    // If the target isn't in a link (or is a link),
+    // just ignore it.
+    let link = e.target.closest("a");
+    if(!link) return;
+
+    // If the target is in a ref-hint panel
+    // (aka a link in the already-open one),
+    // also just ignore it.
+    if(link.closest(".ref-hint")) return;
+
+    // Otherwise, show the panel for the link.
+    showRefHint(link);
+}
+
+function hideAllHintsListener(e) {
+    // If the click is inside a ref-hint panel, ignore it.
+    if(e.target.closest(".ref-hint")) return;
+    // Otherwise, close all the current panels.
+    hideAllRefHints();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.body.addEventListener("mousedown", showRefHintListener);
+    document.body.addEventListener("focus", showRefHintListener);
+
+    document.body.addEventListener("click", hideAllHintsListener);
+});
+
+window.addEventListener("resize", () => {
+    // Hide any open ref hint.
+    hideAllRefHints();
+});
+}
+</script>
