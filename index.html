@@ -1,307 +1,117 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ASIMOV Specifications</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: sans-serif;
-            background: #000000;
-            min-height: 100vh;
-            color: #ddd;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 3rem;
-            animation: fadeInDown 1s ease-out;
-        }
-
-        .header h1 {
-            font-size: 3.5rem;
-            font-weight: bold;
-            color: #8af;
-            text-shadow: 0 4px 20px rgba(136, 170, 255, 0.3);
-            margin-bottom: 1rem;
-            letter-spacing: -1px;
-        }
-
-        .header p {
-            font-size: 1.2rem;
-            color: #999;
-            font-weight: normal;
-        }
-
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .spec-card {
-            background: #080808;
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid #444;
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 0.8s ease-out;
-            animation-fill-mode: both;
-        }
-
-        .spec-card:nth-child(1) { animation-delay: 0.1s; }
-        .spec-card:nth-child(2) { animation-delay: 0.2s; }
-        .spec-card:nth-child(3) { animation-delay: 0.3s; }
-        .spec-card:nth-child(4) { animation-delay: 0.4s; }
-        .spec-card:nth-child(5) { animation-delay: 0.5s; }
-
-        .spec-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #6af, #8af);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .spec-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .spec-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-            border-color: #666;
-        }
-
-        .spec-card h2 {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #ddd;
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
-
-        .spec-acronym {
-            display: inline-block;
-            background: linear-gradient(135deg, #6af, #8af);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
-        }
-
-        .spec-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #6af;
-            text-decoration: none;
-            font-weight: normal;
-            font-size: 1rem;
-            margin-top: 1.5rem;
-            padding: 0.8rem 1.5rem;
-            background: rgba(102, 170, 255, 0.1);
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .spec-link:hover {
-            background: #6af;
-            color: white;
-            border-color: #6af;
-            transform: translateX(5px);
-        }
-
-        .spec-link::after {
-            content: '→';
-            font-size: 1.2rem;
-            transition: transform 0.3s ease;
-        }
-
-        .spec-link:hover::after {
-            transform: translateX(3px);
-        }
-
-        .footer {
-            margin-top: 4rem;
-            text-align: center;
-            color: #999;
-            font-size: 0.9rem;
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            .header h1 {
-                font-size: 2.5rem;
-            }
-            
-            .specs-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .spec-card {
-                padding: 2rem;
-            }
-        }
-
-        /* Floating particles animation */
-        .particle {
-            position: absolute;
-            background: rgba(102, 170, 255, 0.1);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .particle:nth-child(1) {
-            width: 10px;
-            height: 10px;
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .particle:nth-child(2) {
-            width: 6px;
-            height: 6px;
-            top: 60%;
-            left: 80%;
-            animation-delay: 2s;
-        }
-
-        .particle:nth-child(3) {
-            width: 8px;
-            height: 8px;
-            top: 80%;
-            left: 20%;
-            animation-delay: 4s;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px) rotate(0deg);
-                opacity: 0.5;
-            }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-                opacity: 1;
-            }
-        }
-    </style>
-</head>
-<body>
+    <link href="index.css" rel="stylesheet" />
+  </head>
+  <body>
     <div class="particle"></div>
     <div class="particle"></div>
     <div class="particle"></div>
-    
+
     <div class="container">
-        <header class="header">
-            <h1>ASIMOV Specifications</h1>
-            <p>Comprehensive technical specifications for the ASIMOV framework</p>
-        </header>
+      <header class="header">
+        <h1>ASIMOV Specifications</h1>
+        <p>
+          Comprehensive technical specifications for the
+          <a href="https://asimov.so" target="_blank">ASIMOV Platform</a>
+        </p>
+      </header>
 
-        <main class="specs-grid">
-            <article class="spec-card">
-                <div class="spec-acronym">MCS</div>
-                <h2>Module Concepts Specification</h2>
-                <p>Defines the fundamental concepts and principles underlying ASIMOV modules, providing the theoretical foundation for module architecture and design patterns.</p>
-                <a href="https://asimov-specs.github.io/module-concepts/" class="spec-link">
-                    View Specification
-                </a>
-            </article>
+      <main class="specs-grid">
+        <article class="spec-card">
+          <div class="spec-acronym">MCS</div>
+          <h2>Module Concepts Specification</h2>
+          <p>
+            Defines the fundamental concepts and principles underlying ASIMOV
+            modules, providing the theoretical foundation for module
+            architecture and design patterns.
+          </p>
+          <a
+            href="https://asimov-specs.github.io/module-concepts/"
+            class="spec-link"
+          >
+            View Specification
+          </a>
+        </article>
 
-            <article class="spec-card">
-                <div class="spec-acronym">MMS</div>
-                <h2>Module Manifest Specification</h2>
-                <p>Describes the structure and requirements for ASIMOV module manifests, detailing how modules declare their capabilities, dependencies, and metadata.</p>
-                <a href="https://asimov-specs.github.io/module-manifest/" class="spec-link">
-                    View Specification
-                </a>
-            </article>
+        <article class="spec-card">
+          <div class="spec-acronym">MMS</div>
+          <h2>Module Manifest Specification</h2>
+          <p>
+            Describes the structure and requirements for ASIMOV module
+            manifests, detailing how modules declare their capabilities,
+            dependencies, and metadata.
+          </p>
+          <a
+            href="https://asimov-specs.github.io/module-manifest/"
+            class="spec-link"
+          >
+            View Specification
+          </a>
+        </article>
 
-            <article class="spec-card">
-                <div class="spec-acronym">MPS</div>
-                <h2>Module Packaging Specification</h2>
-                <p>Outlines the standards for packaging, distributing, and installing ASIMOV modules, ensuring consistent deployment across different environments.</p>
-                <a href="https://asimov-specs.github.io/module-packaging/" class="spec-link">
-                    View Specification
-                </a>
-            </article>
+        <article class="spec-card">
+          <div class="spec-acronym">MPS</div>
+          <h2>Module Packaging Specification</h2>
+          <p>
+            Outlines the standards for packaging, distributing, and installing
+            ASIMOV modules, ensuring consistent deployment across different
+            environments.
+          </p>
+          <a
+            href="https://asimov-specs.github.io/module-packaging/"
+            class="spec-link"
+          >
+            View Specification
+          </a>
+        </article>
 
-            <article class="spec-card">
-                <div class="spec-acronym">PPS</div>
-                <h2>Program Patterns Specification</h2>
-                <p>Establishes standardized programming patterns and best practices for developing robust and maintainable ASIMOV applications.</p>
-                <a href="https://asimov-specs.github.io/program-patterns/" class="spec-link">
-                    View Specification
-                </a>
-            </article>
+        <article class="spec-card">
+          <div class="spec-acronym">PPS</div>
+          <h2>Program Patterns Specification</h2>
+          <p>
+            Establishes standardized programming patterns and best practices for
+            developing robust and maintainable ASIMOV software components.
+          </p>
+          <a
+            href="https://asimov-specs.github.io/program-patterns/"
+            class="spec-link"
+          >
+            View Specification
+          </a>
+        </article>
 
-            <article class="spec-card">
-                <div class="spec-acronym">SDS</div>
-                <h2>State Directory Specification</h2>
-                <p>Defines the organization and management of application state directories, ensuring consistent data storage and retrieval mechanisms.</p>
-                <a href="https://asimov-specs.github.io/state-directory/" class="spec-link">
-                    View Specification
-                </a>
-            </article>
-        </main>
+        <article class="spec-card">
+          <div class="spec-acronym">SDS</div>
+          <h2>State Directory Specification</h2>
+          <p>
+            Defines the organization and management of ASIMOV state directories
+            (<tt>$HOME/.asimov/</tt>), ensuring consistent data storage and
+            retrieval mechanisms.
+          </p>
+          <a
+            href="https://asimov-specs.github.io/state-directory/"
+            class="spec-link"
+          >
+            View Specification
+          </a>
+        </article>
+      </main>
 
-        <footer class="footer">
-            <p>© 2025 ASIMOV Specifications • Open Standards for Modern Development</p>
-        </footer>
+      <footer class="footer">
+        <p>
+          These are free and unencumbered technical specifications released into
+          the
+          <a
+            href="https://creativecommons.org/publicdomain/zero/1.0/"
+            target="_blank"
+            >public domain</a
+          >.
+        </p>
+      </footer>
     </div>
-</body>
+  </body>
 </html>
