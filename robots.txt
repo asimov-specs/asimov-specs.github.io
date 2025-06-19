@@ -1,1 +1,2 @@
-This is /robots.txt
+User-agent: *
+Disallow:
