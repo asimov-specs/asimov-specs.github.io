@@ -33,6 +33,13 @@ body {
     letter-spacing: -1px;
 }
 
+.logo {
+    height: 80px;
+    width: auto;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 4px 20px rgba(136, 170, 255, 0.3));
+}
+
 .header p {
     font-size: 1.2rem;
     color: #999;
