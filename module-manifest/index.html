@@ -1490,7 +1490,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 275834c42, updated Wed Jun 11 14:18:15 2025 -0700" name="generator">
   <link href="https://asimov-specs.github.io/module-manifest/" rel="canonical">
-  <meta content="5fecee104ae9d331528e36026d1f1d8ef3b47a09" name="revision">
+  <meta content="8c4552b33e836b0eec7467a4b3048a76314cb067" name="revision">
   <meta content="dark light" name="color-scheme">
 <style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
@@ -2173,7 +2173,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">ASIMOV Module Manifest Specification (MMS)</h1>
    <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Living Standard,
-    <time class="dt-updated" datetime="2025-06-19">19 June 2025</time></span></h2>
+    <time class="dt-updated" datetime="2025-06-26">26 June 2025</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2188,7 +2188,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <p class="copyright" data-fill-with="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" height="15" src="https://licensebuttons.net/p/zero/1.0/80x15.png" width="80"></a>
 To the extent possible under law, the editors have waived all copyright
 and related or neighboring rights to this work.
-In addition, as of 19 June 2025,
+In addition, as of 26 June 2025,
 the editors have made this specification available under the
 <a href="https://www.openwebfoundation.org/the-agreements/the-owf-1-0-agreements-granted-claims/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at https://www.openwebfoundation.org/the-agreements/the-owf-1-0-agreements-granted-claims/owfa-1-0.
@@ -2268,17 +2268,11 @@ Parts of this work may be from another specification document.  If so, those par
       <li><a href="#url-pattern-matching"><span class="secno">6.3</span> <span class="content">URL Pattern Matching</span></a>
      </ol>
     <li><a href="#iana"><span class="secno">7</span> <span class="content">IANA Considerations</span></a>
+    <li><a href="#acknowledgments"><span class="secno">8</span> <span class="content">Acknowledgments</span></a>
     <li>
-     <a href="#spec-references"><span class="secno">8</span> <span class="content">References</span></a>
+     <a href="#changes"><span class="secno">9</span> <span class="content">Changes</span></a>
      <ol class="toc">
-      <li><a href="#spec-normative"><span class="secno">8.1</span> <span class="content">Normative References</span></a>
-      <li><a href="#spec-informative"><span class="secno">8.2</span> <span class="content">Informative References</span></a>
-     </ol>
-    <li><a href="#acknowledgments"><span class="secno">9</span> <span class="content">Acknowledgments</span></a>
-    <li>
-     <a href="#changes"><span class="secno">10</span> <span class="content">Changes</span></a>
-     <ol class="toc">
-      <li><a href="#v1"><span class="secno">10.1</span> <span class="content">Version 1.0</span></a>
+      <li><a href="#v1"><span class="secno">9.1</span> <span class="content">Version 1.0</span></a>
      </ol>
     <li><a href="#conformance"><span class="secno"></span> <span class="content">
     Conformance</span></a>
@@ -2346,41 +2340,41 @@ Parts of this work may be from another specification document.  If so, those par
    <table class="data">
     <thead>
      <tr>
-      <th>Field
-      <th>Type
-      <th>Required
-      <th>Description
+      <th align="left">Field
+      <th align="left">Type
+      <th align="left">Required
+      <th align="left">Description
     <tbody>
      <tr>
-      <td><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="name">name</dfn>
-      <td>string
-      <td>REQUIRED
-      <td>The unique identifier for the module
+      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="name">name</dfn>
+      <td align="left">string
+      <td align="left">REQUIRED
+      <td align="left">The unique identifier for the module
      <tr>
-      <td><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="label">label</dfn>
-      <td>string
-      <td>OPTIONAL
-      <td>A human-readable display name for the module
+      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="label">label</dfn>
+      <td align="left">string
+      <td align="left">OPTIONAL
+      <td align="left">A human-readable display name for the module
      <tr>
-      <td><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="summary">summary</dfn>
-      <td>string
-      <td>OPTIONAL
-      <td>A brief description of the module’s purpose
+      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="summary">summary</dfn>
+      <td align="left">string
+      <td align="left">OPTIONAL
+      <td align="left">A brief description of the module’s purpose
      <tr>
-      <td><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="links">links</dfn>
-      <td>array&lt;string>
-      <td>OPTIONAL
-      <td>URLs to related resources (homepage, repository, documentation)
+      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="links">links</dfn>
+      <td align="left">array&lt;string>
+      <td align="left">OPTIONAL
+      <td align="left">URLs to related resources (homepage, repository, documentation)
      <tr>
-      <td><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="provides">provides</dfn>
-      <td>object
-      <td>OPTIONAL
-      <td>Capabilities provided by the module
+      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="provides">provides</dfn>
+      <td align="left">object
+      <td align="left">OPTIONAL
+      <td align="left">Capabilities provided by the module
      <tr>
-      <td><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="handles">handles</dfn>
-      <td>object
-      <td>OPTIONAL
-      <td>Resource types handled by the module
+      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="handles">handles</dfn>
+      <td align="left">object
+      <td align="left">OPTIONAL
+      <td align="left">Resource types handled by the module
    </table>
    <h3 class="heading settled" data-level="2.3" id="name-field"><span class="secno">2.3. </span><span class="content">The name Field</span><a class="self-link" href="#name-field"></a></h3>
    <p>The <a data-link-type="dfn" href="#name" id="ref-for-name">name</a> field MUST contain a string that uniquely identifies the module within the ASIMOV Platform. The name:</p>
@@ -2627,12 +2621,25 @@ Parts of this work may be from another specification document.  If so, those par
    <p>Module manifests can be mapped to RDF using YAML-LD <a data-link-type="biblio" href="#biblio-yaml-ld" title="YAML-LD">[YAML-LD]</a> or JSON-LD <a data-link-type="biblio" href="#biblio-json-ld" title="JSON-LD 1.0">[JSON-LD]</a>. This enables integration with linked data systems and semantic web technologies.</p>
    <h3 class="heading settled" data-level="5.1" id="rdf-vocabulary"><span class="secno">5.1. </span><span class="content">Vocabulary</span><a class="self-link" href="#rdf-vocabulary"></a></h3>
    <p>This specification defines the following RDF vocabulary with the base IRI <code class="highlight">https://asimov-specs.github.io/module-manifest/</code>:</p>
-   <p>| Prefix | Namespace IRI |
-|--------|--------------|
-| <code class="highlight"><c- f>mms</c-><c- p>:</c-></code> | <code class="highlight">https://asimov-specs.github.io/module-manifest/</code> |
-| <code class="highlight"><c- f>rdf</c-><c- p>:</c-></code> | <code class="highlight">http://www.w3.org/1999/02/22-rdf-syntax-ns#</code> |
-| <code class="highlight"><c- f>rdfs</c-><c- p>:</c-></code> | <code class="highlight">http://www.w3.org/2000/01/rdf-schema#</code> |
-| <code class="highlight"><c- f>xsd</c-><c- p>:</c-></code> | <code class="highlight">http://www.w3.org/2001/XMLSchema#</code> |</p>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Prefix
+      <th align="left">Namespace IRI
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight"><c- f>mms</c-><c- p>:</c-></code>
+      <td align="left"><code class="highlight">https://asimov-specs.github.io/module-manifest/</code>
+     <tr>
+      <td align="left"><code class="highlight"><c- f>rdf</c-><c- p>:</c-></code>
+      <td align="left"><code class="highlight">http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>
+     <tr>
+      <td align="left"><code class="highlight"><c- f>rdfs</c-><c- p>:</c-></code>
+      <td align="left"><code class="highlight">http://www.w3.org/2000/01/rdf-schema#</code>
+     <tr>
+      <td align="left"><code class="highlight"><c- f>xsd</c-><c- p>:</c-></code>
+      <td align="left"><code class="highlight">http://www.w3.org/2001/XMLSchema#</code>
+   </table>
    <h3 class="heading settled" data-level="5.2" id="rdf-types"><span class="secno">5.2. </span><span class="content">Type Mappings</span><a class="self-link" href="#rdf-types"></a></h3>
    <p>The following RDF types are defined:</p>
    <ul>
@@ -2645,18 +2652,54 @@ Parts of this work may be from another specification document.  If so, those par
    </ul>
    <h3 class="heading settled" data-level="5.3" id="rdf-properties"><span class="secno">5.3. </span><span class="content">Property Mappings</span><a class="self-link" href="#rdf-properties"></a></h3>
    <p>Module manifest fields map to RDF properties as follows:</p>
-   <p>| YAML Field | RDF Property | Range |
-|------------|--------------|--------|
-| <code class="highlight">name</code> | <code class="highlight">mms:name</code> | <code class="highlight">xsd:string</code> |
-| <code class="highlight">label</code> | <code class="highlight">rdfs:label</code> | <code class="highlight">xsd:string</code> |
-| <code class="highlight">summary</code> | <code class="highlight">rdfs:comment</code> | <code class="highlight">xsd:string</code> |
-| <code class="highlight">links</code> | <code class="highlight">rdfs:seeAlso</code> | <code class="highlight">xsd:anyURI</code> |
-| <code class="highlight">provides.programs</code> | <code class="highlight">mms:providesProgram</code> | <code class="highlight">mms:Program</code> |
-| <code class="highlight">handles.url_protocols</code> | <code class="highlight">mms:handlesProtocol</code> | <code class="highlight">xsd:string</code> |
-| <code class="highlight">handles.url_prefixes</code> | <code class="highlight">mms:handlesPrefix</code> | <code class="highlight">xsd:anyURI</code> |
-| <code class="highlight">handles.url_patterns</code> | <code class="highlight">mms:handlesPattern</code> | <code class="highlight">xsd:string</code> |
-| <code class="highlight">handles.file_extensions</code> | <code class="highlight">mms:handlesExtension</code> | <code class="highlight">xsd:string</code> |
-| <code class="highlight">handles.content_types</code> | <code class="highlight">mms:handlesContentType</code> | <code class="highlight">xsd:string</code> |</p>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">YAML Field
+      <th align="left">RDF Property
+      <th align="left">Range
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">name</code>
+      <td align="left"><code class="highlight">mms:name</code>
+      <td align="left"><code class="highlight">xsd:string</code>
+     <tr>
+      <td align="left"><code class="highlight">label</code>
+      <td align="left"><code class="highlight">rdfs:label</code>
+      <td align="left"><code class="highlight">xsd:string</code>
+     <tr>
+      <td align="left"><code class="highlight">summary</code>
+      <td align="left"><code class="highlight">rdfs:comment</code>
+      <td align="left"><code class="highlight">xsd:string</code>
+     <tr>
+      <td align="left"><code class="highlight">links</code>
+      <td align="left"><code class="highlight">rdfs:seeAlso</code>
+      <td align="left"><code class="highlight">xsd:anyURI</code>
+     <tr>
+      <td align="left"><code class="highlight">provides.programs</code>
+      <td align="left"><code class="highlight">mms:providesProgram</code>
+      <td align="left"><code class="highlight">mms:Program</code>
+     <tr>
+      <td align="left"><code class="highlight">handles.url_protocols</code>
+      <td align="left"><code class="highlight">mms:handlesProtocol</code>
+      <td align="left"><code class="highlight">xsd:string</code>
+     <tr>
+      <td align="left"><code class="highlight">handles.url_prefixes</code>
+      <td align="left"><code class="highlight">mms:handlesPrefix</code>
+      <td align="left"><code class="highlight">xsd:anyURI</code>
+     <tr>
+      <td align="left"><code class="highlight">handles.url_patterns</code>
+      <td align="left"><code class="highlight">mms:handlesPattern</code>
+      <td align="left"><code class="highlight">xsd:string</code>
+     <tr>
+      <td align="left"><code class="highlight">handles.file_extensions</code>
+      <td align="left"><code class="highlight">mms:handlesExtension</code>
+      <td align="left"><code class="highlight">xsd:string</code>
+     <tr>
+      <td align="left"><code class="highlight">handles.content_types</code>
+      <td align="left"><code class="highlight">mms:handlesContentType</code>
+      <td align="left"><code class="highlight">xsd:string</code>
+   </table>
    <h3 class="heading settled" data-level="5.4" id="jsonld-context"><span class="secno">5.4. </span><span class="content">JSON-LD Context</span><a class="self-link" href="#jsonld-context"></a></h3>
    <p>The following JSON-LD context SHOULD be used when converting module manifests to JSON-LD:</p>
 <pre class="language-json highlight"><c- p>{</c->
@@ -2771,66 +2814,11 @@ Parts of this work may be from another specification document.  If so, those par
    </ul>
    <h2 class="heading settled" data-level="7" id="iana"><span class="secno">7. </span><span class="content">IANA Considerations</span><a class="self-link" href="#iana"></a></h2>
    <p>This specification does not require any IANA registrations.</p>
-   <h2 class="heading settled" data-level="8" id="spec-references"><span class="secno">8. </span><span class="content">References</span><a class="self-link" href="#spec-references"></a></h2>
-   <h3 class="heading settled" data-level="8.1" id="spec-normative"><span class="secno">8.1. </span><span class="content">Normative References</span><a class="self-link" href="#spec-normative"></a></h3>
-   <dl>
-    <dt id="RFC2119"><a class="self-link" href="#RFC2119"></a><a data-link-type="biblio" href="#biblio-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">[RFC2119]</a>
-  
-    <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
-
-  
-    <dt id="RFC2046"><a class="self-link" href="#RFC2046"></a><a data-link-type="biblio" href="#biblio-rfc2046" title="Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types">[RFC2046]</a>
-  
-    <dd>N. Freed; N. Borenstein. <a href="https://tools.ietf.org/html/rfc2046">Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types</a>. November 1996. Draft Standard. URL: <a href="https://tools.ietf.org/html/rfc2046">https://tools.ietf.org/html/rfc2046</a>
-
-  
-    <dt id="RFC6838"><a class="self-link" href="#RFC6838"></a><a data-link-type="biblio" href="#biblio-rfc6838" title="Media Type Specifications and Registration Procedures">[RFC6838]</a>
-  
-    <dd>N. Freed; J. Klensin; T. Hansen. <a href="https://tools.ietf.org/html/rfc6838">Media Type Specifications and Registration Procedures</a>. January 2013. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc6838">https://tools.ietf.org/html/rfc6838</a>
-
-  
-    <dt id="YAML"><a class="self-link" href="#YAML"></a><a data-link-type="biblio" href="#biblio-yaml" title="YAML Ain’t Markup Language (YAML™) Version 1.2">[YAML]</a>
-  
-    <dd>Oren Ben-Kiki; Clark Evans; Ingy döt Net. <a href="https://yaml.org/spec/1.2/spec.html">YAML Ain’t Markup Language (YAML™) Version 1.2</a>. 1 October 2009. URL: <a href="https://yaml.org/spec/1.2/spec.html">https://yaml.org/spec/1.2/spec.html</a>
-
-  
-    <dt id="URLPATTERN"><a class="self-link" href="#URLPATTERN"></a><a data-link-type="biblio" href="#biblio-urlpattern" title="URL Pattern Standard">[URLPATTERN]</a>
-  
-    <dd>WHATWG. <a href="https://urlpattern.spec.whatwg.org/">URL Pattern Standard</a>. Living Standard. URL: <a href="https://urlpattern.spec.whatwg.org/">https://urlpattern.spec.whatwg.org/</a>
-
-  
-    <dt id="JSON-LD"><a class="self-link" href="#JSON-LD"></a><a data-link-type="biblio" href="#biblio-json-ld" title="JSON-LD 1.0">[JSON-LD]</a>
-  
-    <dd>Gregg Kellogg; Pierre-Antoine Champin; Dave Longley. <a href="https://www.w3.org/TR/json-ld11/">JSON-LD 1.1</a>. 16 July 2020. W3C Recommendation. URL: <a href="https://www.w3.org/TR/json-ld11/">https://www.w3.org/TR/json-ld11/</a>
-
-  
-    <dt id="YAML-LD"><a class="self-link" href="#YAML-LD"></a><a data-link-type="biblio" href="#biblio-yaml-ld" title="YAML-LD">[YAML-LD]</a>
-  
-    <dd>Gregg Kellogg. <a href="https://json-ld.github.io/yaml-ld/spec/">YAML-LD</a>. Draft Community Group Report. URL: <a href="https://json-ld.github.io/yaml-ld/spec/">https://json-ld.github.io/yaml-ld/spec/</a>
-
-  
-    <dt id="IANA-MEDIA-TYPES"><a class="self-link" href="#IANA-MEDIA-TYPES"></a><a data-link-type="biblio" href="#biblio-iana-media-types" title="Media Types">[IANA-MEDIA-TYPES]</a>
-  
-    <dd>IANA. <a href="https://www.iana.org/assignments/media-types/">Media Types</a>. URL: <a href="https://www.iana.org/assignments/media-types/">https://www.iana.org/assignments/media-types/</a>
-
-  
-    <dt id="ASIMOV-PPS"><a class="self-link" href="#ASIMOV-PPS"></a><a data-link-type="biblio" href="#biblio-asimov-pps" title="ASIMOV Program Patterns Specification">[ASIMOV-PPS]</a>
-  
-    <dd>ASIMOV Systems. <a href="https://asimov-specs.github.io/program-patterns/">ASIMOV Program Patterns Specification</a>. URL: <a href="https://asimov-specs.github.io/program-patterns/">https://asimov-specs.github.io/program-patterns/</a>
-
-   </dl>
-   <h3 class="heading settled" data-level="8.2" id="spec-informative"><span class="secno">8.2. </span><span class="content">Informative References</span><a class="self-link" href="#spec-informative"></a></h3>
-   <dl>
-    <dt id="ASIMOV"><a class="self-link" href="#ASIMOV"></a>ASIMOV
-  
-    <dd>ASIMOV Systems. <a href="https://asimov.systems">ASIMOV Platform Documentation</a>. URL: <a href="https://asimov.systems">https://asimov.systems</a>
-
-   </dl>
-   <h2 class="heading settled" data-level="9" id="acknowledgments"><span class="secno">9. </span><span class="content">Acknowledgments</span><a class="self-link" href="#acknowledgments"></a></h2>
+   <h2 class="heading settled" data-level="8" id="acknowledgments"><span class="secno">8. </span><span class="content">Acknowledgments</span><a class="self-link" href="#acknowledgments"></a></h2>
    <p>The editors would like to thank the ASIMOV Platform community for their contributions and feedback during the development of this specification.</p>
-   <h2 class="heading settled" data-level="10" id="changes"><span class="secno">10. </span><span class="content">Changes</span><a class="self-link" href="#changes"></a></h2>
+   <h2 class="heading settled" data-level="9" id="changes"><span class="secno">9. </span><span class="content">Changes</span><a class="self-link" href="#changes"></a></h2>
    <p>This section will document changes between versions of this specification.</p>
-   <h3 class="heading settled" data-level="10.1" id="v1"><span class="secno">10.1. </span><span class="content">Version 1.0</span><a class="self-link" href="#v1"></a></h3>
+   <h3 class="heading settled" data-level="9.1" id="v1"><span class="secno">9.1. </span><span class="content">Version 1.0</span><a class="self-link" href="#v1"></a></h3>
    <p>Initial version of the ASIMOV Module Manifest Specification.</p>
   </main>
   <div data-fill-with="conformance">
@@ -3014,7 +3002,7 @@ Parts of this work may be from another specification document.  If so, those par
   <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
    <dt id="biblio-asimov-pps">[ASIMOV-PPS]
-   <dd>ASIMOV Systems. <a href="https://asimov-specs.github.io/program-patterns/"><cite>ASIMOV Program Patterns Specification</cite></a>. URL: <a href="https://asimov-specs.github.io/program-patterns/">https://asimov-specs.github.io/program-patterns/</a>
+   <dd>Arto Bendiken; et al. <a href="https://asimov-specs.github.io/program-patterns/"><cite>ASIMOV Program Patterns Specification</cite></a>. URL: <a href="https://asimov-specs.github.io/program-patterns/">https://asimov-specs.github.io/program-patterns/</a>
    <dt id="biblio-iana-media-types">[IANA-MEDIA-TYPES]
    <dd><a href="https://www.iana.org/assignments/media-types/"><cite>Media Types</cite></a>. URL: <a href="https://www.iana.org/assignments/media-types/">https://www.iana.org/assignments/media-types/</a>
    <dt id="biblio-json-ld">[JSON-LD]
