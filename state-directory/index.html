@@ -1490,7 +1490,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 275834c42, updated Wed Jun 11 14:18:15 2025 -0700" name="generator">
   <link href="https://asimov-specs.github.io/state-directory/" rel="canonical">
-  <meta content="709cfedf642e755a3259aaf60adebb5973efe82b" name="revision">
+  <meta content="e2006a487aaa2c668c984479f9d30e52ad82f5f5" name="revision">
   <meta content="dark light" name="color-scheme">
 <style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
@@ -2068,10 +2068,34 @@ Parts of this work may be from another specification document.  If so, those par
    <h2 class="heading settled" data-level="1" id="introduction"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#introduction"></a></h2>
    <p>The <a data-link-type="biblio" href="#biblio-asimov" title="ASIMOV Platform Documentation">[ASIMOV]</a> Platform is a polyglot development platform for trustworthy,
 neurosymbolic AI.</p>
-   <p>This specification eefines the organization and management of ASIMOV state
+   <p>This specification defines the organization and management of ASIMOV state
 directories (<code class="highlight">$HOME/.asimov/</code>), ensuring consistent data storage and retrieval
 mechanisms.</p>
    <h2 class="heading settled" data-level="2" id="examples"><span class="secno">2. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
+<pre class="language-console highlight">$ tree <c- g>$HOME</c->/.asimov
+.
+├── envs
+├── libexec
+│   ├── asimov-apify-fetcher
+│   ├── asimov-apify-importer
+│   ├── asimov-brightdata-cataloger
+│   ├── asimov-brightdata-fetcher
+│   ├── asimov-brightdata-importer
+│   ├── asimov-jinja-runner
+│   ├── asimov-jq-runner
+│   ├── asimov-near-fetcher
+│   ├── asimov-nexus-importer
+│   ├── asimov-serpapi-fetcher
+│   └── asimov-serpapi-importer
+└── modules
+    ├── apify.yaml
+    ├── brightdata.yaml
+    ├── jinja.yaml
+    ├── jq.yaml
+    ├── near.yaml
+    ├── nexus.yaml
+    └── serpapi.yaml
+</pre>
    <h2 class="heading settled" data-level="3" id="rdf-mapping"><span class="secno">3. </span><span class="content">RDF Mapping</span><a class="self-link" href="#rdf-mapping"></a></h2>
    <h2 class="heading settled" data-level="4" id="security"><span class="secno">4. </span><span class="content">Security Considerations</span><a class="self-link" href="#security"></a></h2>
    <h2 class="heading settled" data-level="5" id="iana"><span class="secno">5. </span><span class="content">IANA Considerations</span><a class="self-link" href="#iana"></a></h2>
