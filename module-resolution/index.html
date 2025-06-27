@@ -1490,7 +1490,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 275834c42, updated Wed Jun 11 14:18:15 2025 -0700" name="generator">
   <link href="https://asimov-specs.github.io/module-resolution/" rel="canonical">
-  <meta content="709cfedf642e755a3259aaf60adebb5973efe82b" name="revision">
+  <meta content="81509029091d9d030f412116bb3c9584d299d231" name="revision">
   <meta content="dark light" name="color-scheme">
 <style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
@@ -1812,6 +1812,130 @@ figcaption:not(.no-marker)::before {
     content: "Figure " counter(figure) " ";
 }
 </style>
+<style>/* Boilerplate: style-dfn-panel */
+:root {
+    --dfnpanel-bg: #ddd;
+    --dfnpanel-text: var(--text);
+    --dfnpanel-target-bg: #ffc;
+    --dfnpanel-target-outline: orange;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --dfnpanel-bg: #222;
+        --dfnpanel-text: var(--text);
+        --dfnpanel-target-bg: #333;
+        --dfnpanel-target-outline: silver;
+    }
+}
+.dfn-panel {
+    position: absolute;
+    z-index: 35;
+    width: 20em;
+    width: 300px;
+    height: auto;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.75em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: var(--dfnpanel-bg);
+    color: var(--dfnpanel-text);
+    border: outset 0.2em;
+    white-space: normal; /* in case it's moved into a pre */
+}
+.dfn-panel:not(.on) { display: none; }
+.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
+.dfn-panel > b { display: block; }
+.dfn-panel a { color: var(--dfnpanel-text); }
+.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
+.dfn-panel a:focus {
+    outline: 5px auto Highlight;
+    outline: 5px auto -webkit-focus-ring-color;
+}
+.dfn-panel > b + b { margin-top: 0.25em; }
+.dfn-panel ul { padding: 0 0 0 1em; list-style: none; }
+.dfn-panel li a {
+    max-width: calc(300px - 1.5em - 1em);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dfn-panel.activated {
+    display: inline-block;
+    position: fixed;
+    left: 8px;
+    bottom: 2em;
+    margin: 0 auto;
+    max-width: calc(100vw - 1.5em - .4em - .5em);
+    max-height: 30vh;
+    transition: left 1s ease-out, bottom 1s ease-out;
+}
+
+.dfn-panel .link-item:hover {
+    text-decoration: underline;
+}
+.dfn-panel .link-item .copy-icon {
+    opacity: 0;
+}
+.dfn-panel .link-item:hover .copy-icon,
+.dfn-panel .link-item .copy-icon:focus {
+    opacity: 1;
+}
+
+.dfn-panel .copy-icon {
+    display: inline-block;
+    margin-right: 0.5em;
+    width: 0.85em;
+    height: 1em;
+    border-radius: 3px;
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+.dfn-panel .copy-icon .icon {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.dfn-panel .copy-icon .icon::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    background-color: #ccc;
+    opacity: 0.25;
+    transform: translate(3px, -3px);
+}
+
+.dfn-panel .copy-icon:active .icon::before {
+    opacity: 1;
+}
+
+.dfn-paneled[role="button"] { cursor: help; }
+
+.highlighted {
+    animation: target-fade 3s;
+}
+
+@keyframes target-fade {
+    from {
+        background-color: var(--dfnpanel-target-bg);
+        outline: 5px solid var(--dfnpanel-target-outline);
+    }
+    to {
+        color: var(--a-normal-text);
+        background-color: transparent;
+        outline: transparent;
+    }
+}
+</style>
 <style>/* Boilerplate: style-issues */
 a[href].issue-return {
     float: right;
@@ -1890,12 +2014,133 @@ a.self-link::before            { content: "¶"; }
 .heading > a.self-link::before { content: "§"; }
 dfn > a.self-link::before      { content: "#"; }
 </style>
+<style>/* Boilerplate: style-syntax-highlighting */
+code.highlight { padding: .1em; border-radius: .3em; }
+pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em 0; overflow: auto; border-radius: 0; }
+
+.highlight:not(.idl) { background: rgba(0, 0, 0, .03); }
+c-[a] { color: #990055 } /* Keyword.Declaration */
+c-[b] { color: #990055 } /* Keyword.Type */
+c-[c] { color: #708090 } /* Comment */
+c-[d] { color: #708090 } /* Comment.Multiline */
+c-[e] { color: #0077aa } /* Name.Attribute */
+c-[f] { color: #669900 } /* Name.Tag */
+c-[g] { color: #222222 } /* Name.Variable */
+c-[k] { color: #990055 } /* Keyword */
+c-[l] { color: #000000 } /* Literal */
+c-[m] { color: #000000 } /* Literal.Number */
+c-[n] { color: #0077aa } /* Name */
+c-[o] { color: #999999 } /* Operator */
+c-[p] { color: #999999 } /* Punctuation */
+c-[s] { color: #a67f59 } /* Literal.String */
+c-[t] { color: #a67f59 } /* Literal.String.Single */
+c-[u] { color: #a67f59 } /* Literal.String.Double */
+c-[cp] { color: #708090 } /* Comment.Preproc */
+c-[c1] { color: #708090 } /* Comment.Single */
+c-[cs] { color: #708090 } /* Comment.Special */
+c-[kc] { color: #990055 } /* Keyword.Constant */
+c-[kn] { color: #990055 } /* Keyword.Namespace */
+c-[kp] { color: #990055 } /* Keyword.Pseudo */
+c-[kr] { color: #990055 } /* Keyword.Reserved */
+c-[ld] { color: #000000 } /* Literal.Date */
+c-[nc] { color: #0077aa } /* Name.Class */
+c-[no] { color: #0077aa } /* Name.Constant */
+c-[nd] { color: #0077aa } /* Name.Decorator */
+c-[ni] { color: #0077aa } /* Name.Entity */
+c-[ne] { color: #0077aa } /* Name.Exception */
+c-[nf] { color: #0077aa } /* Name.Function */
+c-[nl] { color: #0077aa } /* Name.Label */
+c-[nn] { color: #0077aa } /* Name.Namespace */
+c-[py] { color: #0077aa } /* Name.Property */
+c-[ow] { color: #999999 } /* Operator.Word */
+c-[mb] { color: #000000 } /* Literal.Number.Bin */
+c-[mf] { color: #000000 } /* Literal.Number.Float */
+c-[mh] { color: #000000 } /* Literal.Number.Hex */
+c-[mi] { color: #000000 } /* Literal.Number.Integer */
+c-[mo] { color: #000000 } /* Literal.Number.Oct */
+c-[sb] { color: #a67f59 } /* Literal.String.Backtick */
+c-[sc] { color: #a67f59 } /* Literal.String.Char */
+c-[sd] { color: #a67f59 } /* Literal.String.Doc */
+c-[se] { color: #a67f59 } /* Literal.String.Escape */
+c-[sh] { color: #a67f59 } /* Literal.String.Heredoc */
+c-[si] { color: #a67f59 } /* Literal.String.Interpol */
+c-[sx] { color: #a67f59 } /* Literal.String.Other */
+c-[sr] { color: #a67f59 } /* Literal.String.Regex */
+c-[ss] { color: #a67f59 } /* Literal.String.Symbol */
+c-[vc] { color: #0077aa } /* Name.Variable.Class */
+c-[vg] { color: #0077aa } /* Name.Variable.Global */
+c-[vi] { color: #0077aa } /* Name.Variable.Instance */
+c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
+
+@media (prefers-color-scheme: dark) {
+    .highlight:not(.idl) { background: rgba(255, 255, 255, .05); }
+
+    c-[a] { color: #d33682 } /* Keyword.Declaration */
+    c-[b] { color: #d33682 } /* Keyword.Type */
+    c-[c] { color: #2aa198 } /* Comment */
+    c-[d] { color: #2aa198 } /* Comment.Multiline */
+    c-[e] { color: #268bd2 } /* Name.Attribute */
+    c-[f] { color: #b58900 } /* Name.Tag */
+    c-[g] { color: #cb4b16 } /* Name.Variable */
+    c-[k] { color: #d33682 } /* Keyword */
+    c-[l] { color: #657b83 } /* Literal */
+    c-[m] { color: #657b83 } /* Literal.Number */
+    c-[n] { color: #268bd2 } /* Name */
+    c-[o] { color: #657b83 } /* Operator */
+    c-[p] { color: #657b83 } /* Punctuation */
+    c-[s] { color: #6c71c4 } /* Literal.String */
+    c-[t] { color: #6c71c4 } /* Literal.String.Single */
+    c-[u] { color: #6c71c4 } /* Literal.String.Double */
+    c-[ch] { color: #2aa198 } /* Comment.Hashbang */
+    c-[cp] { color: #2aa198 } /* Comment.Preproc */
+    c-[cpf] { color: #2aa198 } /* Comment.PreprocFile */
+    c-[c1] { color: #2aa198 } /* Comment.Single */
+    c-[cs] { color: #2aa198 } /* Comment.Special */
+    c-[kc] { color: #d33682 } /* Keyword.Constant */
+    c-[kn] { color: #d33682 } /* Keyword.Namespace */
+    c-[kp] { color: #d33682 } /* Keyword.Pseudo */
+    c-[kr] { color: #d33682 } /* Keyword.Reserved */
+    c-[ld] { color: #657b83 } /* Literal.Date */
+    c-[nc] { color: #268bd2 } /* Name.Class */
+    c-[no] { color: #268bd2 } /* Name.Constant */
+    c-[nd] { color: #268bd2 } /* Name.Decorator */
+    c-[ni] { color: #268bd2 } /* Name.Entity */
+    c-[ne] { color: #268bd2 } /* Name.Exception */
+    c-[nf] { color: #268bd2 } /* Name.Function */
+    c-[nl] { color: #268bd2 } /* Name.Label */
+    c-[nn] { color: #268bd2 } /* Name.Namespace */
+    c-[py] { color: #268bd2 } /* Name.Property */
+    c-[ow] { color: #657b83 } /* Operator.Word */
+    c-[mb] { color: #657b83 } /* Literal.Number.Bin */
+    c-[mf] { color: #657b83 } /* Literal.Number.Float */
+    c-[mh] { color: #657b83 } /* Literal.Number.Hex */
+    c-[mi] { color: #657b83 } /* Literal.Number.Integer */
+    c-[mo] { color: #657b83 } /* Literal.Number.Oct */
+    c-[sa] { color: #6c71c4 } /* Literal.String.Affix */
+    c-[sb] { color: #6c71c4 } /* Literal.String.Backtick */
+    c-[sc] { color: #6c71c4 } /* Literal.String.Char */
+    c-[dl] { color: #6c71c4 } /* Literal.String.Delimiter */
+    c-[sd] { color: #6c71c4 } /* Literal.String.Doc */
+    c-[se] { color: #6c71c4 } /* Literal.String.Escape */
+    c-[sh] { color: #6c71c4 } /* Literal.String.Heredoc */
+    c-[si] { color: #6c71c4 } /* Literal.String.Interpol */
+    c-[sx] { color: #6c71c4 } /* Literal.String.Other */
+    c-[sr] { color: #6c71c4 } /* Literal.String.Regex */
+    c-[ss] { color: #6c71c4 } /* Literal.String.Symbol */
+    c-[fm] { color: #268bd2 } /* Name.Function.Magic */
+    c-[vc] { color: #cb4b16 } /* Name.Variable.Class */
+    c-[vg] { color: #cb4b16 } /* Name.Variable.Global */
+    c-[vi] { color: #cb4b16 } /* Name.Variable.Instance */
+    c-[vm] { color: #cb4b16 } /* Name.Variable.Magic */
+    c-[il] { color: #657b83 } /* Literal.Number.Integer.Long */
+}
+</style>
  <body class="h-entry">
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">ASIMOV Module Resolution Specification (MRS)</h1>
    <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Living Standard,
-    <time class="dt-updated" datetime="2025-06-26">26 June 2025</time></span></h2>
+    <time class="dt-updated" datetime="2025-06-27">27 June 2025</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1911,7 +2156,7 @@ dfn > a.self-link::before      { content: "#"; }
    <p class="copyright" data-fill-with="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" height="15" src="https://licensebuttons.net/p/zero/1.0/80x15.png" width="80"></a>
 To the extent possible under law, the editors have waived all copyright
 and related or neighboring rights to this work.
-In addition, as of 26 June 2025,
+In addition, as of 27 June 2025,
 the editors have made this specification available under the
 <a href="https://www.openwebfoundation.org/the-agreements/the-owf-1-0-agreements-granted-claims/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at https://www.openwebfoundation.org/the-agreements/the-owf-1-0-agreements-granted-claims/owfa-1-0.
@@ -1921,21 +2166,121 @@ Parts of this work may be from another specification document.  If so, those par
   </div>
   <div class="p-summary" data-fill-with="abstract">
    <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
-   <p>Defines how data source URIs are resolved using pattern matching to locate ASIMOV modules that are able to extract and transform those data into a knowledge graph dataset.</p>
+   <p>Defines the algorithm for resolving data source URIs to ASIMOV modules using pattern matching, enabling automatic discovery and selection of modules capable of processing specific resource types.</p>
   </div>
   <div data-fill-with="at-risk"></div>
   <nav data-fill-with="table-of-contents" id="toc">
    <h2 class="no-num no-toc no-ref" id="contents">Table of Contents</h2>
    <ol class="toc" role="directory">
-    <li><a href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
-    <li><a href="#examples"><span class="secno">2</span> <span class="content">Examples</span></a>
-    <li><a href="#rdf-mapping"><span class="secno">3</span> <span class="content">RDF Mapping</span></a>
-    <li><a href="#security"><span class="secno">4</span> <span class="content">Security Considerations</span></a>
-    <li><a href="#iana"><span class="secno">5</span> <span class="content">IANA Considerations</span></a>
-    <li><a href="#acknowledgments"><span class="secno">6</span> <span class="content">Acknowledgments</span></a>
-    <li><a href="#changes"><span class="secno">7</span> <span class="content">Changes</span></a>
+    <li>
+     <a href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
+     <ol class="toc">
+      <li><a href="#overview"><span class="secno">1.1</span> <span class="content">Overview</span></a>
+      <li><a href="#scope"><span class="secno">1.2</span> <span class="content">Scope</span></a>
+      <li><a href="#spec-conformance"><span class="secno">1.3</span> <span class="content">Conformance</span></a>
+     </ol>
+    <li>
+     <a href="#algorithm"><span class="secno">2</span> <span class="content">Resolution Algorithm</span></a>
+     <ol class="toc">
+      <li>
+       <a href="#tokenization"><span class="secno">2.1</span> <span class="content">URI Tokenization</span></a>
+       <ol class="toc">
+        <li><a href="#tokenization-process"><span class="secno">2.1.1</span> <span class="content">Tokenization Process</span></a>
+        <li><a href="#section-types"><span class="secno">2.1.2</span> <span class="content">Section Types</span></a>
+        <li><a href="#normalization-rules"><span class="secno">2.1.3</span> <span class="content">Normalization Rules</span></a>
+        <li><a href="#tokenization-examples"><span class="secno">2.1.4</span> <span class="content">Tokenization Examples</span></a>
+       </ol>
+      <li>
+       <a href="#pattern-types"><span class="secno">2.2</span> <span class="content">Pattern Types</span></a>
+       <ol class="toc">
+        <li><a href="#protocol-patterns"><span class="secno">2.2.1</span> <span class="content">Protocol Patterns</span></a>
+        <li><a href="#prefix-patterns"><span class="secno">2.2.2</span> <span class="content">Prefix Patterns</span></a>
+        <li>
+         <a href="#parameterized-patterns"><span class="secno">2.2.3</span> <span class="content">Parameterized Patterns</span></a>
+         <ol class="toc">
+          <li><a href="#pattern-syntax"><span class="secno">2.2.3.1</span> <span class="content">Pattern Syntax</span></a>
+          <li><a href="#wildcard-matching"><span class="secno">2.2.3.2</span> <span class="content">Wildcard Matching</span></a>
+         </ol>
+        <li><a href="#file-extension-patterns"><span class="secno">2.2.4</span> <span class="content">File Extension Patterns</span></a>
+       </ol>
+      <li>
+       <a href="#state-machine"><span class="secno">2.3</span> <span class="content">Resolution State Machine</span></a>
+       <ol class="toc">
+        <li><a href="#state-representation"><span class="secno">2.3.1</span> <span class="content">State Representation</span></a>
+        <li><a href="#state-transitions"><span class="secno">2.3.2</span> <span class="content">State Transitions</span></a>
+        <li><a href="#free-move-semantics"><span class="secno">2.3.3</span> <span class="content">Free Move Semantics</span></a>
+       </ol>
+      <li>
+       <a href="#resolution-process"><span class="secno">2.4</span> <span class="content">Resolution Process</span></a>
+       <ol class="toc">
+        <li><a href="#input-processing"><span class="secno">2.4.1</span> <span class="content">Input Processing</span></a>
+        <li><a href="#matching-rules"><span class="secno">2.4.2</span> <span class="content">Matching Rules</span></a>
+        <li><a href="#conflict-resolution"><span class="secno">2.4.3</span> <span class="content">Conflict Resolution</span></a>
+       </ol>
+     </ol>
+    <li>
+     <a href="#examples"><span class="secno">3</span> <span class="content">Examples</span></a>
+     <ol class="toc">
+      <li>
+       <a href="#basic-examples"><span class="secno">3.1</span> <span class="content">Basic Resolution Examples</span></a>
+       <ol class="toc">
+        <li><a href="#protocol-resolution"><span class="secno">3.1.1</span> <span class="content">Protocol Resolution</span></a>
+        <li><a href="#prefix-resolution"><span class="secno">3.1.2</span> <span class="content">Prefix Resolution</span></a>
+        <li><a href="#pattern-resolution"><span class="secno">3.1.3</span> <span class="content">Pattern Resolution</span></a>
+       </ol>
+      <li>
+       <a href="#advanced-examples"><span class="secno">3.2</span> <span class="content">Advanced Resolution Examples</span></a>
+       <ol class="toc">
+        <li><a href="#wildcard-domains"><span class="secno">3.2.1</span> <span class="content">Wildcard Domains</span></a>
+        <li><a href="#multiple-handlers"><span class="secno">3.2.2</span> <span class="content">Multiple Handlers</span></a>
+        <li><a href="#file-extensions"><span class="secno">3.2.3</span> <span class="content">File Extensions</span></a>
+       </ol>
+      <li><a href="#complex-scenario"><span class="secno">3.3</span> <span class="content">Complex Resolution Scenario</span></a>
+     </ol>
+    <li>
+     <a href="#implementation"><span class="secno">4</span> <span class="content">Implementation Considerations</span></a>
+     <ol class="toc">
+      <li>
+       <a href="#data-structures"><span class="secno">4.1</span> <span class="content">Data Structures</span></a>
+       <ol class="toc">
+        <li><a href="#resolver-state"><span class="secno">4.1.1</span> <span class="content">Resolver State</span></a>
+        <li><a href="#node-structure"><span class="secno">4.1.2</span> <span class="content">Node Structure</span></a>
+        <li><a href="#memory-management"><span class="secno">4.1.3</span> <span class="content">Memory Management</span></a>
+       </ol>
+      <li>
+       <a href="#performance"><span class="secno">4.2</span> <span class="content">Performance Considerations</span></a>
+       <ol class="toc">
+        <li><a href="#complexity"><span class="secno">4.2.1</span> <span class="content">Algorithmic Complexity</span></a>
+        <li><a href="#optimization"><span class="secno">4.2.2</span> <span class="content">Optimization Strategies</span></a>
+       </ol>
+      <li>
+       <a href="#error-handling"><span class="secno">4.3</span> <span class="content">Error Handling</span></a>
+       <ol class="toc">
+        <li><a href="#invalid-uris"><span class="secno">4.3.1</span> <span class="content">Invalid URIs</span></a>
+        <li><a href="#resolution-failures"><span class="secno">4.3.2</span> <span class="content">Resolution Failures</span></a>
+       </ol>
+     </ol>
+    <li>
+     <a href="#security"><span class="secno">5</span> <span class="content">Security Considerations</span></a>
+     <ol class="toc">
+      <li><a href="#pattern-injection"><span class="secno">5.1</span> <span class="content">Pattern Injection</span></a>
+      <li><a href="#resource-consumption"><span class="secno">5.2</span> <span class="content">Resource Consumption</span></a>
+      <li><a href="#uri-validation"><span class="secno">5.3</span> <span class="content">URI Validation</span></a>
+     </ol>
+    <li><a href="#iana"><span class="secno">6</span> <span class="content">IANA Considerations</span></a>
+    <li><a href="#acknowledgments"><span class="secno">7</span> <span class="content">Acknowledgments</span></a>
+    <li>
+     <a href="#changes"><span class="secno">8</span> <span class="content">Changes</span></a>
+     <ol class="toc">
+      <li><a href="#v1"><span class="secno">8.1</span> <span class="content">Version 1.0</span></a>
+     </ol>
     <li><a href="#conformance"><span class="secno"></span> <span class="content">
     Conformance</span></a>
+    <li>
+     <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
+     <ol class="toc">
+      <li><a href="#index-defined-here"><span class="secno"></span> <span class="content">Terms defined by this specification</span></a>
+     </ol>
     <li>
      <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
      <ol class="toc">
@@ -1948,18 +2293,472 @@ Parts of this work may be from another specification document.  If so, those par
    <h2 class="heading settled" data-level="1" id="introduction"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#introduction"></a></h2>
    <p>The <a data-link-type="biblio" href="#biblio-asimov" title="ASIMOV Platform Documentation">[ASIMOV]</a> Platform is a polyglot development platform for trustworthy,
 neurosymbolic AI.</p>
-   <p>This specification defines how data source URIs are resolved using pattern
-matching to locate ASIMOV modules that are able to extract and transform
-those data into a knowledge graph dataset.</p>
-   <h2 class="heading settled" data-level="2" id="examples"><span class="secno">2. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
-   <h2 class="heading settled" data-level="3" id="rdf-mapping"><span class="secno">3. </span><span class="content">RDF Mapping</span><a class="self-link" href="#rdf-mapping"></a></h2>
-   <h2 class="heading settled" data-level="4" id="security"><span class="secno">4. </span><span class="content">Security Considerations</span><a class="self-link" href="#security"></a></h2>
-   <h2 class="heading settled" data-level="5" id="iana"><span class="secno">5. </span><span class="content">IANA Considerations</span><a class="self-link" href="#iana"></a></h2>
+   <p>This specification defines the algorithm for resolving data source URIs to ASIMOV modules using pattern matching. The resolution process enables the platform to automatically discover and select modules that are capable of extracting and transforming specific data sources into knowledge graph datasets.</p>
+   <h3 class="heading settled" data-level="1.1" id="overview"><span class="secno">1.1. </span><span class="content">Overview</span><a class="self-link" href="#overview"></a></h3>
+   <p>The ASIMOV Module Resolution Specification defines a standardized algorithm for matching URIs against module capability declarations to determine which modules can handle specific resources. The resolution process enables:</p>
+   <ul>
+    <li data-md>
+     <p><strong>Automatic Module Selection</strong>: Given a URI, the platform can automatically select appropriate modules for processing</p>
+    <li data-md>
+     <p><strong>Pattern-Based Matching</strong>: Supports exact matches, prefixes, and parameterized patterns for flexible resource handling</p>
+    <li data-md>
+     <p><strong>Conflict Resolution</strong>: Provides deterministic rules for selecting modules when multiple candidates are available</p>
+    <li data-md>
+     <p><strong>Extensible Architecture</strong>: Allows modules to declare new resource types and patterns</p>
+   </ul>
+   <h3 class="heading settled" data-level="1.2" id="scope"><span class="secno">1.2. </span><span class="content">Scope</span><a class="self-link" href="#scope"></a></h3>
+   <p>This specification covers:</p>
+   <ul>
+    <li data-md>
+     <p>The URI tokenization and normalization process</p>
+    <li data-md>
+     <p>Pattern matching algorithms for different handler types</p>
+    <li data-md>
+     <p>Module selection and conflict resolution rules</p>
+    <li data-md>
+     <p>The data structures and state machines used in resolution</p>
+   </ul>
+   <p>This specification does not cover:</p>
+   <ul>
+    <li data-md>
+     <p>The format of module manifests (see <a data-link-type="biblio" href="#biblio-asimov-mms" title="ASIMOV Module Manifest Specification">[ASIMOV-MMS]</a>)</p>
+    <li data-md>
+     <p>Runtime execution of selected modules</p>
+    <li data-md>
+     <p>Inter-module communication protocols</p>
+   </ul>
+   <h3 class="heading settled" data-level="1.3" id="spec-conformance"><span class="secno">1.3. </span><span class="content">Conformance</span><a class="self-link" href="#spec-conformance"></a></h3>
+   <p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a data-link-type="biblio" href="#biblio-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">[RFC2119]</a>.</p>
+   <p>A conforming resolver is one that implements the resolution algorithm defined in this specification and produces correct results for all valid inputs.</p>
+   <h2 class="heading settled" data-level="2" id="algorithm"><span class="secno">2. </span><span class="content">Resolution Algorithm</span><a class="self-link" href="#algorithm"></a></h2>
+   <h3 class="heading settled" data-level="2.1" id="tokenization"><span class="secno">2.1. </span><span class="content">URI Tokenization</span><a class="self-link" href="#tokenization"></a></h3>
+   <p>The resolution process begins with tokenizing the input URI into a sequence of sections that can be matched against module patterns.</p>
+   <h4 class="heading settled" data-level="2.1.1" id="tokenization-process"><span class="secno">2.1.1. </span><span class="content">Tokenization Process</span><a class="self-link" href="#tokenization-process"></a></h4>
+   <p>Given a URI, the tokenizer MUST:</p>
+   <ol>
+    <li data-md>
+     <p><strong>Extract the scheme</strong>: The protocol portion before the first colon (e.g., <code class="highlight">https</code>, <code class="highlight">file</code>, <code class="highlight">near</code>)</p>
+    <li data-md>
+     <p><strong>Parse the authority</strong>: For hierarchical URIs, extract and reverse the domain components</p>
+    <li data-md>
+     <p><strong>Extract path segments</strong>: Split the path on forward slashes, ignoring empty segments</p>
+    <li data-md>
+     <p><strong>Extract query parameters</strong>: Parse query string into name-value pairs</p>
+   </ol>
+   <h4 class="heading settled" data-level="2.1.2" id="section-types"><span class="secno">2.1.2. </span><span class="content">Section Types</span><a class="self-link" href="#section-types"></a></h4>
+   <p>The tokenizer produces the following section types:</p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="protocol">Protocol</dfn></p>
+   <dl>
+    <dt data-md>The URI scheme (e.g., <code class="highlight">https</code>, <code class="highlight">file</code>, <code class="highlight">near</code>)
+   </dl>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="domain">Domain</dfn></p>
+   <dl>
+    <dt data-md>A single domain component in reverse order (e.g., <code class="highlight">com</code>, <code class="highlight">example</code> from <code class="highlight">example.com</code>)
+   </dl>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="path">Path</dfn></p>
+   <dl>
+    <dt data-md>A single path segment (e.g., <code class="highlight">search</code>, <code class="highlight">users</code> from <code class="highlight">/search/users</code>)
+   </dl>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="queryparamname">QueryParamName</dfn></p>
+   <dl>
+    <dt data-md>The name of a query parameter (e.g., <code class="highlight">q</code> from <code class="highlight">?q=value</code>)
+   </dl>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="queryparamvalue">QueryParamValue</dfn></p>
+   <dl>
+    <dt data-md>The value of a query parameter (e.g., <code class="highlight">value</code> from <code class="highlight">?q=value</code>)
+   </dl>
+   <h4 class="heading settled" data-level="2.1.3" id="normalization-rules"><span class="secno">2.1.3. </span><span class="content">Normalization Rules</span><a class="self-link" href="#normalization-rules"></a></h4>
+   <p>During tokenization, the following normalization rules MUST be applied:</p>
+   <ol>
+    <li data-md>
+     <p><strong>www Removal</strong>: For HTTP/HTTPS URIs, remove leading <code class="highlight">www.</code> from the domain</p>
+    <li data-md>
+     <p><strong>Domain Reversal</strong>: Domain components are stored in reverse order (TLD first)</p>
+    <li data-md>
+     <p><strong>Empty Segment Filtering</strong>: Empty path segments are ignored</p>
+    <li data-md>
+     <p><strong>Query Parameter Ordering</strong>: Query parameters are processed in the order they appear</p>
+   </ol>
+   <h4 class="heading settled" data-level="2.1.4" id="tokenization-examples"><span class="secno">2.1.4. </span><span class="content">Tokenization Examples</span><a class="self-link" href="#tokenization-examples"></a></h4>
+<pre class="language-yaml highlight"><c- c1># Input: https://example.com/search?q=test</c->
+<c- c1># Output: [Protocol("https"), Domain("com"), Domain("example"),</c->
+<c- c1>#          Path("search"), QueryParamName("q"), QueryParamValue("test")]</c->
+
+<c- c1># Input: near://account/alice.near</c->
+<c- c1># Output: [Protocol("near"), Path("account"), Path("alice.near")]</c->
+
+<c- c1># Input: file:///path/to/file.txt</c->
+<c- c1># Output: [Protocol("file"), Path("path"), Path("to"), Path("file.txt")]</c->
+</pre>
+   <h3 class="heading settled" data-level="2.2" id="pattern-types"><span class="secno">2.2. </span><span class="content">Pattern Types</span><a class="self-link" href="#pattern-types"></a></h3>
+   <p>Modules can declare different types of patterns for matching URIs:</p>
+   <h4 class="heading settled" data-level="2.2.1" id="protocol-patterns"><span class="secno">2.2.1. </span><span class="content">Protocol Patterns</span><a class="self-link" href="#protocol-patterns"></a></h4>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="protocol-patterns①">Protocol patterns</dfn> match URIs based on their scheme. A protocol pattern matches any URI that begins with the specified protocol, effectively acting as a prefix match.</p>
+   <p>Example:</p>
+<pre class="language-yaml highlight"><c- f>handles</c-><c- p>:</c->
+  <c- f>url_protocols</c-><c- p>:</c->
+    - near
+    - ipfs
+</pre>
+   <h4 class="heading settled" data-level="2.2.2" id="prefix-patterns"><span class="secno">2.2.2. </span><span class="content">Prefix Patterns</span><a class="self-link" href="#prefix-patterns"></a></h4>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="prefix-patterns①">Prefix patterns</dfn> match URIs that begin with a specific prefix. The matching is exact up to the end of the declared prefix, and any additional path segments or query parameters are ignored.</p>
+   <p>Example:</p>
+<pre class="language-yaml highlight"><c- f>handles</c-><c- p>:</c->
+  <c- f>url_prefixes</c-><c- p>:</c->
+    - https://api.github.com/
+    - https://example.com/api/v1/
+</pre>
+   <h4 class="heading settled" data-level="2.2.3" id="parameterized-patterns"><span class="secno">2.2.3. </span><span class="content">Parameterized Patterns</span><a class="self-link" href="#parameterized-patterns"></a></h4>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="parameterized-patterns①">Parameterized patterns</dfn> match URIs with variable components, allowing extraction of parameters from the URI structure.</p>
+   <h5 class="heading settled" data-level="2.2.3.1" id="pattern-syntax"><span class="secno">2.2.3.1. </span><span class="content">Pattern Syntax</span><a class="self-link" href="#pattern-syntax"></a></h5>
+   <p>Parameterized patterns use the following syntax:</p>
+   <ul>
+    <li data-md>
+     <p><code class="highlight">*</code> in domain position: Matches zero or more subdomains</p>
+    <li data-md>
+     <p><code class="highlight">:name</code> in path position: Matches any single path segment</p>
+    <li data-md>
+     <p><code class="highlight">:name</code> in query value position: Matches any query parameter value</p>
+   </ul>
+   <p>Example:</p>
+<pre class="language-yaml highlight"><c- f>handles</c-><c- p>:</c->
+  <c- f>url_patterns</c-><c- p>:</c->
+    - https://*.example.com/users/:id
+    - https://search.example.com/?q=:query
+</pre>
+   <h5 class="heading settled" data-level="2.2.3.2" id="wildcard-matching"><span class="secno">2.2.3.2. </span><span class="content">Wildcard Matching</span><a class="self-link" href="#wildcard-matching"></a></h5>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="wildcard-domain-patterns">Wildcard domain patterns</dfn> (<code class="highlight">*</code>) match zero or more subdomain components. This enables matching of URIs with varying numbers of subdomains.</p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="wildcard-path-patterns">Wildcard path patterns</dfn> (<code class="highlight">:name</code>) match exactly one path segment with any value.</p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="wildcard-query-patterns">Wildcard query patterns</dfn> (<code class="highlight">:name</code>) match any value for a specific query parameter name.</p>
+   <h4 class="heading settled" data-level="2.2.4" id="file-extension-patterns"><span class="secno">2.2.4. </span><span class="content">File Extension Patterns</span><a class="self-link" href="#file-extension-patterns"></a></h4>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="file-extension-patterns①">File extension patterns</dfn> match URIs with <code class="highlight">file://</code> scheme based on the file extension. The extension is extracted from the last path segment.</p>
+   <p>Example:</p>
+<pre class="language-yaml highlight"><c- f>handles</c-><c- p>:</c->
+  <c- f>file_extensions</c-><c- p>:</c->
+    - csv
+    - json
+    - tar.gz
+</pre>
+   <h3 class="heading settled" data-level="2.3" id="state-machine"><span class="secno">2.3. </span><span class="content">Resolution State Machine</span><a class="self-link" href="#state-machine"></a></h3>
+   <p>The resolution algorithm uses a finite state machine to track possible matches as it processes the tokenized URI.</p>
+   <h4 class="heading settled" data-level="2.3.1" id="state-representation"><span class="secno">2.3.1. </span><span class="content">State Representation</span><a class="self-link" href="#state-representation"></a></h4>
+   <p>Each state in the resolution process is represented by a <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="node">node</dfn> that contains:</p>
+   <ul>
+    <li data-md>
+     <p><strong>Transitions</strong>: A mapping from section types to destination nodes</p>
+    <li data-md>
+     <p><strong>Modules</strong>: A set of modules that can handle URIs reaching this state</p>
+    <li data-md>
+     <p><strong>Free Moves</strong>: Special transitions that match any input without consuming it</p>
+   </ul>
+   <h4 class="heading settled" data-level="2.3.2" id="state-transitions"><span class="secno">2.3.2. </span><span class="content">State Transitions</span><a class="self-link" href="#state-transitions"></a></h4>
+   <p>The state machine processes input sections sequentially, following these rules:</p>
+   <ol>
+    <li data-md>
+     <p><strong>Start with root states</strong>: Initialize with all root nodes whose patterns match the first input section</p>
+    <li data-md>
+     <p><strong>Process remaining input</strong>: For each subsequent input section, find all reachable states</p>
+    <li data-md>
+     <p><strong>Follow free moves</strong>: After each transition, follow any available free move transitions</p>
+    <li data-md>
+     <p><strong>Collect results</strong>: Gather all modules from states reached after processing all input</p>
+   </ol>
+   <h4 class="heading settled" data-level="2.3.3" id="free-move-semantics"><span class="secno">2.3.3. </span><span class="content">Free Move Semantics</span><a class="self-link" href="#free-move-semantics"></a></h4>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="free-moves">Free moves</dfn> are special transitions that enable:</p>
+   <ul>
+    <li data-md>
+     <p><strong>Prefix matching</strong>: Allowing additional path segments beyond the declared prefix</p>
+    <li data-md>
+     <p><strong>Protocol matching</strong>: Treating protocols as prefixes that match any URI with that scheme</p>
+    <li data-md>
+     <p><strong>Wildcard domain repetition</strong>: Enabling <code class="highlight">*</code> patterns to match multiple subdomain levels</p>
+   </ul>
+   <h3 class="heading settled" data-level="2.4" id="resolution-process"><span class="secno">2.4. </span><span class="content">Resolution Process</span><a class="self-link" href="#resolution-process"></a></h3>
+   <h4 class="heading settled" data-level="2.4.1" id="input-processing"><span class="secno">2.4.1. </span><span class="content">Input Processing</span><a class="self-link" href="#input-processing"></a></h4>
+   <p>The resolution process follows these steps:</p>
+   <ol>
+    <li data-md>
+     <p><strong>Tokenize URI</strong>: Convert the input URI into a sequence of sections</p>
+    <li data-md>
+     <p><strong>Handle file extensions</strong>: For <code class="highlight">file://</code> URIs, check file extension patterns first</p>
+    <li data-md>
+     <p><strong>Initialize state set</strong>: Find all root states that match the first input section</p>
+    <li data-md>
+     <p><strong>Process input sequence</strong>: For each remaining input section, advance the state machine</p>
+    <li data-md>
+     <p><strong>Collect results</strong>: Gather all modules from final states</p>
+   </ol>
+   <h4 class="heading settled" data-level="2.4.2" id="matching-rules"><span class="secno">2.4.2. </span><span class="content">Matching Rules</span><a class="self-link" href="#matching-rules"></a></h4>
+   <p>Section matching follows these precedence rules:</p>
+   <ol>
+    <li data-md>
+     <p><strong>Exact matches</strong>: Literal sections match exactly</p>
+    <li data-md>
+     <p><strong>Wildcard matches</strong>: Wildcard sections match corresponding input types</p>
+    <li data-md>
+     <p><strong>Free moves</strong>: Always match without consuming input</p>
+   </ol>
+   <p>The matching function for sections is defined as:</p>
+<pre class="highlight">matches(pattern_section, input_section) :=
+  pattern_section == input_section OR
+  (pattern_section == WildcardDomain AND input_section is Domain) OR
+  (pattern_section == WildcardPath AND input_section is Path) OR
+  (pattern_section == WildcardQueryParamValue AND input_section is QueryParamValue) OR
+  pattern_section == FreeMove
+</pre>
+   <h4 class="heading settled" data-level="2.4.3" id="conflict-resolution"><span class="secno">2.4.3. </span><span class="content">Conflict Resolution</span><a class="self-link" href="#conflict-resolution"></a></h4>
+   <p>When multiple modules match a URI, the resolver returns all matching modules. The selection of which module to use for processing is left to higher-level platform components.</p>
+   <p>However, for informational purposes, the following precedence rules are RECOMMENDED:</p>
+   <ol>
+    <li data-md>
+     <p><strong>Specificity</strong>: More specific patterns take precedence over less specific ones</p>
+    <li data-md>
+     <p><strong>Pattern type precedence</strong>: Parameterized patterns > Prefix patterns > Protocol patterns</p>
+    <li data-md>
+     <p><strong>Path length</strong>: Longer paths take precedence over shorter ones</p>
+   </ol>
+   <h2 class="heading settled" data-level="3" id="examples"><span class="secno">3. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
+   <h3 class="heading settled" data-level="3.1" id="basic-examples"><span class="secno">3.1. </span><span class="content">Basic Resolution Examples</span><a class="self-link" href="#basic-examples"></a></h3>
+   <h4 class="heading settled" data-level="3.1.1" id="protocol-resolution"><span class="secno">3.1.1. </span><span class="content">Protocol Resolution</span><a class="self-link" href="#protocol-resolution"></a></h4>
+<pre class="language-yaml highlight"><c- c1># Module declares:</c->
+<c- f>handles</c-><c- p>:</c->
+  <c- f>url_protocols</c-><c- p>:</c->
+    - near
+
+<c- c1># Resolves:</c->
+near://account/alice.near -> [near-module]
+near://tx/ABC123 -> [near-module]
+near -> [near-module]
+</pre>
+   <h4 class="heading settled" data-level="3.1.2" id="prefix-resolution"><span class="secno">3.1.2. </span><span class="content">Prefix Resolution</span><a class="self-link" href="#prefix-resolution"></a></h4>
+<pre class="language-yaml highlight"><c- c1># Module declares:</c->
+<c- f>handles</c-><c- p>:</c->
+  <c- f>url_prefixes</c-><c- p>:</c->
+    - https://api.github.com/
+
+<c- c1># Resolves:</c->
+https://api.github.com/ -> [github-module]
+https://api.github.com/users -> [github-module]
+https://api.github.com/repos/owner/name -> [github-module]
+</pre>
+   <h4 class="heading settled" data-level="3.1.3" id="pattern-resolution"><span class="secno">3.1.3. </span><span class="content">Pattern Resolution</span><a class="self-link" href="#pattern-resolution"></a></h4>
+<pre class="language-yaml highlight"><c- c1># Module declares:</c->
+<c- f>handles</c-><c- p>:</c->
+  <c- f>url_patterns</c-><c- p>:</c->
+    - https://youtube.com/watch?v=:video_id
+
+<c- c1># Resolves:</c->
+https://youtube.com/watch?v=ABC123 -> [youtube-module]
+</pre>
+   <h3 class="heading settled" data-level="3.2" id="advanced-examples"><span class="secno">3.2. </span><span class="content">Advanced Resolution Examples</span><a class="self-link" href="#advanced-examples"></a></h3>
+   <h4 class="heading settled" data-level="3.2.1" id="wildcard-domains"><span class="secno">3.2.1. </span><span class="content">Wildcard Domains</span><a class="self-link" href="#wildcard-domains"></a></h4>
+<pre class="language-yaml highlight"><c- c1># Module declares:</c->
+<c- f>handles</c-><c- p>:</c->
+  <c- f>url_patterns</c-><c- p>:</c->
+    - https://*.example.com/api/:endpoint
+
+<c- c1># Resolves:</c->
+https://example.com/api/users -> [api-module]
+https://api.example.com/api/users -> [api-module]
+https://v1.api.example.com/api/users -> [api-module]
+</pre>
+   <h4 class="heading settled" data-level="3.2.2" id="multiple-handlers"><span class="secno">3.2.2. </span><span class="content">Multiple Handlers</span><a class="self-link" href="#multiple-handlers"></a></h4>
+<pre class="language-yaml highlight"><c- c1># Module A declares:</c->
+<c- f>handles</c-><c- p>:</c->
+  <c- f>url_protocols</c-><c- p>:</c->
+    - https
+
+<c- c1># Module B declares:</c->
+<c- f>handles</c-><c- p>:</c->
+  <c- f>url_prefixes</c-><c- p>:</c->
+    - https://example.com/
+
+<c- c1># Module C declares:</c->
+<c- f>handles</c-><c- p>:</c->
+  <c- f>url_patterns</c-><c- p>:</c->
+    - https://example.com/api/:endpoint
+
+<c- c1># Resolution:</c->
+https://example.com/api/users -> [Module A, Module B, Module C]
+https://example.com/page -> [Module A, Module B]
+https://other.com/page -> [Module A]
+</pre>
+   <h4 class="heading settled" data-level="3.2.3" id="file-extensions"><span class="secno">3.2.3. </span><span class="content">File Extensions</span><a class="self-link" href="#file-extensions"></a></h4>
+<pre class="language-yaml highlight"><c- c1># Module declares:</c->
+<c- f>handles</c-><c- p>:</c->
+  <c- f>file_extensions</c-><c- p>:</c->
+    - csv
+    - tar.gz
+
+<c- c1># Resolves:</c->
+file:///path/to/data.csv -> [csv-module]
+file:///archive.tar.gz -> [csv-module]
+</pre>
+   <h3 class="heading settled" data-level="3.3" id="complex-scenario"><span class="secno">3.3. </span><span class="content">Complex Resolution Scenario</span><a class="self-link" href="#complex-scenario"></a></h3>
+   <p>Consider a comprehensive example with multiple module types:</p>
+<pre class="language-yaml highlight"><c- c1># Search module</c->
+<c- f>name</c-><c- p>:</c-> search-aggregator
+<c- f>handles</c-><c- p>:</c->
+  <c- f>url_patterns</c-><c- p>:</c->
+    - https://google.com/search?q=:query
+    - https://bing.com/search?q=:query
+
+<c- c1># Social media module</c->
+<c- f>name</c-><c- p>:</c-> social-scraper
+<c- f>handles</c-><c- p>:</c->
+  <c- f>url_prefixes</c-><c- p>:</c->
+    - https://twitter.com/
+    - https://x.com/
+  <c- f>url_patterns</c-><c- p>:</c->
+    - https://youtube.com/watch?v=:video_id
+
+<c- c1># NEAR module</c->
+<c- f>name</c-><c- p>:</c-> near-integration
+<c- f>handles</c-><c- p>:</c->
+  <c- f>url_protocols</c-><c- p>:</c->
+    - near
+  <c- f>url_patterns</c-><c- p>:</c->
+    - https://explorer.near.org/accounts/:account
+
+<c- c1># File processor module</c->
+<c- f>name</c-><c- p>:</c-> data-processor
+<c- f>handles</c-><c- p>:</c->
+  <c- f>file_extensions</c-><c- p>:</c->
+    - csv
+    - json
+</pre>
+   <p>Resolution results:</p>
+   <ul>
+    <li data-md>
+     <p><code class="highlight">https://google.com/search?q=ASIMOV</code> → <code class="highlight">[<c- g>search-aggregator</c->]</code></p>
+    <li data-md>
+     <p><code class="highlight">https://x.com/username</code> → <code class="highlight">[<c- g>social-scraper</c->]</code></p>
+    <li data-md>
+     <p><code class="highlight">https://youtube.com/watch?v=ABC123</code> → <code class="highlight">[<c- g>social-scraper</c->]</code></p>
+    <li data-md>
+     <p><code class="highlight">near://account/alice.near</code> → <code class="highlight">[<c- g>near-integration</c->]</code></p>
+    <li data-md>
+     <p><code class="highlight">https://explorer.near.org/accounts/alice.near</code> → <code class="highlight">[<c- g>near-integration</c->]</code></p>
+    <li data-md>
+     <p><code class="highlight">file:///data/export.csv</code> → <code class="highlight">[<c- g>data-processor</c->]</code></p>
+   </ul>
+   <h2 class="heading settled" data-level="4" id="implementation"><span class="secno">4. </span><span class="content">Implementation Considerations</span><a class="self-link" href="#implementation"></a></h2>
+   <h3 class="heading settled" data-level="4.1" id="data-structures"><span class="secno">4.1. </span><span class="content">Data Structures</span><a class="self-link" href="#data-structures"></a></h3>
+   <h4 class="heading settled" data-level="4.1.1" id="resolver-state"><span class="secno">4.1.1. </span><span class="content">Resolver State</span><a class="self-link" href="#resolver-state"></a></h4>
+   <p>A conforming resolver implementation MUST maintain:</p>
+   <ul>
+    <li data-md>
+     <p><strong>Module registry</strong>: A mapping from module names to module metadata</p>
+    <li data-md>
+     <p><strong>File extension index</strong>: A mapping from file extensions to lists of capable modules</p>
+    <li data-md>
+     <p><strong>State machine nodes</strong>: A collection of nodes representing the resolution state space</p>
+    <li data-md>
+     <p><strong>Root node registry</strong>: A mapping from initial sections to starting nodes</p>
+   </ul>
+   <h4 class="heading settled" data-level="4.1.2" id="node-structure"><span class="secno">4.1.2. </span><span class="content">Node Structure</span><a class="self-link" href="#node-structure"></a></h4>
+   <p>Each node in the state machine MUST contain:</p>
+   <ul>
+    <li data-md>
+     <p><strong>Transition table</strong>: A mapping from section types to destination node identifiers</p>
+    <li data-md>
+     <p><strong>Module set</strong>: A collection of modules that can handle URIs reaching this node</p>
+    <li data-md>
+     <p><strong>Free move target</strong>: An optional reference to a node reachable via free move</p>
+   </ul>
+   <h4 class="heading settled" data-level="4.1.3" id="memory-management"><span class="secno">4.1.3. </span><span class="content">Memory Management</span><a class="self-link" href="#memory-management"></a></h4>
+   <p>Implementations SHOULD consider:</p>
+   <ul>
+    <li data-md>
+     <p><strong>Shared module references</strong>: Avoid duplicating module metadata across nodes</p>
+    <li data-md>
+     <p><strong>Compact node representation</strong>: Use efficient data structures for transition tables</p>
+    <li data-md>
+     <p><strong>Lazy evaluation</strong>: Only compute reachable states when needed</p>
+   </ul>
+   <h3 class="heading settled" data-level="4.2" id="performance"><span class="secno">4.2. </span><span class="content">Performance Considerations</span><a class="self-link" href="#performance"></a></h3>
+   <h4 class="heading settled" data-level="4.2.1" id="complexity"><span class="secno">4.2.1. </span><span class="content">Algorithmic Complexity</span><a class="self-link" href="#complexity"></a></h4>
+   <p>The resolution algorithm has the following complexity characteristics:</p>
+   <ul>
+    <li data-md>
+     <p><strong>Time complexity</strong>: O(n × m) where n is the number of input sections and m is the number of active states</p>
+    <li data-md>
+     <p><strong>Space complexity</strong>: O(k) where k is the total number of registered patterns</p>
+    <li data-md>
+     <p><strong>Preprocessing</strong>: O(p) where p is the number of patterns to register</p>
+   </ul>
+   <h4 class="heading settled" data-level="4.2.2" id="optimization"><span class="secno">4.2.2. </span><span class="content">Optimization Strategies</span><a class="self-link" href="#optimization"></a></h4>
+   <p>Implementations MAY employ:</p>
+   <ul>
+    <li data-md>
+     <p><strong>Early termination</strong>: Stop processing when no more states are reachable</p>
+    <li data-md>
+     <p><strong>State deduplication</strong>: Merge identical states during construction</p>
+    <li data-md>
+     <p><strong>Transition caching</strong>: Cache frequently used transition computations</p>
+    <li data-md>
+     <p><strong>Batch processing</strong>: Process multiple URIs in batches to amortize setup costs</p>
+   </ul>
+   <h3 class="heading settled" data-level="4.3" id="error-handling"><span class="secno">4.3. </span><span class="content">Error Handling</span><a class="self-link" href="#error-handling"></a></h3>
+   <h4 class="heading settled" data-level="4.3.1" id="invalid-uris"><span class="secno">4.3.1. </span><span class="content">Invalid URIs</span><a class="self-link" href="#invalid-uris"></a></h4>
+   <p>The resolver MUST handle invalid URIs gracefully:</p>
+   <ul>
+    <li data-md>
+     <p><strong>Malformed URIs</strong>: Return an error indicating the URI cannot be parsed</p>
+    <li data-md>
+     <p><strong>Empty URIs</strong>: Return an error indicating the URI is empty</p>
+    <li data-md>
+     <p><strong>Unsupported schemes</strong>: Attempt resolution but may return no results</p>
+   </ul>
+   <h4 class="heading settled" data-level="4.3.2" id="resolution-failures"><span class="secno">4.3.2. </span><span class="content">Resolution Failures</span><a class="self-link" href="#resolution-failures"></a></h4>
+   <p>When no modules can handle a URI:</p>
+   <ul>
+    <li data-md>
+     <p><strong>Return empty result</strong>: The resolver SHOULD return an empty list rather than an error</p>
+    <li data-md>
+     <p><strong>Logging</strong>: Implementations MAY log unsuccessful resolution attempts for debugging</p>
+    <li data-md>
+     <p><strong>Fallback modules</strong>: Implementations MAY provide fallback modules for common cases</p>
+   </ul>
+   <h2 class="heading settled" data-level="5" id="security"><span class="secno">5. </span><span class="content">Security Considerations</span><a class="self-link" href="#security"></a></h2>
+   <h3 class="heading settled" data-level="5.1" id="pattern-injection"><span class="secno">5.1. </span><span class="content">Pattern Injection</span><a class="self-link" href="#pattern-injection"></a></h3>
+   <p>Implementations MUST prevent pattern injection attacks:</p>
+   <ul>
+    <li data-md>
+     <p><strong>Input validation</strong>: Validate all pattern strings before registration</p>
+    <li data-md>
+     <p><strong>Sanitization</strong>: Remove or escape potentially dangerous characters</p>
+    <li data-md>
+     <p><strong>Pattern limits</strong>: Impose reasonable limits on pattern complexity</p>
+   </ul>
+   <h3 class="heading settled" data-level="5.2" id="resource-consumption"><span class="secno">5.2. </span><span class="content">Resource Consumption</span><a class="self-link" href="#resource-consumption"></a></h3>
+   <p>The resolution algorithm MUST protect against resource exhaustion:</p>
+   <ul>
+    <li data-md>
+     <p><strong>State explosion</strong>: Limit the number of active states during resolution</p>
+    <li data-md>
+     <p><strong>Pattern complexity</strong>: Impose limits on pattern depth and branching factor</p>
+    <li data-md>
+     <p><strong>Memory usage</strong>: Implement bounds on memory consumption for large pattern sets</p>
+   </ul>
+   <h3 class="heading settled" data-level="5.3" id="uri-validation"><span class="secno">5.3. </span><span class="content">URI Validation</span><a class="self-link" href="#uri-validation"></a></h3>
+   <p>Input URIs SHOULD be validated before processing:</p>
+   <ul>
+    <li data-md>
+     <p><strong>Scheme validation</strong>: Ensure schemes conform to RFC 3986</p>
+    <li data-md>
+     <p><strong>Length limits</strong>: Impose reasonable limits on URI length</p>
+    <li data-md>
+     <p><strong>Character encoding</strong>: Handle Unicode characters appropriately</p>
+   </ul>
+   <h2 class="heading settled" data-level="6" id="iana"><span class="secno">6. </span><span class="content">IANA Considerations</span><a class="self-link" href="#iana"></a></h2>
    <p>This specification does not require any IANA registrations.</p>
-   <h2 class="heading settled" data-level="6" id="acknowledgments"><span class="secno">6. </span><span class="content">Acknowledgments</span><a class="self-link" href="#acknowledgments"></a></h2>
+   <h2 class="heading settled" data-level="7" id="acknowledgments"><span class="secno">7. </span><span class="content">Acknowledgments</span><a class="self-link" href="#acknowledgments"></a></h2>
    <p>The editors would like to thank the ASIMOV Platform community for their contributions and feedback during the development of this specification.</p>
-   <h2 class="heading settled" data-level="7" id="changes"><span class="secno">7. </span><span class="content">Changes</span><a class="self-link" href="#changes"></a></h2>
+   <h2 class="heading settled" data-level="8" id="changes"><span class="secno">8. </span><span class="content">Changes</span><a class="self-link" href="#changes"></a></h2>
    <p>This section will document changes between versions of this specification.</p>
+   <h3 class="heading settled" data-level="8.1" id="v1"><span class="secno">8.1. </span><span class="content">Version 1.0</span><a class="self-link" href="#v1"></a></h3>
+   <p>Initial version of the ASIMOV Module Resolution Specification.</p>
   </main>
   <div data-fill-with="conformance">
    <h2 class="no-ref no-num heading settled" id="conformance"><span class="content">
@@ -2123,6 +2922,24 @@ those data into a knowledge graph dataset.</p>
 
 })();
 </script>
+  <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
+  <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
+  <ul class="index">
+   <li><a href="#domain">Domain</a><span>, in § 2.1.2</span>
+   <li><a href="#file-extension-patterns①">File extension patterns</a><span>, in § 2.2.4</span>
+   <li><a href="#free-moves">Free moves</a><span>, in § 2.3.3</span>
+   <li><a href="#node">node</a><span>, in § 2.3.1</span>
+   <li><a href="#parameterized-patterns①">Parameterized patterns</a><span>, in § 2.2.3</span>
+   <li><a href="#path">Path</a><span>, in § 2.1.2</span>
+   <li><a href="#prefix-patterns①">Prefix patterns</a><span>, in § 2.2.2</span>
+   <li><a href="#protocol">Protocol</a><span>, in § 2.1.2</span>
+   <li><a href="#protocol-patterns①">Protocol patterns</a><span>, in § 2.2.1</span>
+   <li><a href="#queryparamname">QueryParamName</a><span>, in § 2.1.2</span>
+   <li><a href="#queryparamvalue">QueryParamValue</a><span>, in § 2.1.2</span>
+   <li><a href="#wildcard-domain-patterns">Wildcard domain patterns</a><span>, in § 2.2.3.2</span>
+   <li><a href="#wildcard-path-patterns">Wildcard path patterns</a><span>, in § 2.2.3.2</span>
+   <li><a href="#wildcard-query-patterns">Wildcard query patterns</a><span>, in § 2.2.3.2</span>
+  </ul>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
   <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
   <dl>
@@ -2133,4 +2950,604 @@ those data into a knowledge graph dataset.</p>
   <dl>
    <dt id="biblio-asimov">[ASIMOV]
    <dd>Arto Bendiken; et al. <a href="https://asimov.sh"><cite>ASIMOV Platform Documentation</cite></a>. URL: <a href="https://asimov.sh">https://asimov.sh</a>
+   <dt id="biblio-asimov-mms">[ASIMOV-MMS]
+   <dd>Arto Bendiken; et al. <a href="https://asimov-specs.github.io/module-manifest/"><cite>ASIMOV Module Manifest Specification</cite></a>. URL: <a href="https://asimov-specs.github.io/module-manifest/">https://asimov-specs.github.io/module-manifest/</a>
   </dl>
+<script>/* Boilerplate: script-dom-helper */
+"use strict";
+function query(sel) { return document.querySelector(sel); }
+
+function queryAll(sel) { return [...document.querySelectorAll(sel)]; }
+
+function iter(obj) {
+	if(!obj) return [];
+	var it = obj[Symbol.iterator];
+	if(it) return it;
+	return Object.entries(obj);
+}
+
+function mk(tagname, attrs, ...children) {
+	const el = document.createElement(tagname);
+	for(const [k,v] of iter(attrs)) {
+		if(k.slice(0,3) == "_on") {
+			const eventName = k.slice(3);
+			el.addEventListener(eventName, v);
+		} else if(k[0] == "_") {
+			// property, not attribute
+			el[k.slice(1)] = v;
+		} else {
+			if(v === false || v == null) {
+        continue;
+      } else if(v === true) {
+        el.setAttribute(k, "");
+        continue;
+      } else {
+  			el.setAttribute(k, v);
+      }
+		}
+	}
+	append(el, children);
+	return el;
+}
+
+/* Create shortcuts for every known HTML element */
+[
+  "a",
+  "abbr",
+  "acronym",
+  "address",
+  "applet",
+  "area",
+  "article",
+  "aside",
+  "audio",
+  "b",
+  "base",
+  "basefont",
+  "bdo",
+  "big",
+  "blockquote",
+  "body",
+  "br",
+  "button",
+  "canvas",
+  "caption",
+  "center",
+  "cite",
+  "code",
+  "col",
+  "colgroup",
+  "datalist",
+  "dd",
+  "del",
+  "details",
+  "dfn",
+  "dialog",
+  "div",
+  "dl",
+  "dt",
+  "em",
+  "embed",
+  "fieldset",
+  "figcaption",
+  "figure",
+  "font",
+  "footer",
+  "form",
+  "frame",
+  "frameset",
+  "head",
+  "header",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "hr",
+  "html",
+  "i",
+  "iframe",
+  "img",
+  "input",
+  "ins",
+  "kbd",
+  "label",
+  "legend",
+  "li",
+  "link",
+  "main",
+  "map",
+  "mark",
+  "meta",
+  "meter",
+  "nav",
+  "nobr",
+  "noscript",
+  "object",
+  "ol",
+  "optgroup",
+  "option",
+  "output",
+  "p",
+  "param",
+  "pre",
+  "progress",
+  "q",
+  "s",
+  "samp",
+  "script",
+  "section",
+  "select",
+  "small",
+  "source",
+  "span",
+  "strike",
+  "strong",
+  "style",
+  "sub",
+  "summary",
+  "sup",
+  "table",
+  "tbody",
+  "td",
+  "template",
+  "textarea",
+  "tfoot",
+  "th",
+  "thead",
+  "time",
+  "title",
+  "tr",
+  "u",
+  "ul",
+  "var",
+  "video",
+  "wbr",
+  "xmp",
+].forEach(tagname=>{
+	mk[tagname] = (...args) => mk(tagname, ...args);
+});
+
+function* nodesFromChildList(children) {
+	for(const child of children.flat(Infinity)) {
+		if(child instanceof Node) {
+			yield child;
+		} else {
+			yield new Text(child);
+		}
+	}
+}
+function append(el, ...children) {
+	for(const child of nodesFromChildList(children)) {
+		if(el instanceof Node) el.appendChild(child);
+		else el.push(child);
+	}
+	return el;
+}
+
+function insertAfter(el, ...children) {
+	for(const child of nodesFromChildList(children)) {
+		el.parentNode.insertBefore(child, el.nextSibling);
+	}
+	return el;
+}
+
+function clearContents(el) {
+	el.innerHTML = "";
+	return el;
+}
+
+function parseHTML(markup) {
+	if(markup.toLowerCase().trim().indexOf('<!doctype') === 0) {
+		const doc = document.implementation.createHTMLDocument("");
+		doc.documentElement.innerHTML = markup;
+		return doc;
+	} else {
+		const el = mk.template({});
+		el.innerHTML = markup;
+		return el.content;
+	}
+}</script>
+<script>/* Boilerplate: script-dfn-panel */
+"use strict";
+{
+let dfnPanelData = {
+"domain": {"dfnID":"domain","dfnText":"Domain","external":false,"refSections":[],"url":"#domain"},
+"file-extension-patterns①": {"dfnID":"file-extension-patterns\u2460","dfnText":"File extension patterns","external":false,"refSections":[],"url":"#file-extension-patterns\u2460"},
+"free-moves": {"dfnID":"free-moves","dfnText":"Free moves","external":false,"refSections":[],"url":"#free-moves"},
+"node": {"dfnID":"node","dfnText":"node","external":false,"refSections":[],"url":"#node"},
+"parameterized-patterns①": {"dfnID":"parameterized-patterns\u2460","dfnText":"Parameterized patterns","external":false,"refSections":[],"url":"#parameterized-patterns\u2460"},
+"path": {"dfnID":"path","dfnText":"Path","external":false,"refSections":[],"url":"#path"},
+"prefix-patterns①": {"dfnID":"prefix-patterns\u2460","dfnText":"Prefix patterns","external":false,"refSections":[],"url":"#prefix-patterns\u2460"},
+"protocol": {"dfnID":"protocol","dfnText":"Protocol","external":false,"refSections":[],"url":"#protocol"},
+"protocol-patterns①": {"dfnID":"protocol-patterns\u2460","dfnText":"Protocol patterns","external":false,"refSections":[],"url":"#protocol-patterns\u2460"},
+"queryparamname": {"dfnID":"queryparamname","dfnText":"QueryParamName","external":false,"refSections":[],"url":"#queryparamname"},
+"queryparamvalue": {"dfnID":"queryparamvalue","dfnText":"QueryParamValue","external":false,"refSections":[],"url":"#queryparamvalue"},
+"wildcard-domain-patterns": {"dfnID":"wildcard-domain-patterns","dfnText":"Wildcard domain patterns","external":false,"refSections":[],"url":"#wildcard-domain-patterns"},
+"wildcard-path-patterns": {"dfnID":"wildcard-path-patterns","dfnText":"Wildcard path patterns","external":false,"refSections":[],"url":"#wildcard-path-patterns"},
+"wildcard-query-patterns": {"dfnID":"wildcard-query-patterns","dfnText":"Wildcard query patterns","external":false,"refSections":[],"url":"#wildcard-query-patterns"},
+};
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    genAllDfnPanels();
+
+    document.body.addEventListener("click", (e) => {
+        // If not handled already, just hide all dfn panels.
+        hideAllDfnPanels();
+    });
+});
+
+window.addEventListener("resize", () => {
+    // Pin any visible dfn panel
+    queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(el=>positionDfnPanel(el));
+});
+
+function genAllDfnPanels() {
+    for(const panelData of Object.values(dfnPanelData)) {
+        const dfnID = panelData.dfnID;
+        const dfn = document.getElementById(dfnID);
+        if(!dfn) {
+            console.log(`Can't find dfn#${dfnID}.`, panelData);
+            continue;
+        }
+        dfn.panelData = panelData;
+        insertDfnPopupAction(dfn);
+    }
+}
+
+function genDfnPanel(dfn, { dfnID, url, dfnText, refSections, external }) {
+    const dfnPanel = mk.aside({
+        class: "dfn-panel on",
+        id: `infopanel-for-${dfnID}`,
+        "data-for": dfnID,
+        "aria-labelled-by":`infopaneltitle-for-${dfnID}`,
+        },
+        mk.span({id:`infopaneltitle-for-${dfnID}`, style:"display:none"},
+            `Info about the '${dfnText}' ${external?"external":""} reference.`),
+        mk.a({href:url, class:"dfn-link"}, url),
+        refSections.length == 0 ? [] :
+            mk.b({}, "Referenced in:"),
+            mk.ul({},
+                ...refSections.map(section=>
+                    mk.li({},
+                        ...section.refs.map((ref, refI)=>
+                            [
+                                mk.a({ href: `#${ref.id}` },
+                                    (refI == 0) ? section.title : `(${refI + 1})`
+                                ),
+                                " ",
+                            ]
+                        ),
+                    ),
+                ),
+            ),
+        genLinkingSyntaxes(dfn),
+    );
+
+    dfnPanel.addEventListener('click', (event) => {
+        if (event.target.nodeName == 'A') {
+            scrollToTargetAndHighlight(event);
+            pinDfnPanel(dfnPanel);
+        }
+        event.stopPropagation();
+        refocusOnTarget(event);
+    });
+    dfnPanel.addEventListener('keydown', (event) => {
+        if(event.keyCode == 27) { // Escape key
+            hideDfnPanel({dfnPanel});
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    });
+
+    dfnPanel.dfn = dfn;
+    dfn.dfnPanel = dfnPanel;
+    return dfnPanel;
+}
+
+
+
+function hideAllDfnPanels() {
+    // Delete the currently-active dfn panel.
+    queryAll(".dfn-panel").forEach(dfnPanel=>hideDfnPanel({dfnPanel}));
+}
+
+function showDfnPanel(dfn) {
+    hideAllDfnPanels(); // Only display one at a time.
+
+    dfn.setAttribute("aria-expanded", "true");
+
+    const dfnPanel = genDfnPanel(dfn, dfn.panelData);
+
+    // Give the dfn a unique tabindex, and then
+    // give all the tabbable panel bits successive indexes.
+    let tabIndex = 100;
+    dfn.tabIndex = tabIndex++;
+    const tabbable = dfnPanel.querySelectorAll(":is(a, button)");
+    for (const el of tabbable) {
+        el.tabIndex = tabIndex++;
+    }
+
+    append(document.body, dfnPanel);
+    positionDfnPanel(dfnPanel);
+}
+
+function positionDfnPanel(dfnPanel) {
+    const dfn = dfnPanel.dfn;
+    const dfnPos = getBounds(dfn);
+    dfnPanel.style.top = dfnPos.bottom + "px";
+    dfnPanel.style.left = dfnPos.left + "px";
+
+    const panelPos = dfnPanel.getBoundingClientRect();
+    const panelMargin = 8;
+    const maxRight = document.body.parentNode.clientWidth - panelMargin;
+    if (panelPos.right > maxRight) {
+        const overflowAmount = panelPos.right - maxRight;
+        const newLeft = Math.max(panelMargin, dfnPos.left - overflowAmount);
+        dfnPanel.style.left = newLeft + "px";
+    }
+}
+
+function pinDfnPanel(dfnPanel) {
+    // Switch it to "activated" state, which pins it.
+    dfnPanel.classList.add("activated");
+    dfnPanel.style.position = "fixed";
+    dfnPanel.style.left = null;
+    dfnPanel.style.top = null;
+}
+
+function hideDfnPanel({dfn, dfnPanel}) {
+    if(!dfnPanel) dfnPanel = dfn.dfnPanel;
+    if(!dfn) dfn = dfnPanel.dfn;
+    dfn.dfnPanel = undefined;
+    dfnPanel.dfn = undefined;
+    dfn.setAttribute("aria-expanded", "false");
+    dfn.tabIndex = undefined;
+    dfnPanel.remove()
+}
+
+function toggleDfnPanel(dfn) {
+    if(dfn.dfnPanel) {
+        hideDfnPanel(dfn);
+    } else {
+        showDfnPanel(dfn);
+    }
+}
+
+function insertDfnPopupAction(dfn) {
+    dfn.setAttribute('role', 'button');
+    dfn.setAttribute('aria-expanded', 'false')
+    dfn.tabIndex = 0;
+    dfn.classList.add('has-dfn-panel');
+    dfn.addEventListener('click', (event) => {
+        toggleDfnPanel(dfn);
+        event.stopPropagation();
+    });
+    dfn.addEventListener('keypress', (event) => {
+        const kc = event.keyCode;
+        // 32->Space, 13->Enter
+        if(kc == 32 || kc == 13) {
+            toggleDfnPanel(dfn);
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    });
+}
+
+function refocusOnTarget(event) {
+    const target = event.target;
+    setTimeout(() => {
+        // Refocus on the event.target element.
+        // This is needed after browser scrolls to the destination.
+        target.focus();
+    });
+}
+
+// TODO: shared util
+// Returns the root-level absolute position {left and top} of element.
+function getBounds(el, relativeTo=document.body) {
+    const relativeRect = relativeTo.getBoundingClientRect();
+    const elRect = el.getBoundingClientRect();
+    const top = elRect.top - relativeRect.top;
+    const left = elRect.left - relativeRect.left;
+    return {
+        top,
+        left,
+        bottom: top + elRect.height,
+        right: left + elRect.width,
+    }
+}
+
+function scrollToTargetAndHighlight(event) {
+    let hash = event.target.hash;
+    if (hash) {
+        hash = decodeURIComponent(hash.substring(1));
+        const dest = document.getElementById(hash);
+        if (dest) {
+            dest.classList.add('highlighted');
+            setTimeout(() => dest.classList.remove('highlighted'), 1000);
+        }
+    }
+}
+
+// Functions, divided by link type, that wrap an autolink's
+// contents with the appropriate outer syntax.
+// Alternately, a string naming another type they format
+// the same as.
+function needsFor(type) {
+    switch(type) {
+        case "descriptor":
+        case "value":
+        case "element-attr":
+        case "attr-value":
+        case "element-state":
+        case "method":
+        case "constructor":
+        case "argument":
+        case "attribute":
+        case "const":
+        case "dict-member":
+        case "event":
+        case "enum-value":
+        case "stringifier":
+        case "serializer":
+        case "iterator":
+        case "maplike":
+        case "setlike":
+        case "state":
+        case "mode":
+        case "context":
+        case "facet": return true;
+
+        default: return false;
+    }
+}
+function refusesFor(type) {
+    switch(type) {
+        case "property":
+        case "element":
+        case "interface":
+        case "namespace":
+        case "callback":
+        case "dictionary":
+        case "enum":
+        case "exception":
+        case "typedef":
+        case "http-header":
+        case "permission": return true;
+
+        default: return false;
+    }
+}
+function linkFormatterFromType(type) {
+    switch(type) {
+        case 'scheme':
+        case 'permission':
+        case 'dfn': return (text) => `[=${text}=]`;
+
+        case 'abstract-op': return (text) => `[\$${text}\$]`;
+
+        case 'function':
+        case 'at-rule':
+        case 'selector':
+        case 'value': return (text) => `''${text}''`;
+
+        case 'http-header': return (text) => `[:${text}:]`;
+
+        case 'interface':
+        case 'constructor':
+        case 'method':
+        case 'argument':
+        case 'attribute':
+        case 'callback':
+        case 'dictionary':
+        case 'dict-member':
+        case 'enum':
+        case 'enum-value':
+        case 'exception':
+        case 'const':
+        case 'typedef':
+        case 'stringifier':
+        case 'serializer':
+        case 'iterator':
+        case 'maplike':
+        case 'setlike':
+        case 'extended-attribute':
+        case 'event':
+        case 'idl': return (text) => `{{${text}}}`;
+
+        case 'element-state':
+        case 'element-attr':
+        case 'attr-value':
+        case 'element': return (element) => `<{${element}}>`;
+
+        case 'grammar': return (text) => `${text} (within a <pre class=prod>)`;
+
+        case 'type': return (text)=> `<<${text}>>`;
+
+        case 'descriptor':
+        case 'property': return (text) => `'${text}'`;
+
+        default: return;
+    };
+};
+
+function genLinkingSyntaxes(dfn) {
+    if(dfn.tagName != "DFN") return;
+
+    const type = dfn.getAttribute('data-dfn-type');
+    if(!type) {
+        console.log(`<dfn> doesn't have a data-dfn-type:`, dfn);
+        return [];
+    }
+
+    // Return a function that wraps link text based on the type
+    const linkFormatter = linkFormatterFromType(type);
+    if(!linkFormatter) {
+        console.log(`<dfn> has an unknown data-dfn-type:`, dfn);
+        return [];
+    }
+
+    let ltAlts;
+    if(dfn.hasAttribute('data-lt')) {
+        ltAlts = dfn.getAttribute('data-lt')
+            .split("|")
+            .map(x=>x.trim());
+    } else {
+        ltAlts = [dfn.textContent.trim()];
+    }
+    if(type == "type") {
+        // lt of "<foo>", but "foo" is the interior;
+        // <<foo/bar>> is how you write it with a for,
+        // not <foo/<bar>> or whatever.
+        for(var i = 0; i < ltAlts.length; i++) {
+            const lt = ltAlts[i];
+            const match = /<(.*)>/.exec(lt);
+            if(match) { ltAlts[i] = match[1]; }
+        }
+    }
+
+    let forAlts;
+    if(dfn.hasAttribute('data-dfn-for')) {
+        forAlts = dfn.getAttribute('data-dfn-for')
+            .split(",")
+            .map(x=>x.trim());
+    } else {
+        forAlts = [''];
+    }
+
+    let linkingSyntaxes = [];
+    if(!needsFor(type)) {
+        for(const lt of ltAlts) {
+            linkingSyntaxes.push(linkFormatter(lt));
+        }
+    }
+    if(!refusesFor(type)) {
+        for(const f of forAlts) {
+            linkingSyntaxes.push(linkFormatter(`${f}/${ltAlts[0]}`))
+        }
+    }
+    return [
+        mk.b({}, 'Possible linking syntaxes:'),
+        mk.ul({},
+            ...linkingSyntaxes.map(link => {
+                const copyLink = async () =>
+                    await navigator.clipboard.writeText(link);
+                return mk.li({},
+                    mk.div({ class: 'link-item' },
+                        mk.button({
+                            class: 'copy-icon', title: 'Copy',
+                            type: 'button',
+                            _onclick: copyLink,
+                            tabindex: 0,
+                        }, mk.span({ class: 'icon' }) ),
+                        mk.span({}, link)
+                    )
+                );
+            })
+        )
+    ];
+}
+}
+</script>
