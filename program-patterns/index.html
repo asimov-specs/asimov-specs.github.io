@@ -1812,6 +1812,130 @@ figcaption:not(.no-marker)::before {
     content: "Figure " counter(figure) " ";
 }
 </style>
+<style>/* Boilerplate: style-dfn-panel */
+:root {
+    --dfnpanel-bg: #ddd;
+    --dfnpanel-text: var(--text);
+    --dfnpanel-target-bg: #ffc;
+    --dfnpanel-target-outline: orange;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --dfnpanel-bg: #222;
+        --dfnpanel-text: var(--text);
+        --dfnpanel-target-bg: #333;
+        --dfnpanel-target-outline: silver;
+    }
+}
+.dfn-panel {
+    position: absolute;
+    z-index: 35;
+    width: 20em;
+    width: 300px;
+    height: auto;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.75em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: var(--dfnpanel-bg);
+    color: var(--dfnpanel-text);
+    border: outset 0.2em;
+    white-space: normal; /* in case it's moved into a pre */
+}
+.dfn-panel:not(.on) { display: none; }
+.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
+.dfn-panel > b { display: block; }
+.dfn-panel a { color: var(--dfnpanel-text); }
+.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
+.dfn-panel a:focus {
+    outline: 5px auto Highlight;
+    outline: 5px auto -webkit-focus-ring-color;
+}
+.dfn-panel > b + b { margin-top: 0.25em; }
+.dfn-panel ul { padding: 0 0 0 1em; list-style: none; }
+.dfn-panel li a {
+    max-width: calc(300px - 1.5em - 1em);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dfn-panel.activated {
+    display: inline-block;
+    position: fixed;
+    left: 8px;
+    bottom: 2em;
+    margin: 0 auto;
+    max-width: calc(100vw - 1.5em - .4em - .5em);
+    max-height: 30vh;
+    transition: left 1s ease-out, bottom 1s ease-out;
+}
+
+.dfn-panel .link-item:hover {
+    text-decoration: underline;
+}
+.dfn-panel .link-item .copy-icon {
+    opacity: 0;
+}
+.dfn-panel .link-item:hover .copy-icon,
+.dfn-panel .link-item .copy-icon:focus {
+    opacity: 1;
+}
+
+.dfn-panel .copy-icon {
+    display: inline-block;
+    margin-right: 0.5em;
+    width: 0.85em;
+    height: 1em;
+    border-radius: 3px;
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+.dfn-panel .copy-icon .icon {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.dfn-panel .copy-icon .icon::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    background-color: #ccc;
+    opacity: 0.25;
+    transform: translate(3px, -3px);
+}
+
+.dfn-panel .copy-icon:active .icon::before {
+    opacity: 1;
+}
+
+.dfn-paneled[role="button"] { cursor: help; }
+
+.highlighted {
+    animation: target-fade 3s;
+}
+
+@keyframes target-fade {
+    from {
+        background-color: var(--dfnpanel-target-bg);
+        outline: 5px solid var(--dfnpanel-target-outline);
+    }
+    to {
+        color: var(--a-normal-text);
+        background-color: transparent;
+        outline: transparent;
+    }
+}
+</style>
 <style>/* Boilerplate: style-issues */
 a[href].issue-return {
     float: right;
@@ -1890,12 +2014,133 @@ a.self-link::before            { content: "¶"; }
 .heading > a.self-link::before { content: "§"; }
 dfn > a.self-link::before      { content: "#"; }
 </style>
+<style>/* Boilerplate: style-syntax-highlighting */
+code.highlight { padding: .1em; border-radius: .3em; }
+pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em 0; overflow: auto; border-radius: 0; }
+
+.highlight:not(.idl) { background: rgba(0, 0, 0, .03); }
+c-[a] { color: #990055 } /* Keyword.Declaration */
+c-[b] { color: #990055 } /* Keyword.Type */
+c-[c] { color: #708090 } /* Comment */
+c-[d] { color: #708090 } /* Comment.Multiline */
+c-[e] { color: #0077aa } /* Name.Attribute */
+c-[f] { color: #669900 } /* Name.Tag */
+c-[g] { color: #222222 } /* Name.Variable */
+c-[k] { color: #990055 } /* Keyword */
+c-[l] { color: #000000 } /* Literal */
+c-[m] { color: #000000 } /* Literal.Number */
+c-[n] { color: #0077aa } /* Name */
+c-[o] { color: #999999 } /* Operator */
+c-[p] { color: #999999 } /* Punctuation */
+c-[s] { color: #a67f59 } /* Literal.String */
+c-[t] { color: #a67f59 } /* Literal.String.Single */
+c-[u] { color: #a67f59 } /* Literal.String.Double */
+c-[cp] { color: #708090 } /* Comment.Preproc */
+c-[c1] { color: #708090 } /* Comment.Single */
+c-[cs] { color: #708090 } /* Comment.Special */
+c-[kc] { color: #990055 } /* Keyword.Constant */
+c-[kn] { color: #990055 } /* Keyword.Namespace */
+c-[kp] { color: #990055 } /* Keyword.Pseudo */
+c-[kr] { color: #990055 } /* Keyword.Reserved */
+c-[ld] { color: #000000 } /* Literal.Date */
+c-[nc] { color: #0077aa } /* Name.Class */
+c-[no] { color: #0077aa } /* Name.Constant */
+c-[nd] { color: #0077aa } /* Name.Decorator */
+c-[ni] { color: #0077aa } /* Name.Entity */
+c-[ne] { color: #0077aa } /* Name.Exception */
+c-[nf] { color: #0077aa } /* Name.Function */
+c-[nl] { color: #0077aa } /* Name.Label */
+c-[nn] { color: #0077aa } /* Name.Namespace */
+c-[py] { color: #0077aa } /* Name.Property */
+c-[ow] { color: #999999 } /* Operator.Word */
+c-[mb] { color: #000000 } /* Literal.Number.Bin */
+c-[mf] { color: #000000 } /* Literal.Number.Float */
+c-[mh] { color: #000000 } /* Literal.Number.Hex */
+c-[mi] { color: #000000 } /* Literal.Number.Integer */
+c-[mo] { color: #000000 } /* Literal.Number.Oct */
+c-[sb] { color: #a67f59 } /* Literal.String.Backtick */
+c-[sc] { color: #a67f59 } /* Literal.String.Char */
+c-[sd] { color: #a67f59 } /* Literal.String.Doc */
+c-[se] { color: #a67f59 } /* Literal.String.Escape */
+c-[sh] { color: #a67f59 } /* Literal.String.Heredoc */
+c-[si] { color: #a67f59 } /* Literal.String.Interpol */
+c-[sx] { color: #a67f59 } /* Literal.String.Other */
+c-[sr] { color: #a67f59 } /* Literal.String.Regex */
+c-[ss] { color: #a67f59 } /* Literal.String.Symbol */
+c-[vc] { color: #0077aa } /* Name.Variable.Class */
+c-[vg] { color: #0077aa } /* Name.Variable.Global */
+c-[vi] { color: #0077aa } /* Name.Variable.Instance */
+c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
+
+@media (prefers-color-scheme: dark) {
+    .highlight:not(.idl) { background: rgba(255, 255, 255, .05); }
+
+    c-[a] { color: #d33682 } /* Keyword.Declaration */
+    c-[b] { color: #d33682 } /* Keyword.Type */
+    c-[c] { color: #2aa198 } /* Comment */
+    c-[d] { color: #2aa198 } /* Comment.Multiline */
+    c-[e] { color: #268bd2 } /* Name.Attribute */
+    c-[f] { color: #b58900 } /* Name.Tag */
+    c-[g] { color: #cb4b16 } /* Name.Variable */
+    c-[k] { color: #d33682 } /* Keyword */
+    c-[l] { color: #657b83 } /* Literal */
+    c-[m] { color: #657b83 } /* Literal.Number */
+    c-[n] { color: #268bd2 } /* Name */
+    c-[o] { color: #657b83 } /* Operator */
+    c-[p] { color: #657b83 } /* Punctuation */
+    c-[s] { color: #6c71c4 } /* Literal.String */
+    c-[t] { color: #6c71c4 } /* Literal.String.Single */
+    c-[u] { color: #6c71c4 } /* Literal.String.Double */
+    c-[ch] { color: #2aa198 } /* Comment.Hashbang */
+    c-[cp] { color: #2aa198 } /* Comment.Preproc */
+    c-[cpf] { color: #2aa198 } /* Comment.PreprocFile */
+    c-[c1] { color: #2aa198 } /* Comment.Single */
+    c-[cs] { color: #2aa198 } /* Comment.Special */
+    c-[kc] { color: #d33682 } /* Keyword.Constant */
+    c-[kn] { color: #d33682 } /* Keyword.Namespace */
+    c-[kp] { color: #d33682 } /* Keyword.Pseudo */
+    c-[kr] { color: #d33682 } /* Keyword.Reserved */
+    c-[ld] { color: #657b83 } /* Literal.Date */
+    c-[nc] { color: #268bd2 } /* Name.Class */
+    c-[no] { color: #268bd2 } /* Name.Constant */
+    c-[nd] { color: #268bd2 } /* Name.Decorator */
+    c-[ni] { color: #268bd2 } /* Name.Entity */
+    c-[ne] { color: #268bd2 } /* Name.Exception */
+    c-[nf] { color: #268bd2 } /* Name.Function */
+    c-[nl] { color: #268bd2 } /* Name.Label */
+    c-[nn] { color: #268bd2 } /* Name.Namespace */
+    c-[py] { color: #268bd2 } /* Name.Property */
+    c-[ow] { color: #657b83 } /* Operator.Word */
+    c-[mb] { color: #657b83 } /* Literal.Number.Bin */
+    c-[mf] { color: #657b83 } /* Literal.Number.Float */
+    c-[mh] { color: #657b83 } /* Literal.Number.Hex */
+    c-[mi] { color: #657b83 } /* Literal.Number.Integer */
+    c-[mo] { color: #657b83 } /* Literal.Number.Oct */
+    c-[sa] { color: #6c71c4 } /* Literal.String.Affix */
+    c-[sb] { color: #6c71c4 } /* Literal.String.Backtick */
+    c-[sc] { color: #6c71c4 } /* Literal.String.Char */
+    c-[dl] { color: #6c71c4 } /* Literal.String.Delimiter */
+    c-[sd] { color: #6c71c4 } /* Literal.String.Doc */
+    c-[se] { color: #6c71c4 } /* Literal.String.Escape */
+    c-[sh] { color: #6c71c4 } /* Literal.String.Heredoc */
+    c-[si] { color: #6c71c4 } /* Literal.String.Interpol */
+    c-[sx] { color: #6c71c4 } /* Literal.String.Other */
+    c-[sr] { color: #6c71c4 } /* Literal.String.Regex */
+    c-[ss] { color: #6c71c4 } /* Literal.String.Symbol */
+    c-[fm] { color: #268bd2 } /* Name.Function.Magic */
+    c-[vc] { color: #cb4b16 } /* Name.Variable.Class */
+    c-[vg] { color: #cb4b16 } /* Name.Variable.Global */
+    c-[vi] { color: #cb4b16 } /* Name.Variable.Instance */
+    c-[vm] { color: #cb4b16 } /* Name.Variable.Magic */
+    c-[il] { color: #657b83 } /* Literal.Number.Integer.Long */
+}
+</style>
  <body class="h-entry">
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">ASIMOV Program Patterns Specification (PPS)</h1>
    <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Living Standard,
-    <time class="dt-updated" datetime="2025-06-26">26 June 2025</time></span></h2>
+    <time class="dt-updated" datetime="2025-07-17">17 July 2025</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1910,7 +2155,7 @@ dfn > a.self-link::before      { content: "#"; }
    <p class="copyright" data-fill-with="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" height="15" src="https://licensebuttons.net/p/zero/1.0/80x15.png" width="80"></a>
 To the extent possible under law, the editors have waived all copyright
 and related or neighboring rights to this work.
-In addition, as of 26 June 2025,
+In addition, as of 17 July 2025,
 the editors have made this specification available under the
 <a href="https://www.openwebfoundation.org/the-agreements/the-owf-1-0-agreements-granted-claims/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at https://www.openwebfoundation.org/the-agreements/the-owf-1-0-agreements-granted-claims/owfa-1-0.
@@ -1928,13 +2173,82 @@ Parts of this work may be from another specification document.  If so, those par
    <ol class="toc" role="directory">
     <li><a href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
     <li><a href="#examples"><span class="secno">2</span> <span class="content">Examples</span></a>
-    <li><a href="#rdf-mapping"><span class="secno">3</span> <span class="content">RDF Mapping</span></a>
-    <li><a href="#security"><span class="secno">4</span> <span class="content">Security Considerations</span></a>
-    <li><a href="#iana"><span class="secno">5</span> <span class="content">IANA Considerations</span></a>
-    <li><a href="#acknowledgments"><span class="secno">6</span> <span class="content">Acknowledgments</span></a>
-    <li><a href="#changes"><span class="secno">7</span> <span class="content">Changes</span></a>
+    <li>
+     <a href="#patterns"><span class="secno">3</span> <span class="content">Patterns</span></a>
+     <ol class="toc">
+      <li>
+       <a href="#adapter①"><span class="secno">3.1</span> <span class="content">Adapter</span></a>
+       <ol class="toc">
+        <li><a href="#writer-arguments"><span class="secno">3.1.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#adapter-options"><span class="secno">3.1.2</span> <span class="content">Options</span></a>
+       </ol>
+      <li>
+       <a href="#cataloger①"><span class="secno">3.2</span> <span class="content">Cataloger</span></a>
+       <ol class="toc">
+        <li><a href="#writer-arguments①"><span class="secno">3.2.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#cataloger-options"><span class="secno">3.2.2</span> <span class="content">Options</span></a>
+       </ol>
+      <li>
+       <a href="#emitter①"><span class="secno">3.3</span> <span class="content">Emitter</span></a>
+       <ol class="toc">
+        <li><a href="#writer-arguments②"><span class="secno">3.3.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#emitter-options"><span class="secno">3.3.2</span> <span class="content">Options</span></a>
+       </ol>
+      <li>
+       <a href="#fetcher①"><span class="secno">3.4</span> <span class="content">Fetcher</span></a>
+       <ol class="toc">
+        <li><a href="#writer-arguments③"><span class="secno">3.4.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#fetcher-options"><span class="secno">3.4.2</span> <span class="content">Options</span></a>
+       </ol>
+      <li>
+       <a href="#prompter①"><span class="secno">3.5</span> <span class="content">Prompter</span></a>
+       <ol class="toc">
+        <li><a href="#writer-arguments④"><span class="secno">3.5.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#prompter-options"><span class="secno">3.5.2</span> <span class="content">Options</span></a>
+       </ol>
+      <li>
+       <a href="#reader①"><span class="secno">3.6</span> <span class="content">Reader</span></a>
+       <ol class="toc">
+        <li><a href="#writer-arguments⑤"><span class="secno">3.6.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#reader-options"><span class="secno">3.6.2</span> <span class="content">Options</span></a>
+       </ol>
+      <li>
+       <a href="#reasoner①"><span class="secno">3.7</span> <span class="content">Reasoner</span></a>
+       <ol class="toc">
+        <li><a href="#writer-arguments⑥"><span class="secno">3.7.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#reasoner-options"><span class="secno">3.7.2</span> <span class="content">Options</span></a>
+       </ol>
+      <li>
+       <a href="#resolver①"><span class="secno">3.8</span> <span class="content">Resolver</span></a>
+       <ol class="toc">
+        <li><a href="#writer-arguments⑦"><span class="secno">3.8.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#resolver-options"><span class="secno">3.8.2</span> <span class="content">Options</span></a>
+       </ol>
+      <li>
+       <a href="#runner①"><span class="secno">3.9</span> <span class="content">Runner</span></a>
+       <ol class="toc">
+        <li><a href="#writer-arguments⑧"><span class="secno">3.9.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#runner-options"><span class="secno">3.9.2</span> <span class="content">Options</span></a>
+       </ol>
+      <li>
+       <a href="#writer①"><span class="secno">3.10</span> <span class="content">Writer</span></a>
+       <ol class="toc">
+        <li><a href="#writer-arguments⑨"><span class="secno">3.10.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#writer-options"><span class="secno">3.10.2</span> <span class="content">Options</span></a>
+       </ol>
+     </ol>
+    <li><a href="#rdf-mapping"><span class="secno">4</span> <span class="content">RDF Mapping</span></a>
+    <li><a href="#security"><span class="secno">5</span> <span class="content">Security Considerations</span></a>
+    <li><a href="#iana"><span class="secno">6</span> <span class="content">IANA Considerations</span></a>
+    <li><a href="#acknowledgments"><span class="secno">7</span> <span class="content">Acknowledgments</span></a>
+    <li><a href="#changes"><span class="secno">8</span> <span class="content">Changes</span></a>
     <li><a href="#conformance"><span class="secno"></span> <span class="content">
     Conformance</span></a>
+    <li>
+     <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
+     <ol class="toc">
+      <li><a href="#index-defined-here"><span class="secno"></span> <span class="content">Terms defined by this specification</span></a>
+     </ol>
     <li>
      <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
      <ol class="toc">
@@ -1950,13 +2264,454 @@ neurosymbolic AI.</p>
    <p>This specification establishes standardized programming patterns and best
 practices for developing robust and maintainable ASIMOV software components.</p>
    <h2 class="heading settled" data-level="2" id="examples"><span class="secno">2. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
-   <h2 class="heading settled" data-level="3" id="rdf-mapping"><span class="secno">3. </span><span class="content">RDF Mapping</span><a class="self-link" href="#rdf-mapping"></a></h2>
-   <h2 class="heading settled" data-level="4" id="security"><span class="secno">4. </span><span class="content">Security Considerations</span><a class="self-link" href="#security"></a></h2>
-   <h2 class="heading settled" data-level="5" id="iana"><span class="secno">5. </span><span class="content">IANA Considerations</span><a class="self-link" href="#iana"></a></h2>
+   <h2 class="heading settled" data-level="3" id="patterns"><span class="secno">3. </span><span class="content">Patterns</span><a class="self-link" href="#patterns"></a></h2>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Name
+      <th align="left">Summary
+      <th align="left">Input
+      <th align="left">Arity
+      <th align="left">Output
+      <th align="left">Arity
+    <tbody>
+     <tr>
+      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="adapter">Adapter</dfn>
+      <td align="left">RDF dataset proxy.
+      <td align="left">SPARQL
+      <td align="left">1
+      <td align="left">RDF
+      <td align="left">N
+     <tr>
+      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="cataloger">Cataloger</dfn>
+      <td align="left">Directory iterator.
+      <td align="left">URL
+      <td align="left">1
+      <td align="left">RDF
+      <td align="left">N
+     <tr>
+      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="emitter">Emitter</dfn>
+      <td align="left">Value generator.
+      <td align="left">-
+      <td align="left">0
+      <td align="left">RDF
+      <td align="left">N
+     <tr>
+      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="fetcher">Fetcher</dfn>
+      <td align="left">URL protocol client.
+      <td align="left">URL
+      <td align="left">1
+      <td align="left">RDF
+      <td align="left">1
+     <tr>
+      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="prompter">Prompter</dfn>
+      <td align="left">LLM inference provider.
+      <td align="left">text
+      <td align="left">1
+      <td align="left">text
+      <td align="left">1
+     <tr>
+      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="reader">Reader</dfn>
+      <td align="left">RDF dataset importer.
+      <td align="left">any
+      <td align="left">1
+      <td align="left">RDF
+      <td align="left">N
+     <tr>
+      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="reasoner">Reasoner</dfn>
+      <td align="left">RDF dataset entailer.
+      <td align="left">RDF
+      <td align="left">N
+      <td align="left">RDF
+      <td align="left">N
+     <tr>
+      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="resolver">Resolver</dfn>
+      <td align="left">URI resolver.
+      <td align="left">URI
+      <td align="left">1
+      <td align="left">URL
+      <td align="left">N
+     <tr>
+      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="runner">Runner</dfn>
+      <td align="left">Language runtime engine.
+      <td align="left">any
+      <td align="left">1
+      <td align="left">text
+      <td align="left">1
+     <tr>
+      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="writer">Writer</dfn>
+      <td align="left">RDF dataset exporter.
+      <td align="left">RDF
+      <td align="left">N
+      <td align="left">any
+      <td align="left">1
+   </table>
+   <h3 class="heading settled" data-level="3.1" id="adapter①"><span class="secno">3.1. </span><span class="content">Adapter</span><a class="self-link" href="#adapter①"></a></h3>
+   <p>RDF dataset proxy. Consumes SPARQL input, produces RDF output.</p>
+   <h4 class="heading settled" data-level="3.1.1" id="writer-arguments"><span class="secno">3.1.1. </span><span class="content">Arguments</span><a class="self-link" href="#writer-arguments"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Argument
+      <th align="left">Arity
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">QUERY-FILE</code>
+      <td align="left">1
+      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdin</code>)
+      <td align="left">The SPARQL query file path.
+   </table>
+   <h4 class="heading settled" data-level="3.1.2" id="adapter-options"><span class="secno">3.1.2. </span><span class="content">Options</span><a class="self-link" href="#adapter-options"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Option
+      <th align="left">Flag
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">--output=FORMAT</code>
+      <td align="left"><code class="highlight">-o</code>
+      <td align="left"><code class="highlight">jsonld</code>
+      <td align="left">The output format.
+   </table>
+   <h3 class="heading settled" data-level="3.2" id="cataloger①"><span class="secno">3.2. </span><span class="content">Cataloger</span><a class="self-link" href="#cataloger①"></a></h3>
+   <p>Directory iterator. Takes a URL input, produces RDF output.</p>
+   <h4 class="heading settled" data-level="3.2.1" id="writer-arguments①"><span class="secno">3.2.1. </span><span class="content">Arguments</span><a class="self-link" href="#writer-arguments①"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Argument
+      <th align="left">Arity
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">INPUT-URL</code>
+      <td align="left">1
+      <td align="left">none
+      <td align="left">The input URL.
+   </table>
+   <h4 class="heading settled" data-level="3.2.2" id="cataloger-options"><span class="secno">3.2.2. </span><span class="content">Options</span><a class="self-link" href="#cataloger-options"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Option
+      <th align="left">Flag
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">--limit=COUNT</code>
+      <td align="left"><code class="highlight">-n</code>
+      <td align="left">none
+      <td align="left">The maximum number of outputs.
+     <tr>
+      <td align="left"><code class="highlight">--output=FORMAT</code>
+      <td align="left"><code class="highlight">-o</code>
+      <td align="left"><code class="highlight">jsonld</code>
+      <td align="left">The output format.
+   </table>
+   <h3 class="heading settled" data-level="3.3" id="emitter①"><span class="secno">3.3. </span><span class="content">Emitter</span><a class="self-link" href="#emitter①"></a></h3>
+   <p>Value generator. Produces an RDF output.</p>
+   <h4 class="heading settled" data-level="3.3.1" id="writer-arguments②"><span class="secno">3.3.1. </span><span class="content">Arguments</span><a class="self-link" href="#writer-arguments②"></a></h4>
+   <p>Emitters require no positional arguments.</p>
+   <h4 class="heading settled" data-level="3.3.2" id="emitter-options"><span class="secno">3.3.2. </span><span class="content">Options</span><a class="self-link" href="#emitter-options"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Option
+      <th align="left">Flag
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">--output=FORMAT</code>
+      <td align="left"><code class="highlight">-o</code>
+      <td align="left"><code class="highlight">jsonld</code>
+      <td align="left">The output format.
+   </table>
+   <h3 class="heading settled" data-level="3.4" id="fetcher①"><span class="secno">3.4. </span><span class="content">Fetcher</span><a class="self-link" href="#fetcher①"></a></h3>
+   <p>URL protocol fetcher. Consumes a URL input, produces RDF output.</p>
+   <h4 class="heading settled" data-level="3.4.1" id="writer-arguments③"><span class="secno">3.4.1. </span><span class="content">Arguments</span><a class="self-link" href="#writer-arguments③"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Argument
+      <th align="left">Arity
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">INPUT-URL</code>
+      <td align="left">1
+      <td align="left">none
+      <td align="left">The input URL.
+   </table>
+   <h4 class="heading settled" data-level="3.4.2" id="fetcher-options"><span class="secno">3.4.2. </span><span class="content">Options</span><a class="self-link" href="#fetcher-options"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Option
+      <th align="left">Flag
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">--output=FORMAT</code>
+      <td align="left"><code class="highlight">-o</code>
+      <td align="left"><code class="highlight">jsonld</code>
+      <td align="left">The output format.
+   </table>
+   <h3 class="heading settled" data-level="3.5" id="prompter①"><span class="secno">3.5. </span><span class="content">Prompter</span><a class="self-link" href="#prompter①"></a></h3>
+   <p>LLM inference provider. Consumes prompt input, produces response output.</p>
+   <h4 class="heading settled" data-level="3.5.1" id="writer-arguments④"><span class="secno">3.5.1. </span><span class="content">Arguments</span><a class="self-link" href="#writer-arguments④"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Argument
+      <th align="left">Arity
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">INPUT-FILE</code>
+      <td align="left">0..1
+      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdin</code>)
+      <td align="left">The input file path.
+     <tr>
+      <td align="left"><code class="highlight">OUTPUT-FILE</code>
+      <td align="left">0..1
+      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdout</code>)
+      <td align="left">The output file path.
+   </table>
+   <h4 class="heading settled" data-level="3.5.2" id="prompter-options"><span class="secno">3.5.2. </span><span class="content">Options</span><a class="self-link" href="#prompter-options"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Option
+      <th align="left">Flag
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">--input=FORMAT</code>
+      <td align="left"><code class="highlight">-i</code>
+      <td align="left"><code class="highlight">text</code>
+      <td align="left">The input format.
+     <tr>
+      <td align="left"><code class="highlight">--model=MODEL</code>
+      <td align="left"><code class="highlight">-m</code>
+      <td align="left"><code class="highlight">auto</code>
+      <td align="left">The inference model.
+     <tr>
+      <td align="left"><code class="highlight">--output=FORMAT</code>
+      <td align="left"><code class="highlight">-o</code>
+      <td align="left"><code class="highlight">text</code>
+      <td align="left">The output format.
+   </table>
+   <h3 class="heading settled" data-level="3.6" id="reader①"><span class="secno">3.6. </span><span class="content">Reader</span><a class="self-link" href="#reader①"></a></h3>
+   <p>RDF dataset importer. Consumes some input, produces RDF output.</p>
+   <h4 class="heading settled" data-level="3.6.1" id="writer-arguments⑤"><span class="secno">3.6.1. </span><span class="content">Arguments</span><a class="self-link" href="#writer-arguments⑤"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Argument
+      <th align="left">Arity
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">INPUT-FILE</code>
+      <td align="left">0..1
+      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdin</code>)
+      <td align="left">The input file path.
+     <tr>
+      <td align="left"><code class="highlight">OUTPUT-FILE</code>
+      <td align="left">0..1
+      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdout</code>)
+      <td align="left">The output file path.
+   </table>
+   <h4 class="heading settled" data-level="3.6.2" id="reader-options"><span class="secno">3.6.2. </span><span class="content">Options</span><a class="self-link" href="#reader-options"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Option
+      <th align="left">Flag
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">--input=FORMAT</code>
+      <td align="left"><code class="highlight">-i</code>
+      <td align="left"><code class="highlight">auto</code>
+      <td align="left">The input format.
+     <tr>
+      <td align="left"><code class="highlight">--output=FORMAT</code>
+      <td align="left"><code class="highlight">-o</code>
+      <td align="left"><code class="highlight">jsonld</code>
+      <td align="left">The output format.
+   </table>
+   <h3 class="heading settled" data-level="3.7" id="reasoner①"><span class="secno">3.7. </span><span class="content">Reasoner</span><a class="self-link" href="#reasoner①"></a></h3>
+   <p>RDF dataset entailer. Consumes RDF input, produces entailed RDF output.</p>
+   <h4 class="heading settled" data-level="3.7.1" id="writer-arguments⑥"><span class="secno">3.7.1. </span><span class="content">Arguments</span><a class="self-link" href="#writer-arguments⑥"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Argument
+      <th align="left">Arity
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">INPUT-FILE</code>
+      <td align="left">0..1
+      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdin</code>)
+      <td align="left">The input file path.
+     <tr>
+      <td align="left"><code class="highlight">OUTPUT-FILE</code>
+      <td align="left">0..1
+      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdout</code>)
+      <td align="left">The output file path.
+   </table>
+   <h4 class="heading settled" data-level="3.7.2" id="reasoner-options"><span class="secno">3.7.2. </span><span class="content">Options</span><a class="self-link" href="#reasoner-options"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Option
+      <th align="left">Flag
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">--input=FORMAT</code>
+      <td align="left"><code class="highlight">-i</code>
+      <td align="left"><code class="highlight">auto</code>
+      <td align="left">The input format.
+     <tr>
+      <td align="left"><code class="highlight">--output=FORMAT</code>
+      <td align="left"><code class="highlight">-o</code>
+      <td align="left"><code class="highlight">jsonld</code>
+      <td align="left">The output format.
+   </table>
+   <h3 class="heading settled" data-level="3.8" id="resolver①"><span class="secno">3.8. </span><span class="content">Resolver</span><a class="self-link" href="#resolver①"></a></h3>
+   <p>URI resolver. Takes a URI (that is, URN or URL) input, produces a resolved URL
+output.</p>
+   <h4 class="heading settled" data-level="3.8.1" id="writer-arguments⑦"><span class="secno">3.8.1. </span><span class="content">Arguments</span><a class="self-link" href="#writer-arguments⑦"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Argument
+      <th align="left">Arity
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">INPUT-URL</code>
+      <td align="left">0..1
+      <td align="left">none
+      <td align="left">The input URL.
+   </table>
+   <h4 class="heading settled" data-level="3.8.2" id="resolver-options"><span class="secno">3.8.2. </span><span class="content">Options</span><a class="self-link" href="#resolver-options"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Option
+      <th align="left">Flag
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">--limit=COUNT</code>
+      <td align="left"><code class="highlight">-n</code>
+      <td align="left">none
+      <td align="left">The maximum number of outputs.
+   </table>
+   <h3 class="heading settled" data-level="3.9" id="runner①"><span class="secno">3.9. </span><span class="content">Runner</span><a class="self-link" href="#runner①"></a></h3>
+   <p>Language runtime engine. Consumes text input conforming to a grammar, executes
+it, and produces the execution result as output.</p>
+   <h4 class="heading settled" data-level="3.9.1" id="writer-arguments⑧"><span class="secno">3.9.1. </span><span class="content">Arguments</span><a class="self-link" href="#writer-arguments⑧"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Argument
+      <th align="left">Arity
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">INPUT-FILE</code>
+      <td align="left">0..1
+      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdin</code>)
+      <td align="left">The input file path.
+   </table>
+   <h4 class="heading settled" data-level="3.9.2" id="runner-options"><span class="secno">3.9.2. </span><span class="content">Options</span><a class="self-link" href="#runner-options"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Option
+      <th align="left">Flag
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">--define=VAR=VAL</code>
+      <td align="left"><code class="highlight">-D</code>
+      <td align="left">none
+      <td align="left">A key/value definition.
+   </table>
+   <h3 class="heading settled" data-level="3.10" id="writer①"><span class="secno">3.10. </span><span class="content">Writer</span><a class="self-link" href="#writer①"></a></h3>
+   <p>RDF dataset exporter. Consumes RDF input, produces some output.</p>
+   <h4 class="heading settled" data-level="3.10.1" id="writer-arguments⑨"><span class="secno">3.10.1. </span><span class="content">Arguments</span><a class="self-link" href="#writer-arguments⑨"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Argument
+      <th align="left">Arity
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">INPUT-FILE</code>
+      <td align="left">0..1
+      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdin</code>)
+      <td align="left">The input file path.
+     <tr>
+      <td align="left"><code class="highlight">OUTPUT-FILE</code>
+      <td align="left">0..1
+      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdout</code>)
+      <td align="left">The output file path.
+   </table>
+   <h4 class="heading settled" data-level="3.10.2" id="writer-options"><span class="secno">3.10.2. </span><span class="content">Options</span><a class="self-link" href="#writer-options"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Option
+      <th align="left">Flag
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">--input=FORMAT</code>
+      <td align="left"><code class="highlight">-i</code>
+      <td align="left"><code class="highlight">auto</code>
+      <td align="left">The input format.
+     <tr>
+      <td align="left"><code class="highlight">--output=FORMAT</code>
+      <td align="left"><code class="highlight">-o</code>
+      <td align="left"><code class="highlight">auto</code>
+      <td align="left">The output format.
+   </table>
+   <h2 class="heading settled" data-level="4" id="rdf-mapping"><span class="secno">4. </span><span class="content">RDF Mapping</span><a class="self-link" href="#rdf-mapping"></a></h2>
+   <h2 class="heading settled" data-level="5" id="security"><span class="secno">5. </span><span class="content">Security Considerations</span><a class="self-link" href="#security"></a></h2>
+   <h2 class="heading settled" data-level="6" id="iana"><span class="secno">6. </span><span class="content">IANA Considerations</span><a class="self-link" href="#iana"></a></h2>
    <p>This specification does not require any IANA registrations.</p>
-   <h2 class="heading settled" data-level="6" id="acknowledgments"><span class="secno">6. </span><span class="content">Acknowledgments</span><a class="self-link" href="#acknowledgments"></a></h2>
+   <h2 class="heading settled" data-level="7" id="acknowledgments"><span class="secno">7. </span><span class="content">Acknowledgments</span><a class="self-link" href="#acknowledgments"></a></h2>
    <p>The editors would like to thank the ASIMOV Platform community for their contributions and feedback during the development of this specification.</p>
-   <h2 class="heading settled" data-level="7" id="changes"><span class="secno">7. </span><span class="content">Changes</span><a class="self-link" href="#changes"></a></h2>
+   <h2 class="heading settled" data-level="8" id="changes"><span class="secno">8. </span><span class="content">Changes</span><a class="self-link" href="#changes"></a></h2>
    <p>This section will document changes between versions of this specification.</p>
   </main>
   <div data-fill-with="conformance">
@@ -2121,6 +2876,20 @@ practices for developing robust and maintainable ASIMOV software components.</p>
 
 })();
 </script>
+  <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
+  <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
+  <ul class="index">
+   <li><a href="#adapter">Adapter</a><span>, in § 3</span>
+   <li><a href="#cataloger">Cataloger</a><span>, in § 3</span>
+   <li><a href="#emitter">Emitter</a><span>, in § 3</span>
+   <li><a href="#fetcher">Fetcher</a><span>, in § 3</span>
+   <li><a href="#prompter">Prompter</a><span>, in § 3</span>
+   <li><a href="#reader">Reader</a><span>, in § 3</span>
+   <li><a href="#reasoner">Reasoner</a><span>, in § 3</span>
+   <li><a href="#resolver">Resolver</a><span>, in § 3</span>
+   <li><a href="#runner">Runner</a><span>, in § 3</span>
+   <li><a href="#writer">Writer</a><span>, in § 3</span>
+  </ul>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
   <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
   <dl>
@@ -2132,3 +2901,597 @@ practices for developing robust and maintainable ASIMOV software components.</p>
    <dt id="biblio-asimov">[ASIMOV]
    <dd>Arto Bendiken; et al. <a href="https://asimov.sh"><cite>ASIMOV Platform Documentation</cite></a>. URL: <a href="https://asimov.sh">https://asimov.sh</a>
   </dl>
+<script>/* Boilerplate: script-dom-helper */
+"use strict";
+function query(sel) { return document.querySelector(sel); }
+
+function queryAll(sel) { return [...document.querySelectorAll(sel)]; }
+
+function iter(obj) {
+	if(!obj) return [];
+	var it = obj[Symbol.iterator];
+	if(it) return it;
+	return Object.entries(obj);
+}
+
+function mk(tagname, attrs, ...children) {
+	const el = document.createElement(tagname);
+	for(const [k,v] of iter(attrs)) {
+		if(k.slice(0,3) == "_on") {
+			const eventName = k.slice(3);
+			el.addEventListener(eventName, v);
+		} else if(k[0] == "_") {
+			// property, not attribute
+			el[k.slice(1)] = v;
+		} else {
+			if(v === false || v == null) {
+        continue;
+      } else if(v === true) {
+        el.setAttribute(k, "");
+        continue;
+      } else {
+  			el.setAttribute(k, v);
+      }
+		}
+	}
+	append(el, children);
+	return el;
+}
+
+/* Create shortcuts for every known HTML element */
+[
+  "a",
+  "abbr",
+  "acronym",
+  "address",
+  "applet",
+  "area",
+  "article",
+  "aside",
+  "audio",
+  "b",
+  "base",
+  "basefont",
+  "bdo",
+  "big",
+  "blockquote",
+  "body",
+  "br",
+  "button",
+  "canvas",
+  "caption",
+  "center",
+  "cite",
+  "code",
+  "col",
+  "colgroup",
+  "datalist",
+  "dd",
+  "del",
+  "details",
+  "dfn",
+  "dialog",
+  "div",
+  "dl",
+  "dt",
+  "em",
+  "embed",
+  "fieldset",
+  "figcaption",
+  "figure",
+  "font",
+  "footer",
+  "form",
+  "frame",
+  "frameset",
+  "head",
+  "header",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "hr",
+  "html",
+  "i",
+  "iframe",
+  "img",
+  "input",
+  "ins",
+  "kbd",
+  "label",
+  "legend",
+  "li",
+  "link",
+  "main",
+  "map",
+  "mark",
+  "meta",
+  "meter",
+  "nav",
+  "nobr",
+  "noscript",
+  "object",
+  "ol",
+  "optgroup",
+  "option",
+  "output",
+  "p",
+  "param",
+  "pre",
+  "progress",
+  "q",
+  "s",
+  "samp",
+  "script",
+  "section",
+  "select",
+  "small",
+  "source",
+  "span",
+  "strike",
+  "strong",
+  "style",
+  "sub",
+  "summary",
+  "sup",
+  "table",
+  "tbody",
+  "td",
+  "template",
+  "textarea",
+  "tfoot",
+  "th",
+  "thead",
+  "time",
+  "title",
+  "tr",
+  "u",
+  "ul",
+  "var",
+  "video",
+  "wbr",
+  "xmp",
+].forEach(tagname=>{
+	mk[tagname] = (...args) => mk(tagname, ...args);
+});
+
+function* nodesFromChildList(children) {
+	for(const child of children.flat(Infinity)) {
+		if(child instanceof Node) {
+			yield child;
+		} else {
+			yield new Text(child);
+		}
+	}
+}
+function append(el, ...children) {
+	for(const child of nodesFromChildList(children)) {
+		if(el instanceof Node) el.appendChild(child);
+		else el.push(child);
+	}
+	return el;
+}
+
+function insertAfter(el, ...children) {
+	for(const child of nodesFromChildList(children)) {
+		el.parentNode.insertBefore(child, el.nextSibling);
+	}
+	return el;
+}
+
+function clearContents(el) {
+	el.innerHTML = "";
+	return el;
+}
+
+function parseHTML(markup) {
+	if(markup.toLowerCase().trim().indexOf('<!doctype') === 0) {
+		const doc = document.implementation.createHTMLDocument("");
+		doc.documentElement.innerHTML = markup;
+		return doc;
+	} else {
+		const el = mk.template({});
+		el.innerHTML = markup;
+		return el.content;
+	}
+}</script>
+<script>/* Boilerplate: script-dfn-panel */
+"use strict";
+{
+let dfnPanelData = {
+"adapter": {"dfnID":"adapter","dfnText":"Adapter","external":false,"refSections":[],"url":"#adapter"},
+"cataloger": {"dfnID":"cataloger","dfnText":"Cataloger","external":false,"refSections":[],"url":"#cataloger"},
+"emitter": {"dfnID":"emitter","dfnText":"Emitter","external":false,"refSections":[],"url":"#emitter"},
+"fetcher": {"dfnID":"fetcher","dfnText":"Fetcher","external":false,"refSections":[],"url":"#fetcher"},
+"prompter": {"dfnID":"prompter","dfnText":"Prompter","external":false,"refSections":[],"url":"#prompter"},
+"reader": {"dfnID":"reader","dfnText":"Reader","external":false,"refSections":[],"url":"#reader"},
+"reasoner": {"dfnID":"reasoner","dfnText":"Reasoner","external":false,"refSections":[],"url":"#reasoner"},
+"resolver": {"dfnID":"resolver","dfnText":"Resolver","external":false,"refSections":[],"url":"#resolver"},
+"runner": {"dfnID":"runner","dfnText":"Runner","external":false,"refSections":[],"url":"#runner"},
+"writer": {"dfnID":"writer","dfnText":"Writer","external":false,"refSections":[],"url":"#writer"},
+};
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    genAllDfnPanels();
+
+    document.body.addEventListener("click", (e) => {
+        // If not handled already, just hide all dfn panels.
+        hideAllDfnPanels();
+    });
+});
+
+window.addEventListener("resize", () => {
+    // Pin any visible dfn panel
+    queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(el=>positionDfnPanel(el));
+});
+
+function genAllDfnPanels() {
+    for(const panelData of Object.values(dfnPanelData)) {
+        const dfnID = panelData.dfnID;
+        const dfn = document.getElementById(dfnID);
+        if(!dfn) {
+            console.log(`Can't find dfn#${dfnID}.`, panelData);
+            continue;
+        }
+        dfn.panelData = panelData;
+        insertDfnPopupAction(dfn);
+    }
+}
+
+function genDfnPanel(dfn, { dfnID, url, dfnText, refSections, external }) {
+    const dfnPanel = mk.aside({
+        class: "dfn-panel on",
+        id: `infopanel-for-${dfnID}`,
+        "data-for": dfnID,
+        "aria-labelled-by":`infopaneltitle-for-${dfnID}`,
+        },
+        mk.span({id:`infopaneltitle-for-${dfnID}`, style:"display:none"},
+            `Info about the '${dfnText}' ${external?"external":""} reference.`),
+        mk.a({href:url, class:"dfn-link"}, url),
+        refSections.length == 0 ? [] :
+            mk.b({}, "Referenced in:"),
+            mk.ul({},
+                ...refSections.map(section=>
+                    mk.li({},
+                        ...section.refs.map((ref, refI)=>
+                            [
+                                mk.a({ href: `#${ref.id}` },
+                                    (refI == 0) ? section.title : `(${refI + 1})`
+                                ),
+                                " ",
+                            ]
+                        ),
+                    ),
+                ),
+            ),
+        genLinkingSyntaxes(dfn),
+    );
+
+    dfnPanel.addEventListener('click', (event) => {
+        if (event.target.nodeName == 'A') {
+            scrollToTargetAndHighlight(event);
+            pinDfnPanel(dfnPanel);
+        }
+        event.stopPropagation();
+        refocusOnTarget(event);
+    });
+    dfnPanel.addEventListener('keydown', (event) => {
+        if(event.keyCode == 27) { // Escape key
+            hideDfnPanel({dfnPanel});
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    });
+
+    dfnPanel.dfn = dfn;
+    dfn.dfnPanel = dfnPanel;
+    return dfnPanel;
+}
+
+
+
+function hideAllDfnPanels() {
+    // Delete the currently-active dfn panel.
+    queryAll(".dfn-panel").forEach(dfnPanel=>hideDfnPanel({dfnPanel}));
+}
+
+function showDfnPanel(dfn) {
+    hideAllDfnPanels(); // Only display one at a time.
+
+    dfn.setAttribute("aria-expanded", "true");
+
+    const dfnPanel = genDfnPanel(dfn, dfn.panelData);
+
+    // Give the dfn a unique tabindex, and then
+    // give all the tabbable panel bits successive indexes.
+    let tabIndex = 100;
+    dfn.tabIndex = tabIndex++;
+    const tabbable = dfnPanel.querySelectorAll(":is(a, button)");
+    for (const el of tabbable) {
+        el.tabIndex = tabIndex++;
+    }
+
+    append(document.body, dfnPanel);
+    positionDfnPanel(dfnPanel);
+}
+
+function positionDfnPanel(dfnPanel) {
+    const dfn = dfnPanel.dfn;
+    const dfnPos = getBounds(dfn);
+    dfnPanel.style.top = dfnPos.bottom + "px";
+    dfnPanel.style.left = dfnPos.left + "px";
+
+    const panelPos = dfnPanel.getBoundingClientRect();
+    const panelMargin = 8;
+    const maxRight = document.body.parentNode.clientWidth - panelMargin;
+    if (panelPos.right > maxRight) {
+        const overflowAmount = panelPos.right - maxRight;
+        const newLeft = Math.max(panelMargin, dfnPos.left - overflowAmount);
+        dfnPanel.style.left = newLeft + "px";
+    }
+}
+
+function pinDfnPanel(dfnPanel) {
+    // Switch it to "activated" state, which pins it.
+    dfnPanel.classList.add("activated");
+    dfnPanel.style.position = "fixed";
+    dfnPanel.style.left = null;
+    dfnPanel.style.top = null;
+}
+
+function hideDfnPanel({dfn, dfnPanel}) {
+    if(!dfnPanel) dfnPanel = dfn.dfnPanel;
+    if(!dfn) dfn = dfnPanel.dfn;
+    dfn.dfnPanel = undefined;
+    dfnPanel.dfn = undefined;
+    dfn.setAttribute("aria-expanded", "false");
+    dfn.tabIndex = undefined;
+    dfnPanel.remove()
+}
+
+function toggleDfnPanel(dfn) {
+    if(dfn.dfnPanel) {
+        hideDfnPanel(dfn);
+    } else {
+        showDfnPanel(dfn);
+    }
+}
+
+function insertDfnPopupAction(dfn) {
+    dfn.setAttribute('role', 'button');
+    dfn.setAttribute('aria-expanded', 'false')
+    dfn.tabIndex = 0;
+    dfn.classList.add('has-dfn-panel');
+    dfn.addEventListener('click', (event) => {
+        toggleDfnPanel(dfn);
+        event.stopPropagation();
+    });
+    dfn.addEventListener('keypress', (event) => {
+        const kc = event.keyCode;
+        // 32->Space, 13->Enter
+        if(kc == 32 || kc == 13) {
+            toggleDfnPanel(dfn);
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    });
+}
+
+function refocusOnTarget(event) {
+    const target = event.target;
+    setTimeout(() => {
+        // Refocus on the event.target element.
+        // This is needed after browser scrolls to the destination.
+        target.focus();
+    });
+}
+
+// TODO: shared util
+// Returns the root-level absolute position {left and top} of element.
+function getBounds(el, relativeTo=document.body) {
+    const relativeRect = relativeTo.getBoundingClientRect();
+    const elRect = el.getBoundingClientRect();
+    const top = elRect.top - relativeRect.top;
+    const left = elRect.left - relativeRect.left;
+    return {
+        top,
+        left,
+        bottom: top + elRect.height,
+        right: left + elRect.width,
+    }
+}
+
+function scrollToTargetAndHighlight(event) {
+    let hash = event.target.hash;
+    if (hash) {
+        hash = decodeURIComponent(hash.substring(1));
+        const dest = document.getElementById(hash);
+        if (dest) {
+            dest.classList.add('highlighted');
+            setTimeout(() => dest.classList.remove('highlighted'), 1000);
+        }
+    }
+}
+
+// Functions, divided by link type, that wrap an autolink's
+// contents with the appropriate outer syntax.
+// Alternately, a string naming another type they format
+// the same as.
+function needsFor(type) {
+    switch(type) {
+        case "descriptor":
+        case "value":
+        case "element-attr":
+        case "attr-value":
+        case "element-state":
+        case "method":
+        case "constructor":
+        case "argument":
+        case "attribute":
+        case "const":
+        case "dict-member":
+        case "event":
+        case "enum-value":
+        case "stringifier":
+        case "serializer":
+        case "iterator":
+        case "maplike":
+        case "setlike":
+        case "state":
+        case "mode":
+        case "context":
+        case "facet": return true;
+
+        default: return false;
+    }
+}
+function refusesFor(type) {
+    switch(type) {
+        case "property":
+        case "element":
+        case "interface":
+        case "namespace":
+        case "callback":
+        case "dictionary":
+        case "enum":
+        case "exception":
+        case "typedef":
+        case "http-header":
+        case "permission": return true;
+
+        default: return false;
+    }
+}
+function linkFormatterFromType(type) {
+    switch(type) {
+        case 'scheme':
+        case 'permission':
+        case 'dfn': return (text) => `[=${text}=]`;
+
+        case 'abstract-op': return (text) => `[\$${text}\$]`;
+
+        case 'function':
+        case 'at-rule':
+        case 'selector':
+        case 'value': return (text) => `''${text}''`;
+
+        case 'http-header': return (text) => `[:${text}:]`;
+
+        case 'interface':
+        case 'constructor':
+        case 'method':
+        case 'argument':
+        case 'attribute':
+        case 'callback':
+        case 'dictionary':
+        case 'dict-member':
+        case 'enum':
+        case 'enum-value':
+        case 'exception':
+        case 'const':
+        case 'typedef':
+        case 'stringifier':
+        case 'serializer':
+        case 'iterator':
+        case 'maplike':
+        case 'setlike':
+        case 'extended-attribute':
+        case 'event':
+        case 'idl': return (text) => `{{${text}}}`;
+
+        case 'element-state':
+        case 'element-attr':
+        case 'attr-value':
+        case 'element': return (element) => `<{${element}}>`;
+
+        case 'grammar': return (text) => `${text} (within a <pre class=prod>)`;
+
+        case 'type': return (text)=> `<<${text}>>`;
+
+        case 'descriptor':
+        case 'property': return (text) => `'${text}'`;
+
+        default: return;
+    };
+};
+
+function genLinkingSyntaxes(dfn) {
+    if(dfn.tagName != "DFN") return;
+
+    const type = dfn.getAttribute('data-dfn-type');
+    if(!type) {
+        console.log(`<dfn> doesn't have a data-dfn-type:`, dfn);
+        return [];
+    }
+
+    // Return a function that wraps link text based on the type
+    const linkFormatter = linkFormatterFromType(type);
+    if(!linkFormatter) {
+        console.log(`<dfn> has an unknown data-dfn-type:`, dfn);
+        return [];
+    }
+
+    let ltAlts;
+    if(dfn.hasAttribute('data-lt')) {
+        ltAlts = dfn.getAttribute('data-lt')
+            .split("|")
+            .map(x=>x.trim());
+    } else {
+        ltAlts = [dfn.textContent.trim()];
+    }
+    if(type == "type") {
+        // lt of "<foo>", but "foo" is the interior;
+        // <<foo/bar>> is how you write it with a for,
+        // not <foo/<bar>> or whatever.
+        for(var i = 0; i < ltAlts.length; i++) {
+            const lt = ltAlts[i];
+            const match = /<(.*)>/.exec(lt);
+            if(match) { ltAlts[i] = match[1]; }
+        }
+    }
+
+    let forAlts;
+    if(dfn.hasAttribute('data-dfn-for')) {
+        forAlts = dfn.getAttribute('data-dfn-for')
+            .split(",")
+            .map(x=>x.trim());
+    } else {
+        forAlts = [''];
+    }
+
+    let linkingSyntaxes = [];
+    if(!needsFor(type)) {
+        for(const lt of ltAlts) {
+            linkingSyntaxes.push(linkFormatter(lt));
+        }
+    }
+    if(!refusesFor(type)) {
+        for(const f of forAlts) {
+            linkingSyntaxes.push(linkFormatter(`${f}/${ltAlts[0]}`))
+        }
+    }
+    return [
+        mk.b({}, 'Possible linking syntaxes:'),
+        mk.ul({},
+            ...linkingSyntaxes.map(link => {
+                const copyLink = async () =>
+                    await navigator.clipboard.writeText(link);
+                return mk.li({},
+                    mk.div({ class: 'link-item' },
+                        mk.button({
+                            class: 'copy-icon', title: 'Copy',
+                            type: 'button',
+                            _onclick: copyLink,
+                            tabindex: 0,
+                        }, mk.span({ class: 'icon' }) ),
+                        mk.span({}, link)
+                    )
+                );
+            })
+        )
+    ];
+}
+}
+</script>
