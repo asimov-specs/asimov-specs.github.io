@@ -1,8 +1,73 @@
 <!doctype html><html lang="en">
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-  <title>ASIMOV Module Manifest Specification (MMS)</title>
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+  <title>Module Manifest Specification (MMS) | ASIMOV.Specs</title>
+  <meta name="title" content="Module Manifest Specification (MMS) | ASIMOV.Specs" />
+  <meta name="description" content="Describes the structure and requirements for ASIMOV module manifests, detailing how modules declare their capabilities, dependencies, and metadata for neurosymbolic AI applications." />
+  <meta name="keywords" content="ASIMOV, module manifest, module metadata, dependencies, capabilities, AI modules, ASIMOV MMS, manifest specification" />
+  <meta name="author" content="ASIMOV Platform" />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="canonical" href="https://asimov-specs.github.io/module-manifest/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://asimov-specs.github.io/module-manifest/" />
+  <meta property="og:title" content="Module Manifest Specification (MMS) | ASIMOV.Specs" />
+  <meta property="og:description" content="Describes the structure and requirements for ASIMOV module manifests, detailing how modules declare their capabilities, dependencies, and metadata for neurosymbolic AI applications." />
+  <meta property="og:image" content="https://asimov-specs.github.io/og-image.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="ASIMOV Specifications" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="article:section" content="Technical Specification" />
+  <meta property="article:tag" content="Module Manifest" />
+  <meta property="article:tag" content="Metadata" />
+  <meta property="article:tag" content="Dependencies" />
+
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://asimov-specs.github.io/module-manifest/" />
+  <meta property="twitter:title" content="Module Manifest Specification (MMS) | ASIMOV.Specs" />
+  <meta property="twitter:description" content="Describes the structure and requirements for ASIMOV module manifests, detailing how modules declare their capabilities, dependencies, and metadata for neurosymbolic AI applications." />
+  <meta property="twitter:image" content="https://asimov-specs.github.io/og-image.png" />
+
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ASIMOV Module Manifest Specification (MMS)",
+    "description": "Describes the structure and requirements for ASIMOV module manifests, detailing how modules declare their capabilities, dependencies, and metadata for neurosymbolic AI applications.",
+    "author": {
+      "@type": "Organization",
+      "name": "ASIMOV Platform"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ASIMOV Platform",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://asimov-specs.github.io/logo.svg"
+      }
+    },
+    "url": "https://asimov-specs.github.io/module-manifest/",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "ASIMOV Specifications",
+      "url": "https://asimov-specs.github.io/"
+    },
+    "about": {
+      "@type": "SoftwareApplication",
+      "name": "ASIMOV Platform",
+      "description": "A polyglot development platform for trustworthy, neurosymbolic AI",
+      "url": "https://asimov.sh"
+    }
+  }
+  </script>
 <style data-fill-with="stylesheet">/******************************************************************************
  *                   Style sheet for the W3C specifications                   *
  *

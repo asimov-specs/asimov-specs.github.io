@@ -1,8 +1,73 @@
 <!doctype html><html lang="en">
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-  <title>ASIMOV Module Concepts Specification (MCS)</title>
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+  <title>Module Concepts Specification (MCS) | ASIMOV.Specs</title>
+  <meta name="title" content="Module Concepts Specification (MCS) | ASIMOV.Specs" />
+  <meta name="description" content="Defines the fundamental concepts and principles underlying ASIMOV modules, providing the theoretical foundation for module architecture and design patterns in neurosymbolic AI development." />
+  <meta name="keywords" content="ASIMOV, module concepts, neurosymbolic AI, module architecture, AI design patterns, software architecture, module principles, ASIMOV MCS" />
+  <meta name="author" content="ASIMOV Platform" />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="canonical" href="https://asimov-specs.github.io/module-concepts/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://asimov-specs.github.io/module-concepts/" />
+  <meta property="og:title" content="Module Concepts Specification (MCS) | ASIMOV.Specs" />
+  <meta property="og:description" content="Defines the fundamental concepts and principles underlying ASIMOV modules, providing the theoretical foundation for module architecture and design patterns in neurosymbolic AI development." />
+  <meta property="og:image" content="https://asimov-specs.github.io/og-image.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="ASIMOV Specifications" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="article:section" content="Technical Specification" />
+  <meta property="article:tag" content="Module Architecture" />
+  <meta property="article:tag" content="Neurosymbolic AI" />
+  <meta property="article:tag" content="Software Design" />
+
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://asimov-specs.github.io/module-concepts/" />
+  <meta property="twitter:title" content="Module Concepts Specification (MCS) | ASIMOV.Specs" />
+  <meta property="twitter:description" content="Defines the fundamental concepts and principles underlying ASIMOV modules, providing the theoretical foundation for module architecture and design patterns in neurosymbolic AI development." />
+  <meta property="twitter:image" content="https://asimov-specs.github.io/og-image.png" />
+
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ASIMOV Module Concepts Specification (MCS)",
+    "description": "Defines the fundamental concepts and principles underlying ASIMOV modules, providing the theoretical foundation for module architecture and design patterns in neurosymbolic AI development.",
+    "author": {
+      "@type": "Organization",
+      "name": "ASIMOV Platform"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ASIMOV Platform",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://asimov-specs.github.io/logo.svg"
+      }
+    },
+    "url": "https://asimov-specs.github.io/module-concepts/",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "ASIMOV Specifications",
+      "url": "https://asimov-specs.github.io/"
+    },
+    "about": {
+      "@type": "SoftwareApplication",
+      "name": "ASIMOV Platform",
+      "description": "A polyglot development platform for trustworthy, neurosymbolic AI",
+      "url": "https://asimov.sh"
+    }
+  }
+  </script>
 <style data-fill-with="stylesheet">/******************************************************************************
  *                   Style sheet for the W3C specifications                   *
  *
