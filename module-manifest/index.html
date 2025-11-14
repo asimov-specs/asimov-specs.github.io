@@ -1,73 +1,8 @@
 <!doctype html><html lang="en">
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <title>ASIMOV Module Manifest Specification (MMS)</title>
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-
-  <title>Module Manifest Specification (MMS) | ASIMOV.Specs</title>
-  <meta name="title" content="Module Manifest Specification (MMS) | ASIMOV.Specs" />
-  <meta name="description" content="Describes the structure and requirements for ASIMOV module manifests, detailing how modules declare their capabilities, dependencies, and metadata for neurosymbolic AI applications." />
-  <meta name="keywords" content="ASIMOV, module manifest, module metadata, dependencies, capabilities, AI modules, ASIMOV MMS, manifest specification" />
-  <meta name="author" content="ASIMOV Platform" />
-  <meta name="robots" content="index, follow" />
-
-  <link rel="canonical" href="https://asimov-specs.github.io/module-manifest/" />
-
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://asimov-specs.github.io/module-manifest/" />
-  <meta property="og:title" content="Module Manifest Specification (MMS) | ASIMOV.Specs" />
-  <meta property="og:description" content="Describes the structure and requirements for ASIMOV module manifests, detailing how modules declare their capabilities, dependencies, and metadata for neurosymbolic AI applications." />
-  <meta property="og:image" content="https://asimov-specs.github.io/og-image.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:site_name" content="ASIMOV Specifications" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="article:section" content="Technical Specification" />
-  <meta property="article:tag" content="Module Manifest" />
-  <meta property="article:tag" content="Metadata" />
-  <meta property="article:tag" content="Dependencies" />
-
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://asimov-specs.github.io/module-manifest/" />
-  <meta property="twitter:title" content="Module Manifest Specification (MMS) | ASIMOV.Specs" />
-  <meta property="twitter:description" content="Describes the structure and requirements for ASIMOV module manifests, detailing how modules declare their capabilities, dependencies, and metadata for neurosymbolic AI applications." />
-  <meta property="twitter:image" content="https://asimov-specs.github.io/og-image.png" />
-
-  <meta name="theme-color" content="#000000" />
-  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "TechArticle",
-    "headline": "ASIMOV Module Manifest Specification (MMS)",
-    "description": "Describes the structure and requirements for ASIMOV module manifests, detailing how modules declare their capabilities, dependencies, and metadata for neurosymbolic AI applications.",
-    "author": {
-      "@type": "Organization",
-      "name": "ASIMOV Platform"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "ASIMOV Platform",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://asimov-specs.github.io/logo.svg"
-      }
-    },
-    "url": "https://asimov-specs.github.io/module-manifest/",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "ASIMOV Specifications",
-      "url": "https://asimov-specs.github.io/"
-    },
-    "about": {
-      "@type": "SoftwareApplication",
-      "name": "ASIMOV Platform",
-      "description": "A polyglot development platform for trustworthy, neurosymbolic AI",
-      "url": "https://asimov.sh"
-    }
-  }
-  </script>
 <style data-fill-with="stylesheet">/******************************************************************************
  *                   Style sheet for the W3C specifications                   *
  *
@@ -1553,9 +1488,9 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version 275834c42, updated Wed Jun 11 14:18:15 2025 -0700" name="generator">
+  <meta content="Bikeshed version 7b3ff057a, updated Sun Nov 9 18:39:50 2025 -0800" name="generator">
   <link href="https://asimov-specs.github.io/module-manifest/" rel="canonical">
-  <meta content="81509029091d9d030f412116bb3c9584d299d231" name="revision">
+  <meta content="e901afc387b3790126b8e0fa959d09131bfa4f24" name="revision">
   <meta content="dark light" name="color-scheme">
 <style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
@@ -1867,7 +1802,7 @@ body {
 }
 .invalid.example:not(.no-marker)::before,
 .illegal.example:not(.no-marker)::before {
-    content: "Invalid Example" counter(example);
+    content: "Invalid Example " counter(example);
 }
 
 figcaption {
@@ -2236,9 +2171,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
  <body class="h-entry">
   <div class="head">
    <p data-fill-with="logo"></p>
-   <h1 class="p-name no-ref" id="title">ASIMOV Module Manifest Specification (MMS)</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Living Standard,
-    <time class="dt-updated" datetime="2025-06-26">26 June 2025</time></span></h2>
+   <h1 class="no-ref p-name" id="title">ASIMOV Module Manifest Specification (MMS)</h1>
+   <h2 class="heading no-num no-ref no-toc settled" id="profile-and-date"><span class="content">Living Standard,
+    <time class="dt-updated" datetime="2025-11-14">14 November 2025</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2246,14 +2181,14 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <dt>Issue Tracking:
      <dd><a href="https://github.com/asimov-specs/asimov-specs/issues/">GitHub</a>
      <dt class="editor">Editor:
-     <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:arto@asimov.systems">Arto Bendiken</a> (<a class="p-org org" href="https://asimov.systems">ASIMOV Systems</a>)
+     <dd class="editor h-card p-author vcard"><a class="email fn p-name u-email" href="mailto:arto@asimov.systems">Arto Bendiken</a> (<a class="org p-org" href="https://asimov.systems">ASIMOV Systems</a>)
     </dl>
    </div>
    <div data-fill-with="warning"></div>
    <p class="copyright" data-fill-with="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" height="15" src="https://licensebuttons.net/p/zero/1.0/80x15.png" width="80"></a>
 To the extent possible under law, the editors have waived all copyright
 and related or neighboring rights to this work.
-In addition, as of 26 June 2025,
+In addition, as of 14 November 2025,
 the editors have made this specification available under the
 <a href="https://www.openwebfoundation.org/the-agreements/the-owf-1-0-agreements-granted-claims/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at https://www.openwebfoundation.org/the-agreements/the-owf-1-0-agreements-granted-claims/owfa-1-0.
@@ -2262,12 +2197,12 @@ Parts of this work may be from another specification document.  If so, those par
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
-   <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
+   <h2 class="heading no-num no-ref no-toc settled" id="abstract"><span class="content">Abstract</span></h2>
    <p>Describes the structure and requirements for ASIMOV module manifests, detailing how modules declare their capabilities, dependencies, and metadata.</p>
   </div>
   <div data-fill-with="at-risk"></div>
   <nav data-fill-with="table-of-contents" id="toc">
-   <h2 class="no-num no-toc no-ref" id="contents">Table of Contents</h2>
+   <h2 class="no-num no-ref no-toc" id="contents">Table of Contents</h2>
    <ol class="toc" role="directory">
     <li>
      <a href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
@@ -2283,21 +2218,32 @@ Parts of this work may be from another specification document.  If so, those par
       <li><a href="#top-level-fields"><span class="secno">2.2</span> <span class="content">Top-Level Fields</span></a>
       <li><a href="#name-field"><span class="secno">2.3</span> <span class="content">The name Field</span></a>
       <li><a href="#label-field"><span class="secno">2.4</span> <span class="content">The label Field</span></a>
-      <li><a href="#summary-field"><span class="secno">2.5</span> <span class="content">The summary Field</span></a>
-      <li><a href="#links-field"><span class="secno">2.6</span> <span class="content">The links Field</span></a>
+      <li><a href="#title-field"><span class="secno">2.5</span> <span class="content">The title Field</span></a>
+      <li><a href="#summary-field"><span class="secno">2.6</span> <span class="content">The summary Field</span></a>
+      <li><a href="#links-field"><span class="secno">2.7</span> <span class="content">The links Field</span></a>
+      <li><a href="#tags-field"><span class="secno">2.8</span> <span class="content">The tags Field</span></a>
       <li>
-       <a href="#provides-section"><span class="secno">2.7</span> <span class="content">The provides Section</span></a>
+       <a href="#requires-section"><span class="secno">2.9</span> <span class="content">The requires Section</span></a>
        <ol class="toc">
-        <li><a href="#programs"><span class="secno">2.7.1</span> <span class="content">programs</span></a>
+        <li><a href="#requires-modules"><span class="secno">2.9.1</span> <span class="content">modules</span></a>
+        <li><a href="#requires-programs"><span class="secno">2.9.2</span> <span class="content">programs</span></a>
+        <li><a href="#requires-libraries"><span class="secno">2.9.3</span> <span class="content">libraries</span></a>
+        <li><a href="#requires-models"><span class="secno">2.9.4</span> <span class="content">models</span></a>
+        <li><a href="#requires-datasets"><span class="secno">2.9.5</span> <span class="content">datasets</span></a>
        </ol>
       <li>
-       <a href="#handles-section"><span class="secno">2.8</span> <span class="content">The handles Section</span></a>
+       <a href="#provides-section"><span class="secno">2.10</span> <span class="content">The provides Section</span></a>
        <ol class="toc">
-        <li><a href="#url-protocols"><span class="secno">2.8.1</span> <span class="content">url_protocols</span></a>
-        <li><a href="#url-prefixes"><span class="secno">2.8.2</span> <span class="content">url_prefixes</span></a>
-        <li><a href="#url-patterns"><span class="secno">2.8.3</span> <span class="content">url_patterns</span></a>
-        <li><a href="#file-extensions"><span class="secno">2.8.4</span> <span class="content">file_extensions</span></a>
-        <li><a href="#content-types"><span class="secno">2.8.5</span> <span class="content">content_types</span></a>
+        <li><a href="#provides-programs"><span class="secno">2.10.1</span> <span class="content">programs</span></a>
+       </ol>
+      <li>
+       <a href="#handles-section"><span class="secno">2.11</span> <span class="content">The handles Section</span></a>
+       <ol class="toc">
+        <li><a href="#url-protocols"><span class="secno">2.11.1</span> <span class="content">url_protocols</span></a>
+        <li><a href="#url-prefixes"><span class="secno">2.11.2</span> <span class="content">url_prefixes</span></a>
+        <li><a href="#url-patterns"><span class="secno">2.11.3</span> <span class="content">url_patterns</span></a>
+        <li><a href="#file-extensions"><span class="secno">2.11.4</span> <span class="content">file_extensions</span></a>
+        <li><a href="#content-types"><span class="secno">2.11.5</span> <span class="content">content_types</span></a>
        </ol>
      </ol>
     <li>
@@ -2405,7 +2351,7 @@ capabilities.</p>
    <h3 class="heading settled" data-level="2.1" id="file-format"><span class="secno">2.1. </span><span class="content">File Format</span><a class="self-link" href="#file-format"></a></h3>
    <p>Module manifests MUST be written in YAML 1.2 format <a data-link-type="biblio" href="#biblio-yaml" title="YAML Ain’t Markup Language (YAML™) Version 1.2">[YAML]</a>. The manifest file MUST be named <code class="highlight">module.yaml</code> and placed in the <code class="highlight">.asimov</code> directory in the root of the module repository (i.e., <code class="highlight">.asimov/module.yaml</code>).</p>
    <p>The manifest MUST begin with a YAML document separator (<code class="highlight"><c- nn>---</c-></code>) and MAY include the following comment referencing this specification:</p>
-<pre class="language-yaml highlight"><c- c1># See: https://asimov-specs.github.io/module-manifest/</c->
+<pre class="highlight language-yaml"><c- c1># See: https://asimov-specs.github.io/module-manifest/</c->
 <c- nn>---</c->
 </pre>
    <h3 class="heading settled" data-level="2.2" id="top-level-fields"><span class="secno">2.2. </span><span class="content">Top-Level Fields</span><a class="self-link" href="#top-level-fields"></a></h3>
@@ -2422,12 +2368,17 @@ capabilities.</p>
       <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="name">name</dfn>
       <td align="left">string
       <td align="left">REQUIRED
-      <td align="left">The unique identifier for the module
+      <td align="left">The unique name and identifier for the module
      <tr>
       <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="label">label</dfn>
       <td align="left">string
       <td align="left">OPTIONAL
       <td align="left">A human-readable display name for the module
+     <tr>
+      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="title①">title</dfn>
+      <td align="left">string
+      <td align="left">OPTIONAL
+      <td align="left">A human-readable display title for the module
      <tr>
       <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="summary">summary</dfn>
       <td align="left">string
@@ -2438,6 +2389,16 @@ capabilities.</p>
       <td align="left">array&lt;string>
       <td align="left">OPTIONAL
       <td align="left">URLs to related resources (homepage, repository, documentation)
+     <tr>
+      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="tags">tags</dfn>
+      <td align="left">array&lt;string>
+      <td align="left">OPTIONAL
+      <td align="left">Keywords or categories associated with the module
+     <tr>
+      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="requires">requires</dfn>
+      <td align="left">object
+      <td align="left">OPTIONAL
+      <td align="left">Capabilities required by the module
      <tr>
       <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="provides">provides</dfn>
       <td align="left">object
@@ -2463,9 +2424,11 @@ capabilities.</p>
    </ul>
    <h3 class="heading settled" data-level="2.4" id="label-field"><span class="secno">2.4. </span><span class="content">The label Field</span><a class="self-link" href="#label-field"></a></h3>
    <p>The <a data-link-type="dfn" href="#label" id="ref-for-label">label</a> field contains an optional human-readable display name for the module. If provided, it SHOULD be concise and suitable for display in user interfaces.</p>
-   <h3 class="heading settled" data-level="2.5" id="summary-field"><span class="secno">2.5. </span><span class="content">The summary Field</span><a class="self-link" href="#summary-field"></a></h3>
+   <h3 class="heading settled" data-level="2.5" id="title-field"><span class="secno">2.5. </span><span class="content">The title Field</span><a class="self-link" href="#title-field"></a></h3>
+   <p>The <a data-link-type="dfn" href="#title①" id="ref-for-title①">title</a> field contains an optional human-readable display title for the module. If provided, it SHOULD be concise and suitable for display in user interfaces.</p>
+   <h3 class="heading settled" data-level="2.6" id="summary-field"><span class="secno">2.6. </span><span class="content">The summary Field</span><a class="self-link" href="#summary-field"></a></h3>
    <p>The <a data-link-type="dfn" href="#summary" id="ref-for-summary">summary</a> field contains an optional brief description of the module’s purpose and functionality. This SHOULD be a single sentence that clearly explains what the module does.</p>
-   <h3 class="heading settled" data-level="2.6" id="links-field"><span class="secno">2.6. </span><span class="content">The links Field</span><a class="self-link" href="#links-field"></a></h3>
+   <h3 class="heading settled" data-level="2.7" id="links-field"><span class="secno">2.7. </span><span class="content">The links Field</span><a class="self-link" href="#links-field"></a></h3>
    <p>The <a data-link-type="dfn" href="#links" id="ref-for-links">links</a> field contains an optional array of URLs pointing to resources related to the module, such as:</p>
    <ul>
     <li data-md>
@@ -2478,9 +2441,18 @@ capabilities.</p>
      <p>Package registry entries</p>
    </ul>
    <p>All URLs in this array MUST be well-formed and use HTTPS where applicable.</p>
-   <h3 class="heading settled" data-level="2.7" id="provides-section"><span class="secno">2.7. </span><span class="content">The provides Section</span><a class="self-link" href="#provides-section"></a></h3>
+   <h3 class="heading settled" data-level="2.8" id="tags-field"><span class="secno">2.8. </span><span class="content">The tags Field</span><a class="self-link" href="#tags-field"></a></h3>
+   <p>TBD</p>
+   <h3 class="heading settled" data-level="2.9" id="requires-section"><span class="secno">2.9. </span><span class="content">The requires Section</span><a class="self-link" href="#requires-section"></a></h3>
+   <p>TBD</p>
+   <h4 class="heading settled" data-level="2.9.1" id="requires-modules"><span class="secno">2.9.1. </span><span class="content">modules</span><a class="self-link" href="#requires-modules"></a></h4>
+   <h4 class="heading settled" data-level="2.9.2" id="requires-programs"><span class="secno">2.9.2. </span><span class="content">programs</span><a class="self-link" href="#requires-programs"></a></h4>
+   <h4 class="heading settled" data-level="2.9.3" id="requires-libraries"><span class="secno">2.9.3. </span><span class="content">libraries</span><a class="self-link" href="#requires-libraries"></a></h4>
+   <h4 class="heading settled" data-level="2.9.4" id="requires-models"><span class="secno">2.9.4. </span><span class="content">models</span><a class="self-link" href="#requires-models"></a></h4>
+   <h4 class="heading settled" data-level="2.9.5" id="requires-datasets"><span class="secno">2.9.5. </span><span class="content">datasets</span><a class="self-link" href="#requires-datasets"></a></h4>
+   <h3 class="heading settled" data-level="2.10" id="provides-section"><span class="secno">2.10. </span><span class="content">The provides Section</span><a class="self-link" href="#provides-section"></a></h3>
    <p>The <a data-link-type="dfn" href="#provides" id="ref-for-provides">provides</a> section declares the capabilities that a module makes available to the platform. Currently, the following capability types are defined:</p>
-   <h4 class="heading settled" data-level="2.7.1" id="programs"><span class="secno">2.7.1. </span><span class="content">programs</span><a class="self-link" href="#programs"></a></h4>
+   <h4 class="heading settled" data-level="2.10.1" id="provides-programs"><span class="secno">2.10.1. </span><span class="content">programs</span><a class="self-link" href="#provides-programs"></a></h4>
    <p>The <code class="highlight">programs</code> field contains an array of executable program names that the module provides. These programs:</p>
    <ul>
     <li data-md>
@@ -2492,49 +2464,49 @@ capabilities.</p>
    </ul>
    <p>The function types (e.g., fetcher, importer, emitter, processor) are defined in the ASIMOV Program Patterns Specification.</p>
    <p>Example:</p>
-<pre class="language-yaml highlight"><c- f>provides</c-><c- p>:</c->
+<pre class="highlight language-yaml"><c- f>provides</c-><c- p>:</c->
   <c- f>programs</c-><c- p>:</c->
     - asimov-serpapi-fetcher
     - asimov-serpapi-importer
 </pre>
-   <h3 class="heading settled" data-level="2.8" id="handles-section"><span class="secno">2.8. </span><span class="content">The handles Section</span><a class="self-link" href="#handles-section"></a></h3>
+   <h3 class="heading settled" data-level="2.11" id="handles-section"><span class="secno">2.11. </span><span class="content">The handles Section</span><a class="self-link" href="#handles-section"></a></h3>
    <p>The <a data-link-type="dfn" href="#handles" id="ref-for-handles">handles</a> section declares what types of resources or inputs the module can process. Multiple handler types can be specified:</p>
-   <h4 class="heading settled" data-level="2.8.1" id="url-protocols"><span class="secno">2.8.1. </span><span class="content">url_protocols</span><a class="self-link" href="#url-protocols"></a></h4>
+   <h4 class="heading settled" data-level="2.11.1" id="url-protocols"><span class="secno">2.11.1. </span><span class="content">url_protocols</span><a class="self-link" href="#url-protocols"></a></h4>
    <p>An array of URL protocol schemes (without the trailing colon) that the module can handle.</p>
    <p>Example:</p>
-<pre class="language-yaml highlight"><c- f>handles</c-><c- p>:</c->
+<pre class="highlight language-yaml"><c- f>handles</c-><c- p>:</c->
   <c- f>url_protocols</c-><c- p>:</c->
     - near
     - ipfs
 </pre>
-   <h4 class="heading settled" data-level="2.8.2" id="url-prefixes"><span class="secno">2.8.2. </span><span class="content">url_prefixes</span><a class="self-link" href="#url-prefixes"></a></h4>
+   <h4 class="heading settled" data-level="2.11.2" id="url-prefixes"><span class="secno">2.11.2. </span><span class="content">url_prefixes</span><a class="self-link" href="#url-prefixes"></a></h4>
    <p>An array of URL prefixes that the module can handle. These MUST be complete URLs including the protocol scheme.</p>
    <p>Example:</p>
-<pre class="language-yaml highlight"><c- f>handles</c-><c- p>:</c->
+<pre class="highlight language-yaml"><c- f>handles</c-><c- p>:</c->
   <c- f>url_prefixes</c-><c- p>:</c->
     - https://amazon.com/
     - https://ebay.com/itm/
 </pre>
-   <h4 class="heading settled" data-level="2.8.3" id="url-patterns"><span class="secno">2.8.3. </span><span class="content">url_patterns</span><a class="self-link" href="#url-patterns"></a></h4>
+   <h4 class="heading settled" data-level="2.11.3" id="url-patterns"><span class="secno">2.11.3. </span><span class="content">url_patterns</span><a class="self-link" href="#url-patterns"></a></h4>
    <p>An array of URL patterns with parameter placeholders that the module can handle. Patterns MUST conform to the syntax defined in <a data-link-type="biblio" href="#biblio-urlpattern" title="URL Pattern Standard">[URLPATTERN]</a>.</p>
    <p>Example:</p>
-<pre class="language-yaml highlight"><c- f>handles</c-><c- p>:</c->
+<pre class="highlight language-yaml"><c- f>handles</c-><c- p>:</c->
   <c- f>url_patterns</c-><c- p>:</c->
     - https://google.com/search?q=:query
     - https://x.com/:account/followers
 </pre>
-   <h4 class="heading settled" data-level="2.8.4" id="file-extensions"><span class="secno">2.8.4. </span><span class="content">file_extensions</span><a class="self-link" href="#file-extensions"></a></h4>
+   <h4 class="heading settled" data-level="2.11.4" id="file-extensions"><span class="secno">2.11.4. </span><span class="content">file_extensions</span><a class="self-link" href="#file-extensions"></a></h4>
    <p>An array of file extensions (including the leading dot) that the module can process. File extensions SHOULD be registered with IANA as specified in <a data-link-type="biblio" href="#biblio-rfc6838" title="Media Type Specifications and Registration Procedures">[RFC6838]</a> or be well-established conventional extensions.</p>
    <p>Example:</p>
-<pre class="language-yaml highlight"><c- f>handles</c-><c- p>:</c->
+<pre class="highlight language-yaml"><c- f>handles</c-><c- p>:</c->
   <c- f>file_extensions</c-><c- p>:</c->
     - .csv
     - .xlsx
 </pre>
-   <h4 class="heading settled" data-level="2.8.5" id="content-types"><span class="secno">2.8.5. </span><span class="content">content_types</span><a class="self-link" href="#content-types"></a></h4>
+   <h4 class="heading settled" data-level="2.11.5" id="content-types"><span class="secno">2.11.5. </span><span class="content">content_types</span><a class="self-link" href="#content-types"></a></h4>
    <p>An array of MIME content types that the module can process. Content types MUST be formatted according to <a data-link-type="biblio" href="#biblio-rfc2046" title="Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types">[RFC2046]</a> and SHOULD be registered in the IANA Media Types registry <a data-link-type="biblio" href="#biblio-iana-media-types" title="Media Types">[IANA-MEDIA-TYPES]</a>.</p>
    <p>Example:</p>
-<pre class="language-yaml highlight"><c- f>handles</c-><c- p>:</c->
+<pre class="highlight language-yaml"><c- f>handles</c-><c- p>:</c->
   <c- f>content_types</c-><c- p>:</c->
     - application/json
     - text/csv
@@ -2542,7 +2514,7 @@ capabilities.</p>
    <h2 class="heading settled" data-level="3" id="examples"><span class="secno">3. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
    <h3 class="heading settled" data-level="3.1" id="basic-example"><span class="secno">3.1. </span><span class="content">Basic Module Manifest</span><a class="self-link" href="#basic-example"></a></h3>
    <p>A minimal module manifest for a template module:</p>
-<pre class="language-yaml highlight"><c- c1># See: https://asimov-specs.github.io/module-manifest/</c->
+<pre class="highlight language-yaml"><c- c1># See: https://asimov-specs.github.io/module-manifest/</c->
 <c- nn>---</c->
 <c- f>name</c-><c- p>:</c-> template
 <c- f>label</c-><c- p>:</c-> Template
@@ -2564,7 +2536,7 @@ capabilities.</p>
 </pre>
    <h3 class="heading settled" data-level="3.2" id="search-api-example"><span class="secno">3.2. </span><span class="content">Search API Module</span><a class="self-link" href="#search-api-example"></a></h3>
    <p>A module that provides search capabilities through multiple search engines:</p>
-<pre class="language-yaml highlight"><c- nn>---</c->
+<pre class="highlight language-yaml"><c- nn>---</c->
 <c- f>name</c-><c- p>:</c-> serpapi
 <c- f>label</c-><c- p>:</c-> SerpAPI Search
 <c- f>summary</c-><c- p>:</c-> Provides search results from multiple search engines via SerpAPI
@@ -2586,7 +2558,7 @@ capabilities.</p>
 </pre>
    <h3 class="heading settled" data-level="3.3" id="social-media-example"><span class="secno">3.3. </span><span class="content">Social Media Scraper Module</span><a class="self-link" href="#social-media-example"></a></h3>
    <p>A module that handles various social media platforms:</p>
-<pre class="language-yaml highlight"><c- nn>---</c->
+<pre class="highlight language-yaml"><c- nn>---</c->
 <c- f>name</c-><c- p>:</c-> brightdata
 <c- f>label</c-><c- p>:</c-> Bright Data Scraper
 <c- f>summary</c-><c- p>:</c-> Web scraping for e-commerce and social media platforms
@@ -2616,7 +2588,7 @@ capabilities.</p>
 </pre>
    <h3 class="heading settled" data-level="3.4" id="blockchain-example"><span class="secno">3.4. </span><span class="content">Blockchain Module</span><a class="self-link" href="#blockchain-example"></a></h3>
    <p>A module that handles blockchain protocols:</p>
-<pre class="language-yaml highlight"><c- nn>---</c->
+<pre class="highlight language-yaml"><c- nn>---</c->
 <c- f>name</c-><c- p>:</c-> near
 <c- f>label</c-><c- p>:</c-> NEAR Protocol
 <c- f>summary</c-><c- p>:</c-> Integration with the NEAR blockchain ecosystem
@@ -2741,6 +2713,10 @@ capabilities.</p>
       <td align="left"><code class="highlight">rdfs:label</code>
       <td align="left"><code class="highlight">xsd:string</code>
      <tr>
+      <td align="left"><code class="highlight">title</code>
+      <td align="left"><code class="highlight">dc:title</code>
+      <td align="left"><code class="highlight">xsd:string</code>
+     <tr>
       <td align="left"><code class="highlight">summary</code>
       <td align="left"><code class="highlight">rdfs:comment</code>
       <td align="left"><code class="highlight">xsd:string</code>
@@ -2748,6 +2724,14 @@ capabilities.</p>
       <td align="left"><code class="highlight">links</code>
       <td align="left"><code class="highlight">rdfs:seeAlso</code>
       <td align="left"><code class="highlight">xsd:anyURI</code>
+     <tr>
+      <td align="left"><code class="highlight">tags</code>
+      <td align="left"><code class="highlight">TBD</code>
+      <td align="left"><code class="highlight">xsd:string</code>
+     <tr>
+      <td align="left"><code class="highlight">requires</code>
+      <td align="left"><code class="highlight">TBD</code>
+      <td align="left"><code class="highlight">TBD</code>
      <tr>
       <td align="left"><code class="highlight">provides.programs</code>
       <td align="left"><code class="highlight">mms:providesProgram</code>
@@ -2775,7 +2759,7 @@ capabilities.</p>
    </table>
    <h3 class="heading settled" data-level="5.4" id="jsonld-context"><span class="secno">5.4. </span><span class="content">JSON-LD Context</span><a class="self-link" href="#jsonld-context"></a></h3>
    <p>The following JSON-LD context SHOULD be used when converting module manifests to JSON-LD:</p>
-<pre class="language-json highlight"><c- p>{</c->
+<pre class="highlight language-json"><c- p>{</c->
   <c- f>"@context"</c-><c- p>:</c-> <c- p>{</c->
     <c- f>"@vocab"</c-><c- p>:</c-> <c- u>"https://asimov-specs.github.io/module-manifest/"</c-><c- p>,</c->
     <c- f>"mms"</c-><c- p>:</c-> <c- u>"https://asimov-specs.github.io/module-manifest/"</c-><c- p>,</c->
@@ -2822,7 +2806,7 @@ capabilities.</p>
 </pre>
    <h3 class="heading settled" data-level="5.5" id="rdf-example"><span class="secno">5.5. </span><span class="content">Example RDF Mapping</span><a class="self-link" href="#rdf-example"></a></h3>
    <p>Given the following module manifest:</p>
-<pre class="language-yaml highlight"><c- nn>---</c->
+<pre class="highlight language-yaml"><c- nn>---</c->
 <c- f>name</c-><c- p>:</c-> serpapi
 <c- f>label</c-><c- p>:</c-> SerpAPI Search
 <c- f>summary</c-><c- p>:</c-> Provides search results via SerpAPI
@@ -2838,7 +2822,7 @@ capabilities.</p>
     - https://google.com/search?q=:query
 </pre>
    <p>The equivalent RDF representation in Turtle would be:</p>
-<pre class="language-turtle highlight"><c- k>@prefix</c-> <c- nn>mms:</c-> <c- g>&lt;https://asimov-specs.github.io/module-manifest/></c-> <c- p>.</c->
+<pre class="highlight language-turtle"><c- k>@prefix</c-> <c- nn>mms:</c-> <c- g>&lt;https://asimov-specs.github.io/module-manifest/></c-> <c- p>.</c->
 <c- k>@prefix</c-> <c- nn>rdfs:</c-> <c- g>&lt;http://www.w3.org/2000/01/rdf-schema#></c-> <c- p>.</c->
 <c- k>@prefix</c-> <c- nn>xsd:</c-> <c- g>&lt;http://www.w3.org/2001/XMLSchema#></c-> <c- p>.</c->
 
@@ -2895,7 +2879,7 @@ capabilities.</p>
    <p>Initial version of the ASIMOV Module Manifest Specification.</p>
   </main>
   <div data-fill-with="conformance">
-   <h2 class="no-ref no-num heading settled" id="conformance"><span class="content">
+   <h2 class="heading no-num no-ref settled" id="conformance"><span class="content">
     Conformance</span><a class="self-link" href="#conformance"></a></h2>
    <p>
             Conformance requirements are expressed with a combination of descriptive assertions and RFC 2119 terminology.
@@ -3056,23 +3040,26 @@ capabilities.</p>
 
 })();
 </script>
-  <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
-  <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
+  <h2 class="heading no-num no-ref settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
+  <h3 class="heading no-num no-ref settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
   <ul class="index">
    <li><a href="#handles">handles</a><span>, in § 2.2</span>
    <li><a href="#label">label</a><span>, in § 2.2</span>
    <li><a href="#links">links</a><span>, in § 2.2</span>
    <li><a href="#name">name</a><span>, in § 2.2</span>
    <li><a href="#provides">provides</a><span>, in § 2.2</span>
+   <li><a href="#requires">requires</a><span>, in § 2.2</span>
    <li><a href="#summary">summary</a><span>, in § 2.2</span>
+   <li><a href="#tags">tags</a><span>, in § 2.2</span>
+   <li><a href="#title①">title</a><span>, in § 2.2</span>
   </ul>
-  <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
-  <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
+  <h2 class="heading no-num no-ref settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
+  <h3 class="heading no-num no-ref settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
   <dl>
    <dt id="biblio-rfc2119">[RFC2119]
    <dd>S. Bradner. <a href="https://datatracker.ietf.org/doc/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>
   </dl>
-  <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
+  <h3 class="heading no-num no-ref settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
    <dt id="biblio-asimov">[ASIMOV]
    <dd>Arto Bendiken; et al. <a href="https://asimov.sh"><cite>ASIMOV Platform Documentation</cite></a>. URL: <a href="https://asimov.sh">https://asimov.sh</a>
@@ -3293,12 +3280,15 @@ function parseHTML(markup) {
 "use strict";
 {
 let dfnPanelData = {
-"handles": {"dfnID":"handles","dfnText":"handles","external":false,"refSections":[{"refs":[{"id":"ref-for-handles"}],"title":"2.8. The handles Section"}],"url":"#handles"},
+"handles": {"dfnID":"handles","dfnText":"handles","external":false,"refSections":[{"refs":[{"id":"ref-for-handles"}],"title":"2.11. The handles Section"}],"url":"#handles"},
 "label": {"dfnID":"label","dfnText":"label","external":false,"refSections":[{"refs":[{"id":"ref-for-label"}],"title":"2.4. The label Field"}],"url":"#label"},
-"links": {"dfnID":"links","dfnText":"links","external":false,"refSections":[{"refs":[{"id":"ref-for-links"}],"title":"2.6. The links Field"}],"url":"#links"},
+"links": {"dfnID":"links","dfnText":"links","external":false,"refSections":[{"refs":[{"id":"ref-for-links"}],"title":"2.7. The links Field"}],"url":"#links"},
 "name": {"dfnID":"name","dfnText":"name","external":false,"refSections":[{"refs":[{"id":"ref-for-name"}],"title":"2.3. The name Field"}],"url":"#name"},
-"provides": {"dfnID":"provides","dfnText":"provides","external":false,"refSections":[{"refs":[{"id":"ref-for-provides"}],"title":"2.7. The provides Section"}],"url":"#provides"},
-"summary": {"dfnID":"summary","dfnText":"summary","external":false,"refSections":[{"refs":[{"id":"ref-for-summary"}],"title":"2.5. The summary Field"}],"url":"#summary"},
+"provides": {"dfnID":"provides","dfnText":"provides","external":false,"refSections":[{"refs":[{"id":"ref-for-provides"}],"title":"2.10. The provides Section"}],"url":"#provides"},
+"requires": {"dfnID":"requires","dfnText":"requires","external":false,"refSections":[],"url":"#requires"},
+"summary": {"dfnID":"summary","dfnText":"summary","external":false,"refSections":[{"refs":[{"id":"ref-for-summary"}],"title":"2.6. The summary Field"}],"url":"#summary"},
+"tags": {"dfnID":"tags","dfnText":"tags","external":false,"refSections":[],"url":"#tags"},
+"title①": {"dfnID":"title\u2460","dfnText":"title","external":false,"refSections":[{"refs":[{"id":"ref-for-title\u2460"}],"title":"2.5. The title Field"}],"url":"#title\u2460"},
 };
 
 document.addEventListener("DOMContentLoaded", ()=>{
@@ -3693,6 +3683,7 @@ let refsData = {
 "#name": {"displayText":"name","export":true,"for_":[],"level":"1","normative":true,"shortname":"module-manifest","spec":"module-manifest-1","status":"local","text":"name","type":"dfn","url":"#name"},
 "#provides": {"displayText":"provides","export":true,"for_":[],"level":"1","normative":true,"shortname":"module-manifest","spec":"module-manifest-1","status":"local","text":"provides","type":"dfn","url":"#provides"},
 "#summary": {"displayText":"summary","export":true,"for_":[],"level":"1","normative":true,"shortname":"module-manifest","spec":"module-manifest-1","status":"local","text":"summary","type":"dfn","url":"#summary"},
+"#title①": {"displayText":"title","export":true,"for_":[],"level":"1","normative":true,"shortname":"module-manifest","spec":"module-manifest-1","status":"local","text":"title","type":"dfn","url":"#title\u2460"},
 };
 
 function mkRefHint(link, ref) {
