@@ -1553,9 +1553,9 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version 275834c42, updated Wed Jun 11 14:18:15 2025 -0700" name="generator">
+  <meta content="Bikeshed version ac92c2f0d, updated Fri Aug 21 16:01:29 2026 -0700" name="generator">
   <link href="https://asimov-specs.github.io/program-patterns/" rel="canonical">
-  <meta content="c499a433a48e55c14a46b232ab6e549593d01881" name="revision">
+  <meta content="ca558916570a7acf2e6571a79cf999569c5179ff" name="revision">
   <meta content="dark light" name="color-scheme">
 <style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
@@ -1850,7 +1850,7 @@ pre .property::before, pre .property::after {
 </style>
 <style>/* Boilerplate: style-counters */
 body {
-    counter-reset: example figure issue;
+    counter-reset: example figure issue table;
 }
 .issue {
     counter-increment: issue;
@@ -1867,7 +1867,7 @@ body {
 }
 .invalid.example:not(.no-marker)::before,
 .illegal.example:not(.no-marker)::before {
-    content: "Invalid Example" counter(example);
+    content: "Invalid Example " counter(example);
 }
 
 figcaption {
@@ -1875,6 +1875,13 @@ figcaption {
 }
 figcaption:not(.no-marker)::before {
     content: "Figure " counter(figure) " ";
+}
+
+figure.table figcaption {
+    counter-increment: table;
+}
+figure.table figcaption:not(.no-marker)::before {
+    content: "Table " counter(table) " ";
 }
 </style>
 <style>/* Boilerplate: style-dfn-panel */
@@ -2199,13 +2206,37 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     c-[vm] { color: #cb4b16 } /* Name.Variable.Magic */
     c-[il] { color: #657b83 } /* Literal.Number.Integer.Long */
 }
+
+@media print {
+    /* Darken colors for print that would otherwise print too faintly */
+    c-[c]  { color: #555555 } /* Comment */
+    c-[d]  { color: #555555 } /* Comment.Multiline */
+    c-[cp] { color: #555555 } /* Comment.Preproc */
+    c-[c1] { color: #555555 } /* Comment.Single */
+    c-[cs] { color: #555555 } /* Comment.Special */
+    c-[o]  { color: #222222 } /* Operator */
+    c-[p]  { color: #222222 } /* Punctuation */
+    c-[ow] { color: #222222 } /* Operator.Word */
+    c-[s]  { color: #664400 } /* Literal.String */
+    c-[t]  { color: #664400 } /* Literal.String.Single */
+    c-[u]  { color: #664400 } /* Literal.String.Double */
+    c-[sb] { color: #664400 } /* Literal.String.Backtick */
+    c-[sc] { color: #664400 } /* Literal.String.Char */
+    c-[sd] { color: #664400 } /* Literal.String.Doc */
+    c-[se] { color: #664400 } /* Literal.String.Escape */
+    c-[sh] { color: #664400 } /* Literal.String.Heredoc */
+    c-[si] { color: #664400 } /* Literal.String.Interpol */
+    c-[sx] { color: #664400 } /* Literal.String.Other */
+    c-[sr] { color: #664400 } /* Literal.String.Regex */
+    c-[ss] { color: #664400 } /* Literal.String.Symbol */
+}
 </style>
  <body class="h-entry">
   <div class="head">
    <p data-fill-with="logo"></p>
-   <h1 class="p-name no-ref" id="title">ASIMOV Program Patterns Specification (PPS)</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Living Standard,
-    <time class="dt-updated" datetime="2025-09-09">9 September 2025</time></span></h2>
+   <h1 class="no-ref p-name" id="title">ASIMOV Program Patterns Specification (PPS)</h1>
+   <h2 class="heading no-num no-ref no-toc settled" id="profile-and-date"><span class="content">Living Standard,
+    <time class="dt-updated" datetime="2026-09-10">10 September 2026</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2213,14 +2244,14 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <dt>Issue Tracking:
      <dd><a href="https://github.com/asimov-specs/asimov-specs/issues/">GitHub</a>
      <dt class="editor">Editor:
-     <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:arto@asimov.systems">Arto Bendiken</a> (<a class="p-org org" href="https://asimov.systems">ASIMOV Systems</a>)
+     <dd class="editor h-card p-author vcard"><a class="email fn p-name u-email" href="mailto:arto@asimov.systems">Arto Bendiken</a> (<a class="org p-org" href="https://asimov.systems">ASIMOV Systems</a>)
     </dl>
    </div>
    <div data-fill-with="warning"></div>
    <p class="copyright" data-fill-with="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" height="15" src="https://licensebuttons.net/p/zero/1.0/80x15.png" width="80"></a>
 To the extent possible under law, the editors have waived all copyright
 and related or neighboring rights to this work.
-In addition, as of 9 September 2025,
+In addition, as of 10 September 2026,
 the editors have made this specification available under the
 <a href="https://www.openwebfoundation.org/the-agreements/the-owf-1-0-agreements-granted-claims/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at https://www.openwebfoundation.org/the-agreements/the-owf-1-0-agreements-granted-claims/owfa-1-0.
@@ -2229,13 +2260,13 @@ Parts of this work may be from another specification document.  If so, those par
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
-   <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
+   <h2 class="heading no-num no-ref no-toc settled" id="abstract"><span class="content">Abstract</span></h2>
    <p>Establishes standardized programming patterns and best practices for developing robust and maintainable ASIMOV software components.</p>
   </div>
   <div data-fill-with="at-risk"></div>
   <nav data-fill-with="table-of-contents" id="toc">
-   <h2 class="no-num no-toc no-ref" id="contents">Table of Contents</h2>
-   <ol class="toc" role="directory">
+   <h2 class="no-num no-ref no-toc" id="contents">Table of Contents</h2>
+   <ol class="toc">
     <li><a href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
     <li><a href="#examples"><span class="secno">2</span> <span class="content">Examples</span></a>
     <li>
@@ -2278,40 +2309,46 @@ Parts of this work may be from another specification document.  If so, those par
         <li><a href="#indexer-options"><span class="secno">3.6.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#prompter①"><span class="secno">3.7</span> <span class="content">Prompter</span></a>
+       <a href="#matcher"><span class="secno">3.7</span> <span class="content">Matcher</span></a>
        <ol class="toc">
-        <li><a href="#prompter-arguments"><span class="secno">3.7.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#prompter-options"><span class="secno">3.7.2</span> <span class="content">Options</span></a>
+        <li><a href="#matcher-arguments"><span class="secno">3.7.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#matcher-options"><span class="secno">3.7.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#reader①"><span class="secno">3.8</span> <span class="content">Reader</span></a>
+       <a href="#prompter①"><span class="secno">3.8</span> <span class="content">Prompter</span></a>
        <ol class="toc">
-        <li><a href="#reader-arguments"><span class="secno">3.8.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#reader-options"><span class="secno">3.8.2</span> <span class="content">Options</span></a>
+        <li><a href="#prompter-arguments"><span class="secno">3.8.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#prompter-options"><span class="secno">3.8.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#reasoner①"><span class="secno">3.9</span> <span class="content">Reasoner</span></a>
+       <a href="#reader①"><span class="secno">3.9</span> <span class="content">Reader</span></a>
        <ol class="toc">
-        <li><a href="#reasoner-arguments"><span class="secno">3.9.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#reasoner-options"><span class="secno">3.9.2</span> <span class="content">Options</span></a>
+        <li><a href="#reader-arguments"><span class="secno">3.9.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#reader-options"><span class="secno">3.9.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#resolver①"><span class="secno">3.10</span> <span class="content">Resolver</span></a>
+       <a href="#reasoner①"><span class="secno">3.10</span> <span class="content">Reasoner</span></a>
        <ol class="toc">
-        <li><a href="#resolver-arguments"><span class="secno">3.10.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#resolver-options"><span class="secno">3.10.2</span> <span class="content">Options</span></a>
+        <li><a href="#reasoner-arguments"><span class="secno">3.10.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#reasoner-options"><span class="secno">3.10.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#runner①"><span class="secno">3.11</span> <span class="content">Runner</span></a>
+       <a href="#resolver①"><span class="secno">3.11</span> <span class="content">Resolver</span></a>
        <ol class="toc">
-        <li><a href="#runner-arguments"><span class="secno">3.11.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#runner-options"><span class="secno">3.11.2</span> <span class="content">Options</span></a>
+        <li><a href="#resolver-arguments"><span class="secno">3.11.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#resolver-options"><span class="secno">3.11.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#writer①"><span class="secno">3.12</span> <span class="content">Writer</span></a>
+       <a href="#runner①"><span class="secno">3.12</span> <span class="content">Runner</span></a>
        <ol class="toc">
-        <li><a href="#writer-arguments"><span class="secno">3.12.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#writer-options"><span class="secno">3.12.2</span> <span class="content">Options</span></a>
+        <li><a href="#runner-arguments"><span class="secno">3.12.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#runner-options"><span class="secno">3.12.2</span> <span class="content">Options</span></a>
+       </ol>
+      <li>
+       <a href="#writer①"><span class="secno">3.13</span> <span class="content">Writer</span></a>
+       <ol class="toc">
+        <li><a href="#writer-arguments"><span class="secno">3.13.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#writer-options"><span class="secno">3.13.2</span> <span class="content">Options</span></a>
        </ol>
      </ol>
     <li><a href="#rdf-mapping"><span class="secno">4</span> <span class="content">RDF Mapping</span></a>
@@ -2330,7 +2367,7 @@ Parts of this work may be from another specification document.  If so, those par
      <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
      <ol class="toc">
       <li><a href="#normative"><span class="secno"></span> <span class="content">Normative References</span></a>
-      <li><a href="#informative"><span class="secno"></span> <span class="content">Informative References</span></a>
+      <li><a href="#informative"><span class="secno"></span> <span class="content">Non-Normative References</span></a>
      </ol>
    </ol>
   </nav>
@@ -2394,6 +2431,13 @@ practices for developing robust and maintainable ASIMOV software components.</p>
       <td align="left">N
       <td align="left">-
       <td align="left">0
+     <tr>
+      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="matcher-pattern">Matcher</dfn>
+      <td align="left">Exact or approximate matcher.
+      <td align="left">RDF
+      <td align="left">N
+      <td align="left">RDF
+      <td align="left">N
      <tr>
       <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="prompter">Prompter</dfn>
       <td align="left">LLM inference provider.
@@ -2646,13 +2690,14 @@ SPARQL graph query as output.</p>
       <td align="left"><code class="highlight">jsonl</code>
       <td align="left">The input format.
    </table>
-   <h3 class="heading settled" data-level="3.7" id="prompter①"><span class="secno">3.7. </span><span class="content">Prompter</span><a class="self-link" href="#prompter①"></a></h3>
-   <p>LLM inference provider. Consumes prompt input, produces response output.</p>
+   <h3 class="heading settled" data-level="3.7" id="matcher"><span class="secno">3.7. </span><span class="content">Matcher</span><a class="self-link" href="#matcher"></a></h3>
+   <p>Exact or approximate matcher. Consumes RDF input, produces RDF output describing
+matches.</p>
    <figure>
-    <figcaption>Data flow for prompters</figcaption>
-    <object data="img/prompter.mmd.svg" type="image/svg+xml"></object>
+    <figcaption>Data flow for matchers</figcaption>
+    <object data="img/matcher.mmd.svg" type="image/svg+xml"></object>
    </figure>
-   <h4 class="heading settled" data-level="3.7.1" id="prompter-arguments"><span class="secno">3.7.1. </span><span class="content">Arguments</span><a class="self-link" href="#prompter-arguments"></a></h4>
+   <h4 class="heading settled" data-level="3.7.1" id="matcher-arguments"><span class="secno">3.7.1. </span><span class="content">Arguments</span><a class="self-link" href="#matcher-arguments"></a></h4>
    <table class="data">
     <thead>
      <tr>
@@ -2672,7 +2717,53 @@ SPARQL graph query as output.</p>
       <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdout</code>)
       <td align="left">The output file path.
    </table>
-   <h4 class="heading settled" data-level="3.7.2" id="prompter-options"><span class="secno">3.7.2. </span><span class="content">Options</span><a class="self-link" href="#prompter-options"></a></h4>
+   <h4 class="heading settled" data-level="3.7.2" id="matcher-options"><span class="secno">3.7.2. </span><span class="content">Options</span><a class="self-link" href="#matcher-options"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Option
+      <th align="left">Flag
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">--input=FORMAT</code>
+      <td align="left"><code class="highlight">-i</code>
+      <td align="left"><code class="highlight">jsonl</code>
+      <td align="left">The input format.
+     <tr>
+      <td align="left"><code class="highlight">--output=FORMAT</code>
+      <td align="left"><code class="highlight">-o</code>
+      <td align="left"><code class="highlight">jsonl</code>
+      <td align="left">The output format.
+   </table>
+   <h3 class="heading settled" data-level="3.8" id="prompter①"><span class="secno">3.8. </span><span class="content">Prompter</span><a class="self-link" href="#prompter①"></a></h3>
+   <p>LLM inference provider. Consumes prompt input, produces response output.</p>
+   <figure>
+    <figcaption>Data flow for prompters</figcaption>
+    <object data="img/prompter.mmd.svg" type="image/svg+xml"></object>
+   </figure>
+   <h4 class="heading settled" data-level="3.8.1" id="prompter-arguments"><span class="secno">3.8.1. </span><span class="content">Arguments</span><a class="self-link" href="#prompter-arguments"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Argument
+      <th align="left">Arity
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">INPUT-FILE</code>
+      <td align="left">0..1
+      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdin</code>)
+      <td align="left">The input file path.
+     <tr>
+      <td align="left"><code class="highlight">OUTPUT-FILE</code>
+      <td align="left">0..1
+      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdout</code>)
+      <td align="left">The output file path.
+   </table>
+   <h4 class="heading settled" data-level="3.8.2" id="prompter-options"><span class="secno">3.8.2. </span><span class="content">Options</span><a class="self-link" href="#prompter-options"></a></h4>
    <table class="data">
     <thead>
      <tr>
@@ -2697,13 +2788,13 @@ SPARQL graph query as output.</p>
       <td align="left"><code class="highlight">text</code>
       <td align="left">The output format.
    </table>
-   <h3 class="heading settled" data-level="3.8" id="reader①"><span class="secno">3.8. </span><span class="content">Reader</span><a class="self-link" href="#reader①"></a></h3>
+   <h3 class="heading settled" data-level="3.9" id="reader①"><span class="secno">3.9. </span><span class="content">Reader</span><a class="self-link" href="#reader①"></a></h3>
    <p>RDF dataset importer. Consumes some input, produces RDF output.</p>
    <figure>
     <figcaption>Data flow for readers</figcaption>
     <object data="img/reader.mmd.svg" type="image/svg+xml"></object>
    </figure>
-   <h4 class="heading settled" data-level="3.8.1" id="reader-arguments"><span class="secno">3.8.1. </span><span class="content">Arguments</span><a class="self-link" href="#reader-arguments"></a></h4>
+   <h4 class="heading settled" data-level="3.9.1" id="reader-arguments"><span class="secno">3.9.1. </span><span class="content">Arguments</span><a class="self-link" href="#reader-arguments"></a></h4>
    <table class="data">
     <thead>
      <tr>
@@ -2723,7 +2814,7 @@ SPARQL graph query as output.</p>
       <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdout</code>)
       <td align="left">The output file path.
    </table>
-   <h4 class="heading settled" data-level="3.8.2" id="reader-options"><span class="secno">3.8.2. </span><span class="content">Options</span><a class="self-link" href="#reader-options"></a></h4>
+   <h4 class="heading settled" data-level="3.9.2" id="reader-options"><span class="secno">3.9.2. </span><span class="content">Options</span><a class="self-link" href="#reader-options"></a></h4>
    <table class="data">
     <thead>
      <tr>
@@ -2743,13 +2834,13 @@ SPARQL graph query as output.</p>
       <td align="left"><code class="highlight">jsonl</code>
       <td align="left">The output format.
    </table>
-   <h3 class="heading settled" data-level="3.9" id="reasoner①"><span class="secno">3.9. </span><span class="content">Reasoner</span><a class="self-link" href="#reasoner①"></a></h3>
+   <h3 class="heading settled" data-level="3.10" id="reasoner①"><span class="secno">3.10. </span><span class="content">Reasoner</span><a class="self-link" href="#reasoner①"></a></h3>
    <p>RDF dataset entailer. Consumes RDF input, produces entailed RDF output.</p>
    <figure>
     <figcaption>Data flow for reasoners</figcaption>
     <object data="img/reasoner.mmd.svg" type="image/svg+xml"></object>
    </figure>
-   <h4 class="heading settled" data-level="3.9.1" id="reasoner-arguments"><span class="secno">3.9.1. </span><span class="content">Arguments</span><a class="self-link" href="#reasoner-arguments"></a></h4>
+   <h4 class="heading settled" data-level="3.10.1" id="reasoner-arguments"><span class="secno">3.10.1. </span><span class="content">Arguments</span><a class="self-link" href="#reasoner-arguments"></a></h4>
    <table class="data">
     <thead>
      <tr>
@@ -2769,7 +2860,7 @@ SPARQL graph query as output.</p>
       <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdout</code>)
       <td align="left">The output file path.
    </table>
-   <h4 class="heading settled" data-level="3.9.2" id="reasoner-options"><span class="secno">3.9.2. </span><span class="content">Options</span><a class="self-link" href="#reasoner-options"></a></h4>
+   <h4 class="heading settled" data-level="3.10.2" id="reasoner-options"><span class="secno">3.10.2. </span><span class="content">Options</span><a class="self-link" href="#reasoner-options"></a></h4>
    <table class="data">
     <thead>
      <tr>
@@ -2789,14 +2880,14 @@ SPARQL graph query as output.</p>
       <td align="left"><code class="highlight">jsonl</code>
       <td align="left">The output format.
    </table>
-   <h3 class="heading settled" data-level="3.10" id="resolver①"><span class="secno">3.10. </span><span class="content">Resolver</span><a class="self-link" href="#resolver①"></a></h3>
+   <h3 class="heading settled" data-level="3.11" id="resolver①"><span class="secno">3.11. </span><span class="content">Resolver</span><a class="self-link" href="#resolver①"></a></h3>
    <p>URI resolver. Takes a URI (that is, URN or URL) input, produces a resolved URL
 output.</p>
    <figure>
     <figcaption>Data flow for resolvers</figcaption>
     <object data="img/resolver.mmd.svg" type="image/svg+xml"></object>
    </figure>
-   <h4 class="heading settled" data-level="3.10.1" id="resolver-arguments"><span class="secno">3.10.1. </span><span class="content">Arguments</span><a class="self-link" href="#resolver-arguments"></a></h4>
+   <h4 class="heading settled" data-level="3.11.1" id="resolver-arguments"><span class="secno">3.11.1. </span><span class="content">Arguments</span><a class="self-link" href="#resolver-arguments"></a></h4>
    <table class="data">
     <thead>
      <tr>
@@ -2811,7 +2902,7 @@ output.</p>
       <td align="left">none
       <td align="left">The input URL.
    </table>
-   <h4 class="heading settled" data-level="3.10.2" id="resolver-options"><span class="secno">3.10.2. </span><span class="content">Options</span><a class="self-link" href="#resolver-options"></a></h4>
+   <h4 class="heading settled" data-level="3.11.2" id="resolver-options"><span class="secno">3.11.2. </span><span class="content">Options</span><a class="self-link" href="#resolver-options"></a></h4>
    <table class="data">
     <thead>
      <tr>
@@ -2826,14 +2917,14 @@ output.</p>
       <td align="left">none
       <td align="left">The maximum number of outputs.
    </table>
-   <h3 class="heading settled" data-level="3.11" id="runner①"><span class="secno">3.11. </span><span class="content">Runner</span><a class="self-link" href="#runner①"></a></h3>
+   <h3 class="heading settled" data-level="3.12" id="runner①"><span class="secno">3.12. </span><span class="content">Runner</span><a class="self-link" href="#runner①"></a></h3>
    <p>Language runtime engine. Consumes text input conforming to a grammar, executes
 it, and produces the execution result as output.</p>
    <figure>
     <figcaption>Data flow for runners</figcaption>
     <object data="img/runner.mmd.svg" type="image/svg+xml"></object>
    </figure>
-   <h4 class="heading settled" data-level="3.11.1" id="runner-arguments"><span class="secno">3.11.1. </span><span class="content">Arguments</span><a class="self-link" href="#runner-arguments"></a></h4>
+   <h4 class="heading settled" data-level="3.12.1" id="runner-arguments"><span class="secno">3.12.1. </span><span class="content">Arguments</span><a class="self-link" href="#runner-arguments"></a></h4>
    <table class="data">
     <thead>
      <tr>
@@ -2848,7 +2939,7 @@ it, and produces the execution result as output.</p>
       <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdin</code>)
       <td align="left">The input file path.
    </table>
-   <h4 class="heading settled" data-level="3.11.2" id="runner-options"><span class="secno">3.11.2. </span><span class="content">Options</span><a class="self-link" href="#runner-options"></a></h4>
+   <h4 class="heading settled" data-level="3.12.2" id="runner-options"><span class="secno">3.12.2. </span><span class="content">Options</span><a class="self-link" href="#runner-options"></a></h4>
    <table class="data">
     <thead>
      <tr>
@@ -2863,13 +2954,13 @@ it, and produces the execution result as output.</p>
       <td align="left">none
       <td align="left">A key/value definition.
    </table>
-   <h3 class="heading settled" data-level="3.12" id="writer①"><span class="secno">3.12. </span><span class="content">Writer</span><a class="self-link" href="#writer①"></a></h3>
+   <h3 class="heading settled" data-level="3.13" id="writer①"><span class="secno">3.13. </span><span class="content">Writer</span><a class="self-link" href="#writer①"></a></h3>
    <p>RDF dataset exporter. Consumes RDF input, produces some output.</p>
    <figure>
     <figcaption>Data flow for writers</figcaption>
     <object data="img/writer.mmd.svg" type="image/svg+xml"></object>
    </figure>
-   <h4 class="heading settled" data-level="3.12.1" id="writer-arguments"><span class="secno">3.12.1. </span><span class="content">Arguments</span><a class="self-link" href="#writer-arguments"></a></h4>
+   <h4 class="heading settled" data-level="3.13.1" id="writer-arguments"><span class="secno">3.13.1. </span><span class="content">Arguments</span><a class="self-link" href="#writer-arguments"></a></h4>
    <table class="data">
     <thead>
      <tr>
@@ -2889,7 +2980,7 @@ it, and produces the execution result as output.</p>
       <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdout</code>)
       <td align="left">The output file path.
    </table>
-   <h4 class="heading settled" data-level="3.12.2" id="writer-options"><span class="secno">3.12.2. </span><span class="content">Options</span><a class="self-link" href="#writer-options"></a></h4>
+   <h4 class="heading settled" data-level="3.13.2" id="writer-options"><span class="secno">3.13.2. </span><span class="content">Options</span><a class="self-link" href="#writer-options"></a></h4>
    <table class="data">
     <thead>
      <tr>
@@ -2919,7 +3010,7 @@ it, and produces the execution result as output.</p>
    <p>This section will document changes between versions of this specification.</p>
   </main>
   <div data-fill-with="conformance">
-   <h2 class="no-ref no-num heading settled" id="conformance"><span class="content">
+   <h2 class="heading no-num no-ref settled" id="conformance"><span class="content">
     Conformance</span><a class="self-link" href="#conformance"></a></h2>
    <p>
             Conformance requirements are expressed with a combination of descriptive assertions and RFC 2119 terminology.
@@ -3080,8 +3171,8 @@ it, and produces the execution result as output.</p>
 
 })();
 </script>
-  <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
-  <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
+  <h2 class="heading no-num no-ref settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
+  <h3 class="heading no-num no-ref settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
   <ul class="index">
    <li><a href="#adapter">Adapter</a><span>, in § 3</span>
    <li><a href="#cataloger">Cataloger</a><span>, in § 3</span>
@@ -3089,6 +3180,7 @@ it, and produces the execution result as output.</p>
    <li><a href="#emitter">Emitter</a><span>, in § 3</span>
    <li><a href="#fetcher">Fetcher</a><span>, in § 3</span>
    <li><a href="#indexer">Indexer</a><span>, in § 3</span>
+   <li><a href="#matcher-pattern">Matcher</a><span>, in § 3</span>
    <li><a href="#prompter">Prompter</a><span>, in § 3</span>
    <li><a href="#reader">Reader</a><span>, in § 3</span>
    <li><a href="#reasoner">Reasoner</a><span>, in § 3</span>
@@ -3096,13 +3188,13 @@ it, and produces the execution result as output.</p>
    <li><a href="#runner">Runner</a><span>, in § 3</span>
    <li><a href="#writer">Writer</a><span>, in § 3</span>
   </ul>
-  <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
-  <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
+  <h2 class="heading no-num no-ref settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
+  <h3 class="heading no-num no-ref settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
   <dl>
    <dt id="biblio-rfc2119">[RFC2119]
    <dd>S. Bradner. <a href="https://datatracker.ietf.org/doc/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>
   </dl>
-  <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
+  <h3 class="heading no-num no-ref settled" id="informative"><span class="content">Non-Normative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
    <dt id="biblio-asimov">[ASIMOV]
    <dd>Arto Bendiken; et al. <a href="https://asimov.sh"><cite>ASIMOV Platform Documentation</cite></a>. URL: <a href="https://asimov.sh">https://asimov.sh</a>
@@ -3313,6 +3405,7 @@ let dfnPanelData = {
 "emitter": {"dfnID":"emitter","dfnText":"Emitter","external":false,"refSections":[],"url":"#emitter"},
 "fetcher": {"dfnID":"fetcher","dfnText":"Fetcher","external":false,"refSections":[],"url":"#fetcher"},
 "indexer": {"dfnID":"indexer","dfnText":"Indexer","external":false,"refSections":[],"url":"#indexer"},
+"matcher-pattern": {"dfnID":"matcher-pattern","dfnText":"Matcher","external":false,"refSections":[],"url":"#matcher-pattern"},
 "prompter": {"dfnID":"prompter","dfnText":"Prompter","external":false,"refSections":[],"url":"#prompter"},
 "reader": {"dfnID":"reader","dfnText":"Reader","external":false,"refSections":[],"url":"#reader"},
 "reasoner": {"dfnID":"reasoner","dfnText":"Reasoner","external":false,"refSections":[],"url":"#reasoner"},
