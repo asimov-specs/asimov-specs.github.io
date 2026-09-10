@@ -1,73 +1,8 @@
 <!doctype html><html lang="en">
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <title>ASIMOV State Directory Specification (SDS)</title>
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-
-  <title>State Directory Specification (SDS) | ASIMOV.Specs</title>
-  <meta name="title" content="State Directory Specification (SDS) | ASIMOV.Specs" />
-  <meta name="description" content="Defines the organization and management of ASIMOV state directories ($HOME/.asimov/), ensuring consistent data storage and retrieval mechanisms for neurosymbolic AI applications." />
-  <meta name="keywords" content="ASIMOV, state directory, data storage, file management, configuration, ASIMOV SDS, state management" />
-  <meta name="author" content="ASIMOV Platform" />
-  <meta name="robots" content="index, follow" />
-
-  <link rel="canonical" href="https://asimov-specs.github.io/state-directory/" />
-
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://asimov-specs.github.io/state-directory/" />
-  <meta property="og:title" content="State Directory Specification (SDS) | ASIMOV.Specs" />
-  <meta property="og:description" content="Defines the organization and management of ASIMOV state directories ($HOME/.asimov/), ensuring consistent data storage and retrieval mechanisms for neurosymbolic AI applications." />
-  <meta property="og:image" content="https://asimov-specs.github.io/og-image.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:site_name" content="ASIMOV Specifications" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="article:section" content="Technical Specification" />
-  <meta property="article:tag" content="State Directory" />
-  <meta property="article:tag" content="Data Storage" />
-  <meta property="article:tag" content="File Management" />
-
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://asimov-specs.github.io/state-directory/" />
-  <meta property="twitter:title" content="State Directory Specification (SDS) | ASIMOV.Specs" />
-  <meta property="twitter:description" content="Defines the organization and management of ASIMOV state directories ($HOME/.asimov/), ensuring consistent data storage and retrieval mechanisms for neurosymbolic AI applications." />
-  <meta property="twitter:image" content="https://asimov-specs.github.io/og-image.png" />
-
-  <meta name="theme-color" content="#000000" />
-  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "TechArticle",
-    "headline": "ASIMOV State Directory Specification (SDS)",
-    "description": "Defines the organization and management of ASIMOV state directories ($HOME/.asimov/), ensuring consistent data storage and retrieval mechanisms for neurosymbolic AI applications.",
-    "author": {
-      "@type": "Organization",
-      "name": "ASIMOV Platform"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "ASIMOV Platform",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://asimov-specs.github.io/logo.svg"
-      }
-    },
-    "url": "https://asimov-specs.github.io/state-directory/",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "ASIMOV Specifications",
-      "url": "https://asimov-specs.github.io/"
-    },
-    "about": {
-      "@type": "SoftwareApplication",
-      "name": "ASIMOV Platform",
-      "description": "A polyglot development platform for trustworthy, neurosymbolic AI",
-      "url": "https://asimov.sh"
-    }
-  }
-  </script>
 <style data-fill-with="stylesheet">/******************************************************************************
  *                   Style sheet for the W3C specifications                   *
  *
@@ -1553,9 +1488,9 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version 275834c42, updated Wed Jun 11 14:18:15 2025 -0700" name="generator">
+  <meta content="Bikeshed version ac92c2f0d, updated Fri Aug 21 16:01:29 2026 -0700" name="generator">
   <link href="https://asimov-specs.github.io/state-directory/" rel="canonical">
-  <meta content="81509029091d9d030f412116bb3c9584d299d231" name="revision">
+  <meta content="c127567084c98d808594c8b313ac247b54b3ae82" name="revision">
   <meta content="dark light" name="color-scheme">
 <style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
@@ -1850,7 +1785,7 @@ pre .property::before, pre .property::after {
 </style>
 <style>/* Boilerplate: style-counters */
 body {
-    counter-reset: example figure issue;
+    counter-reset: example figure issue table;
 }
 .issue {
     counter-increment: issue;
@@ -1867,7 +1802,7 @@ body {
 }
 .invalid.example:not(.no-marker)::before,
 .illegal.example:not(.no-marker)::before {
-    content: "Invalid Example" counter(example);
+    content: "Invalid Example " counter(example);
 }
 
 figcaption {
@@ -1875,6 +1810,13 @@ figcaption {
 }
 figcaption:not(.no-marker)::before {
     content: "Figure " counter(figure) " ";
+}
+
+figure.table figcaption {
+    counter-increment: table;
+}
+figure.table figcaption:not(.no-marker)::before {
+    content: "Table " counter(table) " ";
 }
 </style>
 <style>/* Boilerplate: style-issues */
@@ -2075,13 +2017,37 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     c-[vm] { color: #cb4b16 } /* Name.Variable.Magic */
     c-[il] { color: #657b83 } /* Literal.Number.Integer.Long */
 }
+
+@media print {
+    /* Darken colors for print that would otherwise print too faintly */
+    c-[c]  { color: #555555 } /* Comment */
+    c-[d]  { color: #555555 } /* Comment.Multiline */
+    c-[cp] { color: #555555 } /* Comment.Preproc */
+    c-[c1] { color: #555555 } /* Comment.Single */
+    c-[cs] { color: #555555 } /* Comment.Special */
+    c-[o]  { color: #222222 } /* Operator */
+    c-[p]  { color: #222222 } /* Punctuation */
+    c-[ow] { color: #222222 } /* Operator.Word */
+    c-[s]  { color: #664400 } /* Literal.String */
+    c-[t]  { color: #664400 } /* Literal.String.Single */
+    c-[u]  { color: #664400 } /* Literal.String.Double */
+    c-[sb] { color: #664400 } /* Literal.String.Backtick */
+    c-[sc] { color: #664400 } /* Literal.String.Char */
+    c-[sd] { color: #664400 } /* Literal.String.Doc */
+    c-[se] { color: #664400 } /* Literal.String.Escape */
+    c-[sh] { color: #664400 } /* Literal.String.Heredoc */
+    c-[si] { color: #664400 } /* Literal.String.Interpol */
+    c-[sx] { color: #664400 } /* Literal.String.Other */
+    c-[sr] { color: #664400 } /* Literal.String.Regex */
+    c-[ss] { color: #664400 } /* Literal.String.Symbol */
+}
 </style>
  <body class="h-entry">
   <div class="head">
    <p data-fill-with="logo"></p>
-   <h1 class="p-name no-ref" id="title">ASIMOV State Directory Specification (SDS)</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Living Standard,
-    <time class="dt-updated" datetime="2025-06-26">26 June 2025</time></span></h2>
+   <h1 class="no-ref p-name" id="title">ASIMOV State Directory Specification (SDS)</h1>
+   <h2 class="heading no-num no-ref no-toc settled" id="profile-and-date"><span class="content">Living Standard,
+    <time class="dt-updated" datetime="2026-09-10">10 September 2026</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2089,14 +2055,14 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <dt>Issue Tracking:
      <dd><a href="https://github.com/asimov-specs/asimov-specs/issues/">GitHub</a>
      <dt class="editor">Editor:
-     <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:arto@asimov.systems">Arto Bendiken</a> (<a class="p-org org" href="https://asimov.systems">ASIMOV Systems</a>)
+     <dd class="editor h-card p-author vcard"><a class="email fn p-name u-email" href="mailto:arto@asimov.systems">Arto Bendiken</a> (<a class="org p-org" href="https://asimov.systems">ASIMOV Systems</a>)
     </dl>
    </div>
    <div data-fill-with="warning"></div>
    <p class="copyright" data-fill-with="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" height="15" src="https://licensebuttons.net/p/zero/1.0/80x15.png" width="80"></a>
 To the extent possible under law, the editors have waived all copyright
 and related or neighboring rights to this work.
-In addition, as of 26 June 2025,
+In addition, as of 10 September 2026,
 the editors have made this specification available under the
 <a href="https://www.openwebfoundation.org/the-agreements/the-owf-1-0-agreements-granted-claims/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at https://www.openwebfoundation.org/the-agreements/the-owf-1-0-agreements-granted-claims/owfa-1-0.
@@ -2105,13 +2071,13 @@ Parts of this work may be from another specification document.  If so, those par
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
-   <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
+   <h2 class="heading no-num no-ref no-toc settled" id="abstract"><span class="content">Abstract</span></h2>
    <p>Defines the organization and management of ASIMOV state directories (<code class="highlight">$HOME/.asimov/</code>), ensuring consistent data storage and retrieval mechanisms.</p>
   </div>
   <div data-fill-with="at-risk"></div>
   <nav data-fill-with="table-of-contents" id="toc">
-   <h2 class="no-num no-toc no-ref" id="contents">Table of Contents</h2>
-   <ol class="toc" role="directory">
+   <h2 class="no-num no-ref no-toc" id="contents">Table of Contents</h2>
+   <ol class="toc">
     <li><a href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
     <li><a href="#examples"><span class="secno">2</span> <span class="content">Examples</span></a>
     <li><a href="#rdf-mapping"><span class="secno">3</span> <span class="content">RDF Mapping</span></a>
@@ -2125,7 +2091,7 @@ Parts of this work may be from another specification document.  If so, those par
      <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
      <ol class="toc">
       <li><a href="#normative"><span class="secno"></span> <span class="content">Normative References</span></a>
-      <li><a href="#informative"><span class="secno"></span> <span class="content">Informative References</span></a>
+      <li><a href="#informative"><span class="secno"></span> <span class="content">Non-Normative References</span></a>
      </ol>
    </ol>
   </nav>
@@ -2137,13 +2103,13 @@ neurosymbolic AI.</p>
 directories (<code class="highlight">$HOME/.asimov/</code>), ensuring consistent data storage and retrieval
 mechanisms.</p>
    <h2 class="heading settled" data-level="2" id="examples"><span class="secno">2. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
-<pre class="language-console highlight">$ tree <c- g>$HOME</c->/.asimov
+<pre class="highlight language-console">$ tree <c- g>$HOME</c->/.asimov
 .
 ├── envs
 ├── libexec
 │   ├── asimov-apify-fetcher
 │   ├── asimov-apify-importer
-│   ├── asimov-brightdata-cataloger
+│   ├── asimov-brightdata-lister
 │   ├── asimov-brightdata-fetcher
 │   ├── asimov-brightdata-importer
 │   ├── asimov-jinja-runner
@@ -2171,7 +2137,7 @@ mechanisms.</p>
    <p>This section will document changes between versions of this specification.</p>
   </main>
   <div data-fill-with="conformance">
-   <h2 class="no-ref no-num heading settled" id="conformance"><span class="content">
+   <h2 class="heading no-num no-ref settled" id="conformance"><span class="content">
     Conformance</span><a class="self-link" href="#conformance"></a></h2>
    <p>
             Conformance requirements are expressed with a combination of descriptive assertions and RFC 2119 terminology.
@@ -2332,13 +2298,13 @@ mechanisms.</p>
 
 })();
 </script>
-  <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
-  <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
+  <h2 class="heading no-num no-ref settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
+  <h3 class="heading no-num no-ref settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
   <dl>
    <dt id="biblio-rfc2119">[RFC2119]
    <dd>S. Bradner. <a href="https://datatracker.ietf.org/doc/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>
   </dl>
-  <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
+  <h3 class="heading no-num no-ref settled" id="informative"><span class="content">Non-Normative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
    <dt id="biblio-asimov">[ASIMOV]
    <dd>Arto Bendiken; et al. <a href="https://asimov.sh"><cite>ASIMOV Platform Documentation</cite></a>. URL: <a href="https://asimov.sh">https://asimov.sh</a>

@@ -1555,7 +1555,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version ac92c2f0d, updated Fri Aug 21 16:01:29 2026 -0700" name="generator">
   <link href="https://asimov-specs.github.io/program-patterns/" rel="canonical">
-  <meta content="ca558916570a7acf2e6571a79cf999569c5179ff" name="revision">
+  <meta content="c127567084c98d808594c8b313ac247b54b3ae82" name="revision">
   <meta content="dark light" name="color-scheme">
 <style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
@@ -2279,34 +2279,34 @@ Parts of this work may be from another specification document.  If so, those par
         <li><a href="#adapter-options"><span class="secno">3.1.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#cataloger①"><span class="secno">3.2</span> <span class="content">Cataloger</span></a>
+       <a href="#compiler①"><span class="secno">3.2</span> <span class="content">Compiler</span></a>
        <ol class="toc">
-        <li><a href="#cataloger-arguments"><span class="secno">3.2.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#cataloger-options"><span class="secno">3.2.2</span> <span class="content">Options</span></a>
+        <li><a href="#compiler-arguments"><span class="secno">3.2.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#compiler-options"><span class="secno">3.2.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#compiler①"><span class="secno">3.3</span> <span class="content">Compiler</span></a>
+       <a href="#emitter①"><span class="secno">3.3</span> <span class="content">Emitter</span></a>
        <ol class="toc">
-        <li><a href="#compiler-arguments"><span class="secno">3.3.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#compiler-options"><span class="secno">3.3.2</span> <span class="content">Options</span></a>
+        <li><a href="#emitter-arguments"><span class="secno">3.3.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#emitter-options"><span class="secno">3.3.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#emitter①"><span class="secno">3.4</span> <span class="content">Emitter</span></a>
+       <a href="#fetcher①"><span class="secno">3.4</span> <span class="content">Fetcher</span></a>
        <ol class="toc">
-        <li><a href="#emitter-arguments"><span class="secno">3.4.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#emitter-options"><span class="secno">3.4.2</span> <span class="content">Options</span></a>
+        <li><a href="#fetcher-arguments"><span class="secno">3.4.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#fetcher-options"><span class="secno">3.4.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#fetcher①"><span class="secno">3.5</span> <span class="content">Fetcher</span></a>
+       <a href="#indexer①"><span class="secno">3.5</span> <span class="content">Indexer</span></a>
        <ol class="toc">
-        <li><a href="#fetcher-arguments"><span class="secno">3.5.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#fetcher-options"><span class="secno">3.5.2</span> <span class="content">Options</span></a>
+        <li><a href="#indexer-arguments"><span class="secno">3.5.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#indexer-options"><span class="secno">3.5.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#indexer①"><span class="secno">3.6</span> <span class="content">Indexer</span></a>
+       <a href="#lister"><span class="secno">3.6</span> <span class="content">Lister</span></a>
        <ol class="toc">
-        <li><a href="#indexer-arguments"><span class="secno">3.6.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#indexer-options"><span class="secno">3.6.2</span> <span class="content">Options</span></a>
+        <li><a href="#lister-arguments"><span class="secno">3.6.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#lister-options"><span class="secno">3.6.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
        <a href="#matcher"><span class="secno">3.7</span> <span class="content">Matcher</span></a>
@@ -2397,13 +2397,6 @@ practices for developing robust and maintainable ASIMOV software components.</p>
       <td align="left">RDF
       <td align="left">N
      <tr>
-      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="cataloger">Cataloger</dfn>
-      <td align="left">Directory iterator.
-      <td align="left">URL
-      <td align="left">1
-      <td align="left">RDF
-      <td align="left">N
-     <tr>
       <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="compiler">Compiler</dfn>
       <td align="left">Prompt compiler.
       <td align="left">text
@@ -2431,6 +2424,13 @@ practices for developing robust and maintainable ASIMOV software components.</p>
       <td align="left">N
       <td align="left">-
       <td align="left">0
+     <tr>
+      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="lister-pattern">Lister</dfn>
+      <td align="left">Directory iterator.
+      <td align="left">URL
+      <td align="left">1
+      <td align="left">RDF
+      <td align="left">N
      <tr>
       <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="matcher-pattern">Matcher</dfn>
       <td align="left">Exact or approximate matcher.
@@ -2517,55 +2517,14 @@ practices for developing robust and maintainable ASIMOV software components.</p>
       <td align="left"><code class="highlight">jsonl</code>
       <td align="left">The output format.
    </table>
-   <h3 class="heading settled" data-level="3.2" id="cataloger①"><span class="secno">3.2. </span><span class="content">Cataloger</span><a class="self-link" href="#cataloger①"></a></h3>
-   <p>Directory iterator. Takes a URL input, produces RDF output.</p>
-   <figure>
-    <figcaption>Data flow for catalogers</figcaption>
-    <object data="img/cataloger.mmd.svg" type="image/svg+xml"></object>
-   </figure>
-   <h4 class="heading settled" data-level="3.2.1" id="cataloger-arguments"><span class="secno">3.2.1. </span><span class="content">Arguments</span><a class="self-link" href="#cataloger-arguments"></a></h4>
-   <table class="data">
-    <thead>
-     <tr>
-      <th align="left">Argument
-      <th align="left">Arity
-      <th align="left">Default
-      <th align="left">Summary
-    <tbody>
-     <tr>
-      <td align="left"><code class="highlight">INPUT-URL</code>
-      <td align="left">1
-      <td align="left">none
-      <td align="left">The input URL.
-   </table>
-   <h4 class="heading settled" data-level="3.2.2" id="cataloger-options"><span class="secno">3.2.2. </span><span class="content">Options</span><a class="self-link" href="#cataloger-options"></a></h4>
-   <table class="data">
-    <thead>
-     <tr>
-      <th align="left">Option
-      <th align="left">Flag
-      <th align="left">Default
-      <th align="left">Summary
-    <tbody>
-     <tr>
-      <td align="left"><code class="highlight">--limit=COUNT</code>
-      <td align="left"><code class="highlight">-n</code>
-      <td align="left">none
-      <td align="left">The maximum number of outputs.
-     <tr>
-      <td align="left"><code class="highlight">--output=FORMAT</code>
-      <td align="left"><code class="highlight">-o</code>
-      <td align="left"><code class="highlight">jsonl</code>
-      <td align="left">The output format.
-   </table>
-   <h3 class="heading settled" data-level="3.3" id="compiler①"><span class="secno">3.3. </span><span class="content">Compiler</span><a class="self-link" href="#compiler①"></a></h3>
+   <h3 class="heading settled" data-level="3.2" id="compiler①"><span class="secno">3.2. </span><span class="content">Compiler</span><a class="self-link" href="#compiler①"></a></h3>
    <p>Prompt compiler. Consumes natural-language text input, produces a corresponding
 SPARQL graph query as output.</p>
    <figure>
     <figcaption>Data flow for compilers</figcaption>
     <object data="img/compiler.mmd.svg" type="image/svg+xml"></object>
    </figure>
-   <h4 class="heading settled" data-level="3.3.1" id="compiler-arguments"><span class="secno">3.3.1. </span><span class="content">Arguments</span><a class="self-link" href="#compiler-arguments"></a></h4>
+   <h4 class="heading settled" data-level="3.2.1" id="compiler-arguments"><span class="secno">3.2.1. </span><span class="content">Arguments</span><a class="self-link" href="#compiler-arguments"></a></h4>
    <table class="data">
     <thead>
      <tr>
@@ -2580,7 +2539,7 @@ SPARQL graph query as output.</p>
       <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdin</code>)
       <td align="left">The input file path.
    </table>
-   <h4 class="heading settled" data-level="3.3.2" id="compiler-options"><span class="secno">3.3.2. </span><span class="content">Options</span><a class="self-link" href="#compiler-options"></a></h4>
+   <h4 class="heading settled" data-level="3.2.2" id="compiler-options"><span class="secno">3.2.2. </span><span class="content">Options</span><a class="self-link" href="#compiler-options"></a></h4>
    <table class="data">
     <thead>
      <tr>
@@ -2590,15 +2549,15 @@ SPARQL graph query as output.</p>
       <th align="left">Summary
     <tbody>
    </table>
-   <h3 class="heading settled" data-level="3.4" id="emitter①"><span class="secno">3.4. </span><span class="content">Emitter</span><a class="self-link" href="#emitter①"></a></h3>
+   <h3 class="heading settled" data-level="3.3" id="emitter①"><span class="secno">3.3. </span><span class="content">Emitter</span><a class="self-link" href="#emitter①"></a></h3>
    <p>Value generator. Takes no input, produces an RDF output.</p>
    <figure>
     <figcaption>Data flow for emitters</figcaption>
     <object data="img/emitter.mmd.svg" type="image/svg+xml"></object>
    </figure>
-   <h4 class="heading settled" data-level="3.4.1" id="emitter-arguments"><span class="secno">3.4.1. </span><span class="content">Arguments</span><a class="self-link" href="#emitter-arguments"></a></h4>
+   <h4 class="heading settled" data-level="3.3.1" id="emitter-arguments"><span class="secno">3.3.1. </span><span class="content">Arguments</span><a class="self-link" href="#emitter-arguments"></a></h4>
    <p>Emitters require no positional arguments.</p>
-   <h4 class="heading settled" data-level="3.4.2" id="emitter-options"><span class="secno">3.4.2. </span><span class="content">Options</span><a class="self-link" href="#emitter-options"></a></h4>
+   <h4 class="heading settled" data-level="3.3.2" id="emitter-options"><span class="secno">3.3.2. </span><span class="content">Options</span><a class="self-link" href="#emitter-options"></a></h4>
    <table class="data">
     <thead>
      <tr>
@@ -2613,13 +2572,13 @@ SPARQL graph query as output.</p>
       <td align="left"><code class="highlight">jsonl</code>
       <td align="left">The output format.
    </table>
-   <h3 class="heading settled" data-level="3.5" id="fetcher①"><span class="secno">3.5. </span><span class="content">Fetcher</span><a class="self-link" href="#fetcher①"></a></h3>
+   <h3 class="heading settled" data-level="3.4" id="fetcher①"><span class="secno">3.4. </span><span class="content">Fetcher</span><a class="self-link" href="#fetcher①"></a></h3>
    <p>URL protocol fetcher. Consumes a URL input, produces RDF output.</p>
    <figure>
     <figcaption>Data flow for fetchers</figcaption>
     <object data="img/fetcher.mmd.svg" type="image/svg+xml"></object>
    </figure>
-   <h4 class="heading settled" data-level="3.5.1" id="fetcher-arguments"><span class="secno">3.5.1. </span><span class="content">Arguments</span><a class="self-link" href="#fetcher-arguments"></a></h4>
+   <h4 class="heading settled" data-level="3.4.1" id="fetcher-arguments"><span class="secno">3.4.1. </span><span class="content">Arguments</span><a class="self-link" href="#fetcher-arguments"></a></h4>
    <table class="data">
     <thead>
      <tr>
@@ -2634,7 +2593,7 @@ SPARQL graph query as output.</p>
       <td align="left">none
       <td align="left">The input URL.
    </table>
-   <h4 class="heading settled" data-level="3.5.2" id="fetcher-options"><span class="secno">3.5.2. </span><span class="content">Options</span><a class="self-link" href="#fetcher-options"></a></h4>
+   <h4 class="heading settled" data-level="3.4.2" id="fetcher-options"><span class="secno">3.4.2. </span><span class="content">Options</span><a class="self-link" href="#fetcher-options"></a></h4>
    <table class="data">
     <thead>
      <tr>
@@ -2649,13 +2608,13 @@ SPARQL graph query as output.</p>
       <td align="left"><code class="highlight">jsonl</code>
       <td align="left">The output format.
    </table>
-   <h3 class="heading settled" data-level="3.6" id="indexer①"><span class="secno">3.6. </span><span class="content">Indexer</span><a class="self-link" href="#indexer①"></a></h3>
+   <h3 class="heading settled" data-level="3.5" id="indexer①"><span class="secno">3.5. </span><span class="content">Indexer</span><a class="self-link" href="#indexer①"></a></h3>
    <p>RDF dataset indexer. Consumes RDF input, maintains a persistent index.</p>
    <figure>
     <figcaption>Data flow for indexers</figcaption>
     <object data="img/indexer.mmd.svg" type="image/svg+xml"></object>
    </figure>
-   <h4 class="heading settled" data-level="3.6.1" id="indexer-arguments"><span class="secno">3.6.1. </span><span class="content">Arguments</span><a class="self-link" href="#indexer-arguments"></a></h4>
+   <h4 class="heading settled" data-level="3.5.1" id="indexer-arguments"><span class="secno">3.5.1. </span><span class="content">Arguments</span><a class="self-link" href="#indexer-arguments"></a></h4>
    <table class="data">
     <thead>
      <tr>
@@ -2675,7 +2634,7 @@ SPARQL graph query as output.</p>
       <td align="left">none
       <td align="left">The index file path.
    </table>
-   <h4 class="heading settled" data-level="3.6.2" id="indexer-options"><span class="secno">3.6.2. </span><span class="content">Options</span><a class="self-link" href="#indexer-options"></a></h4>
+   <h4 class="heading settled" data-level="3.5.2" id="indexer-options"><span class="secno">3.5.2. </span><span class="content">Options</span><a class="self-link" href="#indexer-options"></a></h4>
    <table class="data">
     <thead>
      <tr>
@@ -2689,6 +2648,47 @@ SPARQL graph query as output.</p>
       <td align="left"><code class="highlight">-i</code>
       <td align="left"><code class="highlight">jsonl</code>
       <td align="left">The input format.
+   </table>
+   <h3 class="heading settled" data-level="3.6" id="lister"><span class="secno">3.6. </span><span class="content">Lister</span><a class="self-link" href="#lister"></a></h3>
+   <p>Directory iterator. Takes a URL input, produces RDF output.</p>
+   <figure>
+    <figcaption>Data flow for listers</figcaption>
+    <object data="img/lister.mmd.svg" type="image/svg+xml"></object>
+   </figure>
+   <h4 class="heading settled" data-level="3.6.1" id="lister-arguments"><span class="secno">3.6.1. </span><span class="content">Arguments</span><a class="self-link" href="#lister-arguments"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Argument
+      <th align="left">Arity
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">INPUT-URL</code>
+      <td align="left">1
+      <td align="left">none
+      <td align="left">The input URL.
+   </table>
+   <h4 class="heading settled" data-level="3.6.2" id="lister-options"><span class="secno">3.6.2. </span><span class="content">Options</span><a class="self-link" href="#lister-options"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th align="left">Option
+      <th align="left">Flag
+      <th align="left">Default
+      <th align="left">Summary
+    <tbody>
+     <tr>
+      <td align="left"><code class="highlight">--limit=COUNT</code>
+      <td align="left"><code class="highlight">-n</code>
+      <td align="left">none
+      <td align="left">The maximum number of outputs.
+     <tr>
+      <td align="left"><code class="highlight">--output=FORMAT</code>
+      <td align="left"><code class="highlight">-o</code>
+      <td align="left"><code class="highlight">jsonl</code>
+      <td align="left">The output format.
    </table>
    <h3 class="heading settled" data-level="3.7" id="matcher"><span class="secno">3.7. </span><span class="content">Matcher</span><a class="self-link" href="#matcher"></a></h3>
    <p>Exact or approximate matcher. Consumes RDF input, produces RDF output describing
@@ -3175,11 +3175,11 @@ it, and produces the execution result as output.</p>
   <h3 class="heading no-num no-ref settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
   <ul class="index">
    <li><a href="#adapter">Adapter</a><span>, in § 3</span>
-   <li><a href="#cataloger">Cataloger</a><span>, in § 3</span>
    <li><a href="#compiler">Compiler</a><span>, in § 3</span>
    <li><a href="#emitter">Emitter</a><span>, in § 3</span>
    <li><a href="#fetcher">Fetcher</a><span>, in § 3</span>
    <li><a href="#indexer">Indexer</a><span>, in § 3</span>
+   <li><a href="#lister-pattern">Lister</a><span>, in § 3</span>
    <li><a href="#matcher-pattern">Matcher</a><span>, in § 3</span>
    <li><a href="#prompter">Prompter</a><span>, in § 3</span>
    <li><a href="#reader">Reader</a><span>, in § 3</span>
@@ -3400,11 +3400,11 @@ function parseHTML(markup) {
 {
 let dfnPanelData = {
 "adapter": {"dfnID":"adapter","dfnText":"Adapter","external":false,"refSections":[],"url":"#adapter"},
-"cataloger": {"dfnID":"cataloger","dfnText":"Cataloger","external":false,"refSections":[],"url":"#cataloger"},
 "compiler": {"dfnID":"compiler","dfnText":"Compiler","external":false,"refSections":[],"url":"#compiler"},
 "emitter": {"dfnID":"emitter","dfnText":"Emitter","external":false,"refSections":[],"url":"#emitter"},
 "fetcher": {"dfnID":"fetcher","dfnText":"Fetcher","external":false,"refSections":[],"url":"#fetcher"},
 "indexer": {"dfnID":"indexer","dfnText":"Indexer","external":false,"refSections":[],"url":"#indexer"},
+"lister-pattern": {"dfnID":"lister-pattern","dfnText":"Lister","external":false,"refSections":[],"url":"#lister-pattern"},
 "matcher-pattern": {"dfnID":"matcher-pattern","dfnText":"Matcher","external":false,"refSections":[],"url":"#matcher-pattern"},
 "prompter": {"dfnID":"prompter","dfnText":"Prompter","external":false,"refSections":[],"url":"#prompter"},
 "reader": {"dfnID":"reader","dfnText":"Reader","external":false,"refSections":[],"url":"#reader"},
