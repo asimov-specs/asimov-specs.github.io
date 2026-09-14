@@ -1,73 +1,8 @@
 <!doctype html><html lang="en">
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <title>ASIMOV Program Patterns Specification (PPS)</title>
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-
-  <title>Program Patterns Specification (PPS) | ASIMOV.Specs</title>
-  <meta name="title" content="Program Patterns Specification (PPS) | ASIMOV.Specs" />
-  <meta name="description" content="Establishes standardized programming patterns and best practices for developing robust and maintainable ASIMOV software components for neurosymbolic AI applications." />
-  <meta name="keywords" content="ASIMOV, program patterns, programming patterns, best practices, software development, AI patterns, ASIMOV PPS, design patterns" />
-  <meta name="author" content="ASIMOV Platform" />
-  <meta name="robots" content="index, follow" />
-
-  <link rel="canonical" href="https://asimov-specs.github.io/program-patterns/" />
-
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://asimov-specs.github.io/program-patterns/" />
-  <meta property="og:title" content="Program Patterns Specification (PPS) | ASIMOV.Specs" />
-  <meta property="og:description" content="Establishes standardized programming patterns and best practices for developing robust and maintainable ASIMOV software components for neurosymbolic AI applications." />
-  <meta property="og:image" content="https://asimov-specs.github.io/og-image.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:site_name" content="ASIMOV Specifications" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="article:section" content="Technical Specification" />
-  <meta property="article:tag" content="Programming Patterns" />
-  <meta property="article:tag" content="Best Practices" />
-  <meta property="article:tag" content="Software Development" />
-
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://asimov-specs.github.io/program-patterns/" />
-  <meta property="twitter:title" content="Program Patterns Specification (PPS) | ASIMOV.Specs" />
-  <meta property="twitter:description" content="Establishes standardized programming patterns and best practices for developing robust and maintainable ASIMOV software components for neurosymbolic AI applications." />
-  <meta property="twitter:image" content="https://asimov-specs.github.io/og-image.png" />
-
-  <meta name="theme-color" content="#000000" />
-  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "TechArticle",
-    "headline": "ASIMOV Program Patterns Specification (PPS)",
-    "description": "Establishes standardized programming patterns and best practices for developing robust and maintainable ASIMOV software components for neurosymbolic AI applications.",
-    "author": {
-      "@type": "Organization",
-      "name": "ASIMOV Platform"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "ASIMOV Platform",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://asimov-specs.github.io/logo.svg"
-      }
-    },
-    "url": "https://asimov-specs.github.io/program-patterns/",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "ASIMOV Specifications",
-      "url": "https://asimov-specs.github.io/"
-    },
-    "about": {
-      "@type": "SoftwareApplication",
-      "name": "ASIMOV Platform",
-      "description": "A polyglot development platform for trustworthy, neurosymbolic AI",
-      "url": "https://asimov.sh"
-    }
-  }
-  </script>
 <style data-fill-with="stylesheet">/******************************************************************************
  *                   Style sheet for the W3C specifications                   *
  *
@@ -1555,7 +1490,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version ac92c2f0d, updated Fri Aug 21 16:01:29 2026 -0700" name="generator">
   <link href="https://asimov-specs.github.io/program-patterns/" rel="canonical">
-  <meta content="c127567084c98d808594c8b313ac247b54b3ae82" name="revision">
+  <meta content="0483cef4cf200c7784ff3e40e25f3d577cf100fe" name="revision">
   <meta content="dark light" name="color-scheme">
 <style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
@@ -2027,6 +1962,39 @@ a[href].issue-return {
     margin-bottom: 0;
 }
 </style>
+<style>/* Boilerplate: style-ref-hints */
+:root {
+    --ref-hint-bg: #ddd;
+    --ref-hint-text: var(--text);
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ref-hint-bg: #222;
+        --ref-hint-text: var(--text);
+    }
+}
+
+.ref-hint {
+    display: inline-block;
+    position: absolute;
+    z-index: 35;
+    width: 20em;
+    width: 300px;
+    height: auto;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.5em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: var(--ref-hint-bg);
+    color: var(--ref-hint-text);
+    border: outset 0.2em;
+    white-space: normal; /* in case it's moved into a pre */
+}
+
+.ref-hint * { margin: 0; padding: 0; text-indent: 0; }
+
+.ref-hint ul { padding: 0 0 0 1em; list-style: none; }
+</style>
 <style>/* Boilerplate: style-selflinks */
 :root {
     --selflink-text: white;
@@ -2236,13 +2204,14 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <p data-fill-with="logo"></p>
    <h1 class="no-ref p-name" id="title">ASIMOV Program Patterns Specification (PPS)</h1>
    <h2 class="heading no-num no-ref no-toc settled" id="profile-and-date"><span class="content">Living Standard,
-    <time class="dt-updated" datetime="2026-09-10">10 September 2026</time></span></h2>
+    <time class="dt-updated" datetime="2026-09-14">14 September 2026</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
      <dd><a class="u-url" href="https://asimov-specs.github.io/program-patterns/">https://asimov-specs.github.io/program-patterns/</a>
      <dt>Issue Tracking:
      <dd><a href="https://github.com/asimov-specs/asimov-specs/issues/">GitHub</a>
+     <dd><a href="#issues-index">Inline In Spec</a>
      <dt class="editor">Editor:
      <dd class="editor h-card p-author vcard"><a class="email fn p-name u-email" href="mailto:arto@asimov.systems">Arto Bendiken</a> (<a class="org p-org" href="https://asimov.systems">ASIMOV Systems</a>)
     </dl>
@@ -2251,7 +2220,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <p class="copyright" data-fill-with="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" height="15" src="https://licensebuttons.net/p/zero/1.0/80x15.png" width="80"></a>
 To the extent possible under law, the editors have waived all copyright
 and related or neighboring rights to this work.
-In addition, as of 10 September 2026,
+In addition, as of 14 September 2026,
 the editors have made this specification available under the
 <a href="https://www.openwebfoundation.org/the-agreements/the-owf-1-0-agreements-granted-claims/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at https://www.openwebfoundation.org/the-agreements/the-owf-1-0-agreements-granted-claims/owfa-1-0.
@@ -2261,103 +2230,142 @@ Parts of this work may be from another specification document.  If so, those par
   </div>
   <div class="p-summary" data-fill-with="abstract">
    <h2 class="heading no-num no-ref no-toc settled" id="abstract"><span class="content">Abstract</span></h2>
-   <p>Establishes standardized programming patterns and best practices for developing robust and maintainable ASIMOV software components.</p>
+   <p>Defines interoperable command-line contracts for ASIMOV programs that import, query, generate, transform, index, and export RDF datasets; resolve and retrieve resources; provide language-model inference; and execute program text. Specifies invocation, data transport, completion, and error handling, together with requirements for hosts that compose these programs.</p>
   </div>
   <div data-fill-with="at-risk"></div>
   <nav data-fill-with="table-of-contents" id="toc">
    <h2 class="no-num no-ref no-toc" id="contents">Table of Contents</h2>
    <ol class="toc">
-    <li><a href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
-    <li><a href="#examples"><span class="secno">2</span> <span class="content">Examples</span></a>
     <li>
-     <a href="#patterns"><span class="secno">3</span> <span class="content">Patterns</span></a>
+     <a href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
+     <ol class="toc">
+      <li><a href="#scope"><span class="secno">1.1</span> <span class="content">Scope</span></a>
+     </ol>
+    <li><a href="#conformance"><span class="secno">2</span> <span class="content">Conformance</span></a>
+    <li>
+     <a href="#processing-model"><span class="secno">3</span> <span class="content">Common processing model</span></a>
+     <ol class="toc">
+      <li><a href="#invocations"><span class="secno">3.1</span> <span class="content">Invocations and logical data</span></a>
+      <li><a href="#command-line"><span class="secno">3.2</span> <span class="content">Command-line syntax</span></a>
+      <li><a href="#identifiers"><span class="secno">3.3</span> <span class="content">Resource identifiers</span></a>
+      <li><a href="#standard-streams"><span class="secno">3.4</span> <span class="content">Files and standard streams</span></a>
+      <li><a href="#diagnostics"><span class="secno">3.5</span> <span class="content">Payload and diagnostic separation</span></a>
+      <li><a href="#formats"><span class="secno">3.6</span> <span class="content">Formats and defaults</span></a>
+      <li><a href="#counts"><span class="secno">3.7</span> <span class="content">Counts and optional pagination</span></a>
+      <li><a href="#completion"><span class="secno">3.8</span> <span class="content">Completion and failure</span></a>
+     </ol>
+    <li>
+     <a href="#patterns"><span class="secno">4</span> <span class="content">Patterns</span></a>
      <ol class="toc">
       <li>
-       <a href="#adapter①"><span class="secno">3.1</span> <span class="content">Adapter</span></a>
+       <a href="#adapter"><span class="secno">4.1</span> <span class="content">Adapter</span></a>
        <ol class="toc">
-        <li><a href="#adapter-arguments"><span class="secno">3.1.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#adapter-options"><span class="secno">3.1.2</span> <span class="content">Options</span></a>
+        <li><a href="#adapter-arguments"><span class="secno">4.1.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#adapter-options"><span class="secno">4.1.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#compiler①"><span class="secno">3.2</span> <span class="content">Compiler</span></a>
+       <a href="#compiler"><span class="secno">4.2</span> <span class="content">Compiler</span></a>
        <ol class="toc">
-        <li><a href="#compiler-arguments"><span class="secno">3.2.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#compiler-options"><span class="secno">3.2.2</span> <span class="content">Options</span></a>
+        <li><a href="#compiler-arguments"><span class="secno">4.2.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#compiler-options"><span class="secno">4.2.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#emitter①"><span class="secno">3.3</span> <span class="content">Emitter</span></a>
+       <a href="#emitter"><span class="secno">4.3</span> <span class="content">Emitter</span></a>
        <ol class="toc">
-        <li><a href="#emitter-arguments"><span class="secno">3.3.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#emitter-options"><span class="secno">3.3.2</span> <span class="content">Options</span></a>
+        <li><a href="#emitter-arguments"><span class="secno">4.3.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#emitter-options"><span class="secno">4.3.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#fetcher①"><span class="secno">3.4</span> <span class="content">Fetcher</span></a>
+       <a href="#fetcher"><span class="secno">4.4</span> <span class="content">Fetcher</span></a>
        <ol class="toc">
-        <li><a href="#fetcher-arguments"><span class="secno">3.4.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#fetcher-options"><span class="secno">3.4.2</span> <span class="content">Options</span></a>
+        <li><a href="#fetcher-arguments"><span class="secno">4.4.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#fetcher-options"><span class="secno">4.4.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#indexer①"><span class="secno">3.5</span> <span class="content">Indexer</span></a>
+       <a href="#indexer"><span class="secno">4.5</span> <span class="content">Indexer</span></a>
        <ol class="toc">
-        <li><a href="#indexer-arguments"><span class="secno">3.5.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#indexer-options"><span class="secno">3.5.2</span> <span class="content">Options</span></a>
+        <li><a href="#indexer-arguments"><span class="secno">4.5.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#indexer-options"><span class="secno">4.5.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#lister"><span class="secno">3.6</span> <span class="content">Lister</span></a>
+       <a href="#lister"><span class="secno">4.6</span> <span class="content">Lister</span></a>
        <ol class="toc">
-        <li><a href="#lister-arguments"><span class="secno">3.6.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#lister-options"><span class="secno">3.6.2</span> <span class="content">Options</span></a>
+        <li><a href="#lister-arguments"><span class="secno">4.6.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#lister-options"><span class="secno">4.6.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#matcher"><span class="secno">3.7</span> <span class="content">Matcher</span></a>
+       <a href="#matcher"><span class="secno">4.7</span> <span class="content">Matcher</span></a>
        <ol class="toc">
-        <li><a href="#matcher-arguments"><span class="secno">3.7.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#matcher-options"><span class="secno">3.7.2</span> <span class="content">Options</span></a>
+        <li><a href="#matcher-arguments"><span class="secno">4.7.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#matcher-options"><span class="secno">4.7.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#prompter①"><span class="secno">3.8</span> <span class="content">Prompter</span></a>
+       <a href="#prompter"><span class="secno">4.8</span> <span class="content">Prompter</span></a>
        <ol class="toc">
-        <li><a href="#prompter-arguments"><span class="secno">3.8.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#prompter-options"><span class="secno">3.8.2</span> <span class="content">Options</span></a>
+        <li><a href="#prompter-arguments"><span class="secno">4.8.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#prompter-options"><span class="secno">4.8.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#reader①"><span class="secno">3.9</span> <span class="content">Reader</span></a>
+       <a href="#reader"><span class="secno">4.9</span> <span class="content">Reader</span></a>
        <ol class="toc">
-        <li><a href="#reader-arguments"><span class="secno">3.9.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#reader-options"><span class="secno">3.9.2</span> <span class="content">Options</span></a>
+        <li><a href="#reader-arguments"><span class="secno">4.9.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#reader-options"><span class="secno">4.9.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#reasoner①"><span class="secno">3.10</span> <span class="content">Reasoner</span></a>
+       <a href="#reasoner"><span class="secno">4.10</span> <span class="content">Reasoner</span></a>
        <ol class="toc">
-        <li><a href="#reasoner-arguments"><span class="secno">3.10.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#reasoner-options"><span class="secno">3.10.2</span> <span class="content">Options</span></a>
+        <li><a href="#reasoner-arguments"><span class="secno">4.10.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#reasoner-options"><span class="secno">4.10.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#resolver①"><span class="secno">3.11</span> <span class="content">Resolver</span></a>
+       <a href="#resolver"><span class="secno">4.11</span> <span class="content">Resolver</span></a>
        <ol class="toc">
-        <li><a href="#resolver-arguments"><span class="secno">3.11.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#resolver-options"><span class="secno">3.11.2</span> <span class="content">Options</span></a>
+        <li><a href="#resolver-arguments"><span class="secno">4.11.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#resolver-options"><span class="secno">4.11.2</span> <span class="content">Options</span></a>
+        <li><a href="#resolver-output"><span class="secno">4.11.3</span> <span class="content">Output framing</span></a>
        </ol>
       <li>
-       <a href="#runner①"><span class="secno">3.12</span> <span class="content">Runner</span></a>
+       <a href="#runner"><span class="secno">4.12</span> <span class="content">Runner</span></a>
        <ol class="toc">
-        <li><a href="#runner-arguments"><span class="secno">3.12.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#runner-options"><span class="secno">3.12.2</span> <span class="content">Options</span></a>
+        <li><a href="#runner-arguments"><span class="secno">4.12.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#runner-options"><span class="secno">4.12.2</span> <span class="content">Options</span></a>
        </ol>
       <li>
-       <a href="#writer①"><span class="secno">3.13</span> <span class="content">Writer</span></a>
+       <a href="#writer"><span class="secno">4.13</span> <span class="content">Writer</span></a>
        <ol class="toc">
-        <li><a href="#writer-arguments"><span class="secno">3.13.1</span> <span class="content">Arguments</span></a>
-        <li><a href="#writer-options"><span class="secno">3.13.2</span> <span class="content">Options</span></a>
+        <li><a href="#writer-arguments"><span class="secno">4.13.1</span> <span class="content">Arguments</span></a>
+        <li><a href="#writer-options"><span class="secno">4.13.2</span> <span class="content">Options</span></a>
        </ol>
      </ol>
-    <li><a href="#rdf-mapping"><span class="secno">4</span> <span class="content">RDF Mapping</span></a>
-    <li><a href="#security"><span class="secno">5</span> <span class="content">Security Considerations</span></a>
-    <li><a href="#iana"><span class="secno">6</span> <span class="content">IANA Considerations</span></a>
-    <li><a href="#acknowledgments"><span class="secno">7</span> <span class="content">Acknowledgments</span></a>
-    <li><a href="#changes"><span class="secno">8</span> <span class="content">Changes</span></a>
-    <li><a href="#conformance"><span class="secno"></span> <span class="content">
-    Conformance</span></a>
+    <li>
+     <a href="#hosts"><span class="secno">5</span> <span class="content">Host requirements</span></a>
+     <ol class="toc">
+      <li><a href="#host-invocation"><span class="secno">5.1</span> <span class="content">Preparing an invocation</span></a>
+      <li><a href="#host-streams"><span class="secno">5.2</span> <span class="content">Output handling and progress</span></a>
+      <li><a href="#host-lifecycle"><span class="secno">5.3</span> <span class="content">Repeated execution and cancellation</span></a>
+      <li><a href="#composition"><span class="secno">5.4</span> <span class="content">Composition</span></a>
+     </ol>
+    <li><a href="#rdf-mapping"><span class="secno">6</span> <span class="content">RDF mapping</span></a>
+    <li><a href="#extensions"><span class="secno">7</span> <span class="content">Extensions</span></a>
+    <li><a href="#examples"><span class="secno">8</span> <span class="content">Examples</span></a>
+    <li><a href="#security"><span class="secno">9</span> <span class="content">Security and privacy considerations</span></a>
+    <li><a href="#iana"><span class="secno">10</span> <span class="content">IANA considerations</span></a>
+    <li>
+     <a href="#implementation-notes"><span class="secno">11</span> <span class="content">Implementation notes</span></a>
+     <ol class="toc">
+      <li><a href="#implementation-patterns"><span class="secno">11.1</span> <span class="content">Pattern coverage and argument construction</span></a>
+      <li><a href="#implementation-executor"><span class="secno">11.2</span> <span class="content">Process defaults</span></a>
+      <li><a href="#implementation-streams"><span class="secno">11.3</span> <span class="content">Input and output representations</span></a>
+      <li><a href="#implementation-results"><span class="secno">11.4</span> <span class="content">Pattern-specific return values</span></a>
+      <li><a href="#implementation-errors"><span class="secno">11.5</span> <span class="content">Error representation</span></a>
+     </ol>
+    <li><a href="#acknowledgments"><span class="secno">12</span> <span class="content">Acknowledgments</span></a>
+    <li>
+     <a href="#changes"><span class="secno">13</span> <span class="content">Changes</span></a>
+     <ol class="toc">
+      <li><a href="#changes-corrections"><span class="secno">13.1</span> <span class="content">Corrections and clarifications</span></a>
+      <li><a href="#changes-expansions"><span class="secno">13.2</span> <span class="content">Expanded draft requirements</span></a>
+     </ol>
     <li>
      <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
      <ol class="toc">
@@ -2369,679 +2377,1455 @@ Parts of this work may be from another specification document.  If so, those par
       <li><a href="#normative"><span class="secno"></span> <span class="content">Normative References</span></a>
       <li><a href="#informative"><span class="secno"></span> <span class="content">Non-Normative References</span></a>
      </ol>
+    <li><a href="#issues-index"><span class="secno"></span> <span class="content">Issues Index</span></a>
    </ol>
   </nav>
   <main>
+   <div boilerplate="status">
+    <p>This is an editor-maintained draft for community review. It expands the
+  previously published pattern descriptions with explicit interoperability
+  requirements and records issues requiring further agreement.</p>
+    <p>The document is intended to support future W3C Community Group work. It is
+  not a W3C Standard or a published Community Group Report, and publication of
+  this draft does not imply W3C endorsement or community consensus.</p>
+    <p>The <a href="#implementation-notes">implementation notes</a> describe the
+  Rust source reviewed while preparing this draft. They are informative and
+  are not a claim that an implementation conforms to the expanded requirements.
+  Feedback is welcome through the specification’s issue tracker.</p>
+   </div>
    <h2 class="heading settled" data-level="1" id="introduction"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#introduction"></a></h2>
-   <p>The <a data-link-type="biblio" href="#biblio-asimov" title="ASIMOV Platform Documentation">[ASIMOV]</a> Platform is a polyglot development platform for trustworthy,
-neurosymbolic AI.</p>
-   <p>This specification establishes standardized programming patterns and best
-practices for developing robust and maintainable ASIMOV software components.</p>
-   <h2 class="heading settled" data-level="2" id="examples"><span class="secno">2. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
-   <h2 class="heading settled" data-level="3" id="patterns"><span class="secno">3. </span><span class="content">Patterns</span><a class="self-link" href="#patterns"></a></h2>
+   <div class="informative">
+    
+The <a data-link-type="biblio" href="#biblio-asimov" title="ASIMOV Platform Documentation">[ASIMOV]</a> Platform is a polyglot development platform for trustworthy,
+neurosymbolic AI. Its programs can be implemented in different languages and
+combined using operating-system processes, files, and standard streams.
+
+
+    <p>This specification defines small, role-specific command-line interfaces. A
+reader imports data into RDF; an adapter queries an RDF dataset; a writer
+exports RDF; and the other patterns provide complementary operations. A host
+can select a program by role without depending on its implementation language.</p>
+    <p>The specification distinguishes a program’s semantic contract from the bytes
+used to carry it. An RDF result can contain many statements while occupying a
+single output stream. An SDK can expose that stream as a byte buffer without
+itself interpreting RDF. Neither buffering nor the choice of SDK return type
+changes the external program’s contract.</p>
+   </div>
+   <h3 class="heading settled" data-level="1.1" id="scope"><span class="secno">1.1. </span><span class="content">Scope</span><a class="self-link" href="#scope"></a></h3>
+   <p>This specification defines:</p>
+   <ul>
+    <li data-md>
+     <p>the roles and input/output contracts of thirteen program patterns;</p>
+    <li data-md>
+     <p>positional operands, standard options, and defaults for each pattern;</p>
+    <li data-md>
+     <p>common rules for file selection, standard streams, formats, and completion;</p>
+    <li data-md>
+     <p>requirements for hosts invoking and composing pattern programs; and</p>
+    <li data-md>
+     <p>extension points for formats, resource schemes, models, and runtime behavior.</p>
+   </ul>
+   <p>Executable installation, module discovery, credential provisioning, and the
+choice of a particular RDF storage engine are outside this specification’s
+scope. These facilities can be supplied by the surrounding ASIMOV platform.
+This specification does not require a particular programming language, SDK,
+asynchronous runtime, or in-process type system.</p>
+   <h2 class="heading settled" data-level="2" id="conformance"><span class="secno">2. </span><span class="content">Conformance</span><a class="self-link" href="#conformance"></a></h2>
+   <p>All of the text of this specification is normative except sections explicitly
+marked informative, examples, notes, and issues.</p>
+   <p>The key words MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT,
+RECOMMENDED, NOT RECOMMENDED, MAY, and OPTIONAL in this document are to be
+interpreted as described in BCP 14 <a data-link-type="biblio" href="#biblio-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">[RFC2119]</a> <a data-link-type="biblio" href="#biblio-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words">[RFC8174]</a> when, and only when,
+they appear in all capitals, as shown here.</p>
+   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="program">program</dfn> is an executable implementing one or more of the patterns
+defined in this specification. A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="host">host</dfn> is software that invokes a
+program, supplies its input, handles its output, and observes its completion.
+An SDK process wrapper is one possible component of a host.</p>
+   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="profile">profile</dfn> is a documented set of additional choices needed to use a
+pattern interoperably, such as an RDF stream encoding, a supported URL scheme,
+an entailment regime, or a runtime language. A profile MUST NOT redefine a
+standard option to have an incompatible meaning. It MAY constrain optional
+features or add documented extensions.</p>
+   <p>A conforming <a data-link-type="dfn" href="#program" id="ref-for-program">program</a> MUST satisfy the common program requirements and the
+requirements of each pattern for which it claims conformance. It MUST identify
+those patterns and document its supported formats and each applicable
+<a data-link-type="dfn" href="#profile" id="ref-for-profile">profile</a>. A program need not implement every pattern. Where a table marks
+an option as optional to implement, conformance does not require support for
+that option.</p>
+   <p>A conforming <a data-link-type="dfn" href="#host" id="ref-for-host">host</a> MUST satisfy the host requirements for the operations it
+offers. A host MAY support only a subset of the patterns. It MUST document
+that subset and any restrictions on formats, stream handling, or returned
+results. It MUST NOT claim to provide a pattern’s result when it merely runs
+the process and discards that result.</p>
+   <p>An implementation-defined behavior is one whose choice is left to the
+implementation. Such a choice MUST be documented when this specification
+requires it, and MUST NOT contradict another requirement of this specification.</p>
+   <div class="note" id="note-profile-completeness" role="note"><a class="self-link" href="#note-profile-completeness"></a>
+The retained <code class="highlight">jsonl</code> default does not yet identify a complete,
+shared RDF mapping. Until that mapping is standardized, conformance claims
+for RDF interchange need to identify a mutually supported profile as well as
+this specification. See <a href="#rdf-mapping">RDF mapping</a>. This draft
+does not claim that the format token alone establishes interoperability.
+</div>
+   <h2 class="heading settled" data-level="3" id="processing-model"><span class="secno">3. </span><span class="content">Common processing model</span><a class="self-link" href="#processing-model"></a></h2>
+   <h3 class="heading settled" data-level="3.1" id="invocations"><span class="secno">3.1. </span><span class="content">Invocations and logical data</span><a class="self-link" href="#invocations"></a></h3>
+   <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="invocation">invocation</dfn> consists of a program, an ordered sequence of argument
+strings, an execution environment, standard streams, and the resulting process
+termination. One invocation performs one pattern operation, although the
+operation MAY generate a stream of results over time.</p>
+   <p>The data types in the pattern overview describe logical payloads. They do not
+specify the number of reads, writes, lines, RDF statements, or operating-system
+processes used to carry those payloads. In particular:</p>
+   <ul>
+    <li data-md>
+     <p>an RDF graph or dataset can contain zero or more statements;</p>
+    <li data-md>
+     <p>a listing or resolution can succeed with zero results;</p>
+    <li data-md>
+     <p>a single fetched resource can be described by many RDF statements; and</p>
+    <li data-md>
+     <p>a successful process with no captured stdout is not necessarily a process
+that produced an empty logical result.</p>
+   </ul>
+   <p>An RDF payload MUST represent RDF graphs or datasets as defined by
+<a data-link-type="biblio" href="#biblio-rdf11-concepts" title="RDF 1.1 Concepts and Abstract Syntax">[RDF11-CONCEPTS]</a>, using the selected serialization and profile. A text
+payload MUST be UTF-8 unless an explicitly selected format or language profile
+specifies another encoding. UTF-8 is defined by <a data-link-type="biblio" href="#biblio-rfc3629" title="UTF-8, a transformation format of ISO 10646">[RFC3629]</a>.</p>
+   <h3 class="heading settled" data-level="3.2" id="command-line"><span class="secno">3.2. </span><span class="content">Command-line syntax</span><a class="self-link" href="#command-line"></a></h3>
+   <p>The synopsis for each pattern uses square brackets for optional operands.
+Uppercase names such as <code class="highlight">INPUT-FILE</code> and <code class="highlight">FORMAT</code> are metavariables, not literal
+argument values. <code class="highlight">OPTIONS</code> stands for zero or more supported options. Options
+precede positional operands in the portable invocation form.</p>
+   <p>For every supported option listed for its pattern, a program MUST accept the
+long spelling, including the <code class="highlight">--name=value</code> form. It MUST also accept
+<code class="highlight">--name value</code>. Where a short flag is listed, it MUST accept that flag followed
+by a separate value, for example <code class="highlight">-o jsonl</code>. A program MAY additionally accept
+attached short values or other syntactic conveniences.</p>
+   <p>A program MUST recognize <code class="highlight">--</code> as the end of options. Arguments after <code class="highlight">--</code> MUST
+be interpreted as positional operands even if they begin with <code class="highlight">-</code>. The
+single operand <code class="highlight">-</code> retains its standard-stream meaning where specified below.</p>
+   <p>An option that is not declared repeatable SHOULD be supplied at most once. A
+host MUST NOT depend on a particular precedence rule for repeated singleton
+options unless that rule is defined by the program’s profile. Programs MUST
+document their handling of repeated options.</p>
+   <p>A program MUST reject an unknown option, a missing option value, an invalid
+value, or an unsupported number of operands with an unsuccessful exit. It
+MUST NOT silently ignore an option that changes the requested operation.</p>
+   <p>Argument strings are values, not shell source. A host MUST preserve each
+argument’s boundary and contents when launching the process. It MUST NOT
+apply shell expansion to a URL, query, model name, definition, or other value
+merely because that value is supplied as a command-line argument.</p>
+   <p class="note" role="note"><span class="marker">Note:</span> Shell quoting in examples is for the interactive shell. A host using a
+process API normally supplies each argument directly, without quote characters.</p>
+   <h3 class="heading settled" data-level="3.3" id="identifiers"><span class="secno">3.3. </span><span class="content">Resource identifiers</span><a class="self-link" href="#identifiers"></a></h3>
+   <p>An <code class="highlight">INPUT-URI</code> operand MUST be an absolute URI with a scheme, as defined by
+<a data-link-type="biblio" href="#biblio-rfc3986" title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</a>. An <code class="highlight">INPUT-URL</code> operand MUST additionally identify a resource
+location under the rules of a supported scheme. A relative pathname is not
+implicitly converted into a <code class="highlight">file</code> URL, and this specification supplies no
+implicit base URI for relative references.</p>
+   <p>Programs MUST validate the identifiers they accept. A host MAY perform earlier
+validation, but transporting an identifier as a string does not establish its
+validity. Percent-encoding and fragment interpretation follow the identifier’s
+scheme and the program’s documented resource semantics. RDF payloads can
+contain IRIs as defined by the RDF data model; the command-line identifier
+requirements do not narrow that data model.</p>
+   <h3 class="heading settled" data-level="3.4" id="standard-streams"><span class="secno">3.4. </span><span class="content">Files and standard streams</span><a class="self-link" href="#standard-streams"></a></h3>
+   <p>For an input-file operand, <code class="highlight">-</code> denotes stdin. For an output-file operand, <code class="highlight">-</code>
+denotes stdout. Where such an operand is optional, omitting it selects the
+default shown in the pattern’s argument table. Programs MUST support these
+stream defaults without requiring an explicit <code class="highlight">-</code> operand.</p>
+   <p>The <code class="highlight">-</code> convention is platform-independent. A program MUST NOT require callers
+to use <code class="highlight">/dev/stdin</code> or <code class="highlight">/dev/stdout</code>, which are not portable pathnames.</p>
+   <p>For patterns with both <code class="highlight">INPUT-FILE</code> and <code class="highlight">OUTPUT-FILE</code>:</p>
+   <ol>
+    <li data-md>
+     <p>With no operands, input is stdin and output is stdout.</p>
+    <li data-md>
+     <p>With one operand, that operand is the input file and output is stdout.</p>
+    <li data-md>
+     <p>With two operands, the first is the input file and the second is the output
+file. A caller selecting stdin and a named output file supplies <code class="highlight">-</code> first.</p>
+   </ol>
+   <p>The indexer has a different operand rule because its index destination is
+required; see <a href="#indexer-arguments">indexer arguments</a>.</p>
+   <p>An explicitly selected input file replaces stdin as the operation’s payload
+source. An explicitly selected output file replaces stdout as the payload
+destination. A program MUST NOT duplicate that payload on stdout unless a
+documented extension explicitly requests duplication.</p>
+   <p>A program whose pattern has no stdin payload MUST NOT wait for data on stdin.
+Hosts SHOULD connect unused stdin to the platform’s null device. An EOF on an
+input stream means that no more input bytes are available; it is not an error
+by itself. Whether the resulting empty input is meaningful depends on the
+pattern and selected format.</p>
+   <h3 class="heading settled" data-level="3.5" id="diagnostics"><span class="secno">3.5. </span><span class="content">Payload and diagnostic separation</span><a class="self-link" href="#diagnostics"></a></h3>
+   <p>Stdout, when it is the selected payload destination, MUST contain only the
+pattern’s output serialization. Programs MUST send diagnostics, progress
+messages, and logging to stderr. A program with no payload output, such as an
+indexer, MUST NOT emit progress messages on stdout.</p>
+   <p>Diagnostics SHOULD be UTF-8 text. Hosts SHOULD preserve diagnostic bytes even
+when they cannot decode them as UTF-8. Diagnostic wording is not a
+machine-readable error protocol and MAY change between implementations.
+Hosts MUST use the process termination result, rather than the presence or
+absence of stderr text, to determine whether an invocation succeeded.</p>
+   <p>Programs SHOULD honor a nonempty <code class="highlight">NO_COLOR</code> environment variable by disabling
+optional ANSI color decoration in diagnostics. Machine-readable payloads MUST
+NOT contain terminal decoration regardless of that variable. <a data-link-type="biblio" href="#biblio-no-color" title="Disabling ANSI color output in various Unix commands">[NO-COLOR]</a></p>
+   <h3 class="heading settled" data-level="3.6" id="formats"><span class="secno">3.6. </span><span class="content">Formats and defaults</span><a class="self-link" href="#formats"></a></h3>
+   <p><code class="highlight">--input=FORMAT</code> selects the input serialization; it does not select a file.
+<code class="highlight">--output=FORMAT</code> selects the output serialization; it does not select a file.
+File selection uses positional operands or host stream configuration.</p>
+   <p>Programs MUST implement the default format behavior listed for their pattern.
+When a format option is omitted, the program MUST use that default. Hosts MAY
+omit a format option to request the default; they MUST NOT assume that omitting
+an SDK field causes the SDK to transcode the payload.</p>
+   <p>A program MUST reject an explicitly requested format it does not support.
+It MUST NOT silently substitute another serialization. Programs MUST document
+supported format tokens, any aliases, and any required profiles.</p>
+   <p>The tokens used in this specification have the following meanings:</p>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Name
-      <th align="left">Summary
-      <th align="left">Input
-      <th align="left">Arity
-      <th align="left">Output
-      <th align="left">Arity
+      <th>Token
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="adapter">Adapter</dfn>
-      <td align="left">RDF dataset proxy.
-      <td align="left">SPARQL
-      <td align="left">1
-      <td align="left">RDF
-      <td align="left">N
+      <td><code class="highlight">text</code>
+      <td>UTF-8 text; no structured chat-message envelope is implied.
+    
      <tr>
-      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="compiler">Compiler</dfn>
-      <td align="left">Prompt compiler.
-      <td align="left">text
-      <td align="left">1
-      <td align="left">SPARQL
-      <td align="left">1
+      <td><code class="highlight">jsonl</code>
+      <td>Line-delimited JSON carrying RDF according to a documented
+      RDF mapping profile; see <a href="#rdf-mapping">RDF mapping</a>.
+    
      <tr>
-      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="emitter">Emitter</dfn>
-      <td align="left">Value generator.
-      <td align="left">-
-      <td align="left">0
-      <td align="left">RDF
-      <td align="left">N
-     <tr>
-      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="fetcher">Fetcher</dfn>
-      <td align="left">URL protocol client.
-      <td align="left">URL
-      <td align="left">1
-      <td align="left">RDF
-      <td align="left">1
-     <tr>
-      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="indexer">Indexer</dfn>
-      <td align="left">RDF dataset indexer.
-      <td align="left">RDF
-      <td align="left">N
-      <td align="left">-
-      <td align="left">0
-     <tr>
-      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="lister-pattern">Lister</dfn>
-      <td align="left">Directory iterator.
-      <td align="left">URL
-      <td align="left">1
-      <td align="left">RDF
-      <td align="left">N
-     <tr>
-      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="matcher-pattern">Matcher</dfn>
-      <td align="left">Exact or approximate matcher.
-      <td align="left">RDF
-      <td align="left">N
-      <td align="left">RDF
-      <td align="left">N
-     <tr>
-      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="prompter">Prompter</dfn>
-      <td align="left">LLM inference provider.
-      <td align="left">text
-      <td align="left">1
-      <td align="left">text
-      <td align="left">1
-     <tr>
-      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="reader">Reader</dfn>
-      <td align="left">RDF dataset importer.
-      <td align="left">any
-      <td align="left">1
-      <td align="left">RDF
-      <td align="left">N
-     <tr>
-      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="reasoner">Reasoner</dfn>
-      <td align="left">RDF dataset entailer.
-      <td align="left">RDF
-      <td align="left">N
-      <td align="left">RDF
-      <td align="left">N
-     <tr>
-      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="resolver">Resolver</dfn>
-      <td align="left">URI resolver.
-      <td align="left">URI
-      <td align="left">1
-      <td align="left">URL
-      <td align="left">N
-     <tr>
-      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="runner">Runner</dfn>
-      <td align="left">Language runtime engine.
-      <td align="left">any
-      <td align="left">1
-      <td align="left">text
-      <td align="left">1
-     <tr>
-      <td align="left"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="writer">Writer</dfn>
-      <td align="left">RDF dataset exporter.
-      <td align="left">RDF
-      <td align="left">N
-      <td align="left">any
-      <td align="left">1
+      <td><code class="highlight">auto</code>
+      <td>Implementation-defined format selection or detection,
+      subject to the requirements below; not a serialization in its own right.
+
    </table>
-   <h3 class="heading settled" data-level="3.1" id="adapter①"><span class="secno">3.1. </span><span class="content">Adapter</span><a class="self-link" href="#adapter①"></a></h3>
-   <p>RDF dataset proxy. Consumes SPARQL input, produces RDF output.</p>
-   <figure>
-    <figcaption>Data flow for adapters</figcaption>
-    <object data="img/adapter.mmd.svg" type="image/svg+xml"></object>
-   </figure>
-   <h4 class="heading settled" data-level="3.1.1" id="adapter-arguments"><span class="secno">3.1.1. </span><span class="content">Arguments</span><a class="self-link" href="#adapter-arguments"></a></h4>
+   <p>For <code class="highlight">auto</code> input, a program MUST document its detection procedure and fail
+when it cannot select a supported format. Detection MAY use content, a file
+extension, or other documented information. An explicit format selection
+MUST take precedence over automatic detection.</p>
+   <p>For <code class="highlight">auto</code> output, a program MUST document how it selects a concrete format,
+including the case where output is stdout and no filename is available. It
+MUST NOT emit an unspecified mixture of serializations within one payload.
+Hosts requiring a specific output format SHOULD request it explicitly.</p>
+   <h3 class="heading settled" data-level="3.7" id="counts"><span class="secno">3.7. </span><span class="content">Counts and optional pagination</span><a class="self-link" href="#counts"></a></h3>
+   <p><code class="highlight">COUNT</code> is a non-negative integer expressed using one or more ASCII decimal
+digits. Negative numbers, fractional numbers, and empty values are invalid.
+Programs MUST reject values outside their supported range instead of wrapping
+or silently truncating them.</p>
+   <p><code class="highlight">--limit=COUNT</code> sets the maximum number of logical results to emit. Omitting
+the option imposes no caller-requested limit; it does not guarantee that an
+underlying data source is unbounded. <code class="highlight">--limit=0</code> requests no results. Programs
+MAY still validate arguments, authorization, and resource availability.</p>
+   <p>A logical result for a lister is a listed entry, not an RDF statement or line
+of serialized output. A logical result for a resolver is one output URL.
+Programs MUST document how listed entries are represented in RDF.</p>
+   <p>The lister additionally defines optional <code class="highlight">--sort</code> and <code class="highlight">--offset</code> options.
+When supported and requested together, sorting is applied before the offset,
+and the limit is applied after the offset. Pagination MUST NOT split the RDF
+description of an entry merely to meet a statement or line count.</p>
+   <h3 class="heading settled" data-level="3.8" id="completion"><span class="secno">3.8. </span><span class="content">Completion and failure</span><a class="self-link" href="#completion"></a></h3>
+   <p>An <a data-link-type="dfn" href="#invocation" id="ref-for-invocation">invocation</a> succeeds only when its process terminates normally with exit
+status zero. A nonzero exit status or abnormal termination indicates failure.
+A host MUST distinguish failure to start a process from termination of a
+process that was successfully started. An absent numeric exit code, for
+example after termination by a signal, MUST NOT be treated as success.</p>
+   <p>Programs SHOULD use the conventional <code class="highlight">sysexits</code> categories where applicable.
+The following table gives recommended categories; hosts MUST also support
+programs using other nonzero statuses. <a data-link-type="biblio" href="#biblio-sysexits" title="sysexits(3): Preferable exit codes for programs">[SYSEXITS]</a></p>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Argument
-      <th align="left">Arity
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Status
+      <th>Name
+      <th>Typical use
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">QUERY-FILE</code>
-      <td align="left">1
-      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdin</code>)
-      <td align="left">The SPARQL query file path.
+      <td>64
+      <td><code class="highlight">EX_USAGE</code>
+      <td>Invalid command-line syntax or option value.
+    
+     <tr>
+      <td>65
+      <td><code class="highlight">EX_DATAERR</code>
+      <td>Invalid input payload.
+    
+     <tr>
+      <td>66
+      <td><code class="highlight">EX_NOINPUT</code>
+      <td>Required input file is unavailable.
+    
+     <tr>
+      <td>69
+      <td><code class="highlight">EX_UNAVAILABLE</code>
+      <td>Required service or resource is unavailable.
+    
+     <tr>
+      <td>70
+      <td><code class="highlight">EX_SOFTWARE</code>
+      <td>Internal software failure.
+    
+     <tr>
+      <td>73
+      <td><code class="highlight">EX_CANTCREAT</code>
+      <td>Output file or index cannot be created.
+    
+     <tr>
+      <td>74
+      <td><code class="highlight">EX_IOERR</code>
+      <td>I/O failure while processing data.
+    
+     <tr>
+      <td>75
+      <td><code class="highlight">EX_TEMPFAIL</code>
+      <td>Temporary failure for which retry may be useful.
+    
+     <tr>
+      <td>77
+      <td><code class="highlight">EX_NOPERM</code>
+      <td>Insufficient permission.
+    
+     <tr>
+      <td>78
+      <td><code class="highlight">EX_CONFIG</code>
+      <td>Invalid or missing configuration.
+
    </table>
-   <h4 class="heading settled" data-level="3.1.2" id="adapter-options"><span class="secno">3.1.2. </span><span class="content">Options</span><a class="self-link" href="#adapter-options"></a></h4>
+   <p>A program can emit output before subsequently failing. Such output MUST NOT
+be represented by a host as a successfully completed result. A streaming host
+MUST provide a completion or failure indication in addition to the data stream.
+It MAY expose partial output together with the failure.</p>
+   <p>An unsuccessful invocation does not imply that external side effects were
+rolled back. Programs that modify an index, write files, or execute code MUST
+document their partial-update and retry behavior. Hosts MUST NOT infer
+idempotence solely from a pattern name or an exit-status category.</p>
+   <h2 class="heading settled" data-level="4" id="patterns"><span class="secno">4. </span><span class="content">Patterns</span><a class="self-link" href="#patterns"></a></h2>
+   <p>The following table summarizes the logical contract of each pattern. RDF
+results are serialized graphs or datasets, not a count of individual output
+objects. Specific multiplicity requirements are stated in the pattern sections.</p>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Option
-      <th align="left">Flag
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Pattern
+      <th>Role
+      <th>Logical input
+      <th>Logical output
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">--output=FORMAT</code>
-      <td align="left"><code class="highlight">-o</code>
-      <td align="left"><code class="highlight">jsonl</code>
-      <td align="left">The output format.
+      <td><a href="#adapter">Adapter</a>
+      <td>RDF dataset proxy
+      <td>SPARQL query
+      <td>RDF
+    
+     <tr>
+      <td><a href="#compiler">Compiler</a>
+      <td>Prompt compiler
+      <td>Natural-language text
+      <td>SPARQL query
+    
+     <tr>
+      <td><a href="#emitter">Emitter</a>
+      <td>Value generator
+      <td>None
+      <td>RDF
+    
+     <tr>
+      <td><a href="#fetcher">Fetcher</a>
+      <td>URL protocol client
+      <td>One URL
+      <td>RDF
+    
+     <tr>
+      <td><a href="#indexer">Indexer</a>
+      <td>Persistent RDF dataset indexer
+      <td>RDF
+      <td>None
+    
+     <tr>
+      <td><a href="#lister">Lister</a>
+      <td>Directory iterator
+      <td>One URL
+      <td>RDF describing zero or more entries
+    
+     <tr>
+      <td><a href="#matcher">Matcher</a>
+      <td>Exact or approximate matcher
+      <td>RDF
+      <td>RDF describing matches
+    
+     <tr>
+      <td><a href="#prompter">Prompter</a>
+      <td>LLM inference provider
+      <td>Prompt text
+      <td>Response text
+    
+     <tr>
+      <td><a href="#reader">Reader</a>
+      <td>RDF dataset importer
+      <td>Input document or byte stream
+      <td>RDF
+    
+     <tr>
+      <td><a href="#reasoner">Reasoner</a>
+      <td>RDF dataset entailer
+      <td>RDF
+      <td>Entailed RDF
+    
+     <tr>
+      <td><a href="#resolver">Resolver</a>
+      <td>URI resolver
+      <td>One URI
+      <td>Zero or more URLs
+    
+     <tr>
+      <td><a href="#runner">Runner</a>
+      <td>Language runtime engine
+      <td>Program text
+      <td>Execution result as text
+    
+     <tr>
+      <td><a href="#writer">Writer</a>
+      <td>RDF dataset exporter
+      <td>RDF
+      <td>Output document or byte stream
+
    </table>
-   <h3 class="heading settled" data-level="3.2" id="compiler①"><span class="secno">3.2. </span><span class="content">Compiler</span><a class="self-link" href="#compiler①"></a></h3>
-   <p>Prompt compiler. Consumes natural-language text input, produces a corresponding
-SPARQL graph query as output.</p>
-   <figure>
-    <figcaption>Data flow for compilers</figcaption>
-    <object data="img/compiler.mmd.svg" type="image/svg+xml"></object>
-   </figure>
-   <h4 class="heading settled" data-level="3.2.1" id="compiler-arguments"><span class="secno">3.2.1. </span><span class="content">Arguments</span><a class="self-link" href="#compiler-arguments"></a></h4>
+   <h3 class="heading settled" data-level="4.1" id="adapter"><span class="secno">4.1. </span><span class="content">Adapter</span><a class="self-link" href="#adapter"></a></h3>
+   <p>An adapter provides an RDF dataset proxy. It consumes a SPARQL query and emits
+RDF resulting from evaluation against the dataset made available by the
+program. SPARQL query syntax and query forms are defined in <a data-link-type="biblio" href="#biblio-sparql11-query" title="SPARQL 1.1 Query Language">[SPARQL11-QUERY]</a>.</p>
+<pre class="highlight">PROGRAM [OPTIONS] [QUERY-FILE]</pre>
+   <h4 class="heading settled" data-level="4.1.1" id="adapter-arguments"><span class="secno">4.1.1. </span><span class="content">Arguments</span><a class="self-link" href="#adapter-arguments"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Argument
-      <th align="left">Arity
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Operand
+      <th>Arity
+      <th>Default
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">INPUT-FILE</code>
-      <td align="left">0..1
-      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdin</code>)
-      <td align="left">The input file path.
+      <td><code class="highlight">QUERY-FILE</code>
+      <td>0..1
+      <td><code class="highlight">-</code> (stdin)
+      <td>SPARQL query file.
+
    </table>
-   <h4 class="heading settled" data-level="3.2.2" id="compiler-options"><span class="secno">3.2.2. </span><span class="content">Options</span><a class="self-link" href="#compiler-options"></a></h4>
+   <h4 class="heading settled" data-level="4.1.2" id="adapter-options"><span class="secno">4.1.2. </span><span class="content">Options</span><a class="self-link" href="#adapter-options"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Option
-      <th align="left">Flag
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Option
+      <th>Flag
+      <th>Default
+      <th>Meaning
+  
     <tbody>
+     <tr>
+      <td><code class="highlight">--output=FORMAT</code>
+      <td><code class="highlight">-o</code>
+      <td><code class="highlight">jsonl</code>
+      <td>RDF output format.
+
    </table>
-   <h3 class="heading settled" data-level="3.3" id="emitter①"><span class="secno">3.3. </span><span class="content">Emitter</span><a class="self-link" href="#emitter①"></a></h3>
-   <p>Value generator. Takes no input, produces an RDF output.</p>
-   <figure>
-    <figcaption>Data flow for emitters</figcaption>
-    <object data="img/emitter.mmd.svg" type="image/svg+xml"></object>
-   </figure>
-   <h4 class="heading settled" data-level="3.3.1" id="emitter-arguments"><span class="secno">3.3.1. </span><span class="content">Arguments</span><a class="self-link" href="#emitter-arguments"></a></h4>
-   <p>Emitters require no positional arguments.</p>
-   <h4 class="heading settled" data-level="3.3.2" id="emitter-options"><span class="secno">3.3.2. </span><span class="content">Options</span><a class="self-link" href="#emitter-options"></a></h4>
+   <p>The program MUST document the dataset being queried and the SPARQL features
+it supports. It MUST reject an unsupported query form rather than emit a
+non-RDF result under an RDF format token.</p>
+   <p><code class="highlight">CONSTRUCT</code> and <code class="highlight">DESCRIBE</code> produce graph results. Support for <code class="highlight">SELECT</code> or <code class="highlight">ASK</code>
+requires a documented mapping of their results to RDF. This pattern does not
+implicitly authorize SPARQL Update or specify an update protocol.</p>
+   <h3 class="heading settled" data-level="4.2" id="compiler"><span class="secno">4.2. </span><span class="content">Compiler</span><a class="self-link" href="#compiler"></a></h3>
+   <p>A compiler translates natural-language input into one SPARQL query intended
+for an adapter. The compiler does not execute that query as part of this
+pattern’s result contract.</p>
+<pre class="highlight">PROGRAM [OPTIONS] [INPUT-FILE]</pre>
+   <h4 class="heading settled" data-level="4.2.1" id="compiler-arguments"><span class="secno">4.2.1. </span><span class="content">Arguments</span><a class="self-link" href="#compiler-arguments"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Option
-      <th align="left">Flag
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Operand
+      <th>Arity
+      <th>Default
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">--output=FORMAT</code>
-      <td align="left"><code class="highlight">-o</code>
-      <td align="left"><code class="highlight">jsonl</code>
-      <td align="left">The output format.
+      <td><code class="highlight">INPUT-FILE</code>
+      <td>0..1
+      <td><code class="highlight">-</code> (stdin)
+      <td>Natural-language input file.
+
    </table>
-   <h3 class="heading settled" data-level="3.4" id="fetcher①"><span class="secno">3.4. </span><span class="content">Fetcher</span><a class="self-link" href="#fetcher①"></a></h3>
-   <p>URL protocol fetcher. Consumes a URL input, produces RDF output.</p>
-   <figure>
-    <figcaption>Data flow for fetchers</figcaption>
-    <object data="img/fetcher.mmd.svg" type="image/svg+xml"></object>
-   </figure>
-   <h4 class="heading settled" data-level="3.4.1" id="fetcher-arguments"><span class="secno">3.4.1. </span><span class="content">Arguments</span><a class="self-link" href="#fetcher-arguments"></a></h4>
+   <h4 class="heading settled" data-level="4.2.2" id="compiler-options"><span class="secno">4.2.2. </span><span class="content">Options</span><a class="self-link" href="#compiler-options"></a></h4>
+   <p>This pattern defines no pattern-specific options. Additional options, if
+provided, are extensions subject to <a href="#extensions">extension rules</a>.</p>
+   <p>On success, stdout MUST contain a syntactically valid SPARQL query as UTF-8
+text, without Markdown fences or explanatory prose outside the query. The
+query MUST use a graph-producing form, or a form for which the intended adapter
+profile defines an RDF result mapping. The program MUST document assumptions
+about the target dataset, vocabulary, and adapter capabilities.</p>
+   <p class="note" role="note"><span class="marker">Note:</span> Syntactic validity does not guarantee that a generated query captures
+the author’s intent or is suitable for execution against every dataset.</p>
+   <h3 class="heading settled" data-level="4.3" id="emitter"><span class="secno">4.3. </span><span class="content">Emitter</span><a class="self-link" href="#emitter"></a></h3>
+   <p>An emitter generates values represented as RDF. It takes no payload input.
+Its arguments, environment, configuration, or external sources can determine
+which values it emits.</p>
+<pre class="highlight">PROGRAM [OPTIONS]</pre>
+   <h4 class="heading settled" data-level="4.3.1" id="emitter-arguments"><span class="secno">4.3.1. </span><span class="content">Arguments</span><a class="self-link" href="#emitter-arguments"></a></h4>
+   <p>This pattern defines no positional operands. The program MUST NOT wait for
+stdin as a payload source.</p>
+   <h4 class="heading settled" data-level="4.3.2" id="emitter-options"><span class="secno">4.3.2. </span><span class="content">Options</span><a class="self-link" href="#emitter-options"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Argument
-      <th align="left">Arity
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Option
+      <th>Flag
+      <th>Default
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">INPUT-URL</code>
-      <td align="left">1
-      <td align="left">none
-      <td align="left">The input URL.
+      <td><code class="highlight">--output=FORMAT</code>
+      <td><code class="highlight">-o</code>
+      <td><code class="highlight">jsonl</code>
+      <td>RDF output format.
+
    </table>
-   <h4 class="heading settled" data-level="3.4.2" id="fetcher-options"><span class="secno">3.4.2. </span><span class="content">Options</span><a class="self-link" href="#fetcher-options"></a></h4>
+   <p>The program MUST document whether generation is finite or continuous and any
+conditions under which it terminates. A finite emitter MAY succeed with an
+empty RDF result. This pattern does not imply determinism across invocations.</p>
+   <h3 class="heading settled" data-level="4.4" id="fetcher"><span class="secno">4.4. </span><span class="content">Fetcher</span><a class="self-link" href="#fetcher"></a></h3>
+   <p>A fetcher is a URL protocol client. It accepts one URL and produces an RDF
+representation or description of the identified resource. Raw retrieval of
+arbitrary response bytes is not, by itself, this pattern’s RDF output contract.</p>
+<pre class="highlight">PROGRAM [OPTIONS] INPUT-URL</pre>
+   <h4 class="heading settled" data-level="4.4.1" id="fetcher-arguments"><span class="secno">4.4.1. </span><span class="content">Arguments</span><a class="self-link" href="#fetcher-arguments"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Option
-      <th align="left">Flag
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Operand
+      <th>Arity
+      <th>Default
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">--output=FORMAT</code>
-      <td align="left"><code class="highlight">-o</code>
-      <td align="left"><code class="highlight">jsonl</code>
-      <td align="left">The output format.
+      <td><code class="highlight">INPUT-URL</code>
+      <td>1
+      <td>None
+      <td>URL of the resource to retrieve.
+
    </table>
-   <h3 class="heading settled" data-level="3.5" id="indexer①"><span class="secno">3.5. </span><span class="content">Indexer</span><a class="self-link" href="#indexer①"></a></h3>
-   <p>RDF dataset indexer. Consumes RDF input, maintains a persistent index.</p>
-   <figure>
-    <figcaption>Data flow for indexers</figcaption>
-    <object data="img/indexer.mmd.svg" type="image/svg+xml"></object>
-   </figure>
-   <h4 class="heading settled" data-level="3.5.1" id="indexer-arguments"><span class="secno">3.5.1. </span><span class="content">Arguments</span><a class="self-link" href="#indexer-arguments"></a></h4>
+   <h4 class="heading settled" data-level="4.4.2" id="fetcher-options"><span class="secno">4.4.2. </span><span class="content">Options</span><a class="self-link" href="#fetcher-options"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Argument
-      <th align="left">Arity
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Option
+      <th>Flag
+      <th>Default
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">INPUT-FILE</code>
-      <td align="left">0..1
-      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdin</code>)
-      <td align="left">The input file path.
-     <tr>
-      <td align="left"><code class="highlight">INDEX-FILE</code>
-      <td align="left">1
-      <td align="left">none
-      <td align="left">The index file path.
+      <td><code class="highlight">--output=FORMAT</code>
+      <td><code class="highlight">-o</code>
+      <td><code class="highlight">jsonl</code>
+      <td>RDF output format.
+
    </table>
-   <h4 class="heading settled" data-level="3.5.2" id="indexer-options"><span class="secno">3.5.2. </span><span class="content">Options</span><a class="self-link" href="#indexer-options"></a></h4>
+   <p>The program MUST document supported URL schemes and its mapping from retrieved
+resources to RDF. A URL is supplied as one argument; it MUST NOT be split at
+spaces or interpreted as a shell command. Unsupported schemes MUST cause
+failure. Redirect handling, authentication, caching, and retrieval limits are
+implementation-defined and MUST be documented where supported.</p>
+   <h3 class="heading settled" data-level="4.5" id="indexer"><span class="secno">4.5. </span><span class="content">Indexer</span><a class="self-link" href="#indexer"></a></h3>
+   <p>An indexer consumes RDF and maintains a persistent index at the selected
+destination. It has no payload output.</p>
+<pre class="highlight">PROGRAM [OPTIONS] [INPUT-FILE] INDEX-FILE</pre>
+   <h4 class="heading settled" data-level="4.5.1" id="indexer-arguments"><span class="secno">4.5.1. </span><span class="content">Arguments</span><a class="self-link" href="#indexer-arguments"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Option
-      <th align="left">Flag
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Operand
+      <th>Arity
+      <th>Default
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">--input=FORMAT</code>
-      <td align="left"><code class="highlight">-i</code>
-      <td align="left"><code class="highlight">jsonl</code>
-      <td align="left">The input format.
+      <td><code class="highlight">INPUT-FILE</code>
+      <td>0..1
+      <td><code class="highlight">-</code> (stdin)
+      <td>RDF input file.
+    
+     <tr>
+      <td><code class="highlight">INDEX-FILE</code>
+      <td>1
+      <td>None
+      <td>Persistent index destination.
+
    </table>
-   <h3 class="heading settled" data-level="3.6" id="lister"><span class="secno">3.6. </span><span class="content">Lister</span><a class="self-link" href="#lister"></a></h3>
-   <p>Directory iterator. Takes a URL input, produces RDF output.</p>
-   <figure>
-    <figcaption>Data flow for listers</figcaption>
-    <object data="img/lister.mmd.svg" type="image/svg+xml"></object>
-   </figure>
-   <h4 class="heading settled" data-level="3.6.1" id="lister-arguments"><span class="secno">3.6.1. </span><span class="content">Arguments</span><a class="self-link" href="#lister-arguments"></a></h4>
+   <p>The operands MUST be interpreted as follows:</p>
+   <ol>
+    <li data-md>
+     <p>With one operand, that operand is <code class="highlight">INDEX-FILE</code>; input is stdin.</p>
+    <li data-md>
+     <p>With two operands, the first is <code class="highlight">INPUT-FILE</code> and the second is <code class="highlight">INDEX-FILE</code>.</p>
+    <li data-md>
+     <p>With no operands or more than two operands, invocation MUST fail.</p>
+   </ol>
+   <p><code class="highlight">INDEX-FILE</code> is a program-defined persistent file or directory location. It
+does not use <code class="highlight">-</code> to mean stdout. An indexer MUST reject <code class="highlight">-</code> as an index
+destination; a literal relative pathname can instead be written as <code class="highlight">./-</code>.</p>
+   <h4 class="heading settled" data-level="4.5.2" id="indexer-options"><span class="secno">4.5.2. </span><span class="content">Options</span><a class="self-link" href="#indexer-options"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Argument
-      <th align="left">Arity
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Option
+      <th>Flag
+      <th>Default
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">INPUT-URL</code>
-      <td align="left">1
-      <td align="left">none
-      <td align="left">The input URL.
+      <td><code class="highlight">--input=FORMAT</code>
+      <td><code class="highlight">-i</code>
+      <td><code class="highlight">jsonl</code>
+      <td>RDF input format.
+
    </table>
-   <h4 class="heading settled" data-level="3.6.2" id="lister-options"><span class="secno">3.6.2. </span><span class="content">Options</span><a class="self-link" href="#lister-options"></a></h4>
+   <p>The program MUST document its index format, creation behavior, update or
+replacement semantics, concurrency behavior, and guarantees on failure.
+A zero exit status indicates completion according to those documented
+guarantees; it does not independently specify transactional or crash-durability
+semantics. Stdout MUST contain no payload.</p>
+   <h3 class="heading settled" data-level="4.6" id="lister"><span class="secno">4.6. </span><span class="content">Lister</span><a class="self-link" href="#lister"></a></h3>
+   <p>A lister iterates a directory or collection identified by a URL and produces
+RDF describing its entries. A directory need not be a local filesystem
+directory. A successful listing MAY contain no entries.</p>
+<pre class="highlight">PROGRAM [OPTIONS] INPUT-URL</pre>
+   <h4 class="heading settled" data-level="4.6.1" id="lister-arguments"><span class="secno">4.6.1. </span><span class="content">Arguments</span><a class="self-link" href="#lister-arguments"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Option
-      <th align="left">Flag
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Operand
+      <th>Arity
+      <th>Default
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">--limit=COUNT</code>
-      <td align="left"><code class="highlight">-n</code>
-      <td align="left">none
-      <td align="left">The maximum number of outputs.
-     <tr>
-      <td align="left"><code class="highlight">--output=FORMAT</code>
-      <td align="left"><code class="highlight">-o</code>
-      <td align="left"><code class="highlight">jsonl</code>
-      <td align="left">The output format.
+      <td><code class="highlight">INPUT-URL</code>
+      <td>1
+      <td>None
+      <td>URL of the directory or collection.
+
    </table>
-   <h3 class="heading settled" data-level="3.7" id="matcher"><span class="secno">3.7. </span><span class="content">Matcher</span><a class="self-link" href="#matcher"></a></h3>
-   <p>Exact or approximate matcher. Consumes RDF input, produces RDF output describing
-matches.</p>
-   <figure>
-    <figcaption>Data flow for matchers</figcaption>
-    <object data="img/matcher.mmd.svg" type="image/svg+xml"></object>
-   </figure>
-   <h4 class="heading settled" data-level="3.7.1" id="matcher-arguments"><span class="secno">3.7.1. </span><span class="content">Arguments</span><a class="self-link" href="#matcher-arguments"></a></h4>
+   <h4 class="heading settled" data-level="4.6.2" id="lister-options"><span class="secno">4.6.2. </span><span class="content">Options</span><a class="self-link" href="#lister-options"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Argument
-      <th align="left">Arity
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Option
+      <th>Flag
+      <th>Default
+      <th>Support
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">INPUT-FILE</code>
-      <td align="left">0..1
-      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdin</code>)
-      <td align="left">The input file path.
+      <td><code class="highlight">--limit=COUNT</code>
+      <td><code class="highlight">-n</code>
+      <td>No limit
+      <td>Required
+      <td>Maximum number of entries.
+    
      <tr>
-      <td align="left"><code class="highlight">OUTPUT-FILE</code>
-      <td align="left">0..1
-      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdout</code>)
-      <td align="left">The output file path.
+      <td><code class="highlight">--output=FORMAT</code>
+      <td><code class="highlight">-o</code>
+      <td><code class="highlight">jsonl</code>
+      <td>Required
+      <td>RDF output format.
+    
+     <tr>
+      <td><code class="highlight">--offset=COUNT</code>
+      <td>None
+      <td><code class="highlight">0</code>
+      <td>Optional
+      <td>Number of entries to skip.
+    
+     <tr>
+      <td><code class="highlight">--sort=SORT</code>
+      <td>None
+      <td>Program-defined order
+      <td>Optional
+      <td>Ordering requested using a documented sort expression.
+
    </table>
-   <h4 class="heading settled" data-level="3.7.2" id="matcher-options"><span class="secno">3.7.2. </span><span class="content">Options</span><a class="self-link" href="#matcher-options"></a></h4>
+   <p>The program MUST document supported URL schemes, the RDF description of an
+entry, and ordering guarantees. If sorting or offset is unsupported, supplying
+the corresponding option MUST cause failure. Supported sorting and pagination
+follow <a href="#counts">the common count rules</a>.
+Hosts MUST use a sort expression supported by the selected program’s profile.</p>
+   <p>An offset is zero-based: <code class="highlight">--offset=0</code> skips no entries and <code class="highlight">--offset=1</code> skips
+the first entry. Without an explicit sort expression, pagination uses the
+program’s documented default order. Programs SHOULD provide a stable order
+for an unchanged collection when pagination is supported. This specification
+does not require a consistent snapshot across separate invocations.</p>
+   <div class="issue" id="issue-sort-grammar"><a class="self-link" href="#issue-sort-grammar"></a>
+The Rust wrapper forwards <code class="highlight">--sort</code> and <code class="highlight">--offset</code>, but the
+previous specification listed neither. This draft reserves their semantics
+as optional capabilities. The interoperable grammar for <code class="highlight">SORT</code>,
+including keys, direction, and tie-breaking, remains to be agreed. An
+undocumented spelling such as <code class="highlight">asc</code> cannot be assumed portable.
+</div>
+   <h3 class="heading settled" data-level="4.7" id="matcher"><span class="secno">4.7. </span><span class="content">Matcher</span><a class="self-link" href="#matcher"></a></h3>
+   <p>A matcher performs exact or approximate matching over RDF input and emits RDF
+describing the matches. Output is not necessarily a subset of the input
+dataset: it can introduce statements identifying correspondences or scores.</p>
+<pre class="highlight">PROGRAM [OPTIONS] [INPUT-FILE [OUTPUT-FILE]]</pre>
+   <h4 class="heading settled" data-level="4.7.1" id="matcher-arguments"><span class="secno">4.7.1. </span><span class="content">Arguments</span><a class="self-link" href="#matcher-arguments"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Option
-      <th align="left">Flag
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Operand
+      <th>Arity
+      <th>Default
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">--input=FORMAT</code>
-      <td align="left"><code class="highlight">-i</code>
-      <td align="left"><code class="highlight">jsonl</code>
-      <td align="left">The input format.
+      <td><code class="highlight">INPUT-FILE</code>
+      <td>0..1
+      <td><code class="highlight">-</code> (stdin)
+      <td>RDF input file.
+    
      <tr>
-      <td align="left"><code class="highlight">--output=FORMAT</code>
-      <td align="left"><code class="highlight">-o</code>
-      <td align="left"><code class="highlight">jsonl</code>
-      <td align="left">The output format.
+      <td><code class="highlight">OUTPUT-FILE</code>
+      <td>0..1
+      <td><code class="highlight">-</code> (stdout)
+      <td>RDF match-result file.
+
    </table>
-   <h3 class="heading settled" data-level="3.8" id="prompter①"><span class="secno">3.8. </span><span class="content">Prompter</span><a class="self-link" href="#prompter①"></a></h3>
-   <p>LLM inference provider. Consumes prompt input, produces response output.</p>
-   <figure>
-    <figcaption>Data flow for prompters</figcaption>
-    <object data="img/prompter.mmd.svg" type="image/svg+xml"></object>
-   </figure>
-   <h4 class="heading settled" data-level="3.8.1" id="prompter-arguments"><span class="secno">3.8.1. </span><span class="content">Arguments</span><a class="self-link" href="#prompter-arguments"></a></h4>
+   <h4 class="heading settled" data-level="4.7.2" id="matcher-options"><span class="secno">4.7.2. </span><span class="content">Options</span><a class="self-link" href="#matcher-options"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Argument
-      <th align="left">Arity
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Option
+      <th>Flag
+      <th>Default
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">INPUT-FILE</code>
-      <td align="left">0..1
-      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdin</code>)
-      <td align="left">The input file path.
+      <td><code class="highlight">--input=FORMAT</code>
+      <td><code class="highlight">-i</code>
+      <td><code class="highlight">jsonl</code>
+      <td>RDF input format.
+    
      <tr>
-      <td align="left"><code class="highlight">OUTPUT-FILE</code>
-      <td align="left">0..1
-      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdout</code>)
-      <td align="left">The output file path.
+      <td><code class="highlight">--output=FORMAT</code>
+      <td><code class="highlight">-o</code>
+      <td><code class="highlight">jsonl</code>
+      <td>RDF output format.
+
    </table>
-   <h4 class="heading settled" data-level="3.8.2" id="prompter-options"><span class="secno">3.8.2. </span><span class="content">Options</span><a class="self-link" href="#prompter-options"></a></h4>
+   <p>The program MUST document the matching relation, the compared entities or
+external reference data, and the vocabulary used to describe matches. If it
+reports scores, it MUST document their interpretation. Exactness, thresholds,
+and approximation algorithms are profile-specific; this specification does
+not define a universal matching algorithm or score scale.</p>
+   <h3 class="heading settled" data-level="4.8" id="prompter"><span class="secno">4.8. </span><span class="content">Prompter</span><a class="self-link" href="#prompter"></a></h3>
+   <p>A prompter provides language-model inference. It consumes a prompt and emits
+a response. The default input and output formats are UTF-8 text.</p>
+<pre class="highlight">PROGRAM [OPTIONS] [INPUT-FILE [OUTPUT-FILE]]</pre>
+   <h4 class="heading settled" data-level="4.8.1" id="prompter-arguments"><span class="secno">4.8.1. </span><span class="content">Arguments</span><a class="self-link" href="#prompter-arguments"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Option
-      <th align="left">Flag
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Operand
+      <th>Arity
+      <th>Default
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">--input=FORMAT</code>
-      <td align="left"><code class="highlight">-i</code>
-      <td align="left"><code class="highlight">text</code>
-      <td align="left">The input format.
+      <td><code class="highlight">INPUT-FILE</code>
+      <td>0..1
+      <td><code class="highlight">-</code> (stdin)
+      <td>Prompt input file.
+    
      <tr>
-      <td align="left"><code class="highlight">--model=MODEL</code>
-      <td align="left"><code class="highlight">-m</code>
-      <td align="left"><code class="highlight">auto</code>
-      <td align="left">The inference model.
-     <tr>
-      <td align="left"><code class="highlight">--output=FORMAT</code>
-      <td align="left"><code class="highlight">-o</code>
-      <td align="left"><code class="highlight">text</code>
-      <td align="left">The output format.
+      <td><code class="highlight">OUTPUT-FILE</code>
+      <td>0..1
+      <td><code class="highlight">-</code> (stdout)
+      <td>Response output file.
+
    </table>
-   <h3 class="heading settled" data-level="3.9" id="reader①"><span class="secno">3.9. </span><span class="content">Reader</span><a class="self-link" href="#reader①"></a></h3>
-   <p>RDF dataset importer. Consumes some input, produces RDF output.</p>
-   <figure>
-    <figcaption>Data flow for readers</figcaption>
-    <object data="img/reader.mmd.svg" type="image/svg+xml"></object>
-   </figure>
-   <h4 class="heading settled" data-level="3.9.1" id="reader-arguments"><span class="secno">3.9.1. </span><span class="content">Arguments</span><a class="self-link" href="#reader-arguments"></a></h4>
+   <h4 class="heading settled" data-level="4.8.2" id="prompter-options"><span class="secno">4.8.2. </span><span class="content">Options</span><a class="self-link" href="#prompter-options"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Argument
-      <th align="left">Arity
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Option
+      <th>Flag
+      <th>Default
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">INPUT-FILE</code>
-      <td align="left">0..1
-      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdin</code>)
-      <td align="left">The input file path.
+      <td><code class="highlight">--input=FORMAT</code>
+      <td><code class="highlight">-i</code>
+      <td><code class="highlight">text</code>
+      <td>Prompt format.
+    
      <tr>
-      <td align="left"><code class="highlight">OUTPUT-FILE</code>
-      <td align="left">0..1
-      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdout</code>)
-      <td align="left">The output file path.
+      <td><code class="highlight">--model=MODEL</code>
+      <td><code class="highlight">-m</code>
+      <td><code class="highlight">auto</code>
+      <td>Inference model selection.
+    
+     <tr>
+      <td><code class="highlight">--output=FORMAT</code>
+      <td><code class="highlight">-o</code>
+      <td><code class="highlight">text</code>
+      <td>Response format.
+
    </table>
-   <h4 class="heading settled" data-level="3.9.2" id="reader-options"><span class="secno">3.9.2. </span><span class="content">Options</span><a class="self-link" href="#reader-options"></a></h4>
+   <p>For <code class="highlight">--model=auto</code>, model selection is implementation-defined and MUST be
+documented. An explicitly selected model that is unavailable or unsupported
+MUST cause failure rather than an undocumented substitution.</p>
+   <p>The <code class="highlight">text</code> format does not standardize role labels, conversation delimiters,
+tool calls, or a structured message envelope. A program that assigns such
+meaning to portions of the text MUST document that convention. Structured
+prompt or response formats MAY be provided using explicit format tokens and
+documented profiles.</p>
+   <p>A host presenting the response as text MUST preserve its whitespace and
+newlines unless it exposes a separate, explicitly requested transformation.
+The program MUST document whether it can stream output and whether repeated
+invocations can produce different results for the same prompt.</p>
+   <h3 class="heading settled" data-level="4.9" id="reader"><span class="secno">4.9. </span><span class="content">Reader</span><a class="self-link" href="#reader"></a></h3>
+   <p>A reader imports a document or byte stream into an RDF graph or dataset.
+The input can use a non-RDF format; interpretation and mapping are performed
+by the reader program.</p>
+<pre class="highlight">PROGRAM [OPTIONS] [INPUT-FILE [OUTPUT-FILE]]</pre>
+   <h4 class="heading settled" data-level="4.9.1" id="reader-arguments"><span class="secno">4.9.1. </span><span class="content">Arguments</span><a class="self-link" href="#reader-arguments"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Option
-      <th align="left">Flag
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Operand
+      <th>Arity
+      <th>Default
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">--input=FORMAT</code>
-      <td align="left"><code class="highlight">-i</code>
-      <td align="left"><code class="highlight">auto</code>
-      <td align="left">The input format.
+      <td><code class="highlight">INPUT-FILE</code>
+      <td>0..1
+      <td><code class="highlight">-</code> (stdin)
+      <td>Source input file.
+    
      <tr>
-      <td align="left"><code class="highlight">--output=FORMAT</code>
-      <td align="left"><code class="highlight">-o</code>
-      <td align="left"><code class="highlight">jsonl</code>
-      <td align="left">The output format.
+      <td><code class="highlight">OUTPUT-FILE</code>
+      <td>0..1
+      <td><code class="highlight">-</code> (stdout)
+      <td>RDF output file.
+
    </table>
-   <h3 class="heading settled" data-level="3.10" id="reasoner①"><span class="secno">3.10. </span><span class="content">Reasoner</span><a class="self-link" href="#reasoner①"></a></h3>
-   <p>RDF dataset entailer. Consumes RDF input, produces entailed RDF output.</p>
-   <figure>
-    <figcaption>Data flow for reasoners</figcaption>
-    <object data="img/reasoner.mmd.svg" type="image/svg+xml"></object>
-   </figure>
-   <h4 class="heading settled" data-level="3.10.1" id="reasoner-arguments"><span class="secno">3.10.1. </span><span class="content">Arguments</span><a class="self-link" href="#reasoner-arguments"></a></h4>
+   <h4 class="heading settled" data-level="4.9.2" id="reader-options"><span class="secno">4.9.2. </span><span class="content">Options</span><a class="self-link" href="#reader-options"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Argument
-      <th align="left">Arity
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Option
+      <th>Flag
+      <th>Default
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">INPUT-FILE</code>
-      <td align="left">0..1
-      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdin</code>)
-      <td align="left">The input file path.
+      <td><code class="highlight">--input=FORMAT</code>
+      <td><code class="highlight">-i</code>
+      <td><code class="highlight">auto</code>
+      <td>Source format or automatic detection.
+    
      <tr>
-      <td align="left"><code class="highlight">OUTPUT-FILE</code>
-      <td align="left">0..1
-      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdout</code>)
-      <td align="left">The output file path.
+      <td><code class="highlight">--output=FORMAT</code>
+      <td><code class="highlight">-o</code>
+      <td><code class="highlight">jsonl</code>
+      <td>RDF output format.
+
    </table>
-   <h4 class="heading settled" data-level="3.10.2" id="reasoner-options"><span class="secno">3.10.2. </span><span class="content">Options</span><a class="self-link" href="#reasoner-options"></a></h4>
+   <p>The program MUST document supported input formats and their RDF mappings,
+including any base-IRI, vocabulary, or identifier-generation conventions.
+The <code class="highlight">auto</code> behavior MUST follow <a href="#formats">the format-selection rules</a>.</p>
+   <h3 class="heading settled" data-level="4.10" id="reasoner"><span class="secno">4.10. </span><span class="content">Reasoner</span><a class="self-link" href="#reasoner"></a></h3>
+   <p>A reasoner consumes RDF and emits RDF entailed under a documented entailment
+regime or rule system.</p>
+<pre class="highlight">PROGRAM [OPTIONS] [INPUT-FILE [OUTPUT-FILE]]</pre>
+   <h4 class="heading settled" data-level="4.10.1" id="reasoner-arguments"><span class="secno">4.10.1. </span><span class="content">Arguments</span><a class="self-link" href="#reasoner-arguments"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Option
-      <th align="left">Flag
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Operand
+      <th>Arity
+      <th>Default
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">--input=FORMAT</code>
-      <td align="left"><code class="highlight">-i</code>
-      <td align="left"><code class="highlight">jsonl</code>
-      <td align="left">The input format.
+      <td><code class="highlight">INPUT-FILE</code>
+      <td>0..1
+      <td><code class="highlight">-</code> (stdin)
+      <td>RDF input file.
+    
      <tr>
-      <td align="left"><code class="highlight">--output=FORMAT</code>
-      <td align="left"><code class="highlight">-o</code>
-      <td align="left"><code class="highlight">jsonl</code>
-      <td align="left">The output format.
+      <td><code class="highlight">OUTPUT-FILE</code>
+      <td>0..1
+      <td><code class="highlight">-</code> (stdout)
+      <td>Entailed RDF output file.
+
    </table>
-   <h3 class="heading settled" data-level="3.11" id="resolver①"><span class="secno">3.11. </span><span class="content">Resolver</span><a class="self-link" href="#resolver①"></a></h3>
-   <p>URI resolver. Takes a URI (that is, URN or URL) input, produces a resolved URL
-output.</p>
-   <figure>
-    <figcaption>Data flow for resolvers</figcaption>
-    <object data="img/resolver.mmd.svg" type="image/svg+xml"></object>
-   </figure>
-   <h4 class="heading settled" data-level="3.11.1" id="resolver-arguments"><span class="secno">3.11.1. </span><span class="content">Arguments</span><a class="self-link" href="#resolver-arguments"></a></h4>
+   <h4 class="heading settled" data-level="4.10.2" id="reasoner-options"><span class="secno">4.10.2. </span><span class="content">Options</span><a class="self-link" href="#reasoner-options"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Argument
-      <th align="left">Arity
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Option
+      <th>Flag
+      <th>Default
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">INPUT-URL</code>
-      <td align="left">0..1
-      <td align="left">none
-      <td align="left">The input URL.
+      <td><code class="highlight">--input=FORMAT</code>
+      <td><code class="highlight">-i</code>
+      <td><code class="highlight">jsonl</code>
+      <td>RDF input format.
+    
+     <tr>
+      <td><code class="highlight">--output=FORMAT</code>
+      <td><code class="highlight">-o</code>
+      <td><code class="highlight">jsonl</code>
+      <td>RDF output format.
+
    </table>
-   <h4 class="heading settled" data-level="3.11.2" id="resolver-options"><span class="secno">3.11.2. </span><span class="content">Options</span><a class="self-link" href="#resolver-options"></a></h4>
+   <p>The program MUST document its entailment regime, whether output includes the
+input statements or only additional consequences, and how it handles named
+graphs and inconsistent input. This specification does not require a
+particular rule language, completeness guarantee, or reasoning algorithm.</p>
+   <h3 class="heading settled" data-level="4.11" id="resolver"><span class="secno">4.11. </span><span class="content">Resolver</span><a class="self-link" href="#resolver"></a></h3>
+   <p>A resolver maps one URI, including a URN or URL, to zero or more resolved URLs.
+The URI syntax is defined by <a data-link-type="biblio" href="#biblio-rfc3986" title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</a>. Resolution identifies locations; it
+does not imply retrieval of the resources at those locations.</p>
+<pre class="highlight">PROGRAM [OPTIONS] INPUT-URI</pre>
+   <h4 class="heading settled" data-level="4.11.1" id="resolver-arguments"><span class="secno">4.11.1. </span><span class="content">Arguments</span><a class="self-link" href="#resolver-arguments"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Option
-      <th align="left">Flag
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Operand
+      <th>Arity
+      <th>Default
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">--limit=COUNT</code>
-      <td align="left"><code class="highlight">-n</code>
-      <td align="left">none
-      <td align="left">The maximum number of outputs.
+      <td><code class="highlight">INPUT-URI</code>
+      <td>1
+      <td>None
+      <td>URI to resolve.
+
    </table>
-   <h3 class="heading settled" data-level="3.12" id="runner①"><span class="secno">3.12. </span><span class="content">Runner</span><a class="self-link" href="#runner①"></a></h3>
-   <p>Language runtime engine. Consumes text input conforming to a grammar, executes
-it, and produces the execution result as output.</p>
-   <figure>
-    <figcaption>Data flow for runners</figcaption>
-    <object data="img/runner.mmd.svg" type="image/svg+xml"></object>
-   </figure>
-   <h4 class="heading settled" data-level="3.12.1" id="runner-arguments"><span class="secno">3.12.1. </span><span class="content">Arguments</span><a class="self-link" href="#runner-arguments"></a></h4>
+   <p>The input URI is REQUIRED. There is no implicit stdin or environment source
+for an omitted operand. Programs MUST document the URI schemes they support
+and MUST reject unsupported schemes. The input is passed as one argument.</p>
+   <h4 class="heading settled" data-level="4.11.2" id="resolver-options"><span class="secno">4.11.2. </span><span class="content">Options</span><a class="self-link" href="#resolver-options"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Argument
-      <th align="left">Arity
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Option
+      <th>Flag
+      <th>Default
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">INPUT-FILE</code>
-      <td align="left">0..1
-      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdin</code>)
-      <td align="left">The input file path.
+      <td><code class="highlight">--limit=COUNT</code>
+      <td><code class="highlight">-n</code>
+      <td>No limit
+      <td>Maximum number of output URLs.
+
    </table>
-   <h4 class="heading settled" data-level="3.12.2" id="runner-options"><span class="secno">3.12.2. </span><span class="content">Options</span><a class="self-link" href="#runner-options"></a></h4>
+   <h4 class="heading settled" data-level="4.11.3" id="resolver-output"><span class="secno">4.11.3. </span><span class="content">Output framing</span><a class="self-link" href="#resolver-output"></a></h4>
+   <p>On success, stdout MUST contain zero or more absolute URLs, encoded as UTF-8,
+with one URL followed by a line feed (U+000A) per result. There is no header,
+JSON envelope, quoting, or shell escaping. A successful resolution with no
+results produces zero output bytes. A program MUST NOT emit blank result lines.</p>
+   <p>A host parsing resolver output MUST preserve result order. It MUST treat each
+line as one URL rather than split it on whitespace or commas. It MUST accept
+CRLF line endings and a final nonempty line without a terminating line feed
+for compatibility with existing text producers. Removing a line terminator
+does not authorize other whitespace trimming or percent-decoding.</p>
+   <p>Each result MUST be an absolute URI usable as a locator under its scheme’s
+rules. Embedded line-feed or carriage-return characters are not permitted in
+a result. A program MUST document ordering, duplicate-result behavior, and any
+network or local lookup used in resolution.</p>
+   <p class="note" role="note"><span class="marker">Note:</span> The line-oriented framing is made explicit in this draft to enable
+hosts to return a list of URLs. The reviewed Rust wrapper’s unfinished line
+parsing is evidence of the need for this contract, not an implementation of it.</p>
+   <h3 class="heading settled" data-level="4.12" id="runner"><span class="secno">4.12. </span><span class="content">Runner</span><a class="self-link" href="#runner"></a></h3>
+   <p>A runner is a language runtime engine. It consumes text conforming to a
+documented grammar, executes it, and emits the execution result as text.
+This pattern is distinct from a host’s generic process-launching facility.</p>
+<pre class="highlight">PROGRAM [OPTIONS] [INPUT-FILE]</pre>
+   <h4 class="heading settled" data-level="4.12.1" id="runner-arguments"><span class="secno">4.12.1. </span><span class="content">Arguments</span><a class="self-link" href="#runner-arguments"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Option
-      <th align="left">Flag
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Operand
+      <th>Arity
+      <th>Default
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">--define=VAR=VAL</code>
-      <td align="left"><code class="highlight">-D</code>
-      <td align="left">none
-      <td align="left">A key/value definition.
+      <td><code class="highlight">INPUT-FILE</code>
+      <td>0..1
+      <td><code class="highlight">-</code> (stdin)
+      <td>Program text input file.
+
    </table>
-   <h3 class="heading settled" data-level="3.13" id="writer①"><span class="secno">3.13. </span><span class="content">Writer</span><a class="self-link" href="#writer①"></a></h3>
-   <p>RDF dataset exporter. Consumes RDF input, produces some output.</p>
-   <figure>
-    <figcaption>Data flow for writers</figcaption>
-    <object data="img/writer.mmd.svg" type="image/svg+xml"></object>
-   </figure>
-   <h4 class="heading settled" data-level="3.13.1" id="writer-arguments"><span class="secno">3.13.1. </span><span class="content">Arguments</span><a class="self-link" href="#writer-arguments"></a></h4>
+   <h4 class="heading settled" data-level="4.12.2" id="runner-options"><span class="secno">4.12.2. </span><span class="content">Options</span><a class="self-link" href="#runner-options"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Argument
-      <th align="left">Arity
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Option
+      <th>Flag
+      <th>Default
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">INPUT-FILE</code>
-      <td align="left">0..1
-      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdin</code>)
-      <td align="left">The input file path.
-     <tr>
-      <td align="left"><code class="highlight">OUTPUT-FILE</code>
-      <td align="left">0..1
-      <td align="left"><code class="highlight">-</code> (<code class="highlight">/dev/stdout</code>)
-      <td align="left">The output file path.
+      <td><code class="highlight">--define=VAR=VAL</code>
+      <td><code class="highlight">-D</code>
+      <td>No definitions
+      <td>Repeatable variable definition.
+
    </table>
-   <h4 class="heading settled" data-level="3.13.2" id="writer-options"><span class="secno">3.13.2. </span><span class="content">Options</span><a class="self-link" href="#writer-options"></a></h4>
+   <p>The <code class="highlight">--define</code> option is repeatable. Its argument is split at the first <code class="highlight">=</code>
+into a variable name and value; additional <code class="highlight">=</code> characters belong to the value.
+A missing separator or empty variable name is invalid. An empty value is
+permitted. Programs MUST document variable-name constraints, value
+interpretation, and the policy for repeated definitions of the same variable.</p>
+   <p>The program MUST document its language and version, how definitions are made
+available to the executed program, how the execution result is represented,
+and what external side effects are possible. Accepting arbitrary input bytes
+in an SDK does not remove the requirement that program input conform to the
+selected language’s syntax and encoding.</p>
+   <h3 class="heading settled" data-level="4.13" id="writer"><span class="secno">4.13. </span><span class="content">Writer</span><a class="self-link" href="#writer"></a></h3>
+   <p>A writer exports an RDF graph or dataset to a supported output format. The
+output can be an RDF serialization or a non-RDF representation.</p>
+<pre class="highlight">PROGRAM [OPTIONS] [INPUT-FILE [OUTPUT-FILE]]</pre>
+   <h4 class="heading settled" data-level="4.13.1" id="writer-arguments"><span class="secno">4.13.1. </span><span class="content">Arguments</span><a class="self-link" href="#writer-arguments"></a></h4>
    <table class="data">
     <thead>
      <tr>
-      <th align="left">Option
-      <th align="left">Flag
-      <th align="left">Default
-      <th align="left">Summary
+      <th>Operand
+      <th>Arity
+      <th>Default
+      <th>Meaning
+  
     <tbody>
      <tr>
-      <td align="left"><code class="highlight">--input=FORMAT</code>
-      <td align="left"><code class="highlight">-i</code>
-      <td align="left"><code class="highlight">jsonl</code>
-      <td align="left">The input format.
+      <td><code class="highlight">INPUT-FILE</code>
+      <td>0..1
+      <td><code class="highlight">-</code> (stdin)
+      <td>RDF input file.
+    
      <tr>
-      <td align="left"><code class="highlight">--output=FORMAT</code>
-      <td align="left"><code class="highlight">-o</code>
-      <td align="left"><code class="highlight">auto</code>
-      <td align="left">The output format.
+      <td><code class="highlight">OUTPUT-FILE</code>
+      <td>0..1
+      <td><code class="highlight">-</code> (stdout)
+      <td>Exported output file.
+
    </table>
-   <h2 class="heading settled" data-level="4" id="rdf-mapping"><span class="secno">4. </span><span class="content">RDF Mapping</span><a class="self-link" href="#rdf-mapping"></a></h2>
-   <h2 class="heading settled" data-level="5" id="security"><span class="secno">5. </span><span class="content">Security Considerations</span><a class="self-link" href="#security"></a></h2>
-   <h2 class="heading settled" data-level="6" id="iana"><span class="secno">6. </span><span class="content">IANA Considerations</span><a class="self-link" href="#iana"></a></h2>
-   <p>This specification does not require any IANA registrations.</p>
-   <h2 class="heading settled" data-level="7" id="acknowledgments"><span class="secno">7. </span><span class="content">Acknowledgments</span><a class="self-link" href="#acknowledgments"></a></h2>
-   <p>The editors would like to thank the ASIMOV Platform community for their contributions and feedback during the development of this specification.</p>
-   <h2 class="heading settled" data-level="8" id="changes"><span class="secno">8. </span><span class="content">Changes</span><a class="self-link" href="#changes"></a></h2>
-   <p>This section will document changes between versions of this specification.</p>
+   <h4 class="heading settled" data-level="4.13.2" id="writer-options"><span class="secno">4.13.2. </span><span class="content">Options</span><a class="self-link" href="#writer-options"></a></h4>
+   <table class="data">
+    <thead>
+     <tr>
+      <th>Option
+      <th>Flag
+      <th>Default
+      <th>Meaning
+  
+    <tbody>
+     <tr>
+      <td><code class="highlight">--input=FORMAT</code>
+      <td><code class="highlight">-i</code>
+      <td><code class="highlight">jsonl</code>
+      <td>RDF input format.
+    
+     <tr>
+      <td><code class="highlight">--output=FORMAT</code>
+      <td><code class="highlight">-o</code>
+      <td><code class="highlight">auto</code>
+      <td>Export format or automatic selection.
+
+   </table>
+   <p>The program MUST document its supported output formats, mappings, and any
+loss of RDF information, including named-graph or datatype information. A
+writer’s <code class="highlight">auto</code> output selection MUST be defined for stdout as well as for
+named files. An application requiring a particular representation SHOULD
+select it explicitly.</p>
+   <h2 class="heading settled" data-level="5" id="hosts"><span class="secno">5. </span><span class="content">Host requirements</span><a class="self-link" href="#hosts"></a></h2>
+   <h3 class="heading settled" data-level="5.1" id="host-invocation"><span class="secno">5.1. </span><span class="content">Preparing an invocation</span><a class="self-link" href="#host-invocation"></a></h3>
+   <p>A host MUST keep executable selection separate from payload interpretation.
+It MAY locate programs through a configured installation directory, an
+explicit pathname, a module registry, or the operating system’s search path.
+No particular lookup order is required by this specification.</p>
+   <p>A host MUST preserve argument boundaries and MUST pass a URL or URI as one
+operand where required. Additional arguments supplied by an application are
+still argument strings, not shell snippets. Hosts SHOULD provide a way to
+set required operands that are not represented by convenience API parameters,
+such as an indexer’s <code class="highlight">INDEX-FILE</code>.</p>
+   <p>A host that supplies input through stdin MUST create a writable child stdin
+stream, deliver the intended bytes, and close its write end when input ends.
+A host selecting a named input file instead MUST NOT assume that the child
+will also consume bytes sent to stdin.</p>
+   <h3 class="heading settled" data-level="5.2" id="host-streams"><span class="secno">5.2. </span><span class="content">Output handling and progress</span><a class="self-link" href="#host-streams"></a></h3>
+   <p>A host MAY discard output, inherit the parent’s stream, capture bytes, or
+forward bytes to another destination. Its API MUST distinguish these choices.
+If a host claims to forward output to a destination, it MUST actually transfer
+the bytes and report transfer failure; creating a pipe alone is insufficient.</p>
+   <p>For every piped stdout or stderr stream, a host MUST arrange for reads to
+make progress while it writes input and waits for the child. A program MAY
+produce output before consuming all input. Hosts MUST NOT require a program
+to fit all output in an operating-system pipe buffer before that host starts
+reading it.</p>
+   <p>A host MAY buffer the complete output before returning a result, or expose
+incremental output. It MUST document which behavior its API provides and any
+size limits. Output bytes MUST be preserved unless a documented format parser
+or an explicitly requested transformation is applied. Decoding failure MUST
+NOT be silently reported as an empty successful value.</p>
+   <p>A host MUST observe failures while supplying input or forwarding output.
+It MUST NOT report an overall successful transfer merely because the child’s
+exit status is zero when a required host-side transfer failed.</p>
+   <p class="note" role="note"><span class="marker">Note:</span> A host may need concurrent tasks to feed stdin and drain stdout and
+stderr. Full-duplex progress is an I/O requirement, not a requirement to use
+threads, Tokio, or any other particular execution mechanism.</p>
+   <h3 class="heading settled" data-level="5.3" id="host-lifecycle"><span class="secno">5.3. </span><span class="content">Repeated execution and cancellation</span><a class="self-link" href="#host-lifecycle"></a></h3>
+   <p>Hosts MUST document whether repeated execution reuses configuration, replays
+input, or consumes input from its current position. A host MUST NOT imply
+that a consumed stream is rewound unless it actually provides replay.</p>
+   <p>Hosts MUST document ownership of running child processes, cancellation
+behavior, and how exit status is collected. Cancellation or dropping an API
+handle MUST NOT be presented as successful completion. Killing a child does
+not establish that a previously initiated remote operation or persistent
+index update was rolled back.</p>
+   <h3 class="heading settled" data-level="5.4" id="composition"><span class="secno">5.4. </span><span class="content">Composition</span><a class="self-link" href="#composition"></a></h3>
+   <p>A host composing programs MUST ensure that the producer’s output format and
+profile are accepted by the consumer. Matching names such as <code class="highlight">GraphOutput</code>
+and <code class="highlight">GraphInput</code> in an SDK do not establish serialization compatibility.</p>
+   <p>A host claiming successful completion of a pipeline MUST account for every
+required stage’s exit status and every required inter-stage transfer. Success
+of the last stage alone is insufficient. The policy for stopping other stages
+after failure or cancellation MUST be documented.</p>
+   <p class="note" role="note"><span class="marker">Note:</span> Shell examples illustrate data flow, but ordinary shell pipelines may
+report only the final command’s status. Applications needing the host guarantees
+in this section must also monitor upstream stages.</p>
+   <h2 class="heading settled" data-level="6" id="rdf-mapping"><span class="secno">6. </span><span class="content">RDF mapping</span><a class="self-link" href="#rdf-mapping"></a></h2>
+   <p>RDF is the semantic model of the graph-oriented patterns. A byte stream that
+parses as JSON is not necessarily an RDF graph or dataset. An RDF stream
+profile MUST specify:</p>
+   <ul>
+    <li data-md>
+     <p>the serialization grammar and character encoding;</p>
+    <li data-md>
+     <p>the mapping between serialized values and RDF terms, statements, or datasets;</p>
+    <li data-md>
+     <p>the representation of IRIs, blank nodes, literals, datatypes, and language tags;</p>
+    <li data-md>
+     <p>the treatment of default and named graphs;</p>
+    <li data-md>
+     <p>base-IRI resolution, where relative identifiers are supported;</p>
+    <li data-md>
+     <p>framing, blank-node scope, empty results, and stream termination; and</p>
+    <li data-md>
+     <p>any information loss or normalization permitted by the mapping.</p>
+   </ul>
+   <p>For <code class="highlight">jsonl</code>, each nonempty record MUST be one complete JSON value on a single
+line, encoded as UTF-8. JSON syntax is defined by <a data-link-type="biblio" href="#biblio-rfc8259" title="The JavaScript Object Notation (JSON) Data Interchange Format">[RFC8259]</a>. Producers MUST
+terminate each record with a line feed and MUST NOT emit blank records or
+pretty-printed JSON spanning multiple lines. A profile MUST define how each
+JSON value represents RDF and whether state or context is shared across
+records. The token <code class="highlight">jsonl</code> alone does not imply JSON-LD or a particular object
+shape such as <code class="highlight">subject</code>/<code class="highlight">predicate</code>/<code class="highlight">object</code> members.</p>
+   <p>Programs and hosts MUST NOT assume that an RDF record is synonymous with a
+listed entry or an independently scoped dataset. In particular, they MUST
+respect the profile’s blank-node scope when splitting or combining streams.</p>
+   <div class="issue" id="issue-jsonl-profile"><a class="self-link" href="#issue-jsonl-profile"></a>
+A shared RDF <code class="highlight">jsonl</code> profile, its identifier, and a normative reference
+must be selected before this default can provide plug-and-play RDF interchange.
+The reviewed Rust wrappers forward the token and raw bytes; they do not define
+the wire representation. This draft deliberately does not invent a JSON shape
+from those wrappers. A standards-defined RDF serialization can also be selected
+explicitly when both programs support it.
+</div>
+   <p>This specification does not define an RDF vocabulary for describing installed
+programs, invocation metadata, error objects, or pipeline topology. Such a
+vocabulary can be defined separately. Payload RDF and metadata describing a
+program are distinct uses of RDF.</p>
+   <h2 class="heading settled" data-level="7" id="extensions"><span class="secno">7. </span><span class="content">Extensions</span><a class="self-link" href="#extensions"></a></h2>
+   <p>A program MAY provide additional options, format tokens, model identifiers,
+resource schemes, and profile-specific behavior. It MUST document such
+extensions and MUST retain the semantics of the standard options it supports.
+Extensions MUST NOT cause an otherwise valid standard invocation to require
+additional operands or options.</p>
+   <p>A host MUST NOT infer support for an extension merely because its SDK exposes
+a field or an untyped additional-argument list. Support has to be established
+through program documentation, configuration, or a separately defined
+capability-discovery mechanism.</p>
+   <p>This specification does not define a capability-discovery command or a
+registry of extension names. Implementations SHOULD use descriptive long
+option names and avoid short-option assignments that conflict with their
+pattern’s standard flags.</p>
+   <h2 class="heading settled" data-level="8" id="examples"><span class="secno">8. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
+   <div class="informative">
+The executable names below are illustrative. These examples assume that
+connected programs support the same documented RDF <code class="highlight">jsonl</code> profile.
+Shell redirection and pipes configure streams; they are not arguments passed
+to the programs. Error handling is omitted for readability.
+</div>
+   <div class="example" id="example-query-pipeline">
+    <a class="self-link" href="#example-query-pipeline"></a>
+  
+    <p>Compile a natural-language request and query a dataset:</p>
+<pre class="highlight">asimov-example-compiler request.txt | asimov-example-adapter --output=jsonl</pre>
+    <p>The compiler emits SPARQL. The adapter reads it from stdin and emits RDF.
+  A host observes both processes' completion before declaring success.</p>
+   </div>
+   <div class="example" id="example-index">
+    <a class="self-link" href="#example-index"></a>
+  
+    <p>Fetch RDF and index it using the single-operand indexer form:</p>
+<pre class="highlight">asimov-example-fetcher --output=jsonl https://example.com/resource | asimov-example-indexer --input=jsonl ./catalog.index</pre>
+    <p>The equivalent explicit-stdin indexer invocation is:</p>
+<pre class="highlight">asimov-example-indexer --input=jsonl - ./catalog.index</pre>
+    <p>In both forms, the indexer reads RDF from stdin and treats
+  <code class="highlight">./catalog.index</code> as the persistent destination.</p>
+   </div>
+   <div class="example" id="example-resolution">
+    <a class="self-link" href="#example-resolution"></a>
+  
+    <p>Resolve a URI to at most two URLs:</p>
+<pre class="highlight">asimov-example-resolver --limit=2 urn:example:document:42</pre>
+    <p>An illustrative successful stdout payload is:</p>
+<pre class="highlight">https://example.com/documents/42
+https://mirror.example.com/documents/42
+</pre>
+    <p>The host parses two URL records. It does not interpret the lines as RDF
+  or execute them as shell commands.</p>
+   </div>
+   <div class="example" id="example-prompt">
+    <a class="self-link" href="#example-prompt"></a>
+  
+    <p>Read a text prompt from stdin and write the text response to a file:</p>
+<pre class="highlight">asimov-example-prompter --input=text --output=text --model=auto - response.txt</pre>
+    <p>The first operand is needed because a single filename would select the
+  input file, not the output file.</p>
+   </div>
+   <div class="example" id="example-definitions">
+    <a class="self-link" href="#example-definitions"></a>
+  
+    <p>Pass two runtime definitions, including a value containing an equals sign:</p>
+<pre class="highlight">asimov-example-runner --define=mode=preview --define=expression=a=b program.txt</pre>
+    <p>The second definition has the variable name <code class="highlight">expression</code> and
+  value <code class="highlight">a=b</code>. Its interpretation belongs to the selected runtime.</p>
+   </div>
+   <h2 class="heading settled" data-level="9" id="security"><span class="secno">9. </span><span class="content">Security and privacy considerations</span><a class="self-link" href="#security"></a></h2>
+   <p>Programs and hosts operate on potentially untrusted arguments, payloads,
+resources, and generated text. Conformance to an input/output contract does
+not establish trust in the program, its data source, or its output.</p>
+   <p>Hosts MUST preserve argument boundaries as specified in
+<a href="#command-line">command-line syntax</a>. Concatenating a resource
+identifier or model-supplied value into a shell command can introduce command
+injection. Executable lookup policy SHOULD prevent an untrusted directory
+from unexpectedly substituting a program selected by name.</p>
+   <p>Fetchers, listers, resolvers, and programs using remote services SHOULD enforce
+the application’s restrictions on network destinations and URI schemes,
+including after redirects. Dereferencing input can expose local resources,
+credentials, or internal network services. Programs MUST document when payloads
+or identifiers are transmitted to third parties.</p>
+   <p>Programs accepting untrusted RDF or other structured data SHOULD bound parsing
+resources and document external-reference resolution. Hosts SHOULD provide
+limits for runtime, input size, captured output, and diagnostic retention.
+Exceeding a resource limit that prevents completion of the requested operation
+MUST result in an observable failure or cancellation rather than a silently
+truncated successful payload. This does not apply to a requested result count
+such as <code class="highlight">--limit</code>, which is part of the operation itself. Hosts MAY abbreviate
+retained diagnostics if they indicate that the diagnostic record is incomplete.</p>
+   <p>Prompts and RDF literals can contain instructions intended for a model. Such
+content is data under this specification; it does not by itself authorize
+additional host actions. Compiled queries and runtime program text can cause
+expensive computation or external effects. Applications determine whether and
+with what authority those outputs are subsequently executed.</p>
+   <p>Index destinations, output files, environment variables, prompts, and stderr
+can contain sensitive information. Programs SHOULD avoid unnecessary secret
+disclosure in diagnostics. Hosts SHOULD apply the application’s retention
+and access-control policy to captured output and diagnostics.</p>
+   <p>Process cancellation is not a transaction boundary. Implementations MUST NOT
+claim that killing a process undoes filesystem, network, or index changes
+unless they implement and document such a guarantee.</p>
+   <h2 class="heading settled" data-level="10" id="iana"><span class="secno">10. </span><span class="content">IANA considerations</span><a class="self-link" href="#iana"></a></h2>
+   <p>This specification requests no IANA registrations. Format tokens and option
+names defined here are local to these program interfaces; this document does
+not register media types, URI schemes, or protocol parameters.</p>
+   <h2 class="heading settled" data-level="11" id="implementation-notes"><span class="secno">11. </span><span class="content">Implementation notes</span><a class="self-link" href="#implementation-notes"></a></h2>
+   <div class="informative">
+    
+This section is informative. It records observations from the
+<code class="highlight">asimov-runner</code> Rust crate, version 25.4.0, reviewed for this draft.
+The paths below are relative to its <code class="highlight">src/</code> directory. These are
+implementation observations, not requirements for other SDKs or endorsements
+of conformance to this expanded draft.
+
+
+    <h3 class="heading settled" data-level="11.1" id="implementation-patterns"><span class="secno">11.1. </span><span class="content">Pattern coverage and argument construction</span><a class="self-link" href="#implementation-patterns"></a></h3>
+    <p><code class="highlight">programs.rs</code> exports wrappers for twelve patterns: adapter, emitter,
+fetcher, indexer, lister, matcher, prompter, reader, reasoner, resolver, runner,
+and writer. There is no compiler wrapper in the reviewed crate. The compiler
+remains part of the specification.</p>
+    <p>Constructors prepare commands; execution methods start new child processes.
+Wrappers translate configured option fields into individual
+<code class="highlight">--name=value</code> arguments, append their <code class="highlight">other</code> argument
+list, and then append the dedicated URL or URI operand where present. They
+re-export option types and implement the corresponding pattern and execution
+traits from <code class="highlight">asimov-patterns</code>.</p>
+    <p>The indexer wrapper has no dedicated index-destination parameter; its required
+operand can be supplied through <code class="highlight">options.other</code>. The lister wrapper
+forwards <code class="highlight">--sort</code> and <code class="highlight">--offset</code> in addition to the limit
+and output-format options previously listed in the specification.</p>
+    <h3 class="heading settled" data-level="11.2" id="implementation-executor"><span class="secno">11.2. </span><span class="content">Process defaults</span><a class="self-link" href="#implementation-executor"></a></h3>
+    <p><code class="highlight">executor.rs</code> checks the ASIMOV root’s <code class="highlight">libexec</code> directory
+before falling back to the supplied program name or path. It sets
+<code class="highlight">NO_COLOR=1</code>, initially connects all standard streams to the null
+device, and enables Tokio’s child-handle kill-on-drop behavior. Wrappers
+subsequently configure the streams required for their pattern.</p>
+    <p>These lookup, environment, and ownership policies are choices of this host
+implementation. They are not universal program requirements. Process-backed
+APIs are gated on the crate’s <code class="highlight">std</code> feature and use Tokio. Optional
+tracing records child exit statuses.</p>
+    <h3 class="heading settled" data-level="11.3" id="implementation-streams"><span class="secno">11.3. </span><span class="content">Input and output representations</span><a class="self-link" href="#implementation-streams"></a></h3>
+    <p><code class="highlight">input.rs</code> represents either ignored input or an owned asynchronous
+reader. <code class="highlight">output.rs</code> represents ignored, inherited, captured, or
+asynchronous-writer output. Content-specific aliases such as
+<code class="highlight">GraphInput</code> and <code class="highlight">TextOutput</code> do not validate or transcode
+the stream. The unit-type aliases <code class="highlight">NoInput</code> and <code class="highlight">NoOutput</code>
+describe the absence of a pattern value.</p>
+    <p>Converting these values to <code class="highlight">Stdio</code> configures null, inherited, or
+piped streams; it does not transfer data. The consuming conversion drops an
+owned reader or writer. The borrowed <code class="highlight">as_stdio()</code> method preserves
+that object for subsequent use.</p>
+    <p>The stream-input execution path copies the remaining input to child stdin,
+closes that pipe, and only then collects stdout and stderr. Reusing an input
+reader does not rewind it. Copying input before draining output can deadlock
+with a child that fills an output pipe before consuming all input. The
+<a href="#host-streams">host progress requirements</a> therefore describe a
+stronger contract than this implementation currently provides.</p>
+    <p>Most wrappers buffer captured stdout in memory and return a byte cursor
+positioned at zero. Ignored or inherited stdout produces an empty capture.
+Although <code class="highlight">Output::AsyncWrite</code> requests a pipe, the reviewed wrappers
+do not forward the captured bytes to its stored writer. This does not satisfy
+the draft’s forwarding contract.</p>
+    <h3 class="heading settled" data-level="11.4" id="implementation-results"><span class="secno">11.4. </span><span class="content">Pattern-specific return values</span><a class="self-link" href="#implementation-results"></a></h3>
+    <p><code class="highlight">programs/indexer.rs</code> discards stdout and returns a unit value on
+success, consistent with the indexer’s lack of a payload output.</p>
+    <p><code class="highlight">programs/prompter.rs</code> always captures stdout regardless of its
+output argument. It clones a stored prompt, writes its display representation
+to stdin in a separate task, and decodes the complete stdout as UTF-8 without
+trimming. The write task is not awaited; write failures panic in that task
+rather than being returned through the execution result. A formatter’s
+role-prefixed prompt representation does not establish a standard chat grammar.</p>
+    <p><code class="highlight">programs/resolver.rs</code> has a list-of-strings result type, but its
+stdout-to-lines conversion is unfinished. It currently discards captured
+stdout and returns an empty list on success. The resolver contract in this
+draft requires the actual URL results to be available to a host that claims
+to return them.</p>
+    <p><code class="highlight">pipeline.rs</code> contains a zero-sized placeholder with no stages,
+connections, or execution API. The composition requirements specify observable
+host behavior, not an existing Rust pipeline implementation.</p>
+    <h3 class="heading settled" data-level="11.5" id="implementation-errors"><span class="secno">11.5. </span><span class="content">Error representation</span><a class="self-link" href="#implementation-errors"></a></h3>
+    <p><code class="highlight">executor_error.rs</code> distinguishes a not-found spawn error, other
+spawn failures, recognized sysexits failures, other unsuccessful terminations,
+and miscellaneous I/O failures. A termination without a numeric exit code is
+represented separately from a numeric nonzero status.</p>
+    <p>When converting process output into an error, the implementation keeps stderr
+only if it is valid UTF-8; empty stderr becomes an empty string, while invalid
+UTF-8 becomes absent diagnostic text. Captured stdout is not retained in those
+errors. Successful execution returns stdout and discards captured stderr.
+These representation choices motivate the distinction between process status,
+diagnostic bytes, and partial payloads in the common processing model.</p>
+   </div>
+   <h2 class="heading settled" data-level="12" id="acknowledgments"><span class="secno">12. </span><span class="content">Acknowledgments</span><a class="self-link" href="#acknowledgments"></a></h2>
+   <div class="informative">
+The editors thank the ASIMOV Platform community for its contributions and
+feedback. This revision was informed by a cross-review of the published
+Program Patterns Specification, its Bikeshed section sources, and the Rust
+<code class="highlight">asimov-runner</code> implementation.
+</div>
+   <h2 class="heading settled" data-level="13" id="changes"><span class="secno">13. </span><span class="content">Changes</span><a class="self-link" href="#changes"></a></h2>
+   <div class="informative">
+    
+This draft expands the living standard dated 10 September 2026. The following
+changes are proposed for review; they are not a statement of deployed consensus.
+
+
+    <h3 class="heading settled" data-level="13.1" id="changes-corrections"><span class="secno">13.1. </span><span class="content">Corrections and clarifications</span><a class="self-link" href="#changes-corrections"></a></h3>
+    <ul>
+     <li data-md>
+      <p>Makes the adapter’s query-file operand optional, matching its stdin default.</p>
+     <li data-md>
+      <p>Renames the resolver operand to <code class="highlight">INPUT-URI</code> and makes it required,
+matching its single-URI contract and the reviewed wrapper’s dedicated input.</p>
+     <li data-md>
+      <p>Replaces the runner overview’s generic input type with program text.</p>
+     <li data-md>
+      <p>Distinguishes payload shape from RDF statement count and transport arity.</p>
+     <li data-md>
+      <p>Defines the indexer’s one-operand and two-operand interpretations explicitly.</p>
+     <li data-md>
+      <p>Describes matchers as emitting RDF about matches, and distinguishes language
+runtimes from generic process launchers.</p>
+    </ul>
+    <h3 class="heading settled" data-level="13.2" id="changes-expansions"><span class="secno">13.2. </span><span class="content">Expanded draft requirements</span><a class="self-link" href="#changes-expansions"></a></h3>
+    <ul>
+     <li data-md>
+      <p>Adds conformance classes for programs and hosts, profiles, and extension rules.</p>
+     <li data-md>
+      <p>Defines portable stream operands, option syntax, payload/diagnostic separation,
+completion, partial failure, and host stream-progress requirements.</p>
+     <li data-md>
+      <p>Proposes newline-delimited URL framing for resolver output.</p>
+     <li data-md>
+      <p>Adds optional lister offset and sort capabilities, with defined pagination
+order and an explicit issue for the sort-expression grammar.</p>
+     <li data-md>
+      <p>Clarifies text encoding, automatic format selection, runtime definitions,
+graph-query results, and pattern-specific implementation-defined behavior.</p>
+     <li data-md>
+      <p>Records the unresolved RDF <code class="highlight">jsonl</code> mapping instead of inventing a
+wire format from SDK type aliases or format-token forwarding.</p>
+     <li data-md>
+      <p>Adds examples, security and privacy considerations, and implementation notes.</p>
+    </ul>
+    <p>This file incorporates the pattern sections directly and uses textual examples
+instead of external diagrams, so it can be reviewed as a single Bikeshed source
+without the original <code class="highlight">sections/</code> and <code class="highlight">img/</code> directories.</p>
+   </div>
   </main>
-  <div data-fill-with="conformance">
-   <h2 class="heading no-num no-ref settled" id="conformance"><span class="content">
-    Conformance</span><a class="self-link" href="#conformance"></a></h2>
-   <p>
-            Conformance requirements are expressed with a combination of descriptive assertions and RFC 2119 terminology.
-            The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL”
-            in the normative parts of this document
-            are to be interpreted as described in RFC 2119.
-            However, for readability,
-            these words do not appear in all uppercase letters in this specification.
-
-        </p>
-   <p>
-            All of the text of this specification is normative
-            except sections explicitly marked as non-normative, examples, and notes. <a data-link-type="biblio" href="#biblio-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">[RFC2119]</a>
-
-        </p>
-   <p>
-            Examples in this specification are introduced with the words “for example”
-            or are set apart from the normative text with <code>class="example"</code>, like this:
-
-        </p>
-   <div class="example" id="example-example"><a class="self-link" href="#example-example"></a>
-            This is an example of an informative example.
-        </div>
-   <p>
-            Informative notes begin with the word “Note”
-            and are set apart from the normative text with <code>class="note"</code>, like this:
-
-        </p>
-   <p class="note" role="note">
-            Note, this is an informative note.</p>
-  </div>
 <script>
 (function() {
   "use strict";
@@ -3174,31 +3958,56 @@ it, and produces the execution result as output.</p>
   <h2 class="heading no-num no-ref settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
   <h3 class="heading no-num no-ref settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
   <ul class="index">
-   <li><a href="#adapter">Adapter</a><span>, in § 3</span>
-   <li><a href="#compiler">Compiler</a><span>, in § 3</span>
-   <li><a href="#emitter">Emitter</a><span>, in § 3</span>
-   <li><a href="#fetcher">Fetcher</a><span>, in § 3</span>
-   <li><a href="#indexer">Indexer</a><span>, in § 3</span>
-   <li><a href="#lister-pattern">Lister</a><span>, in § 3</span>
-   <li><a href="#matcher-pattern">Matcher</a><span>, in § 3</span>
-   <li><a href="#prompter">Prompter</a><span>, in § 3</span>
-   <li><a href="#reader">Reader</a><span>, in § 3</span>
-   <li><a href="#reasoner">Reasoner</a><span>, in § 3</span>
-   <li><a href="#resolver">Resolver</a><span>, in § 3</span>
-   <li><a href="#runner">Runner</a><span>, in § 3</span>
-   <li><a href="#writer">Writer</a><span>, in § 3</span>
+   <li><a href="#host">host</a><span>, in § 2</span>
+   <li><a href="#invocation">invocation</a><span>, in § 3.1</span>
+   <li><a href="#profile">profile</a><span>, in § 2</span>
+   <li><a href="#program">program</a><span>, in § 2</span>
   </ul>
   <h2 class="heading no-num no-ref settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
   <h3 class="heading no-num no-ref settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
   <dl>
+   <dt id="biblio-rdf11-concepts">[RDF11-CONCEPTS]
+   <dd>Richard Cyganiak; David Wood; Markus Lanthaler. <a href="https://w3c.github.io/rdf-concepts/spec/"><cite>RDF 1.1 Concepts and Abstract Syntax</cite></a>. URL: <a href="https://w3c.github.io/rdf-concepts/spec/">https://w3c.github.io/rdf-concepts/spec/</a>
    <dt id="biblio-rfc2119">[RFC2119]
    <dd>S. Bradner. <a href="https://datatracker.ietf.org/doc/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>
+   <dt id="biblio-rfc3629">[RFC3629]
+   <dd>F. Yergeau. <a href="https://www.rfc-editor.org/info/rfc3629/"><cite>UTF-8, a transformation format of ISO 10646</cite></a>. November 2003. Internet Standard. URL: <a href="https://www.rfc-editor.org/info/rfc3629/">https://www.rfc-editor.org/info/rfc3629/</a>
+   <dt id="biblio-rfc3986">[RFC3986]
+   <dd>T. Berners-Lee; R. Fielding; L. Masinter. <a href="https://www.rfc-editor.org/info/rfc3986/"><cite>Uniform Resource Identifier (URI): Generic Syntax</cite></a>. January 2005. Internet Standard. URL: <a href="https://www.rfc-editor.org/info/rfc3986/">https://www.rfc-editor.org/info/rfc3986/</a>
+   <dt id="biblio-rfc8174">[RFC8174]
+   <dd>B. Leiba. <a href="https://www.rfc-editor.org/info/rfc8174/"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/info/rfc8174/">https://www.rfc-editor.org/info/rfc8174/</a>
+   <dt id="biblio-rfc8259">[RFC8259]
+   <dd>T. Bray, Ed.. <a href="https://www.rfc-editor.org/info/rfc8259/"><cite>The JavaScript Object Notation (JSON) Data Interchange Format</cite></a>. December 2017. Internet Standard. URL: <a href="https://www.rfc-editor.org/info/rfc8259/">https://www.rfc-editor.org/info/rfc8259/</a>
+   <dt id="biblio-sparql11-query">[SPARQL11-QUERY]
+   <dd>Steven Harris; Andy Seaborne. <a href="https://w3c.github.io/sparql-query/spec/"><cite>SPARQL 1.1 Query Language</cite></a>. URL: <a href="https://w3c.github.io/sparql-query/spec/">https://w3c.github.io/sparql-query/spec/</a>
   </dl>
   <h3 class="heading no-num no-ref settled" id="informative"><span class="content">Non-Normative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
    <dt id="biblio-asimov">[ASIMOV]
    <dd>Arto Bendiken; et al. <a href="https://asimov.sh"><cite>ASIMOV Platform Documentation</cite></a>. URL: <a href="https://asimov.sh">https://asimov.sh</a>
+   <dt id="biblio-no-color">[NO-COLOR]
+   <dd><a href="https://no-color.org/"><cite>Disabling ANSI color output in various Unix commands</cite></a>. URL: <a href="https://no-color.org/">https://no-color.org/</a>
+   <dt id="biblio-sysexits">[SYSEXITS]
+   <dd><a href="https://man.freebsd.org/cgi/man.cgi?query=sysexits&amp;sektion=3"><cite>sysexits(3): Preferable exit codes for programs</cite></a>. URL: <a href="https://man.freebsd.org/cgi/man.cgi?query=sysexits&amp;sektion=3">https://man.freebsd.org/cgi/man.cgi?query=sysexits&amp;sektion=3</a>
   </dl>
+  <h2 class="heading no-num no-ref settled" id="issues-index"><span class="content">Issues Index</span><a class="self-link" href="#issues-index"></a></h2>
+  <div style="counter-reset:issue">
+   <div class="issue">
+The Rust wrapper forwards <code class="highlight">--sort</code> and <code class="highlight">--offset</code>, but the
+previous specification listed neither. This draft reserves their semantics
+as optional capabilities. The interoperable grammar for <code class="highlight">SORT</code>,
+including keys, direction, and tie-breaking, remains to be agreed. An
+undocumented spelling such as <code class="highlight">asc</code> cannot be assumed portable.
+ <a class="issue-return" href="#issue-sort-grammar" title="Jump to section">↵</a></div>
+   <div class="issue">
+A shared RDF <code class="highlight">jsonl</code> profile, its identifier, and a normative reference
+must be selected before this default can provide plug-and-play RDF interchange.
+The reviewed Rust wrappers forward the token and raw bytes; they do not define
+the wire representation. This draft deliberately does not invent a JSON shape
+from those wrappers. A standards-defined RDF serialization can also be selected
+explicitly when both programs support it.
+ <a class="issue-return" href="#issue-jsonl-profile" title="Jump to section">↵</a></div>
+  </div>
 <script>/* Boilerplate: script-dom-helper */
 "use strict";
 function query(sel) { return document.querySelector(sel); }
@@ -3399,19 +4208,10 @@ function parseHTML(markup) {
 "use strict";
 {
 let dfnPanelData = {
-"adapter": {"dfnID":"adapter","dfnText":"Adapter","external":false,"refSections":[],"url":"#adapter"},
-"compiler": {"dfnID":"compiler","dfnText":"Compiler","external":false,"refSections":[],"url":"#compiler"},
-"emitter": {"dfnID":"emitter","dfnText":"Emitter","external":false,"refSections":[],"url":"#emitter"},
-"fetcher": {"dfnID":"fetcher","dfnText":"Fetcher","external":false,"refSections":[],"url":"#fetcher"},
-"indexer": {"dfnID":"indexer","dfnText":"Indexer","external":false,"refSections":[],"url":"#indexer"},
-"lister-pattern": {"dfnID":"lister-pattern","dfnText":"Lister","external":false,"refSections":[],"url":"#lister-pattern"},
-"matcher-pattern": {"dfnID":"matcher-pattern","dfnText":"Matcher","external":false,"refSections":[],"url":"#matcher-pattern"},
-"prompter": {"dfnID":"prompter","dfnText":"Prompter","external":false,"refSections":[],"url":"#prompter"},
-"reader": {"dfnID":"reader","dfnText":"Reader","external":false,"refSections":[],"url":"#reader"},
-"reasoner": {"dfnID":"reasoner","dfnText":"Reasoner","external":false,"refSections":[],"url":"#reasoner"},
-"resolver": {"dfnID":"resolver","dfnText":"Resolver","external":false,"refSections":[],"url":"#resolver"},
-"runner": {"dfnID":"runner","dfnText":"Runner","external":false,"refSections":[],"url":"#runner"},
-"writer": {"dfnID":"writer","dfnText":"Writer","external":false,"refSections":[],"url":"#writer"},
+"host": {"dfnID":"host","dfnText":"host","external":false,"refSections":[{"refs":[{"id":"ref-for-host"}],"title":"2. Conformance"}],"url":"#host"},
+"invocation": {"dfnID":"invocation","dfnText":"invocation","external":false,"refSections":[{"refs":[{"id":"ref-for-invocation"}],"title":"3.8. Completion and failure"}],"url":"#invocation"},
+"profile": {"dfnID":"profile","dfnText":"profile","external":false,"refSections":[{"refs":[{"id":"ref-for-profile"}],"title":"2. Conformance"}],"url":"#profile"},
+"program": {"dfnID":"program","dfnText":"program","external":false,"refSections":[{"refs":[{"id":"ref-for-program"}],"title":"2. Conformance"}],"url":"#program"},
 };
 
 document.addEventListener("DOMContentLoaded", ()=>{
@@ -3794,5 +4594,216 @@ function genLinkingSyntaxes(dfn) {
         )
     ];
 }
+}
+</script>
+<script>/* Boilerplate: script-ref-hints */
+"use strict";
+{
+let refsData = {
+"#host": {"displayText":"host","export":true,"for_":[],"level":"","normative":true,"shortname":"program-patterns","spec":"program-patterns","status":"local","text":"host","type":"dfn","url":"#host"},
+"#invocation": {"displayText":"invocation","export":true,"for_":[],"level":"","normative":true,"shortname":"program-patterns","spec":"program-patterns","status":"local","text":"invocation","type":"dfn","url":"#invocation"},
+"#profile": {"displayText":"profile","export":true,"for_":[],"level":"","normative":true,"shortname":"program-patterns","spec":"program-patterns","status":"local","text":"profile","type":"dfn","url":"#profile"},
+"#program": {"displayText":"program","export":true,"for_":[],"level":"","normative":true,"shortname":"program-patterns","spec":"program-patterns","status":"local","text":"program","type":"dfn","url":"#program"},
+};
+
+function mkRefHint(link, ref) {
+    const linkText = link.textContent;
+    let dfnTextElements = '';
+    if (ref.displayText.toLowerCase() != linkText.toLowerCase()) {
+        // Give the original term if it's being displayed in a different way.
+        // But allow casing differences, they're insignificant.
+        dfnTextElements =
+            mk.li({},
+                mk.b({}, "Term: "),
+                mk.span({}, ref.displayText)
+            );
+    }
+    const forList = ref.for_;
+    let forListElements;
+    if(forList.length == 0) {
+        forListElements = [];
+    } else if(forList.length == 1) {
+        forListElements = mk.li({},
+            mk.b({}, "For: "),
+            mk.span({}, forList[0]),
+        );
+    } else {
+        forListElements = mk.li({},
+            mk.b({}, "For: "),
+            mk.ul({},
+                ...forList.map(forItem =>
+                    mk.li({},
+                        mk.span({}, forItem)
+                    ),
+                ),
+            ),
+        );
+    }
+    const url = ref.url;
+    const safeUrl = encodeURIComponent(url);
+    const hintPanel = mk.aside({
+        class: "ref-hint",
+        id: `ref-hint-for-${safeUrl}`,
+        "data-for": url,
+        "aria-labelled-by": `ref-hint-for-${safeUrl}`,
+    },
+        mk.ul({},
+            dfnTextElements,
+            mk.li({},
+                mk.b({}, "URL: "),
+                mk.a({ href: url, class: "ref" }, url),
+            ),
+            mk.li({},
+                mk.b({}, "Type: "),
+                mk.span({}, `${ref.type}`),
+            ),
+            mk.li({},
+                mk.b({}, "Spec: "),
+                mk.span({}, `${ref.spec ? ref.spec : ''}`),
+            ),
+            forListElements
+        ),
+    );
+    hintPanel.forLink = link;
+    setupRefHintEventListeners(link, hintPanel);
+    return hintPanel;
+}
+
+function hideAllRefHints() {
+    queryAll(".ref-hint").forEach(el=>hideRefHint(el));
+}
+
+function hideRefHint(refHint) {
+    const link = refHint.forLink;
+    link.setAttribute("aria-expanded", "false");
+    if(refHint.teardownEventListeners) {
+        refHint.teardownEventListeners();
+    }
+    refHint.remove();
+}
+
+function showRefHint(link) {
+    if(link.classList.contains("dfn-link")) return;
+    const url = link.getAttribute("href");
+    const refHintKey = link.getAttribute("data-refhint-key");
+    let key = url;
+    if(refHintKey) {
+        key = refHintKey + "_" + url;
+    }
+    const ref = refsData[key];
+    if(!ref) return;
+
+    hideAllRefHints(); // Only display one at this time.
+
+    const refHint = mkRefHint(link, ref);
+    append(document.body, refHint);
+    link.setAttribute("aria-expanded", "true");
+    positionRefHint(refHint);
+}
+
+function setupRefHintEventListeners(link, refHint) {
+    if (refHint.teardownEventListeners) return;
+    // Add event handlers to hide the refHint after the user moves away
+    // from both the link and refHint, if not hovering either within one second.
+    let timeout = null;
+    const startHidingRefHint = (event) => {
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+        timeout = setTimeout(() => {
+            hideRefHint(refHint);
+        }, 1000);
+    }
+    const resetHidingRefHint = (event) => {
+        if (timeout) clearTimeout(timeout);
+        timeout = null;
+    };
+    link.addEventListener("mouseleave", startHidingRefHint);
+    link.addEventListener("mouseenter", resetHidingRefHint);
+    link.addEventListener("blur", startHidingRefHint);
+    link.addEventListener("focus", resetHidingRefHint);
+    refHint.addEventListener("mouseleave", startHidingRefHint);
+    refHint.addEventListener("mouseenter", resetHidingRefHint);
+    refHint.addEventListener("blur", startHidingRefHint);
+    refHint.addEventListener("focus", resetHidingRefHint);
+
+    refHint.teardownEventListeners = () => {
+        // remove event listeners
+        resetHidingRefHint();
+        link.removeEventListener("mouseleave", startHidingRefHint);
+        link.removeEventListener("mouseenter", resetHidingRefHint);
+        link.removeEventListener("blur", startHidingRefHint);
+        link.removeEventListener("focus", resetHidingRefHint);
+        refHint.removeEventListener("mouseleave", startHidingRefHint);
+        refHint.removeEventListener("mouseenter", resetHidingRefHint);
+        refHint.removeEventListener("blur", startHidingRefHint);
+        refHint.removeEventListener("focus", resetHidingRefHint);
+    };
+}
+
+function positionRefHint(refHint) {
+    const link = refHint.forLink;
+    const linkPos = getBounds(link);
+    refHint.style.top = linkPos.bottom + "px";
+    refHint.style.left = linkPos.left + "px";
+
+    const panelPos = refHint.getBoundingClientRect();
+    const panelMargin = 8;
+    const maxRight = document.body.parentNode.clientWidth - panelMargin;
+    if (panelPos.right > maxRight) {
+        const overflowAmount = panelPos.right - maxRight;
+        const newLeft = Math.max(panelMargin, linkPos.left - overflowAmount);
+        refHint.style.left = newLeft + "px";
+    }
+}
+
+// TODO: shared util
+// Returns the root-level absolute position {left and top} of element.
+function getBounds(el, relativeTo=document.body) {
+    const relativeRect = relativeTo.getBoundingClientRect();
+    const elRect = el.getBoundingClientRect();
+    const top = elRect.top - relativeRect.top;
+    const left = elRect.left - relativeRect.left;
+    return {
+        top,
+        left,
+        bottom: top + elRect.height,
+        right: left + elRect.width,
+    }
+}
+
+function showRefHintListener(e) {
+    // If the target isn't in a link (or is a link),
+    // just ignore it.
+    let link = e.target.closest("a");
+    if(!link) return;
+
+    // If the target is in a ref-hint panel
+    // (aka a link in the already-open one),
+    // also just ignore it.
+    if(link.closest(".ref-hint")) return;
+
+    // Otherwise, show the panel for the link.
+    showRefHint(link);
+}
+
+function hideAllHintsListener(e) {
+    // If the click is inside a ref-hint panel, ignore it.
+    if(e.target.closest(".ref-hint")) return;
+    // Otherwise, close all the current panels.
+    hideAllRefHints();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.body.addEventListener("mousedown", showRefHintListener);
+    document.body.addEventListener("focus", showRefHintListener);
+
+    document.body.addEventListener("click", hideAllHintsListener);
+});
+
+window.addEventListener("resize", () => {
+    // Hide any open ref hint.
+    hideAllRefHints();
+});
 }
 </script>
